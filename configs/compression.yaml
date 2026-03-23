@@ -1,0 +1,38 @@
+# ============================================================
+# compression.yaml — Phase 2 Compression Configuration
+# ============================================================
+
+# --- Compression Methods ---
+compression_methods:
+  sliding_window:
+    enabled: true
+    window_sizes: [3, 5, 10]       # number of recent turns to keep
+
+  selective_context:
+    enabled: true
+    target_ratios: [0.5, 0.75]     # fraction of original tokens to retain
+
+  summarize_turns:
+    enabled: true
+    model: "google/gemini-2.0-flash-lite-001"
+    max_summary_tokens: 50
+    temperature: 0.0
+    batch_size: 10
+
+  system_prompt_reinforce:
+    enabled: true
+    injection_intervals: [3, 5]    # inject reminder every N user turns
+    max_reminder_tokens: 100
+
+# --- Paths ---
+paths:
+  input_cases: "data/processed/experiment_cases.jsonl"
+  output_dir: "data/processed/compressed_cases/"
+
+# --- Filter ---
+filter:
+  min_turn_count: 5  # only compress cases with turns >= 5
+
+# --- Token Counting ---
+tokenizer:
+  encoding_name: "cl100k_base"

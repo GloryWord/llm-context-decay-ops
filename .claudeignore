@@ -46,6 +46,7 @@ requirements*.txt
 # 7. 로그 & 출력
 *.log
 logs/
+.claude/dev_history/
 
 # 8. OS & 에디터 캐시
 .DS_Store
@@ -67,3 +68,5 @@ notebooks/
 # 12. 미니파이 JS (해당 시)
 *.min.js
 *.min.css
+
+.README_MY.md

@@ -1,0 +1,12 @@
+# Phase 1 Data Pipeline
+tiktoken
+pyyaml
+datasets
+huggingface_hub
+
+# Existing dependencies
+pandas
+numpy
+aiohttp
+matplotlib
+seaborn

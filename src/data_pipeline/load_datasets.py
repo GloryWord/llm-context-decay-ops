@@ -1,134 +1,84 @@
-import os
-import pandas as pd
-import json
-import glob
+"""Phase 1 data pipeline entry point.
 
-DATA_DIR = "/Users/kawai_tofu/GoogleCloud/Capstone_Dev/Total_Datasets"
+Orchestrates the full preprocessing pipeline:
+1. Download raw datasets
+2. Preprocess each dataset
+3. Generate experiment cases (~104 cases)
 
-def build_unified_eval_dataset():
-    unified_queue = []
+Usage:
+    python -m src.data_pipeline.load_datasets --config configs/preprocess.yaml
+    python -m src.data_pipeline.load_datasets --config configs/preprocess.yaml --skip-download
+"""
 
-    # 1. MT-Eval (멀티턴 구조 보존)
-    print("Loading MT-Eval...")
-    mt_path = os.path.join(DATA_DIR, "MT-Eval/data/recollection_multi_global-inst.jsonl")
-    try:
-        mt_df = pd.read_json(mt_path, lines=True)
-        for _, row in mt_df.iterrows():
-            if 'conv' not in row or not isinstance(row['conv'], list) or len(row['conv']) == 0:
-                continue
-            
-            conv = row['conv']
-            system_instruction = ""
-            turns = []
-            
-            # 구조 파악 후 턴별로 분리
-            if 'user' in conv[0]: # {'user': '...', 'sys': '...'} 구조
-                for t in conv:
-                    turns.append({"user": t.get('user', ''), "target": t.get('sys', '') or t.get('assistant', '')})
-            elif 'role' in conv[0]: # {'role': 'user', 'content': '...'} 구조
-                for t in conv:
-                    if t['role'] == 'system':
-                        system_instruction = t['content']
-                    elif t['role'] == 'user':
-                        turns.append({"user": t['content'], "target": ""})
-                    elif t['role'] in ['assistant', 'sys'] and turns:
-                        turns[-1]["target"] = t['content']
+import argparse
+import logging
 
-            if turns:
-                unified_queue.append({
-                    "source": "MT-Eval",
-                    "system_instruction": system_instruction,
-                    "turns": turns
-                })
-    except Exception as e:
-        print(f"MT-Eval 로드 에러: {e}")
+from src.data_pipeline.download_datasets import main as download_all
+from src.data_pipeline.generate_experiment_cases import generate_cases
+from src.data_pipeline.preprocess_ifeval import preprocess_ifeval
+from src.data_pipeline.preprocess_multichallenge import preprocess_multichallenge
+from src.data_pipeline.preprocess_rules import preprocess_rules
+from src.data_pipeline.preprocess_sharegpt import preprocess_sharegpt
 
-    # 2. MultiChallenge (멀티턴 구조 보존)
-    print("Loading MultiChallenge...")
-    mc_path = os.path.join(DATA_DIR, "benchmark_questions.jsonl")
-    try:
-        mc_df = pd.read_json(mc_path, lines=True)
-        retention_set = mc_df[mc_df['AXIS'].str.contains('MEMORY', na=False, case=False)] 
-        
-        for _, row in retention_set.iterrows():
-            conversations = row.get("CONVERSATION", [])
-            turns = []
-            
-            for t in conversations:
-                if t["role"] == "user":
-                    turns.append({"user": t["content"], "target": ""})
-                elif t["role"] == "assistant" and turns:
-                    turns[-1]["target"] = t["content"]
-            
-            # 마지막 타겟 질문이 별도로 있는 경우 추가
-            target_q = row.get("TARGET_QUESTION", "")
-            if target_q:
-                turns.append({"user": target_q, "target": ""})
+logger = logging.getLogger(__name__)
 
-            if turns:
-                unified_queue.append({
-                    "source": "MultiChallenge",
-                    "system_instruction": "",
-                    "turns": turns
-                })
-    except Exception as e:
-        print(f"MultiChallenge 로드 에러: {e}")
 
-    # 3. StructFlowBench & 4. LIFBench (단일 턴도 동일한 스키마로 통일)
-    # (파일 로드 로직은 기존과 동일하되 추가 방식만 변경)
-    print("Loading StructFlowBench...")
-    sf_path = os.path.join(DATA_DIR, "StructFlowBench.json")
-    try:
-        with open(sf_path, 'r', encoding='utf-8') as f:
-            sf_data = json.load(f)
-            
-        for session in sf_data:
-            whole_conv = session.get("whole_conv", [])
-            if not whole_conv:
-                continue
-                
-            turns = []
-            for turn in whole_conv:
-                user_text = turn.get("user prompt", "")
-                target_text = turn.get("assistant answer", "")
-                
-                if user_text: # 사용자 질문이 존재하는 턴만 추가
-                    turns.append({
-                        "user": str(user_text),
-                        "target": str(target_text)
-                    })
-            
-            # 유효한 턴이 수집되었다면 큐에 추가
-            if turns:
-                unified_queue.append({
-                    "source": "StructFlowBench",
-                    "system_instruction": "", # 별도의 시스템 프롬프트가 없으므로 비워둠 (평가 코드가 첫 번째 질문을 Rule로 자동 할당함)
-                    "turns": turns
-                })
-    except Exception as e:
-        print(f"StructFlowBench 로드 에러: {e}")
-    
-    print("Loading LIFBench...")
-    lif_pattern = os.path.join(DATA_DIR, "LIFBench-2024/data/prompts/**/*.json")
-    for file_path in glob.glob(lif_pattern, recursive=True):
-        try:
-            with open(file_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-                for item in data:
-                    unified_queue.append({
-                        "source": f"LIFBench_{os.path.basename(file_path)}",
-                        "system_instruction": "",
-                        "turns": [{"user": item.get("prompt", ""), "target": str(item.get("label", ""))}]
-                    })
-        except Exception as e: pass
+def run_pipeline(config_path: str, skip_download: bool = False) -> None:
+    """Run the full Phase 1 data pipeline.
 
-    # 5. 데이터 병합 및 저장
-    print("Refining and deduplicating dataset...")
-    df = pd.DataFrame(unified_queue)
-    if not df.empty:
-        output_file = os.path.join(DATA_DIR, "unified_evaluation_dataset.jsonl")
-        df.to_json(output_file, orient="records", lines=True, force_ascii=False)
-        print(f"✅ Success! Saved to {output_file}.")
+    Args:
+        config_path: Path to preprocess.yaml.
+        skip_download: If True, skip the download step (assume raw data exists).
+    """
+    # Step 1: Download raw datasets
+    if not skip_download:
+        logger.info("=== Step 1: Downloading datasets ===")
+        download_all(config_path)
+    else:
+        logger.info("=== Step 1: Skipping download (--skip-download) ===")
+
+    # Step 2: Preprocess each dataset
+    logger.info("=== Step 2: Preprocessing RuLES ===")
+    rules_probes = preprocess_rules(config_path)
+    logger.info("  -> %d RuLES probes", len(rules_probes))
+
+    logger.info("=== Step 3: Preprocessing IFEval ===")
+    ifeval_probes = preprocess_ifeval(config_path)
+    logger.info("  -> %d IFEval probes", len(ifeval_probes))
+
+    logger.info("=== Step 4: Preprocessing ShareGPT ===")
+    sharegpt_turns = preprocess_sharegpt(config_path)
+    for bin_name, turns in sharegpt_turns.items():
+        logger.info("  -> %d ShareGPT turns (%s)", len(turns), bin_name)
+
+    logger.info("=== Step 5: Preprocessing MultiChallenge ===")
+    mc_convs = preprocess_multichallenge(config_path)
+    logger.info("  -> %d MultiChallenge conversations", len(mc_convs))
+
+    # Step 3: Generate experiment cases
+    logger.info("=== Step 6: Generating experiment cases ===")
+    cases = generate_cases(config_path)
+    logger.info("  -> %d experiment cases generated", len(cases))
+
+    logger.info("=== Pipeline complete ===")
+
 
 if __name__ == "__main__":
-    build_unified_eval_dataset()
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    )
+    parser = argparse.ArgumentParser(description="Run Phase 1 data pipeline.")
+    parser.add_argument(
+        "--config",
+        type=str,
+        default="configs/preprocess.yaml",
+        help="Path to preprocess config YAML.",
+    )
+    parser.add_argument(
+        "--skip-download",
+        action="store_true",
+        help="Skip dataset download step.",
+    )
+    args = parser.parse_args()
+    run_pipeline(args.config, skip_download=args.skip_download)

@@ -1,0 +1,122 @@
+# ============================================================
+# preprocess.yaml — Phase 1 Data Pipeline Configuration
+# ============================================================
+
+# --- Paths ---
+paths:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  # MultiChallenge local source (GoogleCloud)
+  multichallenge_source: "/Users/kawai_tofu/GoogleCloud/Capstone_Dev/Total_Datasets/benchmark_questions.jsonl"
+
+# --- Dataset Download Settings ---
+datasets:
+  rules:
+    github_repo: "normster/llm_rules"
+    github_url: "https://github.com/normster/llm_rules.git"
+    sparse_paths:
+      - "scenarios"
+      - "data"
+    raw_subdir: "rules"
+
+  ifeval:
+    hf_repo_id: "google/IFEval"
+    hf_split: "train"
+    raw_subdir: "ifeval"
+
+  sharegpt:
+    hf_repo_id: "anon8231489123/ShareGPT_Vicuna_unfiltered"
+    hf_filename: "ShareGPT_V3_unfiltered_cleaned_split.json"
+    raw_subdir: "sharegpt"
+
+  multichallenge:
+    raw_subdir: "multichallenge"
+
+# --- RuLES Preprocessing ---
+rules_preprocess:
+  # Scenarios to use (scenario class names from llm_rules)
+  scenarios:
+    - "Encryption"
+    - "Confidentiality"
+    - "Authentication"
+    - "Binary"
+    - "Cards"
+  test_suites:
+    - "basic"
+    - "redteam"
+  # rule_count classification
+  rule_count_levels:
+    few:
+      max_rules: 1
+    many:
+      min_rules: 3
+      max_rules: 5
+  max_probes_per_scenario: 5  # limit probes per scenario+suite
+
+# --- IFEval Preprocessing ---
+ifeval_preprocess:
+  # Only keep instruction types that can be auto-scored
+  auto_scorable_types:
+    - "keywords:forbidden_words"
+    - "keywords:existence"
+    - "keywords:frequency"
+    - "keywords:letter_frequency"
+    - "detectable_format:json_format"
+    - "detectable_format:number_bullets"
+    - "detectable_format:number_highlighted_sections"
+    - "detectable_format:title"
+    - "detectable_content:number_placeholders"
+    - "detectable_content:postscript"
+    - "length_constraints:number_sentences"
+    - "length_constraints:number_paragraphs"
+    - "length_constraints:number_words"
+    - "change_case:english_lowercase"
+    - "change_case:english_capital"
+    - "punctuation:no_comma"
+    - "startend:end_checker"
+    - "startend:quotation"
+  max_probes: 20
+
+# --- ShareGPT Preprocessing ---
+sharegpt_preprocess:
+  token_length_bins:
+    short:
+      min_tokens: 50
+      max_tokens: 150
+    long:
+      min_tokens: 350
+      max_tokens: 650
+  quality_filters:
+    min_length_chars: 10
+    exclude_patterns:
+      - "as an AI"
+      - "as an artificial intelligence"
+      - "I'm sorry, but I"
+      - "I cannot"
+    language: "en"
+  max_turns_per_bin: 100
+
+# --- MultiChallenge Preprocessing ---
+multichallenge_preprocess:
+  min_turns: 2
+  axis_categories:
+    - "Instruction Retention"
+    - "Inference Memory"
+    - "Reliable Versioned Editing"
+    - "Self-Coherence"
+  exclude_target_question: true
+
+# --- Experiment Design Variables ---
+experiment:
+  turn_counts: [0, 5, 10, 15, 20]
+  difficulty_levels:
+    normal: "sharegpt"    # ShareGPT intermediate turns
+    hard: "multichallenge" # MultiChallenge intermediate turns
+  rule_count_levels: ["few", "many"]
+  probe_intensities: ["basic", "redteam"]
+  token_lengths: ["short", "long"]  # only for normal difficulty
+  probes_per_condition: 2  # 1 RuLES + 1 IFEval
+
+# --- Token Counting ---
+tokenizer:
+  encoding_name: "cl100k_base"  # tiktoken encoding

@@ -1,0 +1,13 @@
+{
+    "permissions": {
+        "defaultMode": "acceptEdits",
+        "allow": [
+            "Bash",
+            "WebFetch"
+        ],
+        "deny": [
+            "Bash(rm -rf *)",
+            "Bash(sudo *)"
+        ]
+    }
+}
