@@ -1,0 +1,48 @@
+# ==========================================
+# LLMOps Portfolio Project .gitignore
+# ==========================================
+
+# 1. Python Environment & Cache
+capstone_dev/
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# 2. Data & Models
+# 대용량 데이터나 보안이 필요한 데이터는 깃허브에 올리지 않습니다.
+data/
+models/
+*.pt
+*.pth
+*.gguf
+*.bin
+*.safetensors
+
+# 3. Outputs, Logs & Media
+reports/
+outputs/
+logs/
+*.log
+media/
+data_pre_process/
+
+# 4. OS & Editor Cache
+.DS_Store
+.vscode/
+.idea/
+# .claude/
+.cursor/
+
+# 5. Configurations & Secrets
+.env
+secret.json
+credentials.json
+
+
+
+README_MY.md
