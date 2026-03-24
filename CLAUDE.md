@@ -75,20 +75,75 @@ Korean LLM reasoning evaluation pipeline. Collects model responses via OpenRoute
 
 ## Data Flow
 ```
-Phase 1 v2:
+Phase 1 v3:
   download_datasets.py → preprocess_*.py → generate_multi_rule_probes.py → generate_experiment_cases.py
-      → data/processed/experiment_cases.jsonl (312+ cases, Project Aegis)
-
-Phase 2:
-  apply_compression.py → data/processed/compressed_cases/{variant}/experiment_cases.jsonl
+      → data/processed/experiment_cases.jsonl (700 cases, Project Aegis v3)
       ↓
   open_router_request.py → data/outputs/{model}/{variant}/results.jsonl
       ↓
-  evaluation.py → reports/evaluation_summary.json + reports/scored_results.jsonl
+  score_rule() + evaluation → reports/evaluation_summary.json + reports/scored_results.jsonl
       ↓
-  visualize.py → reports/figures/{compliance_curves,compression_vs_compliance,defense_effectiveness}.png
+  visualization → reports/figures/*.png + reports/phase1_v3_report.md
 ```
 
+## Reports
+All experiment outputs go under `reports/` (gitignored).
+
+| Type | Path | Format |
+|------|------|--------|
+| Text report | `reports/phase1_v3_report.md` | Markdown — hypothesis-driven analysis with data tables and conclusions |
+| Evaluation summary | `reports/evaluation_summary.json` | JSON — aggregated compliance rates by each variable |
+| Scored results | `reports/scored_results.jsonl` | JSONL — per-case scored inference records |
+| Figures | `reports/figures/*.png` | PNG — one figure per hypothesis (A/B/C/D) + supplementary |
+
+Report naming convention: `reports/phase1_v{version}_report.md`
+
+## Dev History
+Work logs are stored in `.claude/dev_history/` (gitignored). Use these to track what was done, what changed, and what issues remain.
+
+### Folder structure
+```
+.claude/dev_history/
+└── YYYY-MM-DD/              ← one folder per calendar date
+    ├── HHMM_short-name.md   ← time-stamped entries within the date
+    ├── HHMM_short-name.md
+    └── ...
+```
+
+### File naming
+- Format: `HHMM_short-name.md` (24-hour time of creation/completion)
+- Example: `1700_phase1-v3-redesign-execution.md`
+
+### Required content per entry
+Each dev history file must include:
+1. **Date / Status** header
+2. **Work performed** — what was done, which files were changed
+3. **Key results** — numbers, compliance rates, findings
+4. **Modified file list** — all files touched
+5. **Next steps / remaining issues** — what still needs to be done
+
+## Completion Report Pattern
+When finishing a significant task, report to the user in this structure:
+
+```
+## {Task Name} Summary
+
+### Work Performed
+- bullet list of what was done
+
+### Key Findings
+| table of quantitative results |
+
+### Remaining Issues (IMPORTANT)
+- bullet list of unresolved problems, floor effects, design flaws
+- these MUST be surfaced — never hide known issues
+```
+
+Rules:
+- Lead with results, not process
+- Always include quantitative evidence (compliance rates, case counts, cost)
+- **Remaining Issues is the most important section** — unresolved problems must be explicitly listed so the user can make informed decisions
+- Keep it concise: prefer tables over paragraphs
+
 ## Next Steps
-Phase 3 plan: see `docs/phase1-research-plan.md` line 93 (hybrid compression strategy).
-Dev history: `.claude/dev_history/` 이곳에 작업한 내용을 md 파일로 남기세요. 기존에 있는 md 파일의 이름과 형식, 내용 등을 예시로 참고하세요.
+See `.claude/plans/` for active plans. Current: `2026-03-24_1700_phase1-v3-redesign.md`
