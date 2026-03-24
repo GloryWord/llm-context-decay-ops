@@ -13,14 +13,15 @@ When compacting, always preserve the full list of modified files and any test co
 ## Overview
 Korean LLM reasoning evaluation pipeline. Collects model responses via OpenRouter API and scores them with quantitative metrics.
 
-## Current Phase: Phase 1 v2 → Phase 2 Transition
+## Current Phase: Phase 1 v3 — 정밀 측정 재설계
 - Phase 1 v1 (archived): Basic turn-count experiment with RuLES/IFEval
-- Phase 1 v2 (complete): Project Aegis 20-rule persona, 312+ experiment cases, Qwen3.5-9B tokenizer
-- Phase 2 (active): Context compression methods as system prompt defense
-  - Compression module (`src/compression/`)
-  - Refactored inference (`src/models/`)
-  - Rule-based evaluation (`src/evaluation/`) — v2: Project Aegis auto-scoring via `generate_multi_rule_probes.score_rule()`
-  - Comparison visualization (`src/utils/`)
+- Phase 1 v2 (archived): Project Aegis 312건, probe 다양성 결함 발견
+- **Phase 1 v3 (active):** 변수 분리(A/B/C/D) + probe 다양화 + system_prompt_strategy 추가
+  - A: 컨텍스트 길이 vs 턴 수 분리
+  - B: 규칙 수 인지 부하 측정
+  - C: 적대적 대화 가속 효과
+  - D: System Prompt 반복 주입 효과
+- Phase 2 (보류): Context compression — Phase 1 완료 후 결정
 
 ## Directory Structure
 ```
