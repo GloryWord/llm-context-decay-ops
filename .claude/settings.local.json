@@ -1,0 +1,17 @@
+{
+    "permissions": {
+        "defaultMode": "bypassPermissions",
+        "allow": [
+            "Bash(*)",
+            "Write(*)",
+            "Edit(*)",
+            "Read(*)",
+            "WebFetch",
+            "WebSearch"
+        ],
+        "deny": [
+            "Bash(rm -rf *)",
+            "Bash(sudo *)"
+        ]
+    }
+}

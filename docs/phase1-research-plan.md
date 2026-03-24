@@ -24,24 +24,44 @@ Output: compliance rate curve by turn count x condition
 | Case | Description | Intermediate Turns | Turn Counts |
 |------|-------------|-------------------|-------------|
 | 1 | Baseline | None (system prompt → probe directly) | 0 |
-| 2 | Normal turn accumulation | ShareGPT user msgs + pre-generated model responses | 5, 10, 15, 20 |
-| 3 | Hard turn accumulation | MultiChallenge conversations | 5, 10, 15, 20 |
+| 2 | Normal turn accumulation | ShareGPT user msgs + pre-generated model responses | 2, 4, 6 |
+| 3 | Hard turn accumulation | MultiChallenge conversations | 2, 4, 6 |
 
 ### Independent Variables (5 total)
 
-| Variable | Levels | Values |
-|----------|--------|--------|
-| Turn count | 5 | 0, 5, 10, 15, 20 |
-| Conversation difficulty | 2 | normal (ShareGPT) / hard (MultiChallenge) |
-| System prompt rule count | 2 | few (1) / many (3-5) |
-| Probe intensity | 2 | basic / redteam |
-| Tokens per turn | 2 | short (~100tok) / long (~500tok) |
+| Variable | Levels | Values | Rationale |
+|----------|--------|--------|-----------|
+| Turn count | 4 | 0, 2, 4, 6 | Max 6: turn 6 × long(500tok) ≈ 3,000tok (collapse threshold) |
+| Conversation difficulty | 2 | normal (ShareGPT) / hard (MultiChallenge) | |
+| System prompt rule count | 5 | 1, 3, 5, 10, 20 | Scaling curve: verify compliance → 0 as rules → 20 |
+| Probe intensity | 2 | basic / redteam | |
+| Tokens per turn | 3 | short (~100tok) / medium (~300tok) / long (~500tok) | 3 levels to capture ~3,000tok threshold precisely |
 
-### Total Experiments: ~104 (2 probes per condition)
+#### Design Rationale
 
-- Baseline (turns=0): rule count 2 x probe intensity 2 = 4
-- Normal turns: 4 x 2 x 2 x 2 = 32 (x 2 probes = 64)
-- Hard turns: 4 x 2 x 2 = 16 (token length fixed; MultiChallenge content is fixed)
+**Turn count (max 6):**
+- Prior research shows compliance collapse begins around ~3,000 cumulative context tokens
+- Turn 6 × long(500tok) = ~3,000tok aligns with this threshold
+- Turn 20 × long(500tok) = ~10,000tok is already deep in contamination zone — no additional information
+- Finer intervals (0, 2, 4, 6) reveal early degradation patterns
+
+**Rule count (1 → 20):**
+- Prior experiments observed compliance approaching 0 with ~20 guardrail rules
+- System prompt should occupy ≤5–10% of total context; beyond this, attention dilutes across irrelevant rules
+- Levels 1, 3, 5 overlap with prior Phase 1 for continuity; 10 and 20 are new extreme conditions
+- Rule count 1–5: sourced from RuLES scenarios; 10, 20: hybrid IFEval + RuLES composite
+
+**Token length per turn (3 levels):**
+- Turn 6 × short(100) = 600tok — well below threshold
+- Turn 6 × medium(300) = 1,800tok — approaching threshold
+- Turn 6 × long(500) = 3,000tok — at threshold
+
+### Total Experiments: ~260 (2 probes per condition)
+
+- Baseline (turns=0): rule_count(5) × probe_intensity(2) × probe_set(2) = 20
+- Normal turns: turn_count(3) × rule_count(5) × probe_intensity(2) × token_length(3) × probe_set(2) = 180
+- Hard turns: turn_count(3) × rule_count(5) × probe_intensity(2) × probe_set(2) = 60
+  (token_length fixed for MultiChallenge)
 
 ## Datasets
 
@@ -82,10 +102,12 @@ Output: compliance rate curve by turn count x condition
 | Format (word count, JSON, keyword inclusion, etc.) | IFEval | Rule-based validation (automated code) |
 
 ## Expected Output
-Compliance rate curves (X: turn count, Y: compliance rate) per case, isolating:
+Compliance rate curves per case, isolating:
 1. Pure turn accumulation forgetting effect (Case 2 vs Case 1)
 2. Hard conversation degradation effect (Case 3 vs Case 2)
-3. Effects of rule count, probe intensity, and tokens-per-turn
+3. Rule count scaling curve (X: rule count 1→20, Y: compliance rate) — expect sigmoid-like decay
+4. Token threshold analysis (cumulative tokens vs compliance)
+5. Interaction effects: rule_count × turn_count, token_length × turn_count
 
 ## Future Work (Phase 2-3)
 - Details: docs/phase2-research-plan.md (do not load by default)
@@ -95,4 +117,4 @@ Compliance rate curves (X: turn count, Y: compliance rate) per case, isolating:
 ## Technical Setup
 - Language: Python
 - Target model: `google/gemini-3.1-flash-lite-preview` family (extensible)
-- Minimize API cost: target ~100 high-quality test cases
+- Minimize API cost: target ~260 high-quality test cases

@@ -1,5 +1,8 @@
 # 2026 LLM Evaluation Project
 
+## Git Rules
+- After modifying all files, make sure to git add, commit, and push.
+
 ## Project Root
 **Absolute path:** `/Users/kawai_tofu/Desktop/서울과학기술대학교_로컬/캡스톤디자인/capstone_dev/2026_eng`
 All relative paths in this document are relative to this root. Always use this as the working directory.

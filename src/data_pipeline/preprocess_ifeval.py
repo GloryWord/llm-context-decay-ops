@@ -200,7 +200,7 @@ def preprocess_ifeval(config_path: str) -> list[dict]:
                 "constraints": constraints,
                 "kwargs": kwargs_list,
                 "rule_count": len(constraints),
-                "rule_count_level": "few" if len(constraints) <= 2 else "many",
+                "rule_count_level": len(constraints),
                 "probe_intensity": "basic",
                 "scoring_type": "rule_based",
                 "scoring_check": "; ".join(c["scoring_description"] for c in constraints),

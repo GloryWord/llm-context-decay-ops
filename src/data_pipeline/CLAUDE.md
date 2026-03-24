@@ -1,7 +1,7 @@
 # data_pipeline
 
 ## Role
-Download raw datasets, preprocess into experiment-ready format, generate ~104 experiment cases for Phase 1.
+Download raw datasets, preprocess into experiment-ready format, generate ~260 experiment cases for Phase 1 v2.
 
 ## Files
 | File | Role |
@@ -35,6 +35,7 @@ def generate_cases(config_path: str) -> list[dict]: ...
   - `data/processed/rules_probes.jsonl`
   - `data/processed/ifeval_probes.jsonl`
   - `data/processed/sharegpt_turns_short.jsonl`
+  - `data/processed/sharegpt_turns_medium.jsonl`
   - `data/processed/sharegpt_turns_long.jsonl`
   - `data/processed/multichallenge_conversations.jsonl`
   - `data/processed/experiment_cases.jsonl`

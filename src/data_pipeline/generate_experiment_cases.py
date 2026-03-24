@@ -1,13 +1,20 @@
 """Generate experiment cases by combining preprocessed data.
 
-Combines RuLES/IFEval probes with ShareGPT/MultiChallenge intermediate
-turns to produce ~104 experiment cases covering all condition combinations.
+Combines RuLES/IFEval/multi-rule probes with ShareGPT/MultiChallenge
+intermediate turns to produce ~260 experiment cases covering all conditions.
+
+v2 variable system:
+- turn_counts: [0, 2, 4, 6]
+- rule_count_levels: [1, 3, 5, 10, 20]
+- token_lengths: [short, medium, long]
+- difficulty: baseline, normal, hard
+- probe_intensity: basic, redteam
 
 Case types:
-- Case 1 (baseline, turns=0): rule_count(2) x probe_intensity(2) = 4 conditions
-- Case 2 (normal):  turn_count(4) x rule_count(2) x probe_intensity(2) x token_length(2) = 32
-- Case 3 (hard):    turn_count(4) x rule_count(2) x probe_intensity(2) = 16
-- Total: 52 conditions x 2 probes (1 RuLES + 1 IFEval) = ~104 cases
+- Baseline (turns=0): rule_count(5) x probe_intensity(2) x probe_set(2) = 20
+- Normal: turn(3) x rule_count(5) x probe_intensity(2) x token_length(3) x probe_set(2) = 180
+- Hard: turn(3) x rule_count(5) x probe_intensity(2) x probe_set(2) = 60
+- Total: ~260 cases
 
 Usage:
     python -m src.data_pipeline.generate_experiment_cases --config configs/preprocess.yaml
@@ -16,7 +23,6 @@ Usage:
 import argparse
 import json
 import logging
-import random
 from pathlib import Path
 
 import yaml
@@ -47,31 +53,41 @@ def load_jsonl(path: Path) -> list[dict]:
 
 def select_probe(
     probes: list[dict],
-    rule_count_level: str,
+    rule_count_level: int,
     probe_intensity: str,
 ) -> dict | None:
     """Select a probe matching the given conditions.
 
     Args:
         probes: List of probe records.
-        rule_count_level: 'few' or 'many'.
+        rule_count_level: Target rule count (1, 3, 5, 10, 20).
         probe_intensity: 'basic' or 'redteam'.
 
     Returns:
         Matching probe dict, or None.
     """
+    # Exact match on rule_count_level and probe_intensity
     candidates = [
         p for p in probes
         if p.get("rule_count_level") == rule_count_level
         and p.get("probe_intensity") == probe_intensity
     ]
-    if not candidates:
-        # Fallback: match rule_count_level only
-        candidates = [p for p in probes if p.get("rule_count_level") == rule_count_level]
-    if not candidates:
-        # Fallback: any probe
-        candidates = probes
+    if candidates:
+        return candidates[0]
 
+    # Fallback: match rule_count_level only
+    candidates = [
+        p for p in probes
+        if p.get("rule_count_level") == rule_count_level
+    ]
+    if candidates:
+        return candidates[0]
+
+    # Fallback: closest rule count
+    candidates = sorted(
+        probes,
+        key=lambda p: abs(p.get("rule_count_level", 0) - rule_count_level),
+    )
     return candidates[0] if candidates else None
 
 
@@ -95,10 +111,8 @@ def select_intermediate_turns(
     pool_size = len(turns_pool)
     for i in range(target_count):
         turn = turns_pool[i % pool_size]
-        # For ShareGPT: turns are user-only content strings
         if "content" in turn:
             selected.append({"role": "user", "content": turn["content"]})
-        # For MultiChallenge: turns are already role+content dicts
         elif "turns" in turn:
             for msg in turn["turns"]:
                 selected.append(msg)
@@ -162,7 +176,6 @@ def build_case(
     Returns:
         Complete experiment case dict.
     """
-    # Extract probe turn (first user message from probe)
     probe_messages = probe.get("probe_messages", [])
     probe_turn = probe_messages[0] if probe_messages else {"role": "user", "content": ""}
 
@@ -171,7 +184,6 @@ def build_case(
         "dataset": probe.get("probe_dataset", ""),
         "check_description": probe.get("scoring_check", ""),
     }
-    # Add scoring params if available
     if probe.get("params"):
         scoring["params"] = probe["params"]
     if probe.get("constraints"):
@@ -208,15 +220,18 @@ def generate_cases(config_path: str) -> list[dict]:
     # Load preprocessed data
     rules_probes = load_jsonl(processed_dir / "rules_probes.jsonl")
     ifeval_probes = load_jsonl(processed_dir / "ifeval_probes.jsonl")
+    multi_rule_probes = load_jsonl(processed_dir / "multi_rule_probes.jsonl")
     sharegpt_short = load_jsonl(processed_dir / "sharegpt_turns_short.jsonl")
+    sharegpt_medium = load_jsonl(processed_dir / "sharegpt_turns_medium.jsonl")
     sharegpt_long = load_jsonl(processed_dir / "sharegpt_turns_long.jsonl")
     mc_conversations = load_jsonl(processed_dir / "multichallenge_conversations.jsonl")
 
     logger.info(
-        "Loaded: %d RuLES probes, %d IFEval probes, %d short turns, "
-        "%d long turns, %d MC conversations",
-        len(rules_probes), len(ifeval_probes),
-        len(sharegpt_short), len(sharegpt_long), len(mc_conversations),
+        "Loaded: %d RuLES, %d IFEval, %d multi-rule probes, "
+        "%d short, %d medium, %d long turns, %d MC conversations",
+        len(rules_probes), len(ifeval_probes), len(multi_rule_probes),
+        len(sharegpt_short), len(sharegpt_medium), len(sharegpt_long),
+        len(mc_conversations),
     )
 
     turn_counts = exp_cfg["turn_counts"]
@@ -224,20 +239,32 @@ def generate_cases(config_path: str) -> list[dict]:
     intensities = exp_cfg["probe_intensities"]
     token_lengths = exp_cfg["token_lengths"]
 
-    all_cases: list[dict] = []
-    case_counter = 0
-
-    # For each condition, select 1 RuLES + 1 IFEval probe
-    probe_sets = [
+    # Probe sets by rule count range
+    probe_sets_low = [
         ("rules", rules_probes),
         ("ifeval", ifeval_probes),
     ]
 
+    sharegpt_pools = {
+        "short": sharegpt_short,
+        "medium": sharegpt_medium,
+        "long": sharegpt_long,
+    }
+
+    all_cases: list[dict] = []
+    case_counter = 0
+
     for turn_count in turn_counts:
         for rule_level in rule_levels:
             for intensity in intensities:
+                # Choose probe source based on rule count
+                if rule_level <= 5:
+                    probe_sets = probe_sets_low
+                else:
+                    probe_sets = [("multi_rule", multi_rule_probes)]
+
                 if turn_count == 0:
-                    # Case 1: Baseline — no intermediate turns
+                    # Baseline — no intermediate turns
                     condition = {
                         "turn_count": 0,
                         "difficulty": "baseline",
@@ -250,12 +277,12 @@ def generate_cases(config_path: str) -> list[dict]:
                         probe = select_probe(probes, rule_level, intensity)
                         if not probe:
                             logger.warning(
-                                "No probe found for %s/%s/%s",
+                                "No probe for %s/rule=%d/%s",
                                 dataset_name, rule_level, intensity,
                             )
                             continue
 
-                        case_id = f"exp_{case_counter:03d}"
+                        case_id = f"exp_{case_counter:04d}"
                         case = build_case(
                             case_id, condition, probe,
                             intermediate_turns=[],
@@ -264,8 +291,8 @@ def generate_cases(config_path: str) -> list[dict]:
                         all_cases.append(case)
                         case_counter += 1
 
-                elif turn_count > 0:
-                    # Case 2: Normal (ShareGPT) — varies by token_length
+                else:
+                    # Normal (ShareGPT) — varies by token_length
                     for token_len in token_lengths:
                         condition = {
                             "turn_count": turn_count,
@@ -275,7 +302,7 @@ def generate_cases(config_path: str) -> list[dict]:
                             "token_length": token_len,
                         }
 
-                        pool = sharegpt_short if token_len == "short" else sharegpt_long
+                        pool = sharegpt_pools.get(token_len, sharegpt_short)
                         intermediate = select_intermediate_turns(pool, turn_count)
 
                         for dataset_name, probes in probe_sets:
@@ -283,7 +310,7 @@ def generate_cases(config_path: str) -> list[dict]:
                             if not probe:
                                 continue
 
-                            case_id = f"exp_{case_counter:03d}"
+                            case_id = f"exp_{case_counter:04d}"
                             case = build_case(
                                 case_id, condition, probe,
                                 intermediate_turns=intermediate,
@@ -292,7 +319,7 @@ def generate_cases(config_path: str) -> list[dict]:
                             all_cases.append(case)
                             case_counter += 1
 
-                    # Case 3: Hard (MultiChallenge) — token_length fixed
+                    # Hard (MultiChallenge) — token_length fixed
                     condition = {
                         "turn_count": turn_count,
                         "difficulty": "hard",
@@ -310,7 +337,7 @@ def generate_cases(config_path: str) -> list[dict]:
                         if not probe:
                             continue
 
-                        case_id = f"exp_{case_counter:03d}"
+                        case_id = f"exp_{case_counter:04d}"
                         case = build_case(
                             case_id, condition, probe,
                             intermediate_turns=intermediate,
@@ -326,7 +353,6 @@ def generate_cases(config_path: str) -> list[dict]:
         for case in all_cases:
             f.write(json.dumps(case, ensure_ascii=False) + "\n")
 
-    # Summary
     _log_summary(all_cases)
     logger.info("Wrote %d experiment cases to %s", len(all_cases), output_path)
     return all_cases
@@ -340,15 +366,19 @@ def _log_summary(cases: list[dict]) -> None:
     """
     by_difficulty: dict[str, int] = {}
     by_turn: dict[int, int] = {}
+    by_rule: dict[int, int] = {}
     for c in cases:
         cond = c["condition"]
         diff = cond["difficulty"]
         tc = cond["turn_count"]
+        rc = cond["rule_count_level"]
         by_difficulty[diff] = by_difficulty.get(diff, 0) + 1
         by_turn[tc] = by_turn.get(tc, 0) + 1
+        by_rule[rc] = by_rule.get(rc, 0) + 1
 
     logger.info("Cases by difficulty: %s", by_difficulty)
     logger.info("Cases by turn_count: %s", dict(sorted(by_turn.items())))
+    logger.info("Cases by rule_count: %s", dict(sorted(by_rule.items())))
 
 
 if __name__ == "__main__":
