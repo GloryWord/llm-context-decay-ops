@@ -1,27 +1,23 @@
-"""Generate experiment cases for v2 experiments.
+"""Generate experiment cases for v2/v3 experiments.
 
 Combines Project Aegis probes with ShareGPT/MultiChallenge intermediate turns
 to produce experiment cases covering all conditions.
 
-v2 key changes:
-- Project Aegis domain-cohesive rule set (replaces hybrid RuLES/IFEval)
-- Single user message embedding for Chat Template compliance
-- total_context_tokens via final rendered string tokenization (no arithmetic sum)
-- Case 3 repurposed as Alignment Tax measurement
-- Variables: turn_counts [0,2,4,6,8], rule_count_levels [1,3,5,10,15,20]
-
 Case types:
 - Baseline (turns=0): rule_count(6) × probe count = ~24
 - Normal (ShareGPT): turn(4) × rule_count(6) × token_length(3) × probe count = ~288
+- MC-Embedded: MC full conversations as context + Aegis probes (v3 extension)
 - Case 3 (Alignment Tax): rule_count(7) × MC conversations = separate
 
 Usage:
     python -m src.data_pipeline.generate_experiment_cases --config configs/preprocess.yaml
+    python -m src.data_pipeline.generate_experiment_cases --config configs/preprocess.yaml --mc-only
 """
 
 import argparse
 import json
 import logging
+import random
 from pathlib import Path
 
 import yaml
@@ -377,6 +373,179 @@ def generate_cases(config_path: str) -> list[dict]:
     return all_cases
 
 
+def render_mc_embedded_message(
+    mc_turns: list[dict],
+    probe_question: str,
+) -> str:
+    """Render MultiChallenge conversation + probe into a single user message.
+
+    Embeds full multi-turn conversation (user + assistant) in a single message,
+    then appends an Aegis probe. This creates much longer context than ShareGPT
+    embedding (~2,000-15,000 tokens vs ~100-500).
+
+    Args:
+        mc_turns: List of turn dicts with 'role' and 'content'.
+        probe_question: The Aegis probe question to append.
+
+    Returns:
+        Single user message string.
+    """
+    if not mc_turns:
+        return probe_question
+
+    history_lines: list[str] = []
+    for turn in mc_turns:
+        role = turn["role"].capitalize()
+        history_lines.append(f"{role}: {turn['content']}")
+
+    history_text = "\n".join(history_lines)
+
+    return (
+        "다음은 이전 대화 기록입니다.\n\n"
+        "[대화 기록 시작]\n"
+        f"{history_text}\n"
+        "[대화 기록 끝]\n\n"
+        "위 기록을 참고하여 다음 질문에 답하세요:\n"
+        f"{probe_question}"
+    )
+
+
+def generate_mc_cases(config_path: str) -> list[dict]:
+    """Generate MultiChallenge-embedded experiment cases (v3 extension).
+
+    Uses MC conversations as intermediate context with Aegis probes for
+    compliance scoring. Tests hypothesis A at longer token ranges
+    (5,000-15,000+ tokens) where Lost in the Middle may manifest.
+
+    Args:
+        config_path: Path to preprocess.yaml.
+
+    Returns:
+        List of MC experiment case dicts.
+    """
+    with open(config_path, "r", encoding="utf-8") as f:
+        cfg = yaml.safe_load(f)
+
+    processed_dir = Path(cfg["paths"]["processed_dir"])
+    mc_cfg = cfg.get("mc_experiment", {})
+
+    # Load data
+    mc_conversations = load_jsonl(processed_dir / "multichallenge_conversations.jsonl")
+    aegis_probes = load_jsonl(processed_dir / "aegis_probes.jsonl")
+
+    if not mc_conversations:
+        logger.warning("No MC conversations found — run preprocess_multichallenge first")
+        return []
+    if not aegis_probes:
+        logger.warning("No Aegis probes found — run generate_multi_rule_probes first")
+        return []
+
+    mc_rule_levels = mc_cfg.get("rule_count_levels", [1, 5, 10, 20])
+    samples_per_bin = mc_cfg.get("samples_per_turn_bin", 5)
+    turn_bins = mc_cfg.get("turn_bins", [[2, 3], [4, 5], [6, 7], [8, 10]])
+    seed = mc_cfg.get("random_seed", 42)
+
+    # Build probe index (same as v3)
+    probe_index: dict[tuple[int, str, int], dict] = {}
+    for probe in aegis_probes:
+        key = (
+            probe["rule_count_level"],
+            probe["probe_intensity"],
+            probe["target_rule"],
+        )
+        if key not in probe_index:
+            probe_index[key] = probe
+
+    # Bin MC conversations by user turn count
+    bins: dict[str, list[dict]] = {}
+    for bin_range in turn_bins:
+        bin_key = f"{bin_range[0]}-{bin_range[-1]}"
+        bins[bin_key] = []
+
+    for mc in mc_conversations:
+        tc = mc["turn_count"]
+        for bin_range in turn_bins:
+            if bin_range[0] <= tc <= bin_range[-1]:
+                bin_key = f"{bin_range[0]}-{bin_range[-1]}"
+                bins[bin_key].append(mc)
+                break
+
+    # Sample from each bin
+    rng = random.Random(seed)
+    selected_mc: list[dict] = []
+    for bin_key, convs in sorted(bins.items()):
+        sample_size = min(samples_per_bin, len(convs))
+        selected_mc.extend(rng.sample(convs, sample_size))
+
+    logger.info(
+        "Selected %d MC conversations from %d total (bins: %s)",
+        len(selected_mc),
+        len(mc_conversations),
+        {k: len(v) for k, v in bins.items()},
+    )
+
+    all_cases: list[dict] = []
+    case_counter = 0
+
+    for mc in selected_mc:
+        mc_turns = mc.get("turns", [])
+        user_turn_count = mc.get("turn_count", 0)
+
+        for rule_level in mc_rule_levels:
+            for intensity in ("basic", "redteam"):
+                probes = [
+                    v for k, v in probe_index.items()
+                    if k[0] == rule_level and k[1] == intensity
+                ]
+                if not probes:
+                    continue
+
+                for probe in probes:
+                    probe_question = probe["probe_messages"][0]["content"]
+                    rendered = render_mc_embedded_message(mc_turns, probe_question)
+
+                    condition = {
+                        "turn_count": user_turn_count,
+                        "difficulty": "mc_embedded",
+                        "rule_count_level": rule_level,
+                        "probe_intensity": intensity,
+                        "token_length": "mc_natural",
+                        "system_prompt_strategy": "once",
+                        "mc_conversation_id": mc.get("conversation_id", ""),
+                        "mc_axis": mc.get("axis", ""),
+                    }
+
+                    system_prompt = probe.get("system_prompt", "")
+                    system_prompt_tokens = count_tokens(system_prompt)
+                    user_message_tokens = count_tokens(rendered)
+                    total_context_tokens = system_prompt_tokens + user_message_tokens
+
+                    case_id = f"mc_{case_counter:04d}"
+                    case = build_case(
+                        case_id, condition, probe, rendered,
+                        intermediate_turns_type="mc_embedded",
+                    )
+                    # Override token counts (build_case computes them, but we have exact)
+                    case["token_counts"] = {
+                        "system_prompt_tokens": system_prompt_tokens,
+                        "user_message_tokens": user_message_tokens,
+                        "total_context_tokens": total_context_tokens,
+                    }
+                    all_cases.append(case)
+                    case_counter += 1
+
+    # Write output
+    processed_dir.mkdir(parents=True, exist_ok=True)
+    output_path = processed_dir / "mc_experiment_cases.jsonl"
+    with open(output_path, "w", encoding="utf-8") as f:
+        for case in all_cases:
+            f.write(json.dumps(case, ensure_ascii=False) + "\n")
+
+    _log_summary(all_cases)
+    logger.info("Wrote %d MC experiment cases to %s", len(all_cases), output_path)
+    return all_cases
+
+
 def _log_summary(cases: list[dict]) -> None:
     """Log a summary of generated experiment cases.
 
@@ -426,5 +595,14 @@ if __name__ == "__main__":
         default="configs/preprocess.yaml",
         help="Path to preprocess config YAML.",
     )
+    parser.add_argument(
+        "--mc-only",
+        action="store_true",
+        help="Generate only MC-embedded cases (skip ShareGPT/baseline).",
+    )
     args = parser.parse_args()
-    generate_cases(args.config)
+
+    if args.mc_only:
+        generate_mc_cases(args.config)
+    else:
+        generate_cases(args.config)

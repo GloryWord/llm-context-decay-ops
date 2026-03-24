@@ -77,11 +77,12 @@ Korean LLM reasoning evaluation pipeline. Collects model responses via OpenRoute
 ```
 Phase 1 v3:
   download_datasets.py → preprocess_*.py → generate_multi_rule_probes.py → generate_experiment_cases.py
-      → data/processed/experiment_cases.jsonl (700 cases, Project Aegis v3)
+      → data/processed/experiment_cases.jsonl (700 cases, ShareGPT + Aegis)
+      → data/processed/mc_experiment_cases.jsonl (360 cases, MultiChallenge + Aegis)
       ↓
-  open_router_request.py → data/outputs/{model}/{variant}/results.jsonl
+  open_router_request.py → data/outputs/{model}/{variant}/results.jsonl (1,060 total)
       ↓
-  score_rule() + evaluation → reports/evaluation_summary.json + reports/scored_results.jsonl
+  score_rule() + evaluation → reports/scored_results.jsonl (1,060 scored records)
       ↓
   visualization → reports/figures/*.png + reports/phase1_v3_report.md
 ```

@@ -116,10 +116,10 @@ sharegpt_preprocess:
 multichallenge_preprocess:
   min_turns: 2
   axis_categories:
-    - "Instruction Retention"
-    - "Inference Memory"
-    - "Reliable Versioned Editing"
-    - "Self-Coherence"
+    - "INFERENCE_MEMORY"
+    - "INSTRUCTION_RETENTION"
+    - "RELIABLE_VERSION_EDITING"
+    - "SELF_COHERENCE"
   exclude_target_question: true
 
 # --- Experiment Design Variables (v2) ---
@@ -133,6 +133,13 @@ experiment:
   token_lengths: ["short", "medium", "long"]  # 3 levels for normal difficulty
   system_prompt_strategies: ["once", "reinforced"]  # v3: 주입 방식 변수
   probes_per_condition: 2  # probe_set(2): 동일 조건에서 2개 고정 probe (replication)
+
+# --- MultiChallenge Embedded Experiment (v3 extension) ---
+mc_experiment:
+  rule_count_levels: [1, 5, 10, 20]     # subset for credit efficiency
+  samples_per_turn_bin: 5                # MC conversations per turn-count bin
+  turn_bins: [[2, 3], [4, 5], [6, 7], [8, 10]]  # user turn count ranges
+  random_seed: 42
 
 # --- Token Counting (v2: Qwen BPE) ---
 tokenizer:
