@@ -36,7 +36,7 @@ async def run_single_case(
 ) -> dict:
     """Run inference for a single experiment case.
 
-    Builds the message sequence, sends to model, returns output record.
+    Supports both v2 (rendered_user_message) and legacy (probe_turn) formats.
 
     Args:
         session: aiohttp session.
@@ -49,33 +49,45 @@ async def run_single_case(
     """
     start_time = time.monotonic()
 
-    messages: list[dict] = [
-        {"role": "system", "content": case["system_prompt"]},
-    ]
+    messages: list[dict] = []
+
+    # Add system prompt if present
+    system_prompt = case.get("system_prompt", "")
+    if system_prompt:
+        messages.append({"role": "system", "content": system_prompt})
 
     turns_type = case.get("intermediate_turns_type", "none")
-    intermediate = case.get("intermediate_turns", [])
 
-    if turns_type == "full":
-        # Pre-existing user+assistant pairs — inject directly
-        messages.extend(intermediate)
-    elif turns_type == "user_only":
-        # Need to generate assistant responses for each user message
-        for turn in intermediate:
-            messages.append(turn)
-            if turn["role"] == "user":
-                assistant_resp = await _call_api(session, headers, messages, model)
-                messages.append({"role": "assistant", "content": assistant_resp})
+    if "rendered_user_message" in case:
+        # v2 format: single user message with embedded history + probe
+        if turns_type == "full":
+            # Case 3 (Alignment Tax): inject full intermediate turns, then last user turn
+            intermediate = case.get("intermediate_turns", [])
+            messages.extend(intermediate)
+        else:
+            # Baseline / Normal: single rendered user message
+            messages.append({"role": "user", "content": case["rendered_user_message"]})
+    else:
+        # Legacy format: intermediate_turns + probe_turn
+        intermediate = case.get("intermediate_turns", [])
+        if turns_type == "full":
+            messages.extend(intermediate)
+        elif turns_type == "user_only":
+            for turn in intermediate:
+                messages.append(turn)
+                if turn["role"] == "user":
+                    assistant_resp = await _call_api(session, headers, messages, model)
+                    messages.append({"role": "assistant", "content": assistant_resp})
+        messages.append(case["probe_turn"])
 
-    # Add probe turn
-    messages.append(case["probe_turn"])
-
-    # Get probe response
+    # Get model response
     probe_response = await _call_api(session, headers, messages, model)
     elapsed_ms = (time.monotonic() - start_time) * 1000
 
-    # Count total tokens (approximate from messages)
-    total_tokens = sum(len(m["content"].split()) for m in messages)
+    # Token count from case metadata or approximate
+    total_tokens = case.get("token_counts", {}).get("total_context_tokens", 0)
+    if not total_tokens:
+        total_tokens = sum(len(m.get("content", "").split()) for m in messages)
 
     # Build output record
     record = {
@@ -84,9 +96,10 @@ async def run_single_case(
         "model": model,
         "condition": case["condition"],
         "response": probe_response,
-        "system_prompt": case["system_prompt"],
-        "probe_turn": case["probe_turn"],
-        "scoring": case["scoring"],
+        "system_prompt": system_prompt,
+        "probe_id": case.get("probe_id", ""),
+        "target_rule": case.get("target_rule", 0),
+        "scoring": case.get("scoring", {}),
         "latency_ms": round(elapsed_ms, 2),
         "tokens_used": total_tokens,
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
@@ -120,6 +133,7 @@ async def _call_api(
         "model": model,
         "messages": messages,
         "temperature": 0.0,
+        "reasoning": {"effort": "none"},
     }
 
     for attempt in range(MAX_RETRIES):
@@ -143,7 +157,7 @@ async def _call_api(
                     await asyncio.sleep(BACKOFF_BASE ** attempt)
 
         except (aiohttp.ClientError, asyncio.TimeoutError) as e:
-            logger.warning("Request failed (attempt %d): %s", attempt + 1, e)
+            logger.warning("Request failed (attempt %d): %s: %s", attempt + 1, type(e).__name__, e)
             if attempt < MAX_RETRIES - 1:
                 await asyncio.sleep(BACKOFF_BASE ** attempt)
 
@@ -226,7 +240,8 @@ async def run_inference(
         async with semaphore:
             return await run_single_case(session, headers, case, model)
 
-    async with aiohttp.ClientSession() as session:
+    timeout = aiohttp.ClientTimeout(total=180, connect=30)
+    async with aiohttp.ClientSession(timeout=timeout) as session:
         tasks = [bounded_run(case) for case in remaining]
 
         # Process and write results as they complete
