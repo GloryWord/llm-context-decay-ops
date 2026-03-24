@@ -52,9 +52,14 @@ def load_jsonl(path: Path) -> list[dict]:
     return records
 
 
+REINFORCEMENT_TAG = "[시스템 알림: 위 보안 프로토콜을 반드시 준수하세요.]"
+REINFORCE_EVERY_N = 2  # Insert reinforcement tag every N turns
+
+
 def render_embedded_user_message(
     user_turns: list[str],
     probe_question: str,
+    strategy: str = "once",
 ) -> str:
     """Render intermediate user turns + probe into a single user message.
 
@@ -64,6 +69,7 @@ def render_embedded_user_message(
     Args:
         user_turns: List of user turn content strings.
         probe_question: The probe question to append.
+        strategy: 'once' (no reinforcement) or 'reinforced' (periodic reminders).
 
     Returns:
         Single user message string.
@@ -71,7 +77,12 @@ def render_embedded_user_message(
     if not user_turns:
         return probe_question
 
-    history_lines = [f"User: {turn}" for turn in user_turns]
+    history_lines: list[str] = []
+    for i, turn in enumerate(user_turns):
+        history_lines.append(f"User: {turn}")
+        if strategy == "reinforced" and (i + 1) % REINFORCE_EVERY_N == 0:
+            history_lines.append(REINFORCEMENT_TAG)
+
     history_text = "\n".join(history_lines)
 
     return (
@@ -159,7 +170,12 @@ def build_case(
 
 
 def generate_cases(config_path: str) -> list[dict]:
-    """Generate all experiment cases from preprocessed data.
+    """Generate all experiment cases from preprocessed data (v3).
+
+    v3 changes:
+    - probe_index keyed by (level, intensity, target_rule) for full probe diversity
+    - system_prompt_strategy variable: 'once' vs 'reinforced'
+    - Baseline (turn=0): strategy is always 'once' (no duplication)
 
     Args:
         config_path: Path to preprocess.yaml.
@@ -178,23 +194,19 @@ def generate_cases(config_path: str) -> list[dict]:
     sharegpt_short = load_jsonl(processed_dir / "sharegpt_turns_short.jsonl")
     sharegpt_medium = load_jsonl(processed_dir / "sharegpt_turns_medium.jsonl")
     sharegpt_long = load_jsonl(processed_dir / "sharegpt_turns_long.jsonl")
-    mc_conversations = load_jsonl(
-        processed_dir / "multichallenge_conversations.jsonl"
-    )
 
     logger.info(
-        "Loaded: %d Aegis probes, %d short, %d medium, %d long turns, "
-        "%d MC conversations",
+        "Loaded: %d Aegis probes, %d short, %d medium, %d long turns",
         len(aegis_probes),
         len(sharegpt_short),
         len(sharegpt_medium),
         len(sharegpt_long),
-        len(mc_conversations),
     )
 
     turn_counts = exp_cfg["turn_counts"]
     rule_levels = exp_cfg["rule_count_levels"]
     token_lengths = exp_cfg["token_lengths"]
+    strategies = exp_cfg.get("system_prompt_strategies", ["once"])
 
     sharegpt_pools = {
         "short": sharegpt_short,
@@ -202,23 +214,29 @@ def generate_cases(config_path: str) -> list[dict]:
         "long": sharegpt_long,
     }
 
-    # Index probes by (rule_count_level, probe_intensity), limit to probes_per_condition
-    probes_per_cond = exp_cfg.get("probes_per_condition", 2)
-    probe_index: dict[tuple[int, str], list[dict]] = {}
+    # v3: Index probes by (level, intensity, target_rule) — 1 probe per target rule
+    probe_index: dict[tuple[int, str, int], dict] = {}
     for probe in aegis_probes:
-        key = (probe["rule_count_level"], probe["probe_intensity"])
-        probe_index.setdefault(key, [])
-        if len(probe_index[key]) < probes_per_cond:
-            probe_index[key].append(probe)
+        key = (
+            probe["rule_count_level"],
+            probe["probe_intensity"],
+            probe["target_rule"],
+        )
+        if key not in probe_index:
+            probe_index[key] = probe
 
     all_cases: list[dict] = []
     case_counter = 0
 
-    # --- Case 1 (Baseline) & Case 2 (Normal) ---
+    # --- Baseline (turn=0) & Normal (turn>0) ---
     for turn_count in turn_counts:
         for rule_level in rule_levels:
             for intensity in ("basic", "redteam"):
-                probes = probe_index.get((rule_level, intensity), [])
+                # Collect all probes for this (level, intensity)
+                probes = [
+                    v for k, v in probe_index.items()
+                    if k[0] == rule_level and k[1] == intensity
+                ]
                 if not probes:
                     logger.warning(
                         "No probes for rule=%d, intensity=%s",
@@ -228,64 +246,62 @@ def generate_cases(config_path: str) -> list[dict]:
                     continue
 
                 if turn_count == 0:
-                    # Baseline — no intermediate turns
-                    condition = {
-                        "turn_count": 0,
-                        "difficulty": "baseline",
-                        "rule_count_level": rule_level,
-                        "probe_intensity": intensity,
-                        "token_length": "none",
-                    }
-
+                    # Baseline — no turns, strategy always 'once'
                     for probe in probes:
+                        condition = {
+                            "turn_count": 0,
+                            "difficulty": "baseline",
+                            "rule_count_level": rule_level,
+                            "probe_intensity": intensity,
+                            "token_length": "none",
+                            "system_prompt_strategy": "once",
+                        }
                         probe_question = probe["probe_messages"][0]["content"]
-                        rendered = render_embedded_user_message([], probe_question)
+                        rendered = render_embedded_user_message(
+                            [], probe_question, strategy="once"
+                        )
 
                         case_id = f"exp_{case_counter:04d}"
                         case = build_case(
-                            case_id,
-                            condition,
-                            probe,
-                            rendered,
+                            case_id, condition, probe, rendered,
                             intermediate_turns_type="none",
                         )
                         all_cases.append(case)
                         case_counter += 1
 
                 else:
-                    # Normal (ShareGPT) — varies by token_length
+                    # Normal — varies by token_length and strategy
                     for token_len in token_lengths:
-                        condition = {
-                            "turn_count": turn_count,
-                            "difficulty": "normal",
-                            "rule_count_level": rule_level,
-                            "probe_intensity": intensity,
-                            "token_length": token_len,
-                        }
+                        for strategy in strategies:
+                            pool = sharegpt_pools.get(token_len, sharegpt_short)
+                            user_turns = select_sharegpt_turns(pool, turn_count)
 
-                        pool = sharegpt_pools.get(token_len, sharegpt_short)
-                        user_turns = select_sharegpt_turns(pool, turn_count)
+                            for probe in probes:
+                                condition = {
+                                    "turn_count": turn_count,
+                                    "difficulty": "normal",
+                                    "rule_count_level": rule_level,
+                                    "probe_intensity": intensity,
+                                    "token_length": token_len,
+                                    "system_prompt_strategy": strategy,
+                                }
+                                probe_question = probe["probe_messages"][0]["content"]
+                                rendered = render_embedded_user_message(
+                                    user_turns, probe_question, strategy=strategy
+                                )
 
-                        for probe in probes:
-                            probe_question = probe["probe_messages"][0]["content"]
-                            rendered = render_embedded_user_message(
-                                user_turns, probe_question
-                            )
+                                case_id = f"exp_{case_counter:04d}"
+                                case = build_case(
+                                    case_id, condition, probe, rendered,
+                                    intermediate_turns_type="user_only_embedded",
+                                )
+                                all_cases.append(case)
+                                case_counter += 1
 
-                            case_id = f"exp_{case_counter:04d}"
-                            case = build_case(
-                                case_id,
-                                condition,
-                                probe,
-                                rendered,
-                                intermediate_turns_type="user_only_embedded",
-                            )
-                            all_cases.append(case)
-                            case_counter += 1
-
-    # --- Case 3: Alignment Tax (MultiChallenge) ---
-    # Separate measurement: rule_count(0,1,3,5,10,15,20) × MC conversations
-    # Full turns preserved, measures Task Accuracy not Compliance
+    # --- Case 3: Alignment Tax (MultiChallenge) — 보류, MC 데이터 확보 후 활성화 ---
+    mc_conversations = load_jsonl(
+        processed_dir / "multichallenge_conversations.jsonl"
+    )
     alignment_tax_levels = [0] + rule_levels
     aegis_cfg = cfg.get("project_aegis", {})
     level_rule_map = aegis_cfg.get("rule_count_levels", {})
