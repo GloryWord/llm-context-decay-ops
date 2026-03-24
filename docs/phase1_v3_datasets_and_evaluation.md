@@ -342,7 +342,7 @@ v1에서 사용되었으나, **constraint 3개 = 항상 0%** 문제로 대체됨
 - **데이터 출처:** [ekwinox117/multi-challenge](https://github.com/ekwinox117/multi-challenge)
 - **원본:** 273건 벤치마크 대화 (`benchmark_questions.jsonl`)
 - **MC-Embedded 실험:** 360건 완료 (v3 확장)
-- **Alignment Tax (Case 3):** 미실행 (LLM-as-judge 비용 문제)
+- **Alignment Tax (Case 3):** **완료** — 1,365건 (273 conv × 5 levels), DeepSeek V3 judge
 
 ### 6.2 원본 데이터 스키마
 
@@ -429,13 +429,63 @@ python -m src.data_pipeline.generate_experiment_cases --config configs/preproces
 
 **결론:** 컨텍스트 유형(단순 채팅 vs 구조화된 과제 대화)은 시스템 프롬프트 준수에 영향을 미치지 않음.
 
-### 6.7 Case 3: Alignment Tax 설계 (미실행)
+### 6.7 Case 3: Alignment Tax 실험 (완료)
 
 - `intermediate_turns_type: "full"` (user+assistant 모두 유지)
-- `rule_count_level: [0, 1, 3, 5, 10, 15, 20]` (0 = 규칙 없음, baseline)
-- 채점: `task_accuracy` (MultiChallenge 원본 평가 — GPT-4o judge 필요)
-- 측정 대상: "규칙이 늘어나면 원래 과제 수행 능력이 얼마나 떨어지나?"
-- **미실행 사유:** LLM-as-judge (GPT-4o) 비용 부담
+- `rule_count_level: [0, 1, 5, 10, 20]` (0 = 규칙 없음, baseline)
+- **추론 모델:** Qwen3.5-9B (temperature 0.0)
+- **Judge 모델:** DeepSeek V3 (0324) via OpenRouter — binary PASS/FAIL + mandatory reasoning
+- **이중 평가:**
+  - Task Accuracy: LLM Judge가 TARGET_QUESTION 응답 정확도 평가
+  - Rule Compliance: 10개 자동 채점 규칙 프로그래매틱 평가
+- **케이스 수:** 273 conv × 5 levels = 1,365건
+- **총 토큰 범위:** 121–9,124 (mean 1,927)
+
+**Judge 프롬프트 구조:**
+```
+System: You are an expert evaluation judge...
+User:
+  ## Conversation Context
+  {MC conversation turns}
+  ## Target Question
+  {TARGET_QUESTION}
+  ## Expected Answer Criteria
+  {PASS_CRITERIA}
+  ## Model's Response
+  {model response}
+```
+
+**Judge 출력 형식:**
+```json
+{
+  "reasoning": "detailed reasoning",
+  "verdict": "PASS or FAIL",
+  "score": 1 or 0
+}
+```
+
+**생성 명령:**
+```bash
+python -m src.data_pipeline.generate_experiment_cases --config configs/preprocess.yaml --at-only
+python -m src.models.open_router_request --input data/processed/at_experiment_cases.jsonl --output data/outputs
+python -m src.evaluation.judge --input data/outputs/qwen_qwen3.5-9b/baseline/at_results.jsonl
+```
+
+### 6.8 Alignment Tax 주요 결과
+
+| Rule Level | Task Accuracy | Rule Compliance | Alignment Tax |
+|-----------|--------------|----------------|--------------|
+| 0 (baseline) | 88.6% | N/A | — |
+| 1 | 76.2% | 13.2% | -12.5%p |
+| 5 | 50.9% | 0.4% | -37.7%p |
+| 10 | 71.1% | 0.0% | -17.6%p |
+| 20 | 69.2% | 0.0% | -19.4%p |
+
+**핵심 발견:**
+1. 규칙 추가 시 task accuracy 최대 -37.7%p 하락 (Level 5)
+2. 비단조적 패턴: Level 5에서 최저, Level 10-20에서 부분 회복
+3. Rule compliance는 Level 1에서도 13.2%로 급락 → 과제 수행과 형식 규칙은 근본적으로 상충
+4. INSTRUCTION_RETENTION AXIS가 가장 큰 tax(-56.3%p at L5), SELF_COHERENCE가 가장 강건(-14.0%p)
 
 ---
 

@@ -71,6 +71,7 @@ Korean LLM reasoning evaluation pipeline. Collects model responses via OpenRoute
 | Phase 2 config | `configs/compression.yaml` |
 | API calls | `src/models/open_router_request.py` |
 | Evaluation | `src/evaluation/evaluation.py` |
+| LLM Judge (AT) | `src/evaluation/judge.py` |
 | Visualization | `src/utils/visualize.py` |
 
 ## Data Flow
@@ -79,10 +80,12 @@ Phase 1 v3:
   download_datasets.py → preprocess_*.py → generate_multi_rule_probes.py → generate_experiment_cases.py
       → data/processed/experiment_cases.jsonl (700 cases, ShareGPT + Aegis)
       → data/processed/mc_experiment_cases.jsonl (360 cases, MultiChallenge + Aegis)
+      → data/processed/at_experiment_cases.jsonl (1,365 cases, Alignment Tax)
       ↓
-  open_router_request.py → data/outputs/{model}/{variant}/results.jsonl (1,060 total)
+  open_router_request.py → data/outputs/{model}/{variant}/results.jsonl (1,060 + 1,365 AT)
       ↓
   score_rule() + evaluation → reports/scored_results.jsonl (1,060 scored records)
+  judge.py (DeepSeek V3) → reports/at_scored_results.jsonl (1,365 AT scored records)
       ↓
   visualization → reports/figures/*.png + reports/phase1_v3_report.md
 ```

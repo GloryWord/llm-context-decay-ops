@@ -58,15 +58,16 @@ async def run_single_case(
 
     turns_type = case.get("intermediate_turns_type", "none")
 
-    if "rendered_user_message" in case:
-        # v2 format: single user message with embedded history + probe
-        if turns_type == "full":
-            # Case 3 (Alignment Tax): inject full intermediate turns, then last user turn
-            intermediate = case.get("intermediate_turns", [])
-            messages.extend(intermediate)
-        else:
-            # Baseline / Normal: single rendered user message
-            messages.append({"role": "user", "content": case["rendered_user_message"]})
+    if turns_type == "full":
+        # Case 3 (Alignment Tax): inject full intermediate turns + target question
+        intermediate = case.get("intermediate_turns", [])
+        messages.extend(intermediate)
+        target_q = case.get("target_question", "")
+        if target_q:
+            messages.append({"role": "user", "content": target_q})
+    elif "rendered_user_message" in case:
+        # Baseline / Normal / MC-embedded: single rendered user message
+        messages.append({"role": "user", "content": case["rendered_user_message"]})
     else:
         # Legacy format: intermediate_turns + probe_turn
         intermediate = case.get("intermediate_turns", [])
@@ -108,6 +109,10 @@ async def run_single_case(
     # Include compression metadata if present
     if "compression_metadata" in case:
         record["compression_metadata"] = case["compression_metadata"]
+
+    # Include intermediate_turns for AT cases (needed by judge)
+    if case.get("intermediate_turns_type") == "full":
+        record["intermediate_turns"] = case.get("intermediate_turns", [])
 
     return record
 

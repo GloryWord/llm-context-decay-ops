@@ -294,72 +294,7 @@ def generate_cases(config_path: str) -> list[dict]:
                                 all_cases.append(case)
                                 case_counter += 1
 
-    # --- Case 3: Alignment Tax (MultiChallenge) — 보류, MC 데이터 확보 후 활성화 ---
-    mc_conversations = load_jsonl(
-        processed_dir / "multichallenge_conversations.jsonl"
-    )
-    alignment_tax_levels = [0] + rule_levels
-    aegis_cfg = cfg.get("project_aegis", {})
-    level_rule_map = aegis_cfg.get("rule_count_levels", {})
-
-    for rule_level in alignment_tax_levels:
-        for mc_idx, mc_conv in enumerate(mc_conversations):
-            condition = {
-                "turn_count": len(
-                    [t for t in mc_conv.get("turns", []) if t["role"] == "user"]
-                ),
-                "difficulty": "alignment_tax",
-                "rule_count_level": rule_level,
-                "probe_intensity": "task",
-                "token_length": "fixed",
-            }
-
-            # Build system prompt: 0 rules = no system prompt
-            if rule_level == 0:
-                system_prompt = ""
-            else:
-                from src.data_pipeline.generate_multi_rule_probes import (
-                    render_system_prompt,
-                )
-
-                rule_ids = [
-                    int(r)
-                    for r in level_rule_map.get(
-                        rule_level, level_rule_map.get(str(rule_level), [])
-                    )
-                ]
-                system_prompt = render_system_prompt(rule_ids) if rule_ids else ""
-
-            # Keep full conversation turns as-is
-            turns = mc_conv.get("turns", [])
-
-            system_tokens = count_tokens(system_prompt) if system_prompt else 0
-            turns_text = "\n".join(
-                f"{t['role']}: {t['content']}" for t in turns
-            )
-            turns_tokens = count_tokens(turns_text) if turns_text else 0
-
-            case_id = f"at_{case_counter:04d}"
-            case = {
-                "case_id": case_id,
-                "condition": condition,
-                "system_prompt": system_prompt,
-                "intermediate_turns": turns,
-                "intermediate_turns_type": "full",
-                "scoring": {
-                    "type": "task_accuracy",
-                    "dataset": "multichallenge",
-                    "check_description": "MultiChallenge original evaluation",
-                    "mc_conversation_id": mc_conv.get("conversation_id", mc_idx),
-                },
-                "token_counts": {
-                    "system_prompt_tokens": system_tokens,
-                    "turns_tokens": turns_tokens,
-                    "total_context_tokens": system_tokens + turns_tokens,
-                },
-            }
-            all_cases.append(case)
-            case_counter += 1
+    # --- Case 3: Alignment Tax — AT cases are now generated separately via --at-only ---
 
     # Write output
     processed_dir.mkdir(parents=True, exist_ok=True)
@@ -546,6 +481,133 @@ def generate_mc_cases(config_path: str) -> list[dict]:
     return all_cases
 
 
+def generate_at_cases(config_path: str) -> list[dict]:
+    """Generate Alignment Tax cases: MC conversations × rule levels.
+
+    Measures task accuracy degradation when safety rules are added.
+    Each case has full MC conversation + TARGET_QUESTION as final user turn.
+    Scoring requires LLM-as-judge (task_accuracy type).
+
+    Args:
+        config_path: Path to preprocess.yaml.
+
+    Returns:
+        List of AT experiment case dicts.
+    """
+    with open(config_path, "r", encoding="utf-8") as f:
+        cfg = yaml.safe_load(f)
+
+    processed_dir = Path(cfg["paths"]["processed_dir"])
+    raw_dir = Path(cfg["paths"]["raw_dir"])
+    mc_cfg = cfg.get("mc_experiment", {})
+
+    # Load processed MC conversations (has turns + excluded_target_question)
+    mc_conversations = load_jsonl(processed_dir / "multichallenge_conversations.jsonl")
+    if not mc_conversations:
+        logger.warning("No MC conversations found")
+        return []
+
+    # Load raw MC data for TARGET_QUESTION and PASS_CRITERIA
+    raw_mc_path = raw_dir / "multichallenge" / "benchmark_questions.jsonl"
+    raw_mc = load_jsonl(raw_mc_path)
+    raw_mc_map: dict[str, dict] = {}
+    for i, rec in enumerate(raw_mc):
+        raw_mc_map[f"mc_{i}"] = rec
+
+    # AT rule levels: [0, 1, 5, 10, 20] — 0 = no rules (baseline)
+    at_rule_levels = [0] + mc_cfg.get("rule_count_levels", [1, 5, 10, 20])
+
+    from src.data_pipeline.generate_multi_rule_probes import (
+        LEVEL_RULE_MAP,
+        render_system_prompt,
+    )
+
+    all_cases: list[dict] = []
+    case_counter = 0
+
+    for mc_conv in mc_conversations:
+        conv_id = mc_conv.get("conversation_id", "")
+        target_question = mc_conv.get("excluded_target_question", "")
+        raw_rec = raw_mc_map.get(conv_id, {})
+        pass_criteria = raw_rec.get("PASS_CRITERIA", "YES")
+
+        if not target_question:
+            logger.warning("No target question for %s, skipping", conv_id)
+            continue
+
+        turns = mc_conv.get("turns", [])
+        user_turn_count = mc_conv.get("turn_count", 0)
+
+        for rule_level in at_rule_levels:
+            # Build system prompt
+            if rule_level == 0:
+                system_prompt = ""
+                rule_ids: list[int] = []
+            else:
+                rule_ids = LEVEL_RULE_MAP.get(rule_level, [])
+                system_prompt = render_system_prompt(rule_ids) if rule_ids else ""
+
+            # Build messages: system + intermediate turns + target question
+            intermediate = list(turns)  # copy
+
+            condition = {
+                "turn_count": user_turn_count,
+                "difficulty": "alignment_tax",
+                "rule_count_level": rule_level,
+                "probe_intensity": "task",
+                "token_length": "fixed",
+                "mc_conversation_id": conv_id,
+                "mc_axis": mc_conv.get("axis", ""),
+            }
+
+            # Token counting
+            system_tokens = count_tokens(system_prompt) if system_prompt else 0
+            turns_text = "\n".join(
+                f"{t['role']}: {t['content']}" for t in intermediate
+            )
+            target_tokens = count_tokens(target_question)
+            turns_tokens = count_tokens(turns_text) if turns_text else 0
+            total_tokens = system_tokens + turns_tokens + target_tokens
+
+            case_id = f"at_{case_counter:04d}"
+            case = {
+                "case_id": case_id,
+                "condition": condition,
+                "system_prompt": system_prompt,
+                "intermediate_turns": intermediate,
+                "target_question": target_question,
+                "intermediate_turns_type": "full",
+                "scoring": {
+                    "type": "task_accuracy",
+                    "dataset": "multichallenge",
+                    "check_description": "MultiChallenge task accuracy evaluation",
+                    "mc_conversation_id": conv_id,
+                    "pass_criteria": pass_criteria,
+                    "target_question": target_question,
+                    "rule_ids": rule_ids,
+                },
+                "token_counts": {
+                    "system_prompt_tokens": system_tokens,
+                    "turns_tokens": turns_tokens,
+                    "target_question_tokens": target_tokens,
+                    "total_context_tokens": total_tokens,
+                },
+            }
+            all_cases.append(case)
+            case_counter += 1
+
+    # Write output
+    processed_dir.mkdir(parents=True, exist_ok=True)
+    output_path = processed_dir / "at_experiment_cases.jsonl"
+    with open(output_path, "w", encoding="utf-8") as f:
+        for case in all_cases:
+            f.write(json.dumps(case, ensure_ascii=False) + "\n")
+
+    _log_summary(all_cases)
+    logger.info("Wrote %d AT cases to %s", len(all_cases), output_path)
+    return all_cases
+
+
 def _log_summary(cases: list[dict]) -> None:
     """Log a summary of generated experiment cases.
 
@@ -600,9 +662,16 @@ if __name__ == "__main__":
         action="store_true",
         help="Generate only MC-embedded cases (skip ShareGPT/baseline).",
     )
+    parser.add_argument(
+        "--at-only",
+        action="store_true",
+        help="Generate only Alignment Tax cases (MC × rule levels).",
+    )
     args = parser.parse_args()
 
-    if args.mc_only:
+    if args.at_only:
+        generate_at_cases(args.config)
+    elif args.mc_only:
         generate_mc_cases(args.config)
     else:
         generate_cases(args.config)
