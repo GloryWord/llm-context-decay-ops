@@ -83,7 +83,7 @@ def preprocess_sharegpt(config_path: str) -> dict[str, list[dict]]:
     sharegpt_cfg = cfg["sharegpt_preprocess"]
     tokenizer_cfg = cfg["tokenizer"]
 
-    encoding_name = tokenizer_cfg["encoding_name"]
+    model_name = tokenizer_cfg.get("model_name", "Qwen/Qwen3.5-9B")
     bins = sharegpt_cfg["token_length_bins"]
     quality_filters = sharegpt_cfg["quality_filters"]
     max_per_bin = sharegpt_cfg.get("max_turns_per_bin", 100)
@@ -126,7 +126,7 @@ def preprocess_sharegpt(config_path: str) -> dict[str, list[dict]]:
                 continue
 
             # Classify into token length bins
-            token_count = count_tokens(content, encoding_name)
+            token_count = count_tokens(content, model_name)
             for bin_name, bin_range in bins.items():
                 if len(binned_turns[bin_name]) >= max_per_bin:
                     continue
@@ -134,7 +134,7 @@ def preprocess_sharegpt(config_path: str) -> dict[str, list[dict]]:
                     content,
                     bin_range["min_tokens"],
                     bin_range["max_tokens"],
-                    encoding_name,
+                    model_name,
                 ):
                     binned_turns[bin_name].append({
                         "turn_id": f"sharegpt_{bin_name}_{len(binned_turns[bin_name])}",

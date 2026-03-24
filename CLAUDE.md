@@ -7,6 +7,9 @@
 **Absolute path:** `/Users/kawai_tofu/Desktop/서울과학기술대학교_로컬/캡스톤디자인/capstone_dev/2026_eng`
 All relative paths in this document are relative to this root. Always use this as the working directory.
 
+## Compaction Rules
+When compacting, always preserve the full list of modified files and any test commands
+
 ## Overview
 Korean LLM reasoning evaluation pipeline. Collects model responses via OpenRouter API and scores them with quantitative metrics.
 
@@ -84,4 +87,4 @@ Phase 2:
 
 ## Next Steps
 Phase 3 plan: see `docs/phase1-research-plan.md` line 93 (hybrid compression strategy).
-Dev history: `.claude/dev_history/`
+Dev history: `.claude/dev_history/` 이곳에 작업한 내용을 md 파일로 남기세요. 기존에 있는 md 파일의 이름과 형식, 내용 등을 예시로 참고하세요.

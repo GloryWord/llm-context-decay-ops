@@ -1,5 +1,6 @@
 # Phase 1 Data Pipeline
-tiktoken
+transformers           # v2: Qwen BPE tokenizer (replaces tiktoken)
+emoji                  # v2: Rule 4 emoji detection
 pyyaml
 datasets
 huggingface_hub

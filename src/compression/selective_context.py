@@ -11,7 +11,7 @@ import logging
 import math
 
 from src.compression.base import BaseCompressor
-from src.data_pipeline.token_utils import count_tokens, get_encoding
+from src.data_pipeline.token_utils import count_tokens, get_tokenizer
 
 logger = logging.getLogger(__name__)
 
@@ -40,10 +40,10 @@ class SelectiveContextCompressor(BaseCompressor):
             Tuple of (pruned_turns, metadata).
         """
         target_ratio = params["target_ratio"]
-        encoding_name = params.get("encoding_name", "cl100k_base")
+        model_name = params.get("model_name", "Qwen/Qwen3.5-9B")
 
         original_text = " ".join(t["content"] for t in intermediate_turns)
-        original_tokens = count_tokens(original_text, encoding_name)
+        original_tokens = count_tokens(original_text, model_name)
 
         if not intermediate_turns or original_tokens == 0:
             return list(intermediate_turns), {
@@ -52,7 +52,7 @@ class SelectiveContextCompressor(BaseCompressor):
                 "compression_ratio": 1.0,
             }
 
-        enc = get_encoding(encoding_name)
+        enc = get_tokenizer(model_name)
         compressed_turns = []
 
         for turn in intermediate_turns:
@@ -64,7 +64,7 @@ class SelectiveContextCompressor(BaseCompressor):
             })
 
         compressed_text = " ".join(t["content"] for t in compressed_turns)
-        compressed_tokens = count_tokens(compressed_text, encoding_name)
+        compressed_tokens = count_tokens(compressed_text, model_name)
         ratio = compressed_tokens / original_tokens if original_tokens > 0 else 1.0
 
         metadata = {
@@ -91,7 +91,7 @@ def _prune_content(text: str, target_ratio: float, enc: object) -> str:
     Args:
         text: Input text content.
         target_ratio: Target fraction of tokens to retain.
-        enc: tiktoken Encoding instance.
+        enc: Tokenizer instance (HuggingFace PreTrainedTokenizer).
 
     Returns:
         Pruned text string.

@@ -4,6 +4,7 @@
 ```
 src/
 ├── data_pipeline/   ← data loading, preprocessing, experiment case generation
+├── compression/     ← context compression methods (Phase 2)
 ├── evaluation/      ← metric calculation
 ├── models/          ← API calls & prompts
 └── utils/           ← shared utilities
@@ -18,28 +19,35 @@ data_pipeline ──→ models ──→ evaluation
    utils  ←──────────────────── utils
 ```
 
-## Common Data Schema
+## Common Data Schema (v2)
 
-### Experiment Case (processed — `data/processed/experiment_cases.jsonl`)
+### Experiment Case — Case 2 (processed — `data/processed/experiment_cases.jsonl`)
 ```python
 {
-    "case_id": str,              # "exp_001"
+    "case_id": str,              # "exp_0001"
     "condition": {
-        "turn_count": int,       # 0, 5, 10, 15, 20
-        "difficulty": str,       # "baseline" | "normal" | "hard"
-        "rule_count_level": str, # "few" | "many"
-        "probe_intensity": str,  # "basic" | "redteam"
-        "token_length": str      # "short" | "long" | "fixed" | "none"
+        "turn_count": int,       # 0, 2, 4, 6, 8
+        "difficulty": str,       # "baseline" | "normal" | "alignment_tax"
+        "rule_count_level": int, # 1, 3, 5, 10, 15, 20
+        "probe_intensity": str,  # "basic" | "redteam" | "task"
+        "token_length": str      # "short" | "medium" | "long" | "none" | "fixed"
     },
-    "system_prompt": str,        # rendered system prompt with rules
-    "intermediate_turns": list,  # [{role, content}, ...]
-    "intermediate_turns_type": str,  # "none" | "user_only" | "full"
-    "probe_turn": dict,          # {role: "user", content: "..."}
+    "system_prompt": str,        # Project Aegis rendered rules
+    "rendered_user_message": str, # single user message (history embedded + probe)
+    "intermediate_turns_type": str,  # "none" | "user_only_embedded" | "full"
+    "probe_id": str,             # "aegis_L5_R3_basic_P0"
+    "target_rule": int,          # rule being tested
     "scoring": {
-        "type": str,             # "programmatic" | "rule_based"
-        "dataset": str,          # "rules" | "ifeval"
+        "type": str,             # "programmatic" | "task_accuracy"
+        "dataset": str,          # "project_aegis" | "multichallenge"
         "check_description": str,
-        "params": dict           # optional scoring params
+        "target_rule": int,
+        "rule_ids": list[int]    # all rules in system prompt
+    },
+    "token_counts": {
+        "system_prompt_tokens": int,
+        "user_message_tokens": int,
+        "total_context_tokens": int   # final rendered string tokenized
     }
 }
 ```

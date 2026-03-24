@@ -33,6 +33,7 @@ paths:
 filter:
   min_turn_count: 5  # only compress cases with turns >= 5
 
-# --- Token Counting ---
+# --- Token Counting (v2: Qwen BPE) ---
 tokenizer:
-  encoding_name: "cl100k_base"
+  model_name: "Qwen/Qwen3.5-9B"
+  # legacy: encoding_name: "cl100k_base"
