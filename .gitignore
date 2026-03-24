@@ -16,7 +16,7 @@ __pycache__/
 # 2. Data & Models
 # 대용량 데이터나 보안이 필요한 데이터는 깃허브에 올리지 않습니다.
 data/
-models/
+/models/
 *.pt
 *.pth
 *.gguf

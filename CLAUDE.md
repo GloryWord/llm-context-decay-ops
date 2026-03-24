@@ -13,12 +13,13 @@ When compacting, always preserve the full list of modified files and any test co
 ## Overview
 Korean LLM reasoning evaluation pipeline. Collects model responses via OpenRouter API and scores them with quantitative metrics.
 
-## Current Phase: Phase 2 — Context Compression Defense
-- Phase 1 (complete): Data pipeline, experiment case generation
+## Current Phase: Phase 1 v2 → Phase 2 Transition
+- Phase 1 v1 (archived): Basic turn-count experiment with RuLES/IFEval
+- Phase 1 v2 (complete): Project Aegis 20-rule persona, 312+ experiment cases, Qwen3.5-9B tokenizer
 - Phase 2 (active): Context compression methods as system prompt defense
   - Compression module (`src/compression/`)
   - Refactored inference (`src/models/`)
-  - Rule-based evaluation (`src/evaluation/`)
+  - Rule-based evaluation (`src/evaluation/`) — v2: Project Aegis auto-scoring via `generate_multi_rule_probes.score_rule()`
   - Comparison visualization (`src/utils/`)
 
 ## Directory Structure
@@ -28,7 +29,8 @@ Korean LLM reasoning evaluation pipeline. Collects model responses via OpenRoute
 ├── .claude/rules/coding.md    ← coding rules (load on session start)
 ├── docs/                      ← reference docs (not auto-loaded)
 │   ├── phase1-research-plan.md
-│   └── phase2-research-plan.md
+│   ├── phase2-research-plan.md
+│   └── token-save-guide.md
 ├── configs/                   ← YAML experiment params
 │   ├── preprocess.yaml        ← Phase 1 preprocessing config
 │   └── compression.yaml       ← Phase 2 compression config
@@ -56,6 +58,7 @@ Korean LLM reasoning evaluation pipeline. Collects model responses via OpenRoute
 | IFEval preprocessing | `src/data_pipeline/preprocess_ifeval.py` |
 | ShareGPT preprocessing | `src/data_pipeline/preprocess_sharegpt.py` |
 | MultiChallenge preprocessing | `src/data_pipeline/preprocess_multichallenge.py` |
+| Project Aegis probes & scoring | `src/data_pipeline/generate_multi_rule_probes.py` |
 | Experiment case generation | `src/data_pipeline/generate_experiment_cases.py` |
 | Phase 1 config | `configs/preprocess.yaml` |
 | Compression base class | `src/compression/base.py` |
@@ -71,12 +74,12 @@ Korean LLM reasoning evaluation pipeline. Collects model responses via OpenRoute
 
 ## Data Flow
 ```
-Phase 1:
-  download_datasets.py → preprocess_*.py → generate_experiment_cases.py
-      → data/processed/experiment_cases.jsonl (52 cases)
+Phase 1 v2:
+  download_datasets.py → preprocess_*.py → generate_multi_rule_probes.py → generate_experiment_cases.py
+      → data/processed/experiment_cases.jsonl (312+ cases, Project Aegis)
 
 Phase 2:
-  apply_compression.py → data/processed/compressed_cases/{variant}/experiment_cases.jsonl (384 cases)
+  apply_compression.py → data/processed/compressed_cases/{variant}/experiment_cases.jsonl
       ↓
   open_router_request.py → data/outputs/{model}/{variant}/results.jsonl
       ↓
