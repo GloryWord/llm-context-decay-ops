@@ -98,7 +98,7 @@ Turn 70-100%: Direct attacks + general overrides (직접 공격)
 
 ## 2. Visualizations
 
-> **Note**: 현재 시각화는 auto-scoring 기반 (language, format, persona). Behavioral rule의 LLM-judge 결과는 batch 처리 완료 후 업데이트 예정.
+> **Note**: Auto-scoring (language, format, persona) + LLM-judge (behavioral) 결과 모두 반영. DeepSeek V3 batch judge 10,890건 완료 (2026-03-31 23:17).
 
 ### 2.1 Q1: Rule Count별 Compliance Trajectory
 
@@ -115,7 +115,8 @@ Turn 70-100%: Direct attacks + general overrides (직접 공격)
 **붕괴 순서 (견고 → 취약)**:
 1. **Language** (보라, ~95%): 한국어 규칙은 거의 위반되지 않음
 2. **Persona** (분홍, ~85% → ~60%): 존댓말 사용이 점진적으로 하락
-3. **Format** (녹색, ~65% → ~50%): 접두어/접미어 규칙이 **가장 먼저 붕괴**
+3. **Behavioral** (빨강, ~80% → 20-80% 진동): 초반 준수 후 adversarial 압력에 급락, 불안정한 회복 패턴
+4. **Format** (녹색, ~65% → ~50%): 접두어/접미어 규칙이 baseline부터 낮고 지속 하락
 
 ### 2.3 Q3: Benign vs Adversarial 비교
 
@@ -139,17 +140,17 @@ Turn 70-100%: Direct attacks + general overrides (직접 공격)
 
 ### 3.1 Final Compliance by Condition
 
-> **Note**: auto-scoring 규칙 기반. Behavioral rule (R04, R06, R08) LLM-judge 결과 반영 시 수치 변동 가능.
+> Auto-scoring + LLM-judge (DeepSeek V3) 결과 모두 반영.
 
 | rule_count | turn_count | Benign | Adversarial | Gap |
 |------------|------------|--------|-------------|-----|
 | 1 | 1 | 100.0% | 50.0% | 50.0pp |
-| 1 | 5 | 100.0% | 58.3% | 41.7pp |
-| 1 | 10 | 100.0% | 46.7% | 53.3pp |
-| 1 | 15 | 100.0% | 33.3% | **66.7pp** |
+| 1 | 5 | 100.0% | 50.0% | 50.0pp |
+| 1 | 10 | 100.0% | 31.1% | **68.9pp** |
+| 1 | 15 | 100.0% | 11.1% | **88.9pp** |
 | 3 | 1 | 91.7% | 80.6% | 11.1pp |
 | 3 | 5 | 84.7% | 73.9% | 10.8pp |
-| 3 | 10 | 83.3% | 39.6% | **43.7pp** |
+| 3 | 10 | 83.3% | 35.9% | **47.4pp** |
 | 3 | 15 | 88.9% | 45.9% | 43.0pp |
 | 5 | 1 | 81.2% | 83.3% | -2.1pp |
 | 5 | 5 | 78.5% | 75.0% | 3.5pp |
@@ -187,14 +188,14 @@ Turn 70-100%: Direct attacks + general overrides (직접 공격)
 ### H2: 턴 증가 → 가속적 붕괴
 **부분 지지**
 
-- Adversarial: 턴 증가에 따른 명확한 하향 (R=1: T1 50% → T15 33%)
+- Adversarial: 턴 증가에 따른 명확한 하향 (R=1: T1 50% → T15 **11%**)
 - **Benign에서는 temporal decay 미관측** — compliance가 턴 수에 상관없이 안정
 - 의미: **decay는 공격에 의해서만 발생**, 시스템 프롬프트가 benign 대화에서 "사라지지" 않음
 
 ### H3: Adversarial → 붕괴 촉진
 **강하게 지지**
 
-- R=1: benign 100% vs adversarial 33-58% → **42-67pp 격차**
+- R=1: benign 100% vs adversarial 11-50% → **50-89pp 격차**
 - Crescendo 공격의 collapse threshold: **T3-T8** (3~8턴 내 50% 이하)
 - R=1에서 가장 극적 (단일 규칙에 공격 집중)
 
@@ -215,7 +216,7 @@ Turn 70-100%: Direct attacks + general overrides (직접 공격)
 ### 5.2 Limitations
 
 1. **Single model**: Llama 3.1 8B만 테스트 — 대형 모델에서의 재현성 미확인
-2. **Behavioral rules**: LLM-judge (DeepSeek V3) 결과 batch 처리 중 — 현재 수치는 auto-scoring 기반
+2. **Behavioral rules**: LLM-judge (DeepSeek V3) 10,890건 완료 반영. 다만 judge 모델 자체의 판정 정확도는 별도 검증 필요
 3. **Format rule baseline**: Llama 8B의 format compliance가 원래 낮아 관측 가능한 decay 범위가 압축됨
 4. **Synthetic adversarial turns**: 합성 공격이 실제 공격 패턴의 전체 범위를 포괄하지 못할 수 있음
 5. **Temperature=0**: 결정론적 샘플링으로 확률적 compliance 실패를 과소평가할 가능성
