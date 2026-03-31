@@ -112,7 +112,9 @@ Phase 1:
   - `gpt-5.3-codex-high`: 최종 배포 전 1회 검증 (고비용 — `--final` 플래그로만 실행)
 - **통합 평가**: `scripts/eval_all.sh` — Gemini + Cursor 병렬 실행
 - **개별 평가**: `scripts/eval_cycle.sh` (Gemini) / `scripts/eval_cursor.sh` (Cursor)
-- **Context 관리**: 15회 평가마다 Gemini 세션 자동 리셋
+- **Context 관리**:
+  - Gemini: 15회 평가마다 세션 자동 리셋
+  - Cursor: `agent -p` (print mode)는 매 호출 독립 세션. 대화형 사용 시 `/compact` (압축), `/clear` (초기화)
 - **인프라 문서**: `docs/hcom/acpx-integration-analysis.md`, `docs/hcom/acpx-reconnect-issue.md`
 
 ### 절대 규칙: 평가 없이 다음 작업 금지

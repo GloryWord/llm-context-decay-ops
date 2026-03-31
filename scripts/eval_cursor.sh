@@ -4,6 +4,13 @@
 # 기본: Composer2 (코드/아키텍처) + Codex (low-level 정합성) 교차 검증
 # 옵션: --final 시 Codex High로 최종 1회 검증 (고비용)
 #
+# Context 관리:
+#   agent -p (print mode)는 매 호출이 독립 세션 — context 축적 없음.
+#   대화형(agent) 사용 시 context 관리 명령:
+#     /compact  — 대화 압축 (토큰 절약)
+#     /clear    — 대화 초기화
+#     /model    — 모델 전환
+#
 # Usage:
 #   bash scripts/eval_cursor.sh <deliverable_path>              # 기본 (Composer2 + Codex)
 #   bash scripts/eval_cursor.sh --final <deliverable_path>      # 최종 검증 (+ Codex High)

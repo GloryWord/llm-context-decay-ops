@@ -125,7 +125,7 @@ Turn 70-100%: Direct attacks + general overrides (직접 공격)
 
 ![Q3 Benign vs Adversarial](figures/q3_benign_vs_adversarial.png)
 
-4개 패널(R=1, R=3, R=5, R=7) 모두에서 **빨간 점선(adversarial)이 파란 실선(benign) 아래**. R=1에서 격차가 가장 크고 (44-69pp), R=5에서 가장 작음 (format 규칙이 benign에서도 이미 실패).
+4개 패널(R=1, R=3, R=5, R=7) 모두에서 **빨간 점선(adversarial)이 파란 실선(benign) 아래**. R=1에서 격차가 가장 크고 (50-89pp), R=5에서 가장 작음 (format 규칙이 benign에서도 이미 실패).
 
 ### 2.4 대표 Heatmap (R7, T15, Adversarial)
 
@@ -213,7 +213,7 @@ Turn 70-100%: Direct attacks + general overrides (직접 공격)
 
 2. **Format 규칙이 가장 취약**: Prefix/suffix 규칙의 baseline compliance가 ~60-65%. 이는 8B 파라미터 모델의 instruction tuning이 콘텐츠 정확성을 구조적 출력 포맷팅보다 우선시하기 때문이거나, 다국어(한국어) 처리 과정에서 구조적 마커의 인코딩이 약하기 때문일 수 있음. ECLIPTICA (Wanaskar et al., 2026)의 "surface vs deep alignment" 구분과 일치.
 
-3. **R=1 adversarial collapse가 거의 완전**: 단일 규칙만 따르는 조건에서 직접 공격 시 compliance가 0-33%로 하락. 규칙이 적을수록 시스템 프롬프트 가드레일에 할당하는 attention 비중 자체가 낮아져 공격에 밀려날 수 있음 (cf. Hung et al., NAACL 2025 — Attention Tracker의 "Distraction Effect").
+3. **R=1 adversarial collapse가 거의 완전**: 단일 규칙만 따르는 조건에서 직접 공격 시 compliance가 11-50%로 하락. 규칙이 적을수록 시스템 프롬프트 가드레일에 할당하는 attention 비중 자체가 낮아져 공격에 밀려날 수 있음 (cf. Hung et al., NAACL 2025 — Attention Tracker의 "Distraction Effect").
 
 4. **R=5 포화 효과**: R=5 (~80%)와 R=7 (~80%) benign compliance가 거의 동일 → rule_count에 의한 저하에 ceiling 존재.
 
@@ -230,7 +230,7 @@ Turn 70-100%: Direct attacks + general overrides (직접 공격)
 | Scenario | Recommendation |
 |----------|---------------|
 | Benign 배포 | 동시 규칙 5개까지 안전; format 규칙은 출력 템플릿으로 보강 필요 |
-| Adversarial 노출 | T3-T8 내 붕괴 — 턴 기반 모니터링 필수 |
+| Adversarial 노출 | T4-T10 내 붕괴 — 턴 기반 모니터링 필수 |
 | 핵심 규칙 | Language/persona 규칙은 견고; format 규칙은 아키텍처 지원 필요 |
 | 규칙 수 | 5개 초과 시 수확체감 — 가드레일을 집중적으로 유지 |
 
@@ -241,7 +241,7 @@ Turn 70-100%: Direct attacks + general overrides (직접 공격)
 | Component | Detail |
 |-----------|--------|
 | Inference model | Llama 3.1 8B Instruct AWQ-INT4 |
-| Inference infra | RTX 3090 Ti, local vLLM (210.179.28.26:18000) |
+| Inference infra | RTX 3090 Ti, local vLLM |
 | Inference runs | 1,540 runs (308 cases x 5 reps) |
 | Inference turns | 10,890 model responses |
 | Inference runtime | ~87 min |
