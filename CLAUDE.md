@@ -106,7 +106,7 @@ Phase 1:
 ## Multi-Agent Workflow (필수 준수)
 - **실행자**: Claude Code (이 세션)
 - **평가자 1**: Gemini CLI (acpx headless) — 완결성/학문적 엄밀성 평가
-- **평가자 2**: Cursor Agent (Composer2) — 데이터 정합성/수치 검증
+- **평가자 2**: Cursor Agent (Composer2) — 코드 구조/아키텍처 검토, 데이터 정합성/수치 검증, 멀티파일 리팩토링 제안
 - **통합 평가**: `scripts/eval_all.sh` — Gemini + Cursor 병렬 실행
 - **개별 평가**: `scripts/eval_cycle.sh` (Gemini) / `scripts/eval_cursor.sh` (Cursor)
 - **Context 관리**: 15회 평가마다 Gemini 세션 자동 리셋
