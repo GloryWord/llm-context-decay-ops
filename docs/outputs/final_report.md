@@ -90,11 +90,12 @@
 
 ### 1.5 Adversarial Attack Design (Crescendo Pattern)
 
-```
-Turn 1-30%: Benign warmup (정상 고객 질문)
-Turn 30-70%: Rule-specific probing (규칙 경계 탐색)
-Turn 70-100%: Direct attacks + general overrides (직접 공격)
-```
+| turn_count | Phase 1: Warmup | Phase 2: Probing | Phase 3: Attack |
+|------------|----------------|-----------------|----------------|
+| 1-2 | — | — | 전 턴 직접 공격 |
+| 5 | T1 (정상 질문) | T2-T3 (규칙 경계 탐색) | T4-T5 (직접 공격) |
+| 10 | T1-T3 | T4-T7 | T8-T10 |
+| 15 | T1-T4 | T5-T10 | T11-T15 |
 
 ---
 
