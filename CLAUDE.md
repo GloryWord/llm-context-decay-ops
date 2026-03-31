@@ -75,7 +75,9 @@ llm-context-decay-ops/
 | LLM Judge | `src/evaluation/judge.py` |
 | API calls | `src/models/open_router_request.py` |
 | Visualization | `src/utils/visualize.py` |
-| 평가 자동화 | `scripts/eval_cycle.sh` |
+| Gemini 평가 | `scripts/eval_cycle.sh` |
+| Cursor 평가 | `scripts/eval_cursor.sh` |
+| 통합 평가 (Gemini+Cursor) | `scripts/eval_all.sh` |
 | 308 케이스 생성기 | `scripts/generate_full_cases.py` |
 | 메인 실험 러너 | `scripts/run_experiment.py` |
 | 생성된 실험 케이스 | `data/processed/experiment_cases_full.jsonl` |
@@ -103,18 +105,21 @@ Phase 1:
 
 ## Multi-Agent Workflow (필수 준수)
 - **실행자**: Claude Code (이 세션)
-- **평가자**: Gemini CLI (acpx headless)
-- **자동화**: `scripts/eval_cycle.sh` — 작업 완료 후 자동 평가 요청/수신/저장
+- **평가자 1**: Gemini CLI (acpx headless) — 완결성/학문적 엄밀성 평가
+- **평가자 2**: Cursor Agent (Composer2) — 데이터 정합성/수치 검증
+- **통합 평가**: `scripts/eval_all.sh` — Gemini + Cursor 병렬 실행
+- **개별 평가**: `scripts/eval_cycle.sh` (Gemini) / `scripts/eval_cursor.sh` (Cursor)
 - **Context 관리**: 15회 평가마다 Gemini 세션 자동 리셋
-- **인프라 문서**: `docs/hcom/acpx-integration-analysis.md`
+- **인프라 문서**: `docs/hcom/acpx-integration-analysis.md`, `docs/hcom/acpx-reconnect-issue.md`
 
 ### 절대 규칙: 평가 없이 다음 작업 금지
-1. **매 작업 완료 후** 반드시 `bash scripts/eval_cycle.sh <산출물경로>` 실행
-2. **평가 결과를 수신한 후에만** 다음 작업으로 진행
-3. **작업 기록** 반드시 `docs/multi-agent-working-history/` 에 남길 것
-4. 기록 형식: `YYYY-MM-DD_HHMM_키워드.md`
-5. 기록 내용: 작업 내용 + Gemini 평가 결과 + 조치 사항
-6. `.claude/hooks/eval_gate.sh` 가 미평가 산출물 경고를 출력함
+1. **매 작업 완료 후** 반드시 `bash scripts/eval_all.sh <산출물경로>` 실행 (또는 개별 eval 스크립트)
+2. **최소 1개 평가자의 결과를 수신한 후에만** 다음 작업으로 진행
+3. **평가 실패 시**: 사용자에게 즉시 보고하고 작업 중단
+4. **작업 기록** 반드시 `docs/multi-agent-working-history/` 에 남길 것
+5. 기록 형식: `YYYY-MM-DD_HHMM_키워드.md`
+6. 기록 내용: 작업 내용 + 평가 결과 (Gemini/Cursor) + 조치 사항
+7. `.claude/hooks/eval_gate.sh` 가 미평가 산출물 경고를 출력함
 
 **이 규칙을 위반하면 사용자의 시간과 비용을 낭비하는 것이다. 절대 생략하지 마라.**
 
