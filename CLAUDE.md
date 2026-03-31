@@ -113,13 +113,14 @@ Phase 1:
 - **인프라 문서**: `docs/hcom/acpx-integration-analysis.md`, `docs/hcom/acpx-reconnect-issue.md`
 
 ### 절대 규칙: 평가 없이 다음 작업 금지
-1. **매 작업 완료 후** 반드시 `bash scripts/eval_all.sh <산출물경로>` 실행 (또는 개별 eval 스크립트)
-2. **최소 1개 평가자의 결과를 수신한 후에만** 다음 작업으로 진행
-3. **평가 실패 시**: 사용자에게 즉시 보고하고 작업 중단
-4. **작업 기록** 반드시 `docs/multi-agent-working-history/` 에 남길 것
-5. 기록 형식: `YYYY-MM-DD_HHMM_키워드.md`
-6. 기록 내용: 작업 내용 + 평가 결과 (Gemini/Cursor) + 조치 사항
-7. `.claude/hooks/eval_gate.sh` 가 미평가 산출물 경고를 출력함
+1. **매 작업 완료 후** 자동으로 `bash scripts/eval_all.sh <산출물경로>` 실행 — 사용자가 지시하지 않아도 반드시 실행
+2. **기본값**: Gemini + Cursor 교차 검증 (eval_all.sh). 사용자가 명시적으로 요청할 때만 개별 실행 (eval_cycle.sh / eval_cursor.sh)
+3. **최소 1개 평가자의 결과를 수신한 후에만** 다음 작업으로 진행
+4. **평가 실패 시**: 사용자에게 즉시 보고하고 작업 중단. 절대 무시하고 진행하지 말 것
+5. **작업 기록** 반드시 `docs/multi-agent-working-history/` 에 남길 것
+6. 기록 형식: `YYYY-MM-DD_HHMM_키워드.md`
+7. 기록 내용: 작업 내용 + 평가 결과 (Gemini/Cursor) + 조치 사항
+8. `.claude/hooks/eval_gate.sh` 가 미평가 산출물 경고를 출력함
 
 **이 규칙을 위반하면 사용자의 시간과 비용을 낭비하는 것이다. 절대 생략하지 마라.**
 
