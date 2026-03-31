@@ -117,8 +117,9 @@ Phase 1:
 
 ### 절대 규칙: 평가 없이 다음 작업 금지
 1. **매 작업 완료 후** 자동으로 `bash scripts/eval_all.sh <산출물경로>` 실행 — 사용자가 지시하지 않아도 반드시 실행
-2. **기본값**: Gemini + Cursor 교차 검증 (eval_all.sh). 사용자가 명시적으로 요청할 때만 개별 실행 (eval_cycle.sh / eval_cursor.sh)
-3. **최소 1개 평가자의 결과를 수신한 후에만** 다음 작업으로 진행
+2. **기본값**: Gemini + Cursor (Composer2 + Codex) 교차 검증
+3. **평가 완료 후** 사용자에게 "Codex High 최종 검증을 실행할까요?" 반드시 질문. 사용자가 승인하면 `--final` 실행
+4. **최소 1개 평가자의 결과를 수신한 후에만** 다음 작업으로 진행
 4. **평가 실패 시**: 사용자에게 즉시 보고하고 작업 중단. 절대 무시하고 진행하지 말 것
 5. **작업 기록** 반드시 `docs/multi-agent-working-history/` 에 남길 것
 6. 기록 형식: `YYYY-MM-DD_HHMM_키워드.md`
