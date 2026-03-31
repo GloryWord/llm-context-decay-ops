@@ -49,6 +49,8 @@
 
 ### 2.1 Overall Compliance by Condition (Final Turn)
 
+> **Note**: 현재 수치는 주로 언어(language), 형식(format), 페르소나(persona) 등 자동 채점 가능한 규칙에 기반합니다. 행동(behavioral) 규칙은 LLM-judge (DeepSeek V3) 채점 결과 반영 후 업데이트 예정입니다.
+
 | Condition | Benign | Adversarial | Gap |
 |-----------|--------|-------------|-----|
 | R=1 | **100.0%** | 30.6-55.9% | **44-69pp** |
@@ -155,9 +157,9 @@
 
 1. **No temporal decay in benign conditions**: Unlike "Lost in the Middle" predictions, system prompt compliance does NOT fade over turns in benign conversations. The decay is attack-driven, not temporal.
 
-2. **Format rules as the weakest link**: Prefix/suffix rules have the lowest baseline compliance (~60-65%). This suggests LLMs prioritize semantic instruction-following over structural format compliance.
+2. **Format rules as the weakest link**: Prefix/suffix rules have the lowest baseline compliance (~60-65%). This suggests LLMs prioritize semantic instruction-following over structural format compliance. This may reflect a characteristic of smaller models (8B parameters) where instruction tuning prioritizes content accuracy over output formatting, or a multilingual processing weakness where Korean structural markers are less robustly encoded than semantic constraints.
 
-3. **R=1 adversarial collapse is near-total**: When the model only has one rule to follow and is directly attacked, compliance drops to 0-31%. This is worse than multi-rule conditions — possibly because the attack can focus all pressure on a single target.
+3. **R=1 adversarial collapse is near-total**: When the model only has one rule to follow and is directly attacked, compliance drops to 0-31%. This is worse than multi-rule conditions — possibly because the attack can focus all pressure on a single target. Additionally, with fewer rules in the system prompt, the model may allocate less attention weight to the guardrail section overall, making it more susceptible to adversarial redirection (cf. Hung et al., NAACL 2025 — Attention Tracker's "Distraction Effect").
 
 4. **Saturation around R=5**: Benign compliance for R=5 (~80%) and R=7 (~80%) are nearly identical, suggesting a ceiling on rule-count-driven degradation.
 
