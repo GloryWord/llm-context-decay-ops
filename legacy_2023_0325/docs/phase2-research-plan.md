@@ -35,6 +35,7 @@ src/evaluation/
 ---
 
 ## Phase 3: Multimodal Extension (Under Review)
+별도의 지시가 있기 전까지 고려하지 않는다. Phase 2를 보고 결정하겠다.
 
 ### Goal
 Expand evaluation scope to include image-text datasets.
