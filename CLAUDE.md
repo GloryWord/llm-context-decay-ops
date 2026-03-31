@@ -1,50 +1,57 @@
-# 2026 LLM Evaluation Project
+# LLM Context Decay 실험 프로젝트
 
 ## Git Rules
 - After modifying all files, make sure to git add, commit, and push.
 
 ## Project Root
-**Absolute path:** `/Users/kawai_tofu/Desktop/서울과학기술대학교_로컬/캡스톤디자인/capstone_dev/2026_eng`
-All relative paths in this document are relative to this root. Always use this as the working directory.
+**Absolute path:** `/Users/kawai_tofu/Desktop/01_학업_서울과기대/서울과학기술대학교_로컬/캡스톤디자인/capstone_dev/Multi-Agent-Workflow/llm-context-decay-ops`
+All relative paths in this document are relative to this root.
 
 ## Compaction Rules
 When compacting, always preserve the full list of modified files and any test commands
 
 ## Overview
-Korean LLM reasoning evaluation pipeline. Collects model responses via OpenRouter API and scores them with quantitative metrics.
+System Prompt Compliance Threshold Detection in LLMs.
+Multi-turn 대화에서 시스템 프롬프트 규칙 준수율의 붕괴 임계점을 탐지하는 실험 파이프라인.
 
-## Current Phase: Phase 1 v3 — 정밀 측정 재설계
-- Phase 1 v1 (archived): Basic turn-count experiment with RuLES/IFEval
-- Phase 1 v2 (archived): Project Aegis 312건, probe 다양성 결함 발견
-- **Phase 1 v3 (active):** 변수 분리(A/B/C/D) + probe 다양화 + system_prompt_strategy 추가
-  - A: 컨텍스트 길이 vs 턴 수 분리
-  - B: 규칙 수 인지 부하 측정
-  - C: 적대적 대화 가속 효과
-  - D: System Prompt 반복 주입 효과
-- Phase 2 (보류): Context compression — Phase 1 완료 후 결정
+## Research Questions (Q4 제외)
+| ID | 질문 | 핵심 변수 |
+|----|------|----------|
+| Q1 | 복수 규칙의 동시 준수율이 대화 턴 수 증가에 따라 어떻게 변하는가? | rule_count × turn_count |
+| Q2 | 규칙 유형(형식, 언어, 행동, 페르소나)에 따라 붕괴 순서에 차이가 있는가? | rule_category |
+| Q3 | 무해 대화 vs 점진적 에스컬레이션 공격 조건에서 붕괴 시점과 속도가 달라지는가? | attack_intensity |
+
+## Experiment Variables
+| 변수 | 수준 |
+|------|------|
+| rule_count | 1, 3, 5, 7 |
+| turn_count | 1, 5, 10, 15 |
+| attack_intensity | benign, adversarial (Crescendo-style) |
+| 모델 | Llama 3.1 8B (local vLLM), DeepSeek R1 (OpenRouter API) |
+| 반복 | 5회/셀 |
 
 ## Directory Structure
 ```
-2026_eng/
-├── CLAUDE.md                  ← this file (load on session start)
-├── .claude/rules/coding.md    ← coding rules (load on session start)
-├── docs/                      ← reference docs (not auto-loaded)
-│   ├── phase1-research-plan.md
-│   ├── phase2-research-plan.md
-│   └── token-save-guide.md
-├── configs/                   ← YAML experiment params
-│   ├── preprocess.yaml        ← Phase 1 preprocessing config
-│   └── compression.yaml       ← Phase 2 compression config
+llm-context-decay-ops/
+├── CLAUDE.md                  ← this file
+├── .claude/rules/coding.md    ← coding rules
+├── docs/
+│   ├── [Capstone]_이종웅_Lit_Review_and_Exp_Design_22110157.md  ← 연구계획서
+│   ├── experimental_design.md                                    ← 상세 실험 설계
+│   ├── outputs/                                                  ← 산출물 (보고서 등)
+│   ├── hcom/                                                     ← hcom/acpx 인프라 문서
+│   ├── multi-agent-working-history/                              ← 에이전트 작업 기록
+│   └── imgs/                                                     ← 참조 이미지
 ├── data/
 │   ├── raw/                   ← original datasets (gitignored)
-│   ├── processed/             ← preprocessed data + compressed cases
+│   ├── processed/             ← preprocessed data
 │   └── outputs/               ← LLM outputs + logs
-├── reports/figures/           ← evaluation visualizations
+├── scripts/                   ← 자동화 스크립트 (eval_cycle.sh 등)
 ├── src/
-│   ├── data_pipeline/         ← Phase 1: download, preprocess, case generation
-│   ├── compression/           ← Phase 2: compression methods
+│   ├── data_pipeline/         ← download, preprocess, case generation
+│   ├── compression/           ← Phase 2용 (보류 중)
 │   ├── models/                ← OpenRouter API inference
-│   ├── evaluation/            ← compliance scoring
+│   ├── evaluation/            ← compliance scoring + LLM-judge
 │   └── utils/                 ← visualization, JSON utils
 └── tests/                     ← unit tests
 ```
@@ -52,6 +59,9 @@ Korean LLM reasoning evaluation pipeline. Collects model responses via OpenRoute
 ## Key File Map
 | Role | File |
 |------|------|
+| 연구계획서 | `docs/[Capstone]_이종웅_Lit_Review_and_Exp_Design_22110157.md` |
+| 상세 실험 설계 | `docs/experimental_design.md` |
+| 벤치마크 매핑 보고서 | `docs/outputs/benchmark_reuse_mapping.md` |
 | Pipeline entry point | `src/data_pipeline/load_datasets.py` |
 | Dataset download | `src/data_pipeline/download_datasets.py` |
 | Token utilities | `src/data_pipeline/token_utils.py` |
@@ -59,95 +69,74 @@ Korean LLM reasoning evaluation pipeline. Collects model responses via OpenRoute
 | IFEval preprocessing | `src/data_pipeline/preprocess_ifeval.py` |
 | ShareGPT preprocessing | `src/data_pipeline/preprocess_sharegpt.py` |
 | MultiChallenge preprocessing | `src/data_pipeline/preprocess_multichallenge.py` |
-| Project Aegis probes & scoring | `src/data_pipeline/generate_multi_rule_probes.py` |
 | Experiment case generation | `src/data_pipeline/generate_experiment_cases.py` |
-| Phase 1 config | `configs/preprocess.yaml` |
-| Compression base class | `src/compression/base.py` |
-| Sliding window compressor | `src/compression/sliding_window.py` |
-| Selective context compressor | `src/compression/selective_context.py` |
-| Turn summarization compressor | `src/compression/summarize_turns.py` |
-| Prompt reinforcement | `src/compression/system_prompt_reinforce.py` |
-| Compression orchestrator | `src/compression/apply_compression.py` |
-| Phase 2 config | `configs/compression.yaml` |
+| Compliance scorer | `src/evaluation/compliance_scorer.py` |
+| Evaluation (IFEval) | `src/evaluation/evaluation.py` |
+| LLM Judge | `src/evaluation/judge.py` |
 | API calls | `src/models/open_router_request.py` |
-| Evaluation | `src/evaluation/evaluation.py` |
-| LLM Judge (AT) | `src/evaluation/judge.py` |
 | Visualization | `src/utils/visualize.py` |
+| 평가 자동화 | `scripts/eval_cycle.sh` |
+| 308 케이스 생성기 | `scripts/generate_full_cases.py` |
+| 메인 실험 러너 | `scripts/run_experiment.py` |
+| 생성된 실험 케이스 | `data/processed/experiment_cases_full.jsonl` |
 
 ## Data Flow
 ```
-Phase 1 v3:
-  download_datasets.py → preprocess_*.py → generate_multi_rule_probes.py → generate_experiment_cases.py
-      → data/processed/experiment_cases.jsonl (700 cases, ShareGPT + Aegis)
-      → data/processed/mc_experiment_cases.jsonl (360 cases, MultiChallenge + Aegis)
-      → data/processed/at_experiment_cases.jsonl (1,365 cases, Alignment Tax)
+Phase 1:
+  download_datasets.py → preprocess_*.py → generate_experiment_cases.py
+      → data/processed/sample_cases_v4.jsonl (현재 10개 샘플)
       ↓
-  open_router_request.py → data/outputs/{model}/{variant}/results.jsonl (1,060 + 1,365 AT)
+  open_router_request.py → data/outputs/{model}/results.jsonl
       ↓
-  score_rule() + evaluation → reports/scored_results.jsonl (1,060 scored records)
-  judge.py (DeepSeek V3) → reports/at_scored_results.jsonl (1,365 AT scored records)
+  compliance_scorer.py + judge.py → scored_results.jsonl
       ↓
-  visualization → reports/figures/*.png + reports/phase1_v3_report.md
+  visualize.py → figures/
 ```
 
-## Reports
-All experiment outputs go under `reports/` (gitignored).
+## Scoring Methods
+| 규칙 유형 | 채점 방법 | 자동화 수준 |
+|----------|----------|-----------|
+| 형식 (글자 수, 접두어) | regex / char count | 100% 자동 |
+| 언어 (한국어 전용) | langdetect | 100% 자동 |
+| 행동 (주제 거부) | LLM-judge (DeepSeek V3) | 반자동 |
+| 페르소나 (존댓말) | 한국어 어미 패턴 매칭 | 90% 자동 |
 
-| Type | Path | Format |
-|------|------|--------|
-| Text report | `reports/phase1_v3_report.md` | Markdown — hypothesis-driven analysis with data tables and conclusions |
-| Evaluation summary | `reports/evaluation_summary.json` | JSON — aggregated compliance rates by each variable |
-| Scored results | `reports/scored_results.jsonl` | JSONL — per-case scored inference records |
-| Figures | `reports/figures/*.png` | PNG — one figure per hypothesis (A/B/C/D) + supplementary |
+## Multi-Agent Workflow (필수 준수)
+- **실행자**: Claude Code (이 세션)
+- **평가자**: Gemini CLI (acpx headless)
+- **자동화**: `scripts/eval_cycle.sh` — 작업 완료 후 자동 평가 요청/수신/저장
+- **Context 관리**: 15회 평가마다 Gemini 세션 자동 리셋
+- **인프라 문서**: `docs/hcom/acpx-integration-analysis.md`
 
-Report naming convention: `reports/phase1_v{version}_report.md`
+### 절대 규칙: 평가 없이 다음 작업 금지
+1. **매 작업 완료 후** 반드시 `bash scripts/eval_cycle.sh <산출물경로>` 실행
+2. **평가 결과를 수신한 후에만** 다음 작업으로 진행
+3. **작업 기록** 반드시 `docs/multi-agent-working-history/` 에 남길 것
+4. 기록 형식: `YYYY-MM-DD_HHMM_키워드.md`
+5. 기록 내용: 작업 내용 + Gemini 평가 결과 + 조치 사항
+6. `.claude/hooks/eval_gate.sh` 가 미평가 산출물 경고를 출력함
+
+**이 규칙을 위반하면 사용자의 시간과 비용을 낭비하는 것이다. 절대 생략하지 마라.**
 
 ## Dev History
-Work logs are stored in `.claude/dev_history/` (gitignored). Use these to track what was done, what changed, and what issues remain.
-
-### Folder structure
-```
-.claude/dev_history/
-└── YYYY-MM-DD/              ← one folder per calendar date
-    ├── HHMM_short-name.md   ← time-stamped entries within the date
-    ├── HHMM_short-name.md
-    └── ...
-```
-
-### File naming
-- Format: `HHMM_short-name.md` (24-hour time of creation/completion)
-- Example: `1700_phase1-v3-redesign-execution.md`
-
-### Required content per entry
-Each dev history file must include:
-1. **Date / Status** header
-2. **Work performed** — what was done, which files were changed
-3. **Key results** — numbers, compliance rates, findings
-4. **Modified file list** — all files touched
-5. **Next steps / remaining issues** — what still needs to be done
+Work logs: `docs/multi-agent-working-history/` (날짜_시간_키워드.md)
 
 ## Completion Report Pattern
-When finishing a significant task, report to the user in this structure:
-
 ```
 ## {Task Name} Summary
 
 ### Work Performed
-- bullet list of what was done
+- bullet list
 
 ### Key Findings
 | table of quantitative results |
 
 ### Remaining Issues (IMPORTANT)
-- bullet list of unresolved problems, floor effects, design flaws
-- these MUST be surfaced — never hide known issues
+- unresolved problems MUST be surfaced
 ```
 
 Rules:
 - Lead with results, not process
-- Always include quantitative evidence (compliance rates, case counts, cost)
-- **Remaining Issues is the most important section** — unresolved problems must be explicitly listed so the user can make informed decisions
+- Always include quantitative evidence
+- **Remaining Issues is the most important section**
 - Keep it concise: prefer tables over paragraphs
-
-## Next Steps
-See `.claude/plans/` for active plans. Current: `2026-03-24_1700_phase1-v3-redesign.md`

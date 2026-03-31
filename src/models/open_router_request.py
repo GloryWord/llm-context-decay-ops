@@ -22,8 +22,8 @@ import aiohttp
 
 logger = logging.getLogger(__name__)
 
-API_URL = "https://openrouter.ai/api/v1/chat/completions"
-DEFAULT_MODEL = "qwen/qwen3.5-9b"
+API_URL = os.getenv("VLLM_API_URL", "http://210.179.28.26:18000/v1/chat/completions")
+DEFAULT_MODEL = os.getenv("EVAL_MODEL_NAME", "meta-llama/Meta-Llama-3.1-8B-Instruct")
 MAX_RETRIES = 3
 BACKOFF_BASE = 2
 
@@ -188,10 +188,7 @@ async def run_inference(
     Returns:
         List of output records.
     """
-    api_key = os.getenv("OPENROUTER_API_KEY", "")
-    if not api_key:
-        logger.error("OPENROUTER_API_KEY not set")
-        return []
+    api_key = os.getenv("OPENROUTER_API_KEY", "dummy_token_for_local_vllm")
 
     headers = {
         "Authorization": f"Bearer {api_key}",

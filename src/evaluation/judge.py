@@ -21,7 +21,7 @@ import aiohttp
 
 logger = logging.getLogger(__name__)
 
-JUDGE_MODEL = "deepseek/deepseek-chat-v3-0324"
+JUDGE_MODEL = os.getenv("JUDGE_MODEL_NAME", "deepseek/deepseek-r1")
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 MAX_RETRIES = 3
 BACKOFF_BASE = 2

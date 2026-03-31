@@ -1,0 +1,74 @@
+# ==========================================
+# .geminiignore — Save token of Gemini
+# ==========================================
+
+# 1. Python 가상환경 (venv 전체 — 바이너리, 라이브러리 등)
+capstone_dev/
+.venv/
+venv/
+env/
+
+# 2. Python 캐시 & 컴파일 결과물
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+*.egg-info/
+
+# 3. 데이터 파일 (대용량, Claude가 읽을 필요 없음)
+data/raw/
+data/outputs/
+data/processed/
+*.csv
+*.jsonl
+*.parquet
+*.arrow
+
+# 4. 모델 바이너리
+*.pt
+*.pth
+*.gguf
+*.bin
+*.safetensors
+
+# 5. 빌드 & 배포 산출물
+dist/
+build/
+reports/figures/
+
+# 6. Lock 파일 & 의존성 목록 (토큰 낭비)
+*.lock
+poetry.lock
+Pipfile.lock
+requirements*.txt
+
+# 7. 로그 & 출력
+*.log
+logs/
+.claude/dev_history/
+
+# 8. OS & 에디터 캐시
+.DS_Store
+.vscode/
+.idea/
+.cursor/
+
+# 9. 비밀 정보
+.env
+secret.json
+credentials.json
+
+# 10. 노트북 (출력 셀이 크므로 필요 시만 직접 읽기)
+notebooks/
+
+# 11. Git 내부
+.git/
+
+# 12. 미니파이 JS (해당 시)
+*.min.js
+*.min.css
+
+.README_MY.md
+.claude
+./CLAUDE.md
