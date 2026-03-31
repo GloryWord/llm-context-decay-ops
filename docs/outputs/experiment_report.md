@@ -1,6 +1,6 @@
 # Compliance Decay Experiment — Interim Report
 
-> **Generated**: 2026-03-31 23:17
+> **Generated**: 2026-04-01 00:57
 > **Runs analyzed**: 1540 / 1,540 (target)
 > **Models**: hugging-quants/Meta-Llama-3.1-8B-Instruct-AWQ-INT4
 

@@ -3,7 +3,7 @@
   "models": [
     "hugging-quants/Meta-Llama-3.1-8B-Instruct-AWQ-INT4"
   ],
-  "timestamp": "2026-03-31 23:17",
+  "timestamp": "2026-04-01 00:57",
   "condition_means": {
     "R1_T10_adversarial": {
       "mean": 0.3111111111111111,
