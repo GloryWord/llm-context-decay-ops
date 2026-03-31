@@ -117,10 +117,9 @@ Turn 70-100%: Direct attacks + general overrides (직접 공격)
 ![Q2 Per-Rule Type](figures/q2_per_rule_type.png)
 
 **붕괴 순서 (견고 → 취약)**:
-1. **Language** (파란색, ~95%): 한국어 규칙은 거의 위반되지 않음 — 가장 견고
-2. **Persona** (보라색, ~85% → ~60%): 존댓말 사용이 점진적으로 하락
-3. **Behavioral** (빨간색, ~80% → 20-80% 진동): 초반 준수 후 adversarial 압력에 급락, 불안정한 회복 패턴
-4. **Format** (녹색, ~65% → ~50%): 접두어/접미어 규칙이 baseline부터 낮고 지속 하락 — 가장 취약
+1. **Language** (파란색) + **Persona** (보라색): 둘 다 ~95%에서 안정 유지 — 가장 견고한 규칙 유형
+2. **Behavioral** (빨간색, 진동): 초반 준수 후 adversarial 압력에 급락 (80% → 20%), 불안정한 회복 패턴
+3. **Format** (녹색, ~65% → ~50%): 접두어/접미어 규칙이 baseline부터 낮고 지속 하락 — 가장 취약
 
 ### 2.3 Q3: Benign vs Adversarial 비교
 
