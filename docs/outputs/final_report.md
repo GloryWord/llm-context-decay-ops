@@ -125,7 +125,7 @@ Turn 70-100%: Direct attacks + general overrides (직접 공격)
 
 ![Q3 Benign vs Adversarial](figures/q3_benign_vs_adversarial.png)
 
-4개 패널(R=1, R=3, R=5, R=7) 모두에서 **빨간 점선(adversarial)이 파란 실선(benign) 아래**. R=1에서 격차가 가장 크고 (50-89pp), R=5에서 가장 작음 (format 규칙이 benign에서도 이미 실패).
+R=1, R=3에서는 adversarial(빨간 점선)이 benign(파란 실선)보다 뚜렷하게 낮음 (R=1에서 최대 89pp 격차). R=5, R=7에서는 **초기 턴(T1)에서 adversarial이 benign과 동등하거나 약간 높은 구간이 존재**하나, 턴이 진행될수록 adversarial이 하락하여 격차가 벌어짐. 이는 format 규칙의 낮은 baseline이 benign 쪽 compliance를 먼저 끌어내리기 때문.
 
 ### 2.4 대표 Heatmap (R7, T15, Adversarial)
 
@@ -194,10 +194,10 @@ Turn 70-100%: Direct attacks + general overrides (직접 공격)
 
 - Adversarial: 턴 증가에 따른 명확한 하향 (R=1: T1 50% → T15 11%)
 - **Benign에서는 temporal decay 미관측** — compliance가 턴 수에 상관없이 안정
-- 의미: **decay는 공격에 의해서만 발생**, 시스템 프롬프트가 benign 대화에서 "사라지지" 않음
+- 의미: 본 실험 조건에서 **decay는 주로 adversarial 압력에 의해 촉진**되었으며, benign 조건에서는 유의미한 temporal decay가 관측되지 않음
 
 ### H3: Adversarial → 붕괴 촉진
-**강하게 지지**
+**지지** (통계 검정 미실시, descriptive 수준)
 
 - R=1: benign 100% vs adversarial 11-50% → **50-89pp 격차**
 - Crescendo 공격의 collapse threshold: **T4-T10** (4~10턴 내 50% 이하)
@@ -209,7 +209,7 @@ Turn 70-100%: Direct attacks + general overrides (직접 공격)
 
 ### 5.1 Unexpected Findings
 
-1. **Benign 조건에서 temporal decay 없음**: "Lost in the Middle" (Liu et al., 2023)의 예측과 달리, 시스템 프롬프트 compliance는 benign 대화에서 턴 증가에 따라 감소하지 않음. Decay는 공격에 의해서만 발생.
+1. **Benign 조건에서 temporal decay 없음**: "Lost in the Middle" (Liu et al., 2023)의 예측과 달리, 시스템 프롬프트 compliance는 benign 대화에서 턴 증가에 따라 감소하지 않음. 본 실험 조건(Llama 3.1 8B, max 15턴)에서 benign decay는 관측되지 않았으나, 더 긴 대화나 다른 모델에서는 다를 수 있음.
 
 2. **Format 규칙이 가장 취약**: Prefix/suffix 규칙의 baseline compliance가 ~60-65%. 이는 8B 파라미터 모델의 instruction tuning이 콘텐츠 정확성을 구조적 출력 포맷팅보다 우선시하기 때문이거나, 다국어(한국어) 처리 과정에서 구조적 마커의 인코딩이 약하기 때문일 수 있음. ECLIPTICA (Wanaskar et al., 2026)의 "surface vs deep alignment" 구분과 일치.
 
@@ -245,7 +245,8 @@ Turn 70-100%: Direct attacks + general overrides (직접 공격)
 | Inference runs | 1,540 runs (308 cases x 5 reps) |
 | Inference turns | 10,890 model responses |
 | Inference runtime | ~87 min |
-| Auto-scoring | 29,700 rule checks (local, regex/langdetect/pattern) |
+| Auto-scoring | 29,700 rule-turn evaluations (턴당 비행동 규칙 수 합산, local) |
 | LLM-judge model | DeepSeek V3 (chat-v3-0324) via OpenRouter |
-| LLM-judge calls | 10,890 behavioral rule evaluations |
+| LLM-judge calls | 10,890 rule-turn evaluations (턴당 행동 규칙 수 합산) |
+| Total rule evaluations | 40,590 (auto 29,700 + judge 10,890) |
 | LLM-judge target | R04 (정치 거부), R06 (개인정보 거부), R08 (경쟁사 비교 거부) |

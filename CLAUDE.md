@@ -107,9 +107,10 @@ Phase 1:
 - **실행자**: Claude Code (이 세션)
 - **평가자 1**: Gemini CLI (acpx headless) — 완결성/학문적 엄밀성 평가
 - **평가자 2**: Cursor Agent — 모델별 역할 분담:
-  - `composer-2`: 코드 구조/아키텍처 검토, 파이프라인 일관성, 리팩토링 제안
-  - `gpt-5.3-codex`: 저수준 수치 검증, 코드 경로 대조, 엣지케이스/보안 감사
-  - `gpt-5.3-codex-high`: 최종 배포 전 1회 검증 (고비용 — `--final` 플래그로만 실행)
+  - `composer-2`: 코드 구조/아키텍처 검토, 파이프라인 일관성, 리팩토링 제안 (기본 평가)
+  - `gpt-5.4-high`: 논리 정합성 검토, 계획 수립 시 연구 설계 검증 (일반 문서)
+  - `gpt-5.4-xhigh`: 최종 검증 — 논문 수준 엄밀성, 수치-표-그래프 정합성 (고비용, `--final`로만 실행)
+  - 문서가 길면(코드+로그 포함) `1M` 계열 자동 선택 (gpt-5.4-high → gpt-5.4-1m-high 등)
 - **통합 평가**: `scripts/eval_all.sh` — Gemini + Cursor 병렬 실행
 - **개별 평가**: `scripts/eval_cycle.sh` (Gemini) / `scripts/eval_cursor.sh` (Cursor)
 - **Context 관리**:
