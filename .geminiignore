@@ -1,5 +1,5 @@
 # ==========================================
-# .geminiignore — Save token of Gemini
+# .claudeignore — Save token of Claude Code
 # ==========================================
 
 # 1. Python 가상환경 (venv 전체 — 바이너리, 라이브러리 등)
@@ -70,5 +70,3 @@ notebooks/
 *.min.css
 
 .README_MY.md
-.claude
-./CLAUDE.md
