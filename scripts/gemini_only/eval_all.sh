@@ -10,12 +10,13 @@
 set -euo pipefail
 
 if [[ $# -lt 2 ]]; then
-    echo "Usage: $0 <packet.yaml> <TARGET_MD>"
+    echo "Usage: $0 <packet.yaml> <TARGET_MD> [KEYWORD]"
     exit 1
 fi
 
 PACKET_YAML="$1"
 TARGET_MD="$2"
+KEYWORD="${3:-unnamed}"
 
 if [[ ! -f "$PACKET_YAML" ]]; then
     echo "ERROR: packet not found: $PACKET_YAML"
@@ -29,7 +30,13 @@ fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ACPX_PROMPTS_DIR="$(cd "$SCRIPT_DIR/../../docs/acpx_prompts" && pwd)"
-RESULT_DIR="$(cd "$SCRIPT_DIR/../../docs/multi-agent-working-history" && pwd)"
+BASE_RESULT_DIR="$(cd "$SCRIPT_DIR/../../docs/multi-agent-working-history" && pwd)"
+
+# Organize result directory: DATE / TIME_KEYWORD
+DATE_STR=$(date +%Y-%m-%d)
+TIME_STR=$(date +%H%M%S)
+RESULT_DIR="$BASE_RESULT_DIR/$DATE_STR/${TIME_STR}_$KEYWORD"
+mkdir -p "$RESULT_DIR"
 
 # Parse Route from packet.yaml (default to general)
 ROUTE=$(grep '^route:' "$PACKET_YAML" | awk -F '"' '{print $2}' || echo "general")
@@ -41,13 +48,14 @@ ROUTE=${ROUTE:-general}
 MAX_LOOPS=$(grep '^max_loops:' "$PACKET_YAML" | awk '{print $2}' || echo "2")
 
 echo "[eval-all] Start ACPX Workflow"
+echo "  Session Dir: $RESULT_DIR"
 echo "  Route: $ROUTE"
 echo "  Max Loops: $MAX_LOOPS"
 echo "  Target: $TARGET_MD"
 echo ""
 
-TIMESTAMP=$(date +%Y%m%d_%H%M%S)_$RANDOM
-REVISED_MD_CURRENT="$RESULT_DIR/revised_${TIMESTAMP}_current.md"
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+REVISED_MD_CURRENT="$RESULT_DIR/revised_current.md"
 cp "$TARGET_MD" "$REVISED_MD_CURRENT"
 
 NUMERIC_AUDIT_PARAM=""

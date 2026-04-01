@@ -117,7 +117,8 @@ Phase 1:
 - **4. 최종 검증자 (Final Verifier, Cursor / gpt-5.4-high)**: 최종 산출물을 받아 패스(PASS)/반려(BLOCK) 판정 (`verdict.yaml` 생성)
 
 - **평가 스크립트 경로**: `scripts/gemini_only/` (Gemini 오케스트레이터 전용)
-  - 루프 파이프라인(작업 후 평가 시 실행): `bash scripts/gemini_only/eval_all.sh <TARGET_MD>`
+  - 루프 파이프라인(작업 후 평가 시 실행): `bash scripts/gemini_only/eval_all.sh <PACKET_YAML> <TARGET_MD> [KEYWORD]`
+  - 결과물 저장 경로: `docs/multi-agent-working-history/YYYY-MM-DD/HHMMSS_KEYWORD/`
 - **⚠️ 금지 규칙**: 
   - `composer-2`는 완전히 제거하였으므로 절대 평가 과정에 사용 금지.
   - 범용 리뷰어를 2명 이상 병렬로 배치 금지.
@@ -132,7 +133,7 @@ Phase 1:
 3. **최종 검증자(Cursor)의 판정 결과를 수신한 후에만** 다음 작업으로 진행.
 4. **검증 실패(BLOCK) 시**: 무시하고 진행하지 말고, `Reviser`에게 지적사항을 다시 넘겨주어 재수정 루프 실행.
 5. **작업 기록** 반드시 `docs/multi-agent-working-history/` 에 남길 것
-6. 기록 형식: `YYYY-MM-DD_HHMM_키워드.md`
+6. 기록 형식: `YYYY-MM-DD/HHMMSS_KEYWORD/` 폴더 내에 저장
 7. 기록 내용: 패킷 생성 내용 + 각 Agent 수행 결과(`verdict.yaml` 판정 등) + 조치 사항
 
 **이 규칙을 위반하면 사용자의 시간과 비용을 낭비하는 것이다. 절대 생략하지 마라.**
