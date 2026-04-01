@@ -1,10 +1,13 @@
 #!/bin/bash
-# eval_reset_session.sh — evaluator 세션 수동 리셋 (비상용)
+# eval_reset_session.sh — Claude Code 오케스트레이터 전용: Gemini evaluator 세션 수동 리셋 (비상용)
+#
+# [사용 조건] Claude Code 플랜 구독 중일 때만 사용.
+# Gemini 오케스트레이터 기간에는 scripts/gemini_only/eval_reset_session.sh 를 사용하세요.
 #
 # 정상 운영에서는 eval_cycle.sh가 자동으로 리셋을 처리한다.
 # 이 스크립트는 acpx가 비정상 상태일 때만 사용한다.
 #
-# 사용법: bash scripts/eval_reset_session.sh
+# 사용법: bash scripts/claude_only/eval_reset_session.sh
 
 set -euo pipefail
 

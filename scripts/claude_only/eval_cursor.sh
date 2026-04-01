@@ -1,5 +1,8 @@
 #!/bin/bash
-# eval_cursor.sh — Cursor Agent 다중 모델 평가 스크립트
+# eval_cursor.sh — Claude Code 오케스트레이터 전용: Cursor Agent 다중 모델 평가
+#
+# [사용 조건] Claude Code 플랜 구독 중일 때만 사용.
+# Gemini 오케스트레이터 기간에는 scripts/gemini_only/eval_cursor.sh 를 사용하세요.
 #
 # 기본: Composer2 (코드/아키텍처) + Codex (low-level 정합성) 교차 검증
 # 옵션: --final 시 Codex High로 최종 1회 검증 (고비용)
@@ -12,9 +15,9 @@
 #     /model    — 모델 전환
 #
 # Usage:
-#   bash scripts/eval_cursor.sh <deliverable_path>              # 기본 (Composer2 + Codex)
-#   bash scripts/eval_cursor.sh --final <deliverable_path>      # 최종 검증 (+ Codex High)
-#   bash scripts/eval_cursor.sh --model composer-2 <deliverable>  # 특정 모델만
+#   bash scripts/claude_only/eval_cursor.sh <deliverable_path>              # 기본 (Composer2 + Codex)
+#   bash scripts/claude_only/eval_cursor.sh --final <deliverable_path>      # 최종 검증 (+ Codex High)
+#   bash scripts/claude_only/eval_cursor.sh --model composer-2 <deliverable>  # 특정 모델만
 
 set -euo pipefail
 

@@ -1,5 +1,8 @@
 #!/bin/bash
-# eval_cycle.sh — acpx 기반 완전 자동화 평가 사이클
+# eval_cycle.sh — Claude Code 오케스트레이터 전용: acpx 기반 Gemini 평가 사이클
+#
+# [사용 조건] Claude Code 플랜 구독 중일 때만 사용.
+# Gemini 오케스트레이터 기간에는 scripts/gemini_only/ 를 사용하세요.
 #
 # 이 스크립트는 사용자가 직접 실행하지 않는다.
 # Claude Code가 작업 완료 후 내부적으로 실행한다.

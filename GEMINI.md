@@ -79,6 +79,7 @@ llm-context-decay-ops/
 | 통합 평가 진입점 | `scripts/gemini_only/eval_all.sh` |
 | 평가 사이클 래퍼 | `scripts/gemini_only/eval_cycle.sh` |
 | 비상 리셋 | `scripts/gemini_only/eval_reset_session.sh` |
+| 오케스트레이터 전환 가이드 | `scripts/README.md` |
 | 308 케이스 생성기 | `scripts/generate_full_cases.py` |
 | 메인 실험 러너 | `scripts/run_experiment.py` |
 | 생성된 실험 케이스 | `data/processed/experiment_cases_full.jsonl` |

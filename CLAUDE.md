@@ -46,7 +46,10 @@ llm-context-decay-ops/
 │   ├── raw/                   ← original datasets (gitignored)
 │   ├── processed/             ← preprocessed data
 │   └── outputs/               ← LLM outputs + logs
-├── scripts/                   ← 자동화 스크립트 (eval_cycle.sh 등)
+├── scripts/
+│   ├── README.md          ← 오케스트레이터 전환 가이드
+│   ├── claude_only/       ← Claude Code 오케스트레이터 전용 (eval_all.sh 등)
+│   └── gemini_only/       ← Gemini 오케스트레이터 전용 (현재 사용 중 아닐 시 상황 상이할 수 있음)
 ├── src/
 │   ├── data_pipeline/         ← download, preprocess, case generation
 │   ├── compression/           ← Phase 2용 (보류 중)
@@ -75,9 +78,10 @@ llm-context-decay-ops/
 | LLM Judge | `src/evaluation/judge.py` |
 | API calls | `src/models/open_router_request.py` |
 | Visualization | `src/utils/visualize.py` |
-| Gemini 평가 | `scripts/eval_cycle.sh` |
-| Cursor 평가 | `scripts/eval_cursor.sh` |
-| 통합 평가 (Gemini+Cursor) | `scripts/eval_all.sh` |
+| Cursor 평가 (Claude Code용) | `scripts/claude_only/eval_cursor.sh` |
+| Gemini 평가 (Claude Code용) | `scripts/claude_only/eval_cycle.sh` |
+| 통합 평가 — Claude Code 오케스트레이터 | `scripts/claude_only/eval_all.sh` |
+| 오케스트레이터 전환 가이드 | `scripts/README.md` |
 | 308 케이스 생성기 | `scripts/generate_full_cases.py` |
 | 메인 실험 러너 | `scripts/run_experiment.py` |
 | 생성된 실험 케이스 | `data/processed/experiment_cases_full.jsonl` |
@@ -111,15 +115,16 @@ Phase 1:
   - `gpt-5.4-high`: 논리 정합성 검토, 계획 수립 시 연구 설계 검증 (일반 문서)
   - `gpt-5.4-xhigh`: 최종 검증 — 논문 수준 엄밀성, 수치-표-그래프 정합성 (고비용, `--final`로만 실행)
   - 문서가 길면(코드+로그 포함) `1M` 계열 자동 선택 (gpt-5.4-high → gpt-5.4-1m-high 등)
-- **통합 평가**: `scripts/eval_all.sh` — Gemini + Cursor 병렬 실행
-- **개별 평가**: `scripts/eval_cycle.sh` (Gemini) / `scripts/eval_cursor.sh` (Cursor)
+- **통합 평가**: `scripts/claude_only/eval_all.sh` — Gemini + Cursor 병렬 실행
+- **개별 평가**: `scripts/claude_only/eval_cycle.sh` (Gemini) / `scripts/claude_only/eval_cursor.sh` (Cursor)
 - **Context 관리**:
   - Gemini: 15회 평가마다 세션 자동 리셋
   - Cursor: `agent -p` (print mode)는 매 호출 독립 세션. 대화형 사용 시 `/compact` (압축), `/clear` (초기화)
 - **인프라 문서**: `docs/hcom/acpx-integration-analysis.md`, `docs/hcom/acpx-reconnect-issue.md`
+- **오케스트레이터 전환 가이드**: `scripts/README.md`
 
 ### 절대 규칙: 평가 없이 다음 작업 금지
-1. **매 작업 완료 후** 자동으로 `bash scripts/eval_all.sh <산출물경로>` 실행 — 사용자가 지시하지 않아도 반드시 실행
+1. **매 작업 완료 후** 자동으로 `bash scripts/claude_only/eval_all.sh <산출물경로>` 실행 — 사용자가 지시하지 않아도 반드시 실행
 2. **기본값**: Gemini + Cursor (Composer2 + Codex) 교차 검증
 3. **평가 완료 후** 사용자에게 "Codex High 최종 검증을 실행할까요?" 반드시 질문. 사용자가 승인하면 `--final` 실행
 4. **최소 1개 평가자의 결과를 수신한 후에만** 다음 작업으로 진행

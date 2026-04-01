@@ -1,11 +1,14 @@
 #!/bin/bash
-# eval_all.sh — Gemini + Cursor 동시 평가
+# eval_all.sh — Claude Code 오케스트레이터 전용: Gemini + Cursor 동시 평가
+#
+# [사용 조건] Claude Code 플랜 구독 중일 때만 사용.
+# Gemini 오케스트레이터 기간에는 scripts/gemini_only/eval_all.sh 를 사용하세요.
 #
 # 두 평가자에게 병렬로 산출물을 보내고 결과를 수집.
 # 하나가 실패해도 나머지는 진행.
 #
 # Usage:
-#   bash scripts/eval_all.sh <deliverable_path>
+#   bash scripts/claude_only/eval_all.sh <deliverable_path>
 
 set -uo pipefail
 
@@ -21,10 +24,10 @@ echo "[eval-all] Evaluators: Gemini (acpx) + Cursor (agent)"
 echo ""
 
 # Run both evaluators in parallel
-bash scripts/eval_cycle.sh "$DELIVERABLE" &
+bash scripts/claude_only/eval_cycle.sh "$DELIVERABLE" &
 PID_GEMINI=$!
 
-bash scripts/eval_cursor.sh "$DELIVERABLE" &
+bash scripts/claude_only/eval_cursor.sh "$DELIVERABLE" &
 PID_CURSOR=$!
 
 # Wait for both
