@@ -1,9 +1,0 @@
-route: "numeric"
-max_loops: 2
-changes:
-  - original: "B | 200"
-    revised: "B | 250"
-    reason: "Update value B based on feedback"
-  - original: "Total: 300"
-    revised: "Total: 350"
-    reason: "Update total to 350"
