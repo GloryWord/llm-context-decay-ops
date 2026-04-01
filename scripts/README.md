@@ -32,10 +32,28 @@ bash scripts/gemini_only/eval_reset_session.sh
 **역할 구조:**
 ```
 Gemini (오케스트레이터)
-  └── Cursor Agent (평가자)
-        ├── composer-2  → 코드 구조/아키텍처
-        └── gpt-5.4    → 논리 정합성
+  ├── Cursor Agent (평가자)
+  │     ├── composer-2  → 코드 구조/아키텍처
+  │     └── gpt-5.4    → 논리 정합성
+  └── MJ_Codex (원격 협업 평가자)
+        └── mj-codex    → 동료 PC(210.179.28.26)의 Codex (SSH + acpx)
 ```
+
+---
+
+### 💻 MJ_Codex 원격 협업 설정 (Auto Keep-alive)
+
+동료의 고성능 모델(GPT Pro/Codex)을 API Key 공유 없이 활용하며, 동료의 부재 시에도 24시간 자동 유지되도록 설정되어 있습니다.
+
+1. **자동 유지 설정 (동료 PC 완료)**:
+   - `systemd` 사용자 서비스를 통해 `acpx --ttl 0 --approve-all codex sessions ensure --name codex-agent` 명령어가 자동 실행됩니다.
+   - 서비스명: `mj-codex.service` (mhncity 계정)
+2. **본인 PC(MacBook) 설정**: SSH 공개키가 동료 PC에 등록되어 있어 즉시 사용 가능합니다.
+3. **실행**:
+   ```bash
+   # MJ_Codex 단독 평가
+   bash scripts/gemini_only/eval_cursor.sh --model mj-codex <산출물경로>
+   ```
 
 ---
 

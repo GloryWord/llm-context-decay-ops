@@ -107,33 +107,33 @@ Phase 1:
 
 ## Multi-Agent Workflow (필수 준수)
 
-> **[구조 변경]** Claude Code 플랜 종료로 오케스트레이터가 변경됨.
+> **[구조 변경]** 과거 Claude/Cursor 기반에서 새로운 ACPX(AI 상호 평가 Agents) 기반 체계로 개편되었습니다.
 > 기존: Claude Code(오케스트레이터) → Gemini(평가자1) + Cursor(평가자2)
-> **현재: Gemini(오케스트레이터) → Cursor Agent(평가자)**
+> **현재: Gemini(오케스트레이터) → MJ_Codex(수정/감사) → Cursor AI(최종 검증)**
 
-- **오케스트레이터**: Gemini (이 인스턴스) — 작업 실행 및 평가 총괄
-- **평가자**: Cursor Agent — 모델별 역할 분담:
-  - `composer-2`: 코드 구조/아키텍처 검토, 파이프라인 일관성, 리팩토링 제안 (기본 평가)
-  - `gpt-5.4-high`: 논리 정합성 검토, 계획 수립 시 연구 설계 검증 (일반 문서)
-  - `gpt-5.4-xhigh`: 최종 검증 — 논문 수준 엄밀성, 수치-표-그래프 정합성 (고비용, `--final`로만 실행)
-  - 문서가 길면(코드+로그 포함) 고-컨텍스트 모델 자동 사용
+- **1. 오케스트레이터 (Gemini, 이 인스턴스)**: 교수 피드백을 `packet.yaml` 형식으로 정리, 라운팅(general vs numeric) 제어
+- **2. 수정자 (Reviser, MJ_Codex / gpt-5.4)**: `packet.yaml`을 받아 실제 산출물(`revised.md`)을 생성
+- **3. 수치 감사자 (Numeric Auditor, MJ_Codex / gpt-5.3-codex)**: 숫자/표 관련 수정 시 정합성을 감사 (`numeric_audit.yaml` 생성)
+- **4. 최종 검증자 (Final Verifier, Cursor / gpt-5.4-high)**: 최종 산출물을 받아 패스(PASS)/반려(BLOCK) 판정 (`verdict.yaml` 생성)
+
 - **평가 스크립트 경로**: `scripts/gemini_only/` (Gemini 오케스트레이터 전용)
-  - 진입점: `bash scripts/gemini_only/eval_all.sh <산출물경로>`
-  - 최종 검증: `bash scripts/gemini_only/eval_all.sh --final <산출물경로>`
-- **⚠️ 금지**: Gemini가 acpx를 통해 자기 자신(Gemini)을 평가자로 호출하는 것 — 무한루프 발생
+  - 루프 파이프라인(작업 후 평가 시 실행): `bash scripts/gemini_only/eval_all.sh <TARGET_MD>`
+- **⚠️ 금지 규칙**: 
+  - `composer-2`는 완전히 제거하였으므로 절대 평가 과정에 사용 금지.
+  - 범용 리뷰어를 2명 이상 병렬로 배치 금지.
+  - 이미 패스(PASS)인 부분에 추가 리뷰 금지.
 - **Context 관리**:
-  - Cursor: `agent -p` (print mode)는 매 호출 독립 세션. 대화형 사용 시 `/compact` (압축), `/clear` (초기화)
-- **인프라 문서**: `docs/hcom/acpx-integration-analysis.md`, `docs/hcom/acpx-reconnect-issue.md`
+  - `MJ_Codex`와 `Cursor` 호출 시 가능한 One-shot으로 관리 (`max_loops = 2` 정책 적용)
+- **인프라 문서**: `docs/hcom/acpx-integration-analysis.md`, `docs/acpx_prompts/ACPX_OPERATING_SPEC.md`
 
 ### 절대 규칙: 평가 없이 다음 작업 금지
-1. **매 작업 완료 후** 자동으로 `bash scripts/gemini_only/eval_all.sh <산출물경로>` 실행 — 사용자가 지시하지 않아도 반드시 실행
-2. **기본값**: Cursor Agent (Composer2 + GPT-5.4) 교차 검증
-3. **평가 완료 후** 사용자에게 "GPT-5.4 Extra High 최종 검증을 실행할까요?" 반드시 질문. 사용자가 승인하면 `--final` 실행
-4. **최소 Cursor 1개 모델의 결과를 수신한 후에만** 다음 작업으로 진행
-5. **평가 실패 시**: 사용자에게 즉시 보고하고 작업 중단. 절대 무시하고 진행하지 말 것
-6. **작업 기록** 반드시 `docs/multi-agent-working-history/` 에 남길 것
-7. 기록 형식: `YYYY-MM-DD_HHMM_키워드.md`
-8. 기록 내용: 작업 내용 + 평가 결과 (Cursor Composer2/GPT) + 조치 사항
+1. **수정 작업 후** 사용자가 제공한 피드백이 있다면 반드시 ACPX 검증 루프(`eval_all.sh`)를 가동할 것.
+2. 루프 컨트롤 속성(Max Loops)은 최대 2회. 두 번 연속 검증 실패(BLOCK) 시 사용자에게 수동 검토를 요청.
+3. **최종 검증자(Cursor)의 판정 결과를 수신한 후에만** 다음 작업으로 진행.
+4. **검증 실패(BLOCK) 시**: 무시하고 진행하지 말고, `Reviser`에게 지적사항을 다시 넘겨주어 재수정 루프 실행.
+5. **작업 기록** 반드시 `docs/multi-agent-working-history/` 에 남길 것
+6. 기록 형식: `YYYY-MM-DD_HHMM_키워드.md`
+7. 기록 내용: 패킷 생성 내용 + 각 Agent 수행 결과(`verdict.yaml` 판정 등) + 조치 사항
 
 **이 규칙을 위반하면 사용자의 시간과 비용을 낭비하는 것이다. 절대 생략하지 마라.**
 

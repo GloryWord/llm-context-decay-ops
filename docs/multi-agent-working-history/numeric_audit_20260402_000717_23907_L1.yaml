@@ -1,0 +1,13 @@
+[client] initialize (running)
+
+[client] session/new (running)
+
+[client] session/set_model (running)
+```yaml
+AUDIT_RESULT: PASS
+BLOCKERS: []
+NON_BLOCKING_NOTES:
+  - "Table and narrative are numerically consistent: A=100, B=250, and Total=350 (100+250)."
+```
+
+[done] end_turn

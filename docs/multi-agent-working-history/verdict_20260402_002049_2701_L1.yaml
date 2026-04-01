@@ -1,0 +1,8 @@
+```yaml
+VERDICT: PASS
+ESCALATE_TO_HUMAN: false
+RESOLVED_ITEMS:
+  - C1
+  - C2
+BLOCKERS: []
+```

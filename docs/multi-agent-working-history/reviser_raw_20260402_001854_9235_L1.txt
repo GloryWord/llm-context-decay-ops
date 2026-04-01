@@ -1,0 +1,59 @@
+[client] initialize (running)
+
+[client] session/new (running)
+
+[client] session/set_model (running)
+I’m revising `/home/mhncity/test_doc.md` to apply the pending ledger items directly in the document. I’ll verify the current file contents, then patch the title, table value, total, and add the requested summary section within the smallest defensible scope.
+
+[tool] Read test_doc.md (running)
+  input: {"call_id":"call_w9V0xbtNIP3Zeno7EvCja5W7","process_id":"52942","turn_id":"019d49a0-5993-7091-b6a6-e56fda3038f2","command":["/bin/bash","-lc","sed -n '1,120p' /home/mhncity/test_doc.md"],"cwd":"/home/mhncity","parsed_...
+  files: /home/mhncity/test_doc.md
+
+[tool] Read test_doc.md (completed)
+  kind: read
+  input: {"call_id":"call_w9V0xbtNIP3Zeno7EvCja5W7","process_id":"52942","turn_id":"019d49a0-5993-7091-b6a6-e56fda3038f2","command":["/bin/bash","-lc","sed -n '1,120p' /home/mhncity/test_doc.md"],"cwd":"/home/mhncity","parsed_...
+  files: /home/mhncity/test_doc.md
+  output:
+    # Experiment Result Report: Dummy Case
+    
+    This is a draft report.
+    There is a table here:
+    
+    | ID | Value |
+    |---|---|
+    | A | 100 |
+    | B | 250 |
+    
+    Total: 350
+    
+    ## Summary
+    
+    The revised dummy case reports 100 for A and 250 for B, yielding a total of 350.
+DECISION: REVISED
+
+CHANGESET
+- C1: Updated the header to `# Experiment Result Report: Dummy Case`.
+- C2: Updated B's value from 200 to 250 and synchronized the total to 350.
+- Goal sync: Added a summary section that reflects the revised table values.
+
+REVISED_SECTIONS
+### FULL_REVISED_DOCUMENT
+```markdown
+# Experiment Result Report: Dummy Case
+
+This is a draft report.
+There is a table here:
+
+| ID | Value |
+|---|---|
+| A | 100 |
+| B | 250 |
+
+Total: 350
+
+## Summary
+
+The revised dummy case reports 100 for A and 250 for B, yielding a total of 350.
+```
+
+[done] end_turn
