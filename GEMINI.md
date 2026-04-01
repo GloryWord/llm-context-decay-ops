@@ -33,7 +33,7 @@ Multi-turn 대화에서 시스템 프롬프트 규칙 준수율의 붕괴 임계
 ## Directory Structure
 ```
 llm-context-decay-ops/
-├── CLAUDE.md                  ← this file
+├── GEMINI.md                  ← this file (Gemini 오케스트레이터 규칙)
 ├── .claude/rules/coding.md    ← coding rules
 ├── docs/
 │   ├── [Capstone]_이종웅_Lit_Review_and_Exp_Design_22110157.md  ← 연구계획서
@@ -75,9 +75,10 @@ llm-context-decay-ops/
 | LLM Judge | `src/evaluation/judge.py` |
 | API calls | `src/models/open_router_request.py` |
 | Visualization | `src/utils/visualize.py` |
-| Gemini 평가 | `scripts/eval_cycle.sh` |
-| Cursor 평가 | `scripts/eval_cursor.sh` |
-| 통합 평가 (Gemini+Cursor) | `scripts/eval_all.sh` |
+| Cursor 평가 (Gemini 오케스트레이터용) | `scripts/gemini_only/eval_cursor.sh` |
+| 통합 평가 진입점 | `scripts/gemini_only/eval_all.sh` |
+| 평가 사이클 래퍼 | `scripts/gemini_only/eval_cycle.sh` |
+| 비상 리셋 | `scripts/gemini_only/eval_reset_session.sh` |
 | 308 케이스 생성기 | `scripts/generate_full_cases.py` |
 | 메인 실험 러너 | `scripts/run_experiment.py` |
 | 생성된 실험 케이스 | `data/processed/experiment_cases_full.jsonl` |
@@ -104,30 +105,34 @@ Phase 1:
 | 페르소나 (존댓말) | 한국어 어미 패턴 매칭 | 90% 자동 |
 
 ## Multi-Agent Workflow (필수 준수)
-- **실행자**: Claude Code (이 세션)
-- **평가자 1**: Gemini CLI (acpx headless) — 완결성/학문적 엄밀성 평가
-- **평가자 2**: Cursor Agent — 모델별 역할 분담:
+
+> **[구조 변경]** Claude Code 플랜 종료로 오케스트레이터가 변경됨.
+> 기존: Claude Code(오케스트레이터) → Gemini(평가자1) + Cursor(평가자2)
+> **현재: Gemini(오케스트레이터) → Cursor Agent(평가자)**
+
+- **오케스트레이터**: Gemini (이 인스턴스) — 작업 실행 및 평가 총괄
+- **평가자**: Cursor Agent — 모델별 역할 분담:
   - `composer-2`: 코드 구조/아키텍처 검토, 파이프라인 일관성, 리팩토링 제안 (기본 평가)
   - `gpt-5.4-high`: 논리 정합성 검토, 계획 수립 시 연구 설계 검증 (일반 문서)
   - `gpt-5.4-xhigh`: 최종 검증 — 논문 수준 엄밀성, 수치-표-그래프 정합성 (고비용, `--final`로만 실행)
-  - 문서가 길면(코드+로그 포함) `1M` 계열 자동 선택 (gpt-5.4-high → gpt-5.4-1m-high 등)
-- **통합 평가**: `scripts/eval_all.sh` — Gemini + Cursor 병렬 실행
-- **개별 평가**: `scripts/eval_cycle.sh` (Gemini) / `scripts/eval_cursor.sh` (Cursor)
+  - 문서가 길면(코드+로그 포함) 고-컨텍스트 모델 자동 사용
+- **평가 스크립트 경로**: `scripts/gemini_only/` (Gemini 오케스트레이터 전용)
+  - 진입점: `bash scripts/gemini_only/eval_all.sh <산출물경로>`
+  - 최종 검증: `bash scripts/gemini_only/eval_all.sh --final <산출물경로>`
+- **⚠️ 금지**: Gemini가 acpx를 통해 자기 자신(Gemini)을 평가자로 호출하는 것 — 무한루프 발생
 - **Context 관리**:
-  - Gemini: 15회 평가마다 세션 자동 리셋
   - Cursor: `agent -p` (print mode)는 매 호출 독립 세션. 대화형 사용 시 `/compact` (압축), `/clear` (초기화)
 - **인프라 문서**: `docs/hcom/acpx-integration-analysis.md`, `docs/hcom/acpx-reconnect-issue.md`
 
 ### 절대 규칙: 평가 없이 다음 작업 금지
-1. **매 작업 완료 후** 자동으로 `bash scripts/eval_all.sh <산출물경로>` 실행 — 사용자가 지시하지 않아도 반드시 실행
-2. **기본값**: Gemini + Cursor (Composer2 + Codex) 교차 검증
-3. **평가 완료 후** 사용자에게 "Codex High 최종 검증을 실행할까요?" 반드시 질문. 사용자가 승인하면 `--final` 실행
-4. **최소 1개 평가자의 결과를 수신한 후에만** 다음 작업으로 진행
-4. **평가 실패 시**: 사용자에게 즉시 보고하고 작업 중단. 절대 무시하고 진행하지 말 것
-5. **작업 기록** 반드시 `docs/multi-agent-working-history/` 에 남길 것
-6. 기록 형식: `YYYY-MM-DD_HHMM_키워드.md`
-7. 기록 내용: 작업 내용 + 평가 결과 (Gemini/Cursor) + 조치 사항
-8. `.claude/hooks/eval_gate.sh` 가 미평가 산출물 경고를 출력함
+1. **매 작업 완료 후** 자동으로 `bash scripts/gemini_only/eval_all.sh <산출물경로>` 실행 — 사용자가 지시하지 않아도 반드시 실행
+2. **기본값**: Cursor Agent (Composer2 + GPT-5.4) 교차 검증
+3. **평가 완료 후** 사용자에게 "GPT-5.4 Extra High 최종 검증을 실행할까요?" 반드시 질문. 사용자가 승인하면 `--final` 실행
+4. **최소 Cursor 1개 모델의 결과를 수신한 후에만** 다음 작업으로 진행
+5. **평가 실패 시**: 사용자에게 즉시 보고하고 작업 중단. 절대 무시하고 진행하지 말 것
+6. **작업 기록** 반드시 `docs/multi-agent-working-history/` 에 남길 것
+7. 기록 형식: `YYYY-MM-DD_HHMM_키워드.md`
+8. 기록 내용: 작업 내용 + 평가 결과 (Cursor Composer2/GPT) + 조치 사항
 
 **이 규칙을 위반하면 사용자의 시간과 비용을 낭비하는 것이다. 절대 생략하지 마라.**
 
