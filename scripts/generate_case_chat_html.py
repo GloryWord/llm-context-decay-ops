@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import glob
 import json
+import re
 from datetime import datetime
 from html import escape
 from pathlib import Path
@@ -67,6 +68,37 @@ TYPE_LABELS = {
     "format": "형식",
     "behavioral": "행동",
     "persona": "페르소나",
+}
+
+# Rule-id-specific copy for badges / detail lines / pills (matches polished gallery HTML).
+BADGE_TITLE_BY_RULE_ID: dict[str, str] = {
+    "R01": "Rule 01 : 언어 규칙 ",
+    "R02": "Rule 02 : 형식 규칙 (길이) ",
+    "R03": "Rule 03 : 형식 규칙 (접두사) ",
+    "R04": "Rule 04 : 행동 규칙 (정치) ",
+    "R05": "Rule 05 : 페르소나 규칙 ",
+    "R06": "Rule 06 : 행동 규칙 (개인정보) ",
+    "R07": "Rule 07 : 형식 규칙 (맺음말) ",
+}
+
+DETAIL_PAREN_BY_RULE_ID: dict[str, str] = {
+    "R01": "언어 규칙",
+    "R02": "형식·길이",
+    "R03": "형식·접두사",
+    "R04": "행동·정치",
+    "R05": "페르소나",
+    "R06": "행동·개인정보",
+    "R07": "형식·맺음말",
+}
+
+PILL_CATEGORY_PREFIX_BY_RULE_ID: dict[str, str] = {
+    "R01": "언어 규칙: ",
+    "R02": "형식 규칙 (길이): ",
+    "R03": "형식 규칙 (접두사): ",
+    "R04": "행동 규칙: ",
+    "R05": "페르소나 규칙: ",
+    "R06": "행동 규칙: ",
+    "R07": "형식 규칙 (맺음말): ",
 }
 
 BUCKET_EXAMPLE_SPECS = [
@@ -275,16 +307,60 @@ def badge_label(passed: bool | None) -> str:
     return "N/A"
 
 
+def format_rule_id_heading(rule_id: str) -> str:
+    """Return display heading like Rule 01 (plain text; escape at HTML boundary)."""
+    match = re.match(r"^R(\d+)$", rule_id or "")
+    if match:
+        return f"Rule {int(match.group(1)):02d}"
+    return rule_id or ""
+
+
+def score_badge_strong_title(rule_id: str, rule: dict) -> str:
+    """Long badge title with spacing, e.g. Rule 01 : 언어 규칙 """
+    fixed = BADGE_TITLE_BY_RULE_ID.get(rule_id)
+    if fixed:
+        return fixed
+    rtype = rule.get("type", "unknown")
+    type_ko = TYPE_LABELS.get(rtype, rtype)
+    return f"{format_rule_id_heading(rule_id)} : {type_ko} 규칙 "
+
+
+def detail_list_paren(rule_id: str, rule: dict) -> str:
+    """Parenthetical in scoring detail lines, e.g. 언어 규칙 / 형식·길이."""
+    fixed = DETAIL_PAREN_BY_RULE_ID.get(rule_id)
+    if fixed:
+        return fixed
+    rtype = rule.get("type", "unknown")
+    return TYPE_LABELS.get(rtype, str(rtype))
+
+
+def rule_pill_category_prefix(rule_id: str, rule: dict) -> str:
+    """Category span text before rule body, including trailing space before colon pair."""
+    fixed = PILL_CATEGORY_PREFIX_BY_RULE_ID.get(rule_id)
+    if fixed:
+        return fixed
+    rtype = rule.get("type", "unknown")
+    type_ko = TYPE_LABELS.get(rtype, rtype)
+    return f"{type_ko} 규칙: "
+
+
 def render_rule_pills(rules: list[dict]) -> str:
     """Render active rules as compact pills."""
     pills = []
     for rule in rules:
-        rule_type = TYPE_LABELS.get(rule.get("type", "unknown"), rule.get("type", "unknown"))
+        rid = rule.get("rule_id", "")
+        prefix = rule_pill_category_prefix(rid, rule)
+        match = re.match(r"^R(\d+)$", rid or "")
+        if match:
+            strong = f"<strong>Rule {int(match.group(1)):02d}</strong>"
+        else:
+            strong = f"<strong>{escape(rid)}</strong>"
+        body = rule.get("text", "")
         pills.append(
             "<span class='rule-pill'>"
-            f"<strong>{escape(rule.get('rule_id', ''))}</strong>"
-            f"<span>{escape(rule_type)}</span>"
-            f"<em>{escape(rule.get('text', ''))}</em>"
+            f"{strong}"
+            f"<span>{prefix}</span>"
+            f"<em> {escape(body)}</em>"
             "</span>"
         )
     return "\n".join(pills)
@@ -562,22 +638,24 @@ def render_turn(turn_result: dict, rule_index: dict[str, dict]) -> str:
     badges = []
     details = []
     for score in turn_result.get("scores", []):
-        rule = rule_index.get(score.get("rule_id", ""), {})
-        label = TYPE_LABELS.get(rule.get("type", "unknown"), rule.get("type", "unknown"))
+        rid = score.get("rule_id", "")
+        rule = rule_index.get(rid, {})
         status = badge_label(score.get("pass"))
         css_class = badge_class(score.get("pass"))
+        title = score_badge_strong_title(rid, rule)
+        paren = detail_list_paren(rid, rule)
+        heading = format_rule_id_heading(rid)
         badges.append(
             "<span class='score-badge "
             f"{css_class}'>"
-            f"<strong>{escape(score.get('rule_id', ''))}</strong>"
-            f"<span>{escape(label)}</span>"
-            f"<em>{status}</em>"
+            f"<strong>{escape(title)}</strong>"
+            f"<span class='badge-status'>{status}</span>"
             "</span>"
         )
         details.append(
             "<li>"
-            f"<strong>{escape(score.get('rule_id', ''))}</strong> "
-            f"({escape(label)}) - {status}: {escape(score.get('detail', ''))}"
+            f"<strong>{escape(heading)}</strong> "
+            f"({escape(paren)}) - {status}: {escape(score.get('detail', ''))}"
             "</li>"
         )
 
@@ -587,15 +665,15 @@ def render_turn(turn_result: dict, rule_index: dict[str, dict]) -> str:
 <article class="turn-card">
   <div class="turn-header">
     <span class="turn-index">Turn {turn}</span>
-    <span class="turn-stat">Compliance {compliance}</span>
-    <span class="turn-stat">Response length {response_length} chars</span>
+    <span class="turn-stat">준수율 {compliance}</span>
+    <span class="turn-stat">답변 길이 {response_length}자</span>
   </div>
   <div class="bubble-row user-row">
-    <div class="speaker user">User</div>
+    <div class="speaker user">고객</div>
     <div class="bubble user-bubble">{user_message}</div>
   </div>
   <div class="bubble-row assistant-row">
-    <div class="speaker assistant">Assistant</div>
+    <div class="speaker assistant">고객 상담 에이전트</div>
     <div class="bubble assistant-bubble">{response}</div>
   </div>
   <div class="compliance-track">
@@ -605,7 +683,7 @@ def render_turn(turn_result: dict, rule_index: dict[str, dict]) -> str:
     {badges}
   </div>
   <details class="score-details">
-    <summary>Turn {turn} scoring details</summary>
+    <summary>턴 {turn} 채점 상세</summary>
     <ul>
       {details}
     </ul>
@@ -668,7 +746,7 @@ def render_case_section(case_view: dict) -> str:
     </div>
   </div>
   <details class="system-prompt">
-    <summary>System prompt and active rules</summary>
+    <summary>시스템 프롬프트 및 활성 규칙</summary>
     <div class="prompt-box">{system_prompt}</div>
     <div class="rule-pills">
       {rule_pills}
@@ -1231,13 +1309,11 @@ def render_html(
     .score-badge strong {{
       font-size: 12px;
     }}
-    .score-badge span {{
-      color: var(--muted);
-    }}
-    .score-badge em {{
+    .score-badge .badge-status {{
       font-style: normal;
       font-weight: 700;
       letter-spacing: 0.04em;
+      color: inherit;
     }}
     .score-badge.pass {{
       background: rgba(29, 122, 90, 0.1);
