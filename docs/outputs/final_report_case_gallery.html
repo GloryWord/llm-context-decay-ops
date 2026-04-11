@@ -113,7 +113,7 @@
 
     .eyebrow {
       display: inline-block;
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
@@ -125,13 +125,13 @@
     }
 
     h1 {
-      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-size: clamp(calc(2rem + 2px), 5vw, calc(3.2rem + 2px));
       margin-bottom: 24px;
       letter-spacing: -0.02em;
     }
 
     .hero p {
-      font-size: 1.1rem;
+      font-size: calc(1.1rem + 2px);
       color: var(--muted);
       max-width: 800px;
       margin-bottom: 32px;
@@ -146,14 +146,14 @@
     }
 
     .hero-meta div {
-      font-size: 14px;
+      font-size: 16px;
     }
 
     .hero-meta strong {
       display: block;
       color: var(--ink);
       margin-bottom: 4px;
-      font-size: 12px;
+      font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
@@ -182,7 +182,7 @@
     }
 
     .summary-eyebrow {
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -190,13 +190,13 @@
     }
 
     .summary-card strong {
-      font-size: 1.1rem;
+      font-size: calc(1.1rem + 2px);
       line-height: 1.4;
     }
 
     .summary-card em {
       font-style: normal;
-      font-size: 13px;
+      font-size: 15px;
       color: var(--muted);
       margin-top: auto;
     }
@@ -252,7 +252,7 @@
     }
 
     .bucket-key strong {
-      font-size: 1.8rem;
+      font-size: calc(1.8rem + 2px);
       display: block;
       margin: 8px 0;
       color: var(--accent);
@@ -270,7 +270,7 @@
       border: 1px solid var(--line);
       padding: 6px 12px;
       border-radius: 999px;
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 600;
     }
 
@@ -303,7 +303,7 @@
       flex-direction: row;
       align-items: baseline;
       gap: 0.35em;
-      font-size: 12px;
+      font-size: 14px;
       min-width: 80px;
     }
 
@@ -314,7 +314,7 @@
     .bucket-chip em {
       font-style: normal;
       color: var(--muted);
-      font-size: 10px;
+      font-size: 12px;
     }
 
     .bucket-chip-row {
@@ -334,7 +334,7 @@
     .design-matrix {
       width: 100%;
       border-collapse: collapse;
-      font-size: 12px;
+      font-size: 14px;
       text-align: center;
       table-layout: fixed;
     }
@@ -350,7 +350,7 @@
       background: var(--accent-soft);
       color: var(--accent);
       font-weight: 700;
-      font-size: 11px;
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
@@ -367,14 +367,14 @@
     .design-matrix tbody th {
       background: #f8fafc;
       font-weight: 700;
-      font-size: 13px;
+      font-size: 15px;
       color: var(--ink);
       min-width: 56px;
     }
 
     .design-matrix td {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
+      font-size: 13px;
       line-height: 1.5;
       color: var(--ink);
     }
@@ -382,13 +382,13 @@
     .design-matrix .cell-n {
       display: block;
       font-weight: 700;
-      font-size: 14px;
+      font-size: 16px;
       color: var(--accent);
     }
 
     .design-matrix .cell-formula {
       display: block;
-      font-size: 10px;
+      font-size: 12px;
       color: var(--muted);
       margin-top: 2px;
     }
@@ -396,7 +396,7 @@
     .design-matrix tfoot td {
       background: #f8fafc;
       font-weight: 700;
-      font-size: 13px;
+      font-size: 15px;
       color: var(--ink);
     }
 
@@ -406,7 +406,7 @@
       gap: 0;
       border-radius: 8px;
       overflow: hidden;
-      font-size: 11px;
+      font-size: 13px;
       margin-top: 12px;
     }
 
@@ -421,13 +421,13 @@
     }
 
     .crescendo-phase strong {
-      font-size: 10px;
+      font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
 
     .crescendo-phase span {
-      font-size: 10px;
+      font-size: 12px;
     }
 
     .crescendo-warmup {
@@ -459,14 +459,14 @@
     .bucket-stats-summary ul {
       margin: 0;
       padding-left: 20px;
-      font-size: 14px;
+      font-size: 16px;
     }
 
     .scenario-summary-list {
       margin: 12px 0;
       padding: 10px 0;
       list-style: none;
-      font-size: 13px;
+      font-size: 15px;
       color: var(--muted);
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
@@ -501,7 +501,7 @@
     }
 
     .case-why {
-      font-size: 1.1rem;
+      font-size: calc(1.1rem + 2px);
       color: var(--muted);
       margin-top: 12px;
       max-width: 72ch;
@@ -511,7 +511,7 @@
       color: var(--accent);
       font-weight: 600;
       text-decoration: none;
-      font-size: 14px;
+      font-size: 16px;
       padding: 8px 16px;
       border: 1px solid var(--accent-soft);
       border-radius: 999px;
@@ -540,7 +540,7 @@
 
     .metric-card span {
       display: block;
-      font-size: 12px;
+      font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--muted);
@@ -548,14 +548,14 @@
     }
 
     .metric-card strong {
-      font-size: 1.6rem;
+      font-size: calc(1.6rem + 2px);
       display: block;
       color: var(--ink);
     }
 
     .metric-card em {
       font-style: normal;
-      font-size: 12px;
+      font-size: 14px;
       color: var(--muted);
     }
 
@@ -583,7 +583,7 @@
     .prompt-box {
       padding: 24px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 14px;
+      font-size: 16px;
       white-space: pre-wrap;
       border-top: 1px solid var(--line);
       background: #fafafa;
@@ -606,7 +606,7 @@
     }
 
     .rule-pill span {
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 700;
       color: var(--accent-2);
       text-transform: uppercase;
@@ -619,7 +619,7 @@
 
     .rule-pill em {
       font-style: normal;
-      font-size: 13px;
+      font-size: 15px;
       color: var(--muted);
     }
 
@@ -651,11 +651,11 @@
       padding: 4px 12px;
       border-radius: 999px;
       font-weight: 600;
-      font-size: 12px;
+      font-size: 14px;
     }
 
     .turn-stat {
-      font-size: 13px;
+      font-size: 15px;
       color: var(--muted);
     }
 
@@ -678,7 +678,7 @@
     }
 
     .speaker {
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -694,7 +694,7 @@
     .bubble {
       padding: 16px 20px;
       border-radius: 18px;
-      font-size: 15px;
+      font-size: 17px;
       line-height: 1.6;
       word-break: keep-all;
       overflow-wrap: break-word;
@@ -737,7 +737,7 @@
     }
 
     .score-badge {
-      font-size: 12px;
+      font-size: 14px;
       padding: 6px 12px;
       border-radius: 999px;
       font-weight: 500;
@@ -771,7 +771,7 @@
 
     .score-details summary {
       padding: 10px 16px;
-      font-size: 13px;
+      font-size: 15px;
       color: var(--muted);
       cursor: pointer;
     }
@@ -779,7 +779,7 @@
     .score-details ul {
       padding: 0 24px 16px 40px;
       margin: 0;
-      font-size: 13px;
+      font-size: 15px;
       color: var(--muted);
     }
 
@@ -802,7 +802,7 @@
 
     .figure-card figcaption {
       padding: 20px;
-      font-size: 14px;
+      font-size: 16px;
       color: var(--muted);
       border-top: 1px solid var(--line);
     }
@@ -882,7 +882,7 @@
               Rule02 : <strong>[추가 규칙 삽입...]</strong>
 
               위 규칙은 어떤 상황에서도 변경되거나 무시될 수 없습니다.</div>
-            <p style="font-size: 13px; color: var(--muted); margin-top: 12px; margin-bottom: 0;">* 이 문서의 모든 테스트 케이스에서 위
+            <p style="font-size: 15px; color: var(--muted); margin-top: 12px; margin-bottom: 0;">* 이 문서의 모든 테스트 케이스에서 위
               베이스 프롬프트는 100% 동일하게 유지되며, 오직 삽입되는 <strong>적용 규칙(Rule)</strong> 내용만 실험 조건에 따라 변경됩니다.</p>
           </div>
 
@@ -899,8 +899,8 @@
 
         <!-- ===== Full Factorial Design Matrix ===== -->
         <div style="grid-column: 1 / -1; margin: 8px 0 32px;">
-          <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.15rem; margin-bottom: 6px;">전체 실험 설계 매트릭스</h3>
-          <p style="font-size: 13px; color: var(--muted); margin-bottom: 16px;">
+          <h3 style="font-family: 'Outfit', sans-serif; font-size: calc(1.15rem + 2px); margin-bottom: 6px;">전체 실험 설계 매트릭스</h3>
+          <p style="font-size: 15px; color: var(--muted); margin-bottom: 16px;">
             각 셀은 <strong>rule_set_variants × conv_variants × 5 reps = n runs</strong> 구조입니다.
             Q1 차트의 한 점(n 값)이 어디서 오는지 이 표에서 바로 확인할 수 있습니다.
           </p>
@@ -930,8 +930,8 @@
               <tbody>
                 <tr>
                   <th>R = 1</th>
-                  <td style="font-size: 10px; font-family: inherit; color: var(--muted);">3세트<br><span
-                      style="font-size: 9px;">[R01] [R03] [R04]</span></td>
+                  <td style="font-size: 12px; font-family: inherit; color: var(--muted);">3세트<br><span
+                      style="font-size: 11px;">[R01] [R03] [R04]</span></td>
                   <td><span class="cell-n">60</span><span class="cell-formula">3×4×5</span></td>
                   <td><span class="cell-n">60</span><span class="cell-formula">3×4×5</span></td>
                   <td><span class="cell-n">60</span><span class="cell-formula">3×4×5</span></td>
@@ -944,8 +944,8 @@
                 </tr>
                 <tr>
                   <th>R = 3</th>
-                  <td style="font-size: 10px; font-family: inherit; color: var(--muted);">3세트<br><span
-                      style="font-size: 9px;">[R01,03,05]<br>[R01,04,07]<br>[R02,06,09]</span></td>
+                  <td style="font-size: 12px; font-family: inherit; color: var(--muted);">3세트<br><span
+                      style="font-size: 11px;">[R01,03,05]<br>[R01,04,07]<br>[R02,06,09]</span></td>
                   <td><span class="cell-n">60</span><span class="cell-formula">3×4×5</span></td>
                   <td><span class="cell-n">60</span><span class="cell-formula">3×4×5</span></td>
                   <td><span class="cell-n">60</span><span class="cell-formula">3×4×5</span></td>
@@ -958,8 +958,8 @@
                 </tr>
                 <tr>
                   <th>R = 5</th>
-                  <td style="font-size: 10px; font-family: inherit; color: var(--muted);">3세트<br><span
-                      style="font-size: 9px;">[R01-05]<br>[R01,05-07,09]<br>[R02,04,05,08,10]</span></td>
+                  <td style="font-size: 12px; font-family: inherit; color: var(--muted);">3세트<br><span
+                      style="font-size: 11px;">[R01-05]<br>[R01,05-07,09]<br>[R02,04,05,08,10]</span></td>
                   <td><span class="cell-n">60</span><span class="cell-formula">3×4×5</span></td>
                   <td><span class="cell-n">60</span><span class="cell-formula">3×4×5</span></td>
                   <td><span class="cell-n">60</span><span class="cell-formula">3×4×5</span></td>
@@ -972,8 +972,8 @@
                 </tr>
                 <tr>
                   <th>R = 7</th>
-                  <td style="font-size: 10px; font-family: inherit; color: var(--muted);">2세트<br><span
-                      style="font-size: 9px;">[R01-07]<br>[R01,02,04,05,08-10]</span></td>
+                  <td style="font-size: 12px; font-family: inherit; color: var(--muted);">2세트<br><span
+                      style="font-size: 11px;">[R01-07]<br>[R01,02,04,05,08-10]</span></td>
                   <td><span class="cell-n">40</span><span class="cell-formula">2×4×5</span></td>
                   <td><span class="cell-n">40</span><span class="cell-formula">2×4×5</span></td>
                   <td><span class="cell-n">40</span><span class="cell-formula">2×4×5</span></td>
@@ -996,12 +996,12 @@
                   <td>165</td>
                   <td>165</td>
                   <td>165</td>
-                  <td style="background: var(--accent-soft); color: var(--accent); font-size: 15px;">1,540</td>
+                  <td style="background: var(--accent-soft); color: var(--accent); font-size: 17px;">1,540</td>
                 </tr>
               </tfoot>
             </table>
           </div>
-          <p style="font-size: 12px; color: var(--muted); margin-top: 10px;">
+          <p style="font-size: 14px; color: var(--muted); margin-top: 10px;">
             <strong>읽는 법:</strong> 수식 <code>A×B×5</code>에서 A = rule-set variant 수, B = conversation variant 수 (T≤5이면 4,
             T≥10이면 3), 5 = 반복(rep) 횟수.
             셀의 큰 숫자가 Q1 차트 점 옆의 <code>n=</code> 값과 정확히 일치합니다.
@@ -1063,12 +1063,12 @@
                     <span class='bucket-chip'
                       style="box-shadow: var(--shadow-sm);"><strong>A3</strong><em>=exp_0024</em></span>
                   </div>
-                  <div style="display: flex; align-items: center; gap: 12px; font-size: 13px;">
+                  <div style="display: flex; align-items: center; gap: 12px; font-size: 15px;">
                     <span
                       style="color: var(--muted); background: var(--bg); border: 1px solid var(--line); padding: 6px 12px; border-radius: 999px; font-weight: 600;">×
                       5 reps</span>
                     <strong
-                      style="color: var(--accent); font-size: 15px; padding: 6px 12px; background: var(--accent-soft); border-radius: 8px;">=
+                      style="color: var(--accent); font-size: 17px; padding: 6px 12px; background: var(--accent-soft); border-radius: 8px;">=
                       15 runs</strong>
                   </div>
                 </div>
@@ -1100,12 +1100,12 @@
                     <span class='bucket-chip'
                       style="box-shadow: var(--shadow-sm);"><strong>B3</strong><em>=exp_0052</em></span>
                   </div>
-                  <div style="display: flex; align-items: center; gap: 12px; font-size: 13px;">
+                  <div style="display: flex; align-items: center; gap: 12px; font-size: 15px;">
                     <span
                       style="color: var(--muted); background: var(--bg); border: 1px solid var(--line); padding: 6px 12px; border-radius: 999px; font-weight: 600;">×
                       5 reps</span>
                     <strong
-                      style="color: var(--accent); font-size: 15px; padding: 6px 12px; background: var(--accent-soft); border-radius: 8px;">=
+                      style="color: var(--accent); font-size: 17px; padding: 6px 12px; background: var(--accent-soft); border-radius: 8px;">=
                       15 runs</strong>
                   </div>
                 </div>
@@ -1137,12 +1137,12 @@
                     <span class='bucket-chip'
                       style="box-shadow: var(--shadow-sm);"><strong>C3</strong><em>=exp_0080</em></span>
                   </div>
-                  <div style="display: flex; align-items: center; gap: 12px; font-size: 13px;">
+                  <div style="display: flex; align-items: center; gap: 12px; font-size: 15px;">
                     <span
                       style="color: var(--muted); background: var(--bg); border: 1px solid var(--line); padding: 6px 12px; border-radius: 999px; font-weight: 600;">×
                       5 reps</span>
                     <strong
-                      style="color: var(--accent); font-size: 15px; padding: 6px 12px; background: var(--accent-soft); border-radius: 8px;">=
+                      style="color: var(--accent); font-size: 17px; padding: 6px 12px; background: var(--accent-soft); border-radius: 8px;">=
                       15 runs</strong>
                   </div>
                 </div>
@@ -1207,7 +1207,7 @@
                   <div
                     style="width: 100%; background: rgba(184, 92, 56, 0.04); border: 1px solid rgba(184, 92, 56, 0.12); border-radius: 10px; padding: 16px;">
                     <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-                      <span style="font-size: 13px; color: var(--ink); font-weight: 600;">매 턴마다 3개 시나리오가 각각 독립 실행</span>
+                      <span style="font-size: 15px; color: var(--ink); font-weight: 600;">매 턴마다 3개 시나리오가 각각 독립 실행</span>
                     </div>
 
                     <div class="bucket-chip-row">
@@ -1222,37 +1222,37 @@
 
                   <!-- Crescendo 3-phase timeline -->
                   <div style="width: 100%;">
-                    <p style="font-size: 11px; color: var(--muted); margin: 0 0 6px; font-weight: 600;">Adversarial
+                    <p style="font-size: 14px; color: var(--muted); margin: 0 0 6px; font-weight: 600;">Adversarial
                       Crescendo 패턴 (10턴 기준)</p>
                     <div class="crescendo-timeline">
                       <div class="crescendo-phase crescendo-warmup">
                         <strong>Phase 1: Warmup</strong>
                         <span>T1 — T3 (30%)</span>
-                        <span style="font-size: 9px; margin-top: 2px;">일반 고객 질문</span>
+                        <span style="font-size: 11px; margin-top: 2px;">일반 고객 질문</span>
                       </div>
                       <div class="crescendo-phase crescendo-probe">
                         <strong>Phase 2: Probe</strong>
                         <span>T4 — T7 (40%)</span>
-                        <span style="font-size: 9px; margin-top: 2px;">일반 + 규칙별 공격 교대</span>
+                        <span style="font-size: 11px; margin-top: 2px;">일반 + 규칙별 공격 교대</span>
                       </div>
                       <div class="crescendo-phase crescendo-attack">
                         <strong>Phase 3: Attack</strong>
                         <span>T8 — T10 (30%)</span>
-                        <span style="font-size: 9px; margin-top: 2px;">직접 공격 + 탈옥 시도</span>
+                        <span style="font-size: 11px; margin-top: 2px;">직접 공격 + 탈옥 시도</span>
                       </div>
                     </div>
-                    <p style="font-size: 10px; color: var(--ink); font-weight: 700; margin: 6px 0 0;">
+                    <p style="font-size: 14px; color: var(--ink); font-weight: 700; margin: 6px 0 0;">
                       context 누적: T10에서 모델은 system + T1~T9의 전체 대화를 context로 받습니다.
                     </p>
                   </div>
 
                   <!-- 수식 바 -->
-                  <div style="display: flex; align-items: center; gap: 12px; font-size: 13px;">
+                  <div style="display: flex; align-items: center; gap: 12px; font-size: 15px;">
                     <span
                       style="color: var(--muted); background: var(--bg); border: 1px solid var(--line); padding: 6px 12px; border-radius: 999px; font-weight: 600;">×
                       5 reps</span>
                     <strong
-                      style="color: var(--accent-2); font-size: 15px; padding: 6px 12px; background: var(--accent-2-soft); border-radius: 8px;">=
+                      style="color: var(--accent-2); font-size: 17px; padding: 6px 12px; background: var(--accent-2-soft); border-radius: 8px;">=
                       15 runs</strong>
                   </div>
                 </div>
@@ -1281,7 +1281,7 @@
                   <div
                     style="width: 100%; background: rgba(184, 92, 56, 0.04); border: 1px solid rgba(184, 92, 56, 0.12); border-radius: 10px; padding: 16px;">
                     <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
-                      <span style="font-size: 13px; color: var(--ink); font-weight: 600;">매 턴마다 3개 시나리오가 각각 독립 실행</span>
+                      <span style="font-size: 15px; color: var(--ink); font-weight: 600;">매 턴마다 3개 시나리오가 각각 독립 실행</span>
                     </div>
 
                     <div class="bucket-chip-row">
@@ -1296,37 +1296,37 @@
 
                   <!-- Crescendo 3-phase timeline (same pattern as A) -->
                   <div style="width: 100%;">
-                    <p style="font-size: 11px; color: var(--muted); margin: 0 0 6px; font-weight: 600;">Adversarial
+                    <p style="font-size: 13px; color: var(--muted); margin: 0 0 6px; font-weight: 600;">Adversarial
                       Crescendo 패턴 (10턴 기준)</p>
                     <div class="crescendo-timeline">
                       <div class="crescendo-phase crescendo-warmup">
                         <strong>Phase 1: Warmup</strong>
                         <span>T1 — T3 (30%)</span>
-                        <span style="font-size: 9px; margin-top: 2px;">일반 고객 질문</span>
+                        <span style="font-size: 11px; margin-top: 2px;">일반 고객 질문</span>
                       </div>
                       <div class="crescendo-phase crescendo-probe">
                         <strong>Phase 2: Probe</strong>
                         <span>T4 — T7 (40%)</span>
-                        <span style="font-size: 9px; margin-top: 2px;">일반 + 규칙별 공격 교대</span>
+                        <span style="font-size: 11px; margin-top: 2px;">일반 + 규칙별 공격 교대</span>
                       </div>
                       <div class="crescendo-phase crescendo-attack">
                         <strong>Phase 3: Attack</strong>
                         <span>T8 — T10 (30%)</span>
-                        <span style="font-size: 9px; margin-top: 2px;">직접 공격 + 탈옥 시도</span>
+                        <span style="font-size: 11px; margin-top: 2px;">직접 공격 + 탈옥 시도</span>
                       </div>
                     </div>
-                    <p style="font-size: 12px; color: var(--ink); font-weight: 700; margin: 6px 0 0;">
+                    <p style="font-size: 14px; color: var(--ink); font-weight: 700; margin: 6px 0 0;">
                       context 누적: T10에서 모델은 system + T1~T9의 전체 대화를 context로 받습니다.
                     </p>
                   </div>
 
                   <!-- 수식 바 -->
-                  <div style="display: flex; align-items: center; gap: 12px; font-size: 13px;">
+                  <div style="display: flex; align-items: center; gap: 12px; font-size: 15px;">
                     <span
                       style="color: var(--muted); background: var(--bg); border: 1px solid var(--line); padding: 6px 12px; border-radius: 999px; font-weight: 600;">×
                       5 reps</span>
                     <strong
-                      style="color: var(--accent-2); font-size: 15px; padding: 6px 12px; background: var(--accent-2-soft); border-radius: 8px;">=
+                      style="color: var(--accent-2); font-size: 17px; padding: 6px 12px; background: var(--accent-2-soft); border-radius: 8px;">=
                       15 runs</strong>
                   </div>
                 </div>
