@@ -1,0 +1,528 @@
+row_id,case_id,turn,score_rule_id,judge_pass_original,ai_action,ai_applicable,ai_adjusted_pass,ai_confidence,human_only,human_only_reason,ai_issue_type,ai_reason_ko,reviewer_id
+2,q1samp_00012,1,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+5,q1samp_00013,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6,q1samp_00013,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7,q1samp_00013,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+10,q1samp_00014,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+11,q1samp_00014,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+12,q1samp_00014,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+13,q1samp_00015,1,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+15,q1samp_00015,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+16,q1samp_00015,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+17,q1samp_00015,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+21,q1samp_00017,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+23,q1samp_00017,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+24,q1samp_00017,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+27,q1samp_00017,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+28,q1samp_00017,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+29,q1samp_00017,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+30,q1samp_00016,1,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+31,q1samp_00016,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+32,q1samp_00016,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+34,q1samp_00016,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+35,q1samp_00016,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+36,q1samp_00016,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+37,q1samp_00016,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+39,q1samp_00016,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+43,q1samp_00018,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+44,q1samp_00018,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+48,q1samp_00018,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+49,q1samp_00018,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+65,q1samp_00019,1,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+67,q1samp_00019,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+68,q1samp_00019,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+70,q1samp_00019,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+71,q1samp_00019,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+75,q1samp_00019,11,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+76,q1samp_00019,12,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+77,q1samp_00019,13,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+78,q1samp_00019,14,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+79,q1samp_00019,15,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+102,q1samp_00020,1,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+105,q1samp_00020,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+106,q1samp_00020,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+107,q1samp_00020,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+109,q1samp_00020,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+110,q1samp_00020,9,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+111,q1samp_00020,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+112,q1samp_00020,11,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+113,q1samp_00020,12,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+114,q1samp_00020,13,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+115,q1samp_00020,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+116,q1samp_00020,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+121,q1samp_00021,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+123,q1samp_00021,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+128,q1samp_00021,12,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+129,q1samp_00021,13,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+130,q1samp_00021,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+131,q1samp_00021,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+1334,q1samp_00133,1,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+1496,q1samp_00135,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+1500,q1samp_00135,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+1504,q1samp_00135,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+1516,q1samp_00134,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+1524,q1samp_00134,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+1536,q1samp_00136,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+1540,q1samp_00136,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+1544,q1samp_00136,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+1780,q1samp_00138,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+1784,q1samp_00138,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+1788,q1samp_00138,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+1792,q1samp_00138,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+1796,q1samp_00138,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+1808,q1samp_00138,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+1812,q1samp_00138,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+1836,q1samp_00139,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+1840,q1samp_00139,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+1844,q1samp_00139,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+1848,q1samp_00139,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+1852,q1samp_00139,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+1940,q1samp_00140,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+1956,q1samp_00140,11,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+1992,q1samp_00141,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+1996,q1samp_00141,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2008,q1samp_00141,9,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2016,q1samp_00141,11,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2028,q1samp_00141,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+2032,q1samp_00141,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+2072,q1samp_00142,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2076,q1samp_00142,11,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2080,q1samp_00142,12,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2084,q1samp_00142,13,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2088,q1samp_00142,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+2092,q1samp_00142,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+2099,q1samp_00155,1,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+2231,q1samp_00156,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2235,q1samp_00156,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2247,q1samp_00157,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2251,q1samp_00157,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2255,q1samp_00157,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+2259,q1samp_00157,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+2267,q1samp_00158,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2275,q1samp_00158,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+2279,q1samp_00158,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+2477,q1samp_00159,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2481,q1samp_00159,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2485,q1samp_00159,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2489,q1samp_00159,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2493,q1samp_00159,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2497,q1samp_00159,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2501,q1samp_00159,9,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2505,q1samp_00159,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2525,q1samp_00160,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2529,q1samp_00160,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2533,q1samp_00160,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2541,q1samp_00160,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+2545,q1samp_00160,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+2553,q1samp_00161,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2557,q1samp_00161,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2569,q1samp_00161,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2577,q1samp_00161,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2581,q1samp_00161,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+2585,q1samp_00161,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+2698,q1samp_00163,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2710,q1samp_00163,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2714,q1samp_00163,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2718,q1samp_00163,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2726,q1samp_00163,9,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2730,q1samp_00163,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2734,q1samp_00163,11,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2742,q1samp_00163,13,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2746,q1samp_00163,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+2750,q1samp_00163,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+2762,q1samp_00164,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2774,q1samp_00164,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2782,q1samp_00164,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2786,q1samp_00164,9,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2790,q1samp_00164,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2794,q1samp_00164,11,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2802,q1samp_00164,13,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2806,q1samp_00164,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+2810,q1samp_00164,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3122,q1samp_00188,1,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3209,q1samp_00190,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3212,q1samp_00190,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3224,q1samp_00191,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3227,q1samp_00191,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3323,q1samp_00199,1,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3350,q1samp_00193,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3353,q1samp_00193,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3407,q1samp_00192,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3416,q1samp_00192,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3422,q1samp_00192,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3425,q1samp_00192,9,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3449,q1samp_00194,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3452,q1samp_00194,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3455,q1samp_00194,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3458,q1samp_00194,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3464,q1samp_00200,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3467,q1samp_00200,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3473,q1samp_00200,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3482,q1samp_00202,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3485,q1samp_00202,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3488,q1samp_00202,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3491,q1samp_00201,1,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3494,q1samp_00201,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3497,q1samp_00201,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3500,q1samp_00201,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3503,q1samp_00201,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3536,q1samp_00195,11,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3578,q1samp_00196,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3581,q1samp_00196,11,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3590,q1samp_00196,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3593,q1samp_00196,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3638,q1samp_00197,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3641,q1samp_00197,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3668,q1samp_00203,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3680,q1samp_00204,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3683,q1samp_00204,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3686,q1samp_00204,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3689,q1samp_00204,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3695,q1samp_00204,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3701,q1samp_00204,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3704,q1samp_00204,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3737,q1samp_00205,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3740,q1samp_00205,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3743,q1samp_00205,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3746,q1samp_00205,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3749,q1samp_00205,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3800,q1samp_00206,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3812,q1samp_00206,11,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3818,q1samp_00206,13,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3824,q1samp_00206,15,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3851,q1samp_00208,9,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3854,q1samp_00208,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3857,q1samp_00208,11,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3860,q1samp_00208,12,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3866,q1samp_00208,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3869,q1samp_00208,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3872,q1samp_00207,1,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3875,q1samp_00207,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3878,q1samp_00207,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3881,q1samp_00207,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3887,q1samp_00207,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3890,q1samp_00207,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3899,q1samp_00207,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3905,q1samp_00207,12,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3908,q1samp_00207,13,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3911,q1samp_00207,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3914,q1samp_00207,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+4182,q1samp_00232,1,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+4295,q1samp_00233,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4307,q1samp_00233,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4323,q1samp_00234,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+4327,q1samp_00234,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+4343,q1samp_00235,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+4347,q1samp_00235,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+4383,q1samp_00237,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+4387,q1samp_00237,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+4501,q1samp_00236,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4505,q1samp_00236,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4513,q1samp_00236,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4517,q1samp_00236,9,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4521,q1samp_00236,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4582,q1samp_00238,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4586,q1samp_00238,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4598,q1samp_00238,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4602,q1samp_00238,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4606,q1samp_00238,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+4610,q1samp_00238,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+4726,q1samp_00240,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+4730,q1samp_00240,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+4742,q1samp_00239,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4746,q1samp_00239,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4750,q1samp_00239,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4754,q1samp_00239,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4758,q1samp_00239,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4762,q1samp_00239,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4770,q1samp_00239,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4790,q1samp_00239,15,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4839,q1samp_00254,1,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+4926,q1samp_00241,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4974,q1samp_00241,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+4978,q1samp_00241,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+4995,q1samp_00256,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+4999,q1samp_00256,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+5035,q1samp_00257,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+5039,q1samp_00257,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+5185,q1samp_00259,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+5189,q1samp_00259,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+5338,q1samp_00260,1,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5342,q1samp_00260,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5346,q1samp_00260,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5350,q1samp_00260,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5362,q1samp_00260,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5366,q1samp_00260,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5370,q1samp_00260,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+5374,q1samp_00260,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+5448,q1samp_00261,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5464,q1samp_00261,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5468,q1samp_00261,11,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5476,q1samp_00261,13,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5496,q1samp_00263,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5500,q1samp_00263,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5516,q1samp_00263,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5524,q1samp_00263,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5532,q1samp_00263,12,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5536,q1samp_00263,13,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5540,q1samp_00263,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+5544,q1samp_00263,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+5602,q1samp_00262,1,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5610,q1samp_00262,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5614,q1samp_00262,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5622,q1samp_00262,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5626,q1samp_00262,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5634,q1samp_00262,9,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5650,q1samp_00262,13,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5654,q1samp_00262,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+5658,q1samp_00262,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+6405,q1samp_00298,1,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+6565,q1samp_00299,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6570,q1samp_00299,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6590,q1samp_00300,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+6595,q1samp_00300,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+6605,q1samp_00301,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6615,q1samp_00301,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+6620,q1samp_00301,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+6747,q1samp_00309,1,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+6828,q1samp_00302,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6833,q1samp_00302,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6843,q1samp_00302,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6848,q1samp_00302,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6858,q1samp_00302,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6868,q1samp_00303,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6873,q1samp_00303,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6878,q1samp_00303,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6883,q1samp_00303,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6888,q1samp_00303,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6893,q1samp_00303,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6898,q1samp_00303,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6903,q1samp_00303,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+6908,q1samp_00303,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+6918,q1samp_00304,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6933,q1samp_00304,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6938,q1samp_00304,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6948,q1samp_00304,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6953,q1samp_00304,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+6958,q1samp_00304,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+6969,q1samp_00310,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6973,q1samp_00310,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6977,q1samp_00310,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+6993,q1samp_00311,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+6997,q1samp_00311,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7001,q1samp_00312,1,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7005,q1samp_00312,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7009,q1samp_00312,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7013,q1samp_00312,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7017,q1samp_00312,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7038,q1samp_00305,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7043,q1samp_00305,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7048,q1samp_00305,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7058,q1samp_00305,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7063,q1samp_00305,9,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7083,q1samp_00305,13,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7093,q1samp_00305,15,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7103,q1samp_00306,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7108,q1samp_00306,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7113,q1samp_00306,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7123,q1samp_00306,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7128,q1samp_00306,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7133,q1samp_00306,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7138,q1samp_00306,9,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7143,q1samp_00306,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7148,q1samp_00306,11,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7153,q1samp_00306,12,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7158,q1samp_00306,13,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7163,q1samp_00306,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7168,q1samp_00306,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7182,q1samp_00307,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7187,q1samp_00307,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7202,q1samp_00307,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7207,q1samp_00307,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7217,q1samp_00307,9,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7227,q1samp_00307,11,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7237,q1samp_00307,13,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7242,q1samp_00307,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7247,q1samp_00307,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7291,q1samp_00320,1,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7326,q1samp_00315,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7330,q1samp_00315,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7342,q1samp_00314,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7354,q1samp_00314,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7358,q1samp_00314,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7362,q1samp_00314,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7366,q1samp_00314,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7370,q1samp_00314,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7395,q1samp_00323,1,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7407,q1samp_00323,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7411,q1samp_00323,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7419,q1samp_00322,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7427,q1samp_00322,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7431,q1samp_00322,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7467,q1samp_00325,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7471,q1samp_00325,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7478,q1samp_00316,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7490,q1samp_00316,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7494,q1samp_00316,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7498,q1samp_00316,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7502,q1samp_00316,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7506,q1samp_00316,9,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7514,q1samp_00316,11,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7518,q1samp_00316,12,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7522,q1samp_00316,13,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7526,q1samp_00316,14,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7535,q1samp_00330,1,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7559,q1samp_00317,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7567,q1samp_00317,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7575,q1samp_00317,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7579,q1samp_00317,11,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7583,q1samp_00317,12,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7591,q1samp_00317,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7595,q1samp_00317,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7600,q1samp_00331,1,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7625,q1samp_00324,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7629,q1samp_00324,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7641,q1samp_00324,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7677,q1samp_00326,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7681,q1samp_00326,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7684,q1samp_00318,1,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7704,q1samp_00318,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7712,q1samp_00318,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7720,q1samp_00318,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7728,q1samp_00318,12,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7736,q1samp_00318,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7740,q1samp_00318,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7765,q1samp_00332,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7785,q1samp_00334,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7790,q1samp_00334,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7800,q1samp_00333,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7810,q1samp_00333,4,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7815,q1samp_00333,5,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7824,q1samp_00329,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7872,q1samp_00329,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7876,q1samp_00329,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7896,q1samp_00328,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7928,q1samp_00328,13,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7932,q1samp_00328,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+7936,q1samp_00328,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+8005,q1samp_00335,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8070,q1samp_00336,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8090,q1samp_00336,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+8095,q1samp_00336,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+8105,q1samp_00337,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8110,q1samp_00337,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8115,q1samp_00337,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8120,q1samp_00337,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8125,q1samp_00337,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8130,q1samp_00337,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8135,q1samp_00337,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8140,q1samp_00337,9,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+8145,q1samp_00337,10,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+8160,q1samp_00338,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8175,q1samp_00338,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8180,q1samp_00338,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8190,q1samp_00338,9,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8220,q1samp_00338,15,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8230,q1samp_00339,2,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8235,q1samp_00339,3,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8240,q1samp_00339,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8245,q1samp_00339,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8250,q1samp_00339,6,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8255,q1samp_00339,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8260,q1samp_00339,8,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8270,q1samp_00339,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8275,q1samp_00339,11,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8280,q1samp_00339,12,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8285,q1samp_00339,13,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8290,q1samp_00339,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+8295,q1samp_00339,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+8315,q1samp_00340,4,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8320,q1samp_00340,5,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8330,q1samp_00340,7,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8340,q1samp_00340,9,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8345,q1samp_00340,10,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8350,q1samp_00340,11,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8355,q1samp_00340,12,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8360,q1samp_00340,13,R07,FALSE,exclude,FALSE,NA,high,FALSE,,false_failure_applicability,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8365,q1samp_00340,14,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+8370,q1samp_00340,15,R07,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,사용자가 성경 인물 전체를 요구했지만 응답은 일부 인물만 나열하거나 요약·중간 끊김 상태라 완전한 산출물을 제공하지 못했으므로 R07 실패 판정이 타당함.,worker-2
+3647,q1samp_00203,1,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+125,q1samp_00021,9,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+3554,q1samp_00196,2,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+5456,q1samp_00261,8,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+1676,q1samp_00137,2,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+2521,q1samp_00160,4,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+3443,q1samp_00194,5,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+26,q1samp_00017,7,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7033,q1samp_00305,3,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+5432,q1samp_00261,2,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7447,q1samp_00325,4,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+1800,q1samp_00138,7,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+4303,q1samp_00233,4,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7383,q1samp_00321,3,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7379,q1samp_00321,2,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7944,q1samp_00327,2,R07,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2517,q1samp_00160,3,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+5484,q1samp_00261,15,R07,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2758,q1samp_00164,2,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+3794,q1samp_00206,5,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7098,q1samp_00306,1,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7334,q1samp_00314,1,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+117,q1samp_00021,1,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+3518,q1samp_00195,5,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7692,q1samp_00318,3,R07,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7443,q1samp_00325,3,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7780,q1samp_00334,3,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+5173,q1samp_00259,6,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7078,q1samp_00305,12,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+5642,q1samp_00262,11,R07,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+4946,q1samp_00241,7,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+1928,q1samp_00140,4,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7868,q1samp_00329,13,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+3731,q1samp_00205,4,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+20,q1samp_00017,1,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+2239,q1samp_00156,5,R07,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+8060,q1samp_00336,3,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+3728,q1samp_00205,3,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7555,q1samp_00317,5,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7459,q1samp_00325,7,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+4590,q1samp_00238,5,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7073,q1samp_00305,11,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+2662,q1samp_00162,8,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+3347,q1samp_00193,8,R07,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+5472,q1samp_00261,12,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+2223,q1samp_00156,1,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+5157,q1samp_00259,2,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7375,q1samp_00321,1,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+3533,q1samp_00195,10,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+6600,q1samp_00301,1,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7455,q1samp_00325,6,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+4497,q1samp_00236,4,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+4938,q1samp_00241,5,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+2686,q1samp_00162,14,R07,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3830,q1samp_00208,2,R07,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+7306,q1samp_00315,4,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7724,q1samp_00318,11,R07,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+3782,q1samp_00206,1,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+4970,q1samp_00241,13,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+3185,q1samp_00189,1,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+5139,q1samp_00258,10,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+4315,q1samp_00234,2,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+3461,q1samp_00200,1,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+3848,q1samp_00208,8,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7250,q1samp_00313,1,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7387,q1samp_00321,4,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7118,q1samp_00306,5,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+14,q1samp_00015,2,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+4351,q1samp_00237,1,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+3401,q1samp_00192,1,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7605,q1samp_00324,1,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+118,q1samp_00021,2,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+3803,q1samp_00206,8,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+4734,q1samp_00239,1,R07,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 완전성 규칙 적용 대상이 아니며, TRUE/FALSE 점수는 NA로 제외하는 것이 타당함.",worker-2
+2243,q1samp_00157,1,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+3656,q1samp_00203,4,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+2549,q1samp_00161,1,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7661,q1samp_00326,5,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+5023,q1samp_00257,1,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
+7880,q1samp_00328,1,R07,NA,keep,FALSE,NA,high,FALSE,,already_na,"사용자는 완전한 산출물이나 전체 목록이 아니라 방법·팁·일반 항목 설명을 요청했으므로 R07 적용 대상이 아니며, 원판정 NA를 유지함.",worker-2
