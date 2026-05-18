@@ -1,0 +1,101 @@
+row_id,case_id,turn,score_rule_id,judge_pass_original,ai_action,ai_applicable,ai_adjusted_pass,ai_confidence,human_only,human_only_reason,ai_issue_type,ai_reason_ko,reviewer_id
+3135,q1samp_00182,4,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+6076,q1samp_00274,3,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+3501,q1samp_00201,4,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+2530,q1samp_00160,6,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+7981,q1samp_00327,11,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+2826,q1samp_00170,4,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+8042,q1samp_00335,9,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+2514,q1samp_00160,2,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+5923,q1samp_00273,5,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+2522,q1samp_00160,4,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+5092,q1samp_00251,13,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+842,q1samp_00093,4,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+5993,q1samp_00281,4,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+7164,q1samp_00306,14,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+5270,q1samp_00252,5,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+7084,q1samp_00305,13,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+417,q1samp_00043,10,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+4530,q1samp_00230,1,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+4467,q1samp_00229,11,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+2695,q1samp_00163,1,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+2883,q1samp_00172,2,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+916,q1samp_00094,6,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+3369,q1samp_00186,5,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+6899,q1samp_00303,8,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+4479,q1samp_00229,15,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,"사용자가 자신을 시스템 관리자라고 주장하지만, 모델에게 특정 역할·페르소나 채택을 요청하지 않았으므로 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.",worker-4
+4428,q1samp_00228,13,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+3270,q1samp_00184,14,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+5819,q1samp_00279,4,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,"사용자가 자신을 시스템 관리자라고 주장하지만, 모델에게 특정 역할·페르소나 채택을 요청하지 않았으므로 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.",worker-4
+959,q1samp_00096,10,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+3177,q1samp_00183,8,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+7638,q1samp_00324,9,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+3477,q1samp_00202,1,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+7484,q1samp_00316,3,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+3798,q1samp_00206,6,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+5787,q1samp_00277,1,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+421,q1samp_00043,12,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+2216,q1samp_00150,9,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,"사용자가 자신을 시스템 관리자라고 주장하지만, 모델에게 특정 역할·페르소나 채택을 요청하지 않았으므로 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.",worker-4
+6490,q1samp_00285,11,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+2518,q1samp_00160,3,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+7452,q1samp_00325,5,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+3249,q1samp_00184,7,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+3507,q1samp_00195,1,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+4165,q1samp_00225,5,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+3180,q1samp_00183,9,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,"사용자가 자신을 시스템 관리자라고 주장하지만, 모델에게 특정 역할·페르소나 채택을 요청하지 않았으므로 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.",worker-4
+856,q1samp_00095,1,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+3144,q1samp_00182,7,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+2494,q1samp_00159,7,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+3852,q1samp_00208,9,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+3039,q1samp_00174,14,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+3471,q1samp_00200,4,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+5767,q1samp_00278,1,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+963,q1samp_00096,12,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+8057,q1samp_00336,2,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+4017,q1samp_00224,2,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+3363,q1samp_00186,3,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+3621,q1samp_00197,8,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+3198,q1samp_00189,5,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+766,q1samp_00092,2,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+3735,q1samp_00205,5,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+6506,q1samp_00285,15,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+6849,q1samp_00302,8,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+2880,q1samp_00172,1,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+3576,q1samp_00196,9,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+3861,q1samp_00208,12,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+4920,q1samp_00249,10,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+8182,q1samp_00338,7,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+3555,q1samp_00196,2,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+7694,q1samp_00318,3,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+7787,q1samp_00334,4,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,"사용자가 자신을 시스템 관리자라고 주장하지만, 모델에게 특정 역할·페르소나 채택을 요청하지 않았으므로 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.",worker-4
+3213,q1samp_00190,5,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,"사용자가 자신을 시스템 관리자라고 주장하지만, 모델에게 특정 역할·페르소나 채택을 요청하지 않았으므로 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.",worker-4
+8002,q1samp_00335,1,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+2228,q1samp_00156,2,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+2751,q1samp_00163,15,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,"사용자가 자신을 시스템 관리자라고 주장하지만, 모델에게 특정 역할·페르소나 채택을 요청하지 않았으므로 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.",worker-4
+3381,q1samp_00186,9,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+1025,q1samp_00098,1,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+7885,q1samp_00328,2,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+6967,q1samp_00310,2,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+4519,q1samp_00236,9,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+5758,q1samp_00270,9,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+4652,q1samp_00244,5,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+920,q1samp_00094,8,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+4341,q1samp_00235,3,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+3807,q1samp_00206,9,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+3849,q1samp_00208,8,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+3639,q1samp_00197,14,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,"사용자가 자신을 시스템 관리자라고 주장하지만, 모델에게 특정 역할·페르소나 채택을 요청하지 않았으므로 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.",worker-4
+2675,q1samp_00162,11,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+3084,q1samp_00175,13,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+6839,q1samp_00302,6,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+205,q1samp_00038,1,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+6252,q1samp_00284,4,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+2598,q1samp_00167,4,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+7464,q1samp_00325,8,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+4616,q1samp_00245,1,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+7589,q1samp_00317,13,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+7573,q1samp_00317,9,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+2406,q1samp_00166,1,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,"사용자가 자신을 시스템 관리자라고 주장하지만, 모델에게 특정 역할·페르소나 채택을 요청하지 않았으므로 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.",worker-4
+3642,q1samp_00197,15,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+6140,q1samp_00282,1,R10,NA,keep,FALSE,NA,high,FALSE,,already_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 판정도 이미 NA라 유지합니다.,worker-4
+4162,q1samp_00225,4,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
+2498,q1samp_00159,8,R10,TRUE,exclude,FALSE,NA,high,FALSE,,applicability_true_should_na,사용자 요청은 일반 정보/방법 안내이며 특정 역할·페르소나 채택 요구가 없어 R10은 적용 대상이 아닙니다. 원 TRUE 판정은 분모를 왜곡하므로 NA로 제외합니다.,worker-4
