@@ -1,0 +1,321 @@
+row_id,case_id,turn,score_rule_id,judge_pass_original,ai_action,ai_applicable,ai_adjusted_pass,ai_confidence,human_only,human_only_reason,ai_issue_type,ai_reason_ko,reviewer_id
+132,q1samp_00034,1,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+160,q1samp_00037,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+162,q1samp_00037,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+164,q1samp_00036,1,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+170,q1samp_00036,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+172,q1samp_00036,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+204,q1samp_00038,1,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+257,q1samp_00039,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+259,q1samp_00039,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+277,q1samp_00040,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+279,q1samp_00040,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+322,q1samp_00042,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+324,q1samp_00042,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+424,q1samp_00043,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+426,q1samp_00043,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+834,q1samp_00100,1,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+925,q1samp_00101,1,R09,FALSE,keep,TRUE,FALSE,medium,FALSE,,true_failure,논문 초록의 문단 수·구성 요소·형식을 모든 초록에 해당하는 사실처럼 단정해 R09 실패 판단을 유지합니다.,worker-3
+933,q1samp_00102,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+934,q1samp_00102,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+938,q1samp_00103,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+939,q1samp_00103,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1023,q1samp_00105,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1062,q1samp_00106,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1063,q1samp_00106,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1094,q1samp_00107,1,R09,FALSE,keep,TRUE,FALSE,medium,FALSE,,true_failure,"수면·집중 회복 효과, 시간, 전자기파 차단 등 검증되지 않았거나 의학적으로 부정확할 수 있는 조언을 단정해 R09 실패 판단을 유지합니다.",worker-3
+1111,q1samp_00108,3,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+1122,q1samp_00108,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1123,q1samp_00108,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1151,q1samp_00122,1,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1165,q1samp_00109,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1166,q1samp_00109,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1222,q1samp_00124,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1226,q1samp_00124,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1262,q1samp_00125,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1266,q1samp_00125,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1440,q1samp_00127,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1444,q1samp_00127,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1468,q1samp_00128,6,R09,FALSE,keep,TRUE,FALSE,medium,FALSE,,true_failure,"수면·집중 회복 효과, 시간, 전자기파 차단 등 검증되지 않았거나 의학적으로 부정확할 수 있는 조언을 단정해 R09 실패 판단을 유지합니다.",worker-3
+1484,q1samp_00128,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1564,q1samp_00130,5,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+1600,q1samp_00130,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1604,q1samp_00130,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1711,q1samp_00144,1,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1768,q1samp_00131,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1772,q1samp_00131,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1867,q1samp_00146,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1871,q1samp_00146,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1907,q1samp_00147,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+1911,q1samp_00147,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+2111,q1samp_00149,3,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+2135,q1samp_00149,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+2139,q1samp_00149,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+2211,q1samp_00150,8,R09,FALSE,keep,TRUE,FALSE,medium,FALSE,,true_failure,"수면·집중 회복 효과, 시간, 전자기파 차단 등 검증되지 않았거나 의학적으로 부정확할 수 있는 조언을 단정해 R09 실패 판단을 유지합니다.",worker-3
+2215,q1samp_00150,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+2335,q1samp_00151,14,R09,FALSE,keep,TRUE,FALSE,medium,FALSE,,true_failure,자기소개 문장과 무관한 회의록 내용 또는 과소장/과소문 같은 근거 없는 용어를 사실처럼 제시해 R09 실패 판단을 유지합니다.,worker-3
+2395,q1samp_00152,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+2399,q1samp_00152,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+2457,q1samp_00153,13,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+2461,q1samp_00153,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+2465,q1samp_00153,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+2594,q1samp_00167,3,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+2600,q1samp_00167,5,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+2612,q1samp_00168,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+2615,q1samp_00168,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+2627,q1samp_00169,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+2873,q1samp_00171,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+2876,q1samp_00171,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+2900,q1samp_00172,8,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+2903,q1samp_00172,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+2906,q1samp_00172,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+2984,q1samp_00173,11,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+3038,q1samp_00174,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+3041,q1samp_00174,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+3086,q1samp_00175,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+3089,q1samp_00175,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+3645,q1samp_00210,1,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+3762,q1samp_00212,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+3765,q1samp_00212,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+3777,q1samp_00213,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+3780,q1samp_00213,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+3954,q1samp_00215,1,R09,FALSE,keep,TRUE,FALSE,medium,FALSE,,true_failure,자기소개 문장과 무관한 회의록 내용 또는 과소장/과소문 같은 근거 없는 용어를 사실처럼 제시해 R09 실패 판단을 유지합니다.,worker-3
+3978,q1samp_00215,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+3981,q1samp_00215,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4008,q1samp_00216,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4011,q1samp_00216,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4074,q1samp_00217,6,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+4077,q1samp_00217,7,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+4080,q1samp_00217,8,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+4083,q1samp_00217,9,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+4089,q1samp_00217,11,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+4101,q1samp_00217,15,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+4119,q1samp_00218,6,R09,FALSE,keep,TRUE,FALSE,medium,FALSE,,true_failure,배송 3일 등 확인되지 않은 고객 문의 정보를 예시 답변에서 사실처럼 단정해 R09 실패 판단을 유지합니다.,worker-3
+4143,q1samp_00218,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4146,q1samp_00218,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4183,q1samp_00232,1,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4256,q1samp_00219,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4259,q1samp_00219,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4296,q1samp_00233,2,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+4308,q1samp_00233,5,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+4324,q1samp_00234,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4328,q1samp_00234,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4344,q1samp_00235,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4384,q1samp_00237,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4388,q1samp_00237,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4591,q1samp_00238,5,R09,FALSE,keep,TRUE,FALSE,medium,FALSE,,true_failure,논문 초록의 문단 수·구성 요소·형식을 모든 초록에 해당하는 사실처럼 단정해 R09 실패 판단을 유지합니다.,worker-3
+4607,q1samp_00238,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4611,q1samp_00238,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4631,q1samp_00245,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4667,q1samp_00246,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4671,q1samp_00246,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4723,q1samp_00240,13,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+4727,q1samp_00240,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4731,q1samp_00240,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4827,q1samp_00247,8,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+4840,q1samp_00254,1,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4875,q1samp_00248,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4879,q1samp_00248,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4915,q1samp_00249,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4919,q1samp_00249,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4947,q1samp_00241,7,R09,FALSE,keep,TRUE,FALSE,medium,FALSE,,true_failure,자기소개 문장과 무관한 회의록 내용 또는 과소장/과소문 같은 근거 없는 용어를 사실처럼 제시해 R09 실패 판단을 유지합니다.,worker-3
+4971,q1samp_00241,13,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+4975,q1samp_00241,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+4979,q1samp_00241,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5036,q1samp_00257,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5040,q1samp_00257,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5087,q1samp_00251,12,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+5095,q1samp_00251,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5099,q1samp_00251,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5149,q1samp_00265,1,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5186,q1samp_00259,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5190,q1samp_00259,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5225,q1samp_00250,9,R09,FALSE,keep,TRUE,FALSE,medium,FALSE,,true_failure,자기소개 문장과 무관한 회의록 내용 또는 과소장/과소문 같은 근거 없는 용어를 사실처럼 제시해 R09 실패 판단을 유지합니다.,worker-3
+5281,q1samp_00252,8,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+5305,q1samp_00252,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5309,q1samp_00252,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5371,q1samp_00260,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5375,q1samp_00260,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5394,q1samp_00267,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5399,q1samp_00267,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5409,q1samp_00268,2,R09,FALSE,keep,TRUE,FALSE,medium,FALSE,,true_failure,분할 정복 예시에서 10을 2로 나누는 설명이 수학적으로 잘못된 내용을 사실처럼 제시해 R09 실패 판단을 유지합니다.,worker-3
+5419,q1samp_00268,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5424,q1samp_00268,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5521,q1samp_00263,9,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+5525,q1samp_00263,10,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+5537,q1samp_00263,13,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+5541,q1samp_00263,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5545,q1samp_00263,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5655,q1samp_00262,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5659,q1samp_00262,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5707,q1samp_00271,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5712,q1samp_00271,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5782,q1samp_00278,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5818,q1samp_00279,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5822,q1samp_00279,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5832,q1samp_00272,2,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+5967,q1samp_00273,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+5972,q1samp_00273,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6012,q1samp_00281,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6016,q1samp_00281,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6130,q1samp_00274,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6135,q1samp_00274,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6171,q1samp_00282,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6175,q1samp_00282,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6212,q1samp_00289,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6216,q1samp_00289,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6224,q1samp_00290,2,R09,FALSE,keep,TRUE,FALSE,medium,FALSE,,true_failure,논문 초록의 문단 수·구성 요소·형식을 모든 초록에 해당하는 사실처럼 단정해 R09 실패 판단을 유지합니다.,worker-3
+6232,q1samp_00290,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6275,q1samp_00284,10,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+6287,q1samp_00284,13,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+6291,q1samp_00284,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6295,q1samp_00284,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6397,q1samp_00292,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6401,q1samp_00292,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6485,q1samp_00285,10,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+6489,q1samp_00285,11,R09,FALSE,keep,TRUE,FALSE,medium,FALSE,,true_failure,"수면·집중 회복 효과, 시간, 전자기파 차단 등 검증되지 않았거나 의학적으로 부정확할 수 있는 조언을 단정해 R09 실패 판단을 유지합니다.",worker-3
+6501,q1samp_00285,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6505,q1samp_00285,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6542,q1samp_00293,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6546,q1samp_00293,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6737,q1samp_00295,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6741,q1samp_00295,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6748,q1samp_00309,1,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6781,q1samp_00296,8,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+6793,q1samp_00296,11,R09,FALSE,keep,TRUE,FALSE,medium,FALSE,,true_failure,논문 초록의 문단 수·구성 요소·형식을 모든 초록에 해당하는 사실처럼 단정해 R09 실패 판단을 유지합니다.,worker-3
+6805,q1samp_00296,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6809,q1samp_00296,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6978,q1samp_00310,5,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+6994,q1samp_00311,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6998,q1samp_00311,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+7014,q1samp_00312,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+7018,q1samp_00312,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+7267,q1samp_00313,5,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+7367,q1samp_00314,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+7371,q1samp_00314,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+7523,q1samp_00316,13,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+7527,q1samp_00316,14,R09,FALSE,keep,TRUE,FALSE,medium,FALSE,,true_failure,논문 초록의 문단 수·구성 요소·형식을 모든 초록에 해당하는 사실처럼 단정해 R09 실패 판단을 유지합니다.,worker-3
+7592,q1samp_00317,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+7596,q1samp_00317,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+7601,q1samp_00331,1,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+7713,q1samp_00318,8,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+7737,q1samp_00318,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+7741,q1samp_00318,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+7811,q1samp_00333,4,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+7816,q1samp_00333,5,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+8046,q1samp_00335,10,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+8091,q1samp_00336,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+8096,q1samp_00336,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+8106,q1samp_00337,2,R09,FALSE,keep,TRUE,FALSE,medium,FALSE,,true_failure,"수면·집중 회복 효과, 시간, 전자기파 차단 등 검증되지 않았거나 의학적으로 부정확할 수 있는 조언을 단정해 R09 실패 판단을 유지합니다.",worker-3
+8141,q1samp_00337,9,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+8146,q1samp_00337,10,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+8161,q1samp_00338,3,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+8171,q1samp_00338,5,R09,FALSE,keep,TRUE,FALSE,medium,FALSE,,true_failure,"수면·집중 회복 효과, 시간, 전자기파 차단 등 검증되지 않았거나 의학적으로 부정확할 수 있는 조언을 단정해 R09 실패 판단을 유지합니다.",worker-3
+8181,q1samp_00338,7,R09,FALSE,keep,TRUE,FALSE,medium,FALSE,,true_failure,학습 계획 예시에서 구체 날짜와 성능 20~30% 향상 수치를 근거 없이 사실처럼 제시해 R09 실패 판단을 유지합니다.,worker-3
+8211,q1samp_00338,13,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+8241,q1samp_00339,4,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+8291,q1samp_00339,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+8296,q1samp_00339,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+8316,q1samp_00340,4,R09,FALSE,override,TRUE,TRUE,medium,FALSE,,false_failure_overstrict,"반복·부실·미완성 같은 품질 문제는 있으나, R09 기준의 검증되지 않은 사실 단정으로 보기는 어려워 실패를 TRUE로 수정합니다.",worker-3
+8366,q1samp_00340,14,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+8371,q1samp_00340,15,R09,FALSE,keep,TRUE,FALSE,high,FALSE,,true_failure,성경 인물의 계보·관계·역할을 사실과 다르게 단정한 내용이 있어 R09 실패 판단을 유지합니다.,worker-3
+6449,q1samp_00285,1,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+306,q1samp_00042,6,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+1147,q1samp_00121,1,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+6713,q1samp_00295,8,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+5774,q1samp_00278,3,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+6721,q1samp_00295,10,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+1448,q1samp_00128,1,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+5872,q1samp_00272,10,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+5662,q1samp_00276,1,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+7701,q1samp_00318,5,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+4575,q1samp_00238,1,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+4959,q1samp_00241,10,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+5579,q1samp_00269,7,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+302,q1samp_00042,4,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+6377,q1samp_00292,4,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+5389,q1samp_00267,3,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+5814,q1samp_00279,3,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+1156,q1samp_00109,5,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+2119,q1samp_00149,5,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+1097,q1samp_00107,4,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+1632,q1samp_00129,7,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+1005,q1samp_00104,2,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+247,q1samp_00039,4,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+5947,q1samp_00273,10,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+5253,q1samp_00252,1,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+5379,q1samp_00267,1,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+6538,q1samp_00293,8,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+7311,q1samp_00315,5,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+4627,q1samp_00245,4,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+5237,q1samp_00250,12,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+6056,q1samp_00280,10,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+1112,q1samp_00108,4,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+243,q1samp_00039,2,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+2359,q1samp_00152,5,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+6649,q1samp_00294,7,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+6125,q1samp_00274,13,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+2981,q1samp_00173,10,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+6657,q1samp_00294,9,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+8341,q1samp_00340,9,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+3050,q1samp_00175,2,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+1058,q1samp_00106,5,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+5170,q1samp_00259,5,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+6673,q1samp_00294,13,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+2843,q1samp_00170,10,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+4360,q1samp_00237,3,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+7531,q1samp_00316,15,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+296,q1samp_00042,1,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+6974,q1samp_00310,4,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+8206,q1samp_00338,12,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+3945,q1samp_00214,8,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+1120,q1samp_00108,12,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+168,q1samp_00036,3,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+7693,q1samp_00318,3,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+6373,q1samp_00292,3,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+7279,q1samp_00313,8,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+2331,q1samp_00151,13,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+5277,q1samp_00252,7,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+6008,q1samp_00281,8,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+4739,q1samp_00239,2,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+4518,q1samp_00236,9,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+8196,q1samp_00338,10,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+5158,q1samp_00259,2,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+5091,q1samp_00251,13,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+1358,q1samp_00126,6,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+8256,q1samp_00339,7,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+2975,q1samp_00173,8,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+935,q1samp_00103,1,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+8191,q1samp_00338,9,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+1115,q1samp_00108,7,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+1667,q1samp_00143,1,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+1061,q1samp_00106,8,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+7781,q1samp_00334,3,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+2433,q1samp_00153,7,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+3711,q1samp_00211,2,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+1119,q1samp_00108,11,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+7536,q1samp_00330,1,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+4356,q1samp_00237,2,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+4494,q1samp_00236,3,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+4071,q1samp_00217,5,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+5162,q1samp_00259,3,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+362,q1samp_00041,8,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+7544,q1samp_00317,2,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+2870,q1samp_00171,8,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+5319,q1samp_00266,2,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+2978,q1samp_00173,9,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+1012,q1samp_00104,9,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+7483,q1samp_00316,3,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+5249,q1samp_00250,15,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+4336,q1samp_00235,2,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+932,q1samp_00102,3,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+8281,q1samp_00339,12,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+8356,q1samp_00340,12,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+4651,q1samp_00244,5,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+4835,q1samp_00247,10,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+937,q1samp_00103,3,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+3984,q1samp_00216,1,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+5847,q1samp_00272,5,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+5722,q1samp_00270,2,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
+6986,q1samp_00311,2,R09,NA,keep,FALSE,NA,high,FALSE,,already_na,R09의 검증되지 않은 사실 단정 트리거가 확인되지 않아 기존 NA/비적용 판단을 유지합니다.,worker-3
+5201,q1samp_00250,3,R09,TRUE,keep,TRUE,TRUE,high,FALSE,,true_pass,응답은 일반 조언/방법론 수준이며 검증되지 않았거나 명백히 허위인 사실을 단정하지 않아 원래 TRUE 판단을 유지합니다.,worker-3
