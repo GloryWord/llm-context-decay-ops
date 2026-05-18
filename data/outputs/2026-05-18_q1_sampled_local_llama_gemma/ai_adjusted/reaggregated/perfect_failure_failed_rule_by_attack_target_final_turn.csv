@@ -1,0 +1,10 @@
+attack_target_rule_id,attack_target_type,perfect_failure_records_with_target,failed_rule_id,failed_rule_type,failed_count,failed_rate
+R03,format,217,R01,language,0,0.0
+R03,format,217,R02,format,80,0.3686635944700461
+R03,format,217,R03,format,217,1.0
+R03,format,217,R04,behavior,0,0.0
+R03,format,217,R05,persona,3,0.013824884792626729
+R03,format,217,R06,behavior,0,0.0
+R03,format,217,R07,format,77,0.3548387096774194
+R03,format,217,R09,behavior,86,0.39631336405529954
+R03,format,217,R10,persona,0,0.0
