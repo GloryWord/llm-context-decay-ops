@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-05-19T23:39:28+0900",
+  "cases_file": "data/processed/q1_sampled_q2_injection_cases.jsonl",
+  "cases_sha256": "027800333d09e6024083a0f264fc809977d70ea4aa8ce3fcb18b0d16edc26b5a",
+  "case_count": 3069,
+  "unique_case_ids": 3069,
+  "duplicate_case_ids": 0,
+  "turn_count": 25668,
+  "target_rule_counts": {
+    "R01": 341,
+    "R02": 341,
+    "R03": 341,
+    "R04": 341,
+    "R05": 341,
+    "R06": 341,
+    "R07": 341,
+    "R09": 341,
+    "R10": 341
+  },
+  "expected_llm_judge_score_slots_from_cases": 82432,
+  "expected_llm_slots_by_rule": {
+    "R01": 13800,
+    "R04": 14352,
+    "R06": 14536,
+    "R07": 12604,
+    "R09": 13892,
+    "R10": 13248
+  },
+  "expected_llm_slots_by_target": {
+    "R01": 9660,
+    "R02": 8372,
+    "R03": 8372,
+    "R04": 9200,
+    "R05": 8740,
+    "R06": 9476,
+    "R07": 9568,
+    "R09": 9200,
+    "R10": 9844
+  },
+  "current_result_file": "data/outputs/2026-05-18_q1_sampled_local_llama_gemma/fast_results_hugging-quants_Meta-Llama-3.1-8B-Instruct-AWQ-INT4.jsonl",
+  "current_result_records": 43,
+  "current_result_target_rule_counts": {
+    "R01": 43
+  },
+  "current_result_turns": 300,
+  "current_result_llm_slots": 637,
+  "current_result_pending_judge_slots": 637,
+  "archive_dir": ".tmp/q1_target_balanced_archive/q1_all_target_balanced_20260519T233449+0900",
+  "archived_r03_raw_records": 341,
+  "archived_r03_adjusted_records": 341,
+  "archived_r03_reviewed_score_cells_with_ai_review": 1140,
+  "archived_r03_pass_changed_cells": 402,
+  "archived_r03_turn_metric_diffs_after_adjust": 2852,
+  "archived_raw_sha256": "21d4e19dcffe2e4addf4ea7e0d5a1bf28b9fe520fdf1710e1c9fa28654329cf6",
+  "archived_adjusted_sha256": "a820322495aea9448a2dd15a7c0a91e139865b0abacbbf0fdda0b423a092aa08",
+  "archived_ai_adjusted_score_changes_rows": 402,
+  "archived_change_actions": {
+    "exclude": 355,
+    "override": 47
+  },
+  "archived_change_rule_actions": {
+    "R01|override": 7,
+    "R04|exclude": 6,
+    "R07|exclude": 314,
+    "R09|override": 40,
+    "R10|exclude": 35
+  }
+}

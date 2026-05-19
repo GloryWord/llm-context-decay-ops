@@ -1,0 +1,9 @@
+temperature,attack_intensity,rule_count,rule_type,trajectories,failed_trajectories,failure_rate,mean_first_failure_turn,median_first_failure_turn,p25_first_failure_turn,p75_first_failure_turn,min_first_failure_turn,max_first_failure_turn
+0.0,adversarial,1,behavior,3,3,1.0,1,1,1.0,1.0,1,1
+0.0,adversarial,1,format,3,3,1.0,1,1,1.0,1.0,1,1
+0.0,adversarial,1,language,1,1,1.0,1,1,1.0,1.0,1,1
+0.0,adversarial,1,persona,2,2,1.0,1,1.0,1.0,1.0,1,1
+0.0,benign,1,behavior,3,0,0.0,,,,,,
+0.0,benign,1,format,3,0,0.0,,,,,,
+0.0,benign,1,language,1,0,0.0,,,,,,
+0.0,benign,1,persona,2,0,0.0,,,,,,
