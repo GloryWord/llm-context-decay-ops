@@ -1,0 +1,42 @@
+{
+  "readiness": {
+    "llama": {
+      "expected_model": "hugging-quants/Meta-Llama-3.1-8B-Instruct-AWQ-INT4",
+      "requires_models_endpoint_match": true,
+      "requires_chat_completion_non_empty": true,
+      "probe_timeout_seconds": 30,
+      "probe_max_tokens": 8,
+      "attempts": 240,
+      "sleep_seconds": 5
+    },
+    "gemma": {
+      "expected_model": "cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit",
+      "requires_models_endpoint_match": true,
+      "requires_chat_completion_non_empty": true,
+      "probe_timeout_seconds": 30,
+      "probe_max_tokens": 8,
+      "attempts": 180,
+      "sleep_seconds": 5
+    }
+  },
+  "case_generation": {
+    "expected_cases": 3069,
+    "expected_turn_calls": 25668,
+    "expected_target_rules": ["R01", "R02", "R03", "R04", "R05", "R06", "R07", "R09", "R10"],
+    "expected_cases_per_target_rule": 341,
+    "r08_present": false
+  },
+  "target_generation": {
+    "record_count_equals_case_count": true,
+    "case_id_set_matches": true,
+    "duplicate_case_ids_allowed": false,
+    "turn_results_match_case_turn_count": true,
+    "error_responses_allowed": false,
+    "r08_allowed_in_cases": false
+  },
+  "judge": {
+    "record_count_equals_case_count": true,
+    "unresolved_judge_scores": 0,
+    "complete_judge_records_equal_case_count": true
+  }
+}

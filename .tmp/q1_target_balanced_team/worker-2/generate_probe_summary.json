@@ -1,0 +1,38 @@
+{
+  "case_count": 3069,
+  "target_turn_call_count": 25668,
+  "target_rule_counts": {
+    "R01": 341,
+    "R02": 341,
+    "R03": 341,
+    "R04": 341,
+    "R05": 341,
+    "R06": 341,
+    "R07": 341,
+    "R09": 341,
+    "R10": 341
+  },
+  "rule_count_distribution": {
+    "1": 99,
+    "3": 990,
+    "5": 990,
+    "7": 990
+  },
+  "turn_count_distribution": {
+    "1": 558,
+    "5": 837,
+    "10": 837,
+    "15": 837
+  },
+  "condition_distribution": {
+    "benign_context": 1116,
+    "injection_context": 1953
+  },
+  "attack_order_variant_distribution": {
+    "adversarial_then_implicit": 837,
+    "implicit_then_adversarial": 837,
+    "none": 1116,
+    "single_adversarial": 279
+  },
+  "r08_present": false
+}
