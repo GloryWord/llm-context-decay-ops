@@ -1,0 +1,14 @@
+Loaded records: 36
+Trace rows: 36
+Wrote output dir: .tmp/q1_target_balanced_team/worker-4/smoke/output
+condition_csv: .tmp/q1_target_balanced_team/worker-4/smoke/output/tables/q1_condition_final_turn_metrics.csv
+attack_order_csv: .tmp/q1_target_balanced_team/worker-4/smoke/output/tables/q1_attack_order_final_turn_metrics.csv
+rule_failure_csv: .tmp/q1_target_balanced_team/worker-4/smoke/output/tables/q1_rule_failure_final_turn_metrics.csv
+strict_success_figure: .tmp/q1_target_balanced_team/worker-4/smoke/output/figures/q1_strict_success_by_rule_count_turn.png
+old_vs_strict_figure: .tmp/q1_target_balanced_team/worker-4/smoke/output/figures/q1_old_vs_strict_metric_by_condition.png
+strict_gap_heatmap: .tmp/q1_target_balanced_team/worker-4/smoke/output/figures/q1_benign_adversarial_strict_gap_heatmap.png
+attack_order_figure: .tmp/q1_target_balanced_team/worker-4/smoke/output/figures/q1_attack_order_variant_per_rule_pass.png
+non_target_failure_heatmap: .tmp/q1_target_balanced_team/worker-4/smoke/output/figures/q1_adversarial_non_target_failure_heatmap.png
+rule_failure_t15_heatmap: .tmp/q1_target_balanced_team/worker-4/smoke/output/figures/q1_rule_failure_profile_t15_heatmap.png
+summary_json: .tmp/q1_target_balanced_team/worker-4/smoke/output/q1_visualization_summary.json
+summary_markdown: .tmp/q1_target_balanced_team/worker-4/smoke/output/q1_visualization_summary.md

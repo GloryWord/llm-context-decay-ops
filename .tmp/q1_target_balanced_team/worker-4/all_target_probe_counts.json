@@ -1,0 +1,27 @@
+{
+  "exists": true,
+  "records": 3069,
+  "by_target": {
+    "R01": 341,
+    "R02": 341,
+    "R03": 341,
+    "R04": 341,
+    "R05": 341,
+    "R06": 341,
+    "R07": 341,
+    "R09": 341,
+    "R10": 341
+  },
+  "by_rule_count": {
+    "1": 99,
+    "3": 990,
+    "5": 990,
+    "7": 990
+  },
+  "by_attack": {
+    "benign": 1116,
+    "adversarial": 1953
+  },
+  "trace_rows": 3069,
+  "trace_r08_active_rows": 0
+}

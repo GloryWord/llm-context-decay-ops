@@ -1,0 +1,910 @@
+diff --git a/scripts/plot_q1_sampled_visualizations.py b/scripts/plot_q1_sampled_visualizations.py
+new file mode 100644
+index 0000000..5c164ea
+--- /dev/null
++++ b/scripts/plot_q1_sampled_visualizations.py
+@@ -0,0 +1,904 @@
++"""Create final Q1 sampled-injection visualizations and summary tables.
++
++This script is intentionally separate from the historical report generator.
++The 2026-05-18 Q1 rerun uses a sampled rule-combination design, Q2-derived
++injection prompts, order-balanced final two turns, and an AI-adjusted Gemma
++judge audit artifact.  The figures here keep those design decisions visible
++instead of silently reusing the older Q1/Q3 plotting assumptions.  The target
++rule scope is inferred from the input records so the same script can label both
++the legacy R03-only run and the target-balanced rerun over all Q2-available
++target rules (R01,R02,R03,R04,R05,R06,R07,R09,R10; R08 absent).
++
++Usage:
++    python3 scripts/plot_q1_sampled_visualizations.py
++    python3 scripts/plot_q1_sampled_visualizations.py \
++        --input data/outputs/.../reaggregated/metrics_enriched_results.jsonl \
++        --trace data/processed/Research_Question_1_Data/q1_sampled_q2_injection_cases_trace.csv \
++        --judge-audit .tmp/q1_gemma_judge_audit/ai_labeling/ai_labeling_summary.json \
++        --output-dir data/outputs/.../q1_visualization
++"""
++
++from __future__ import annotations
++
++import argparse
++import csv
++import json
++import math
++import os
++from collections import Counter, defaultdict
++from pathlib import Path
++from statistics import mean, pstdev
++from typing import Any
++
++ROOT = Path(__file__).resolve().parent.parent
++MPL_CACHE_DIR = ROOT / ".tmp" / "matplotlib"
++MPL_CACHE_DIR.mkdir(parents=True, exist_ok=True)
++os.environ.setdefault("MPLCONFIGDIR", str(MPL_CACHE_DIR))
++
++import matplotlib
++
++matplotlib.use("Agg")
++import matplotlib.font_manager as fm
++import matplotlib.pyplot as plt
++import numpy as np
++
++
++DEFAULT_INPUT = (
++    ROOT
++    / "data"
++    / "outputs"
++    / "2026-05-18_q1_sampled_local_llama_gemma"
++    / "ai_adjusted"
++    / "reaggregated"
++    / "metrics_enriched_results.jsonl"
++)
++DEFAULT_TRACE = (
++    ROOT
++    / "data"
++    / "processed"
++    / "Research_Question_1_Data"
++    / "q1_sampled_q2_injection_cases_trace.csv"
++)
++DEFAULT_JUDGE_AUDIT = (
++    ROOT
++    / ".tmp"
++    / "q1_gemma_judge_audit"
++    / "ai_labeling"
++    / "ai_labeling_summary.json"
++)
++DEFAULT_OUTPUT_DIR = DEFAULT_INPUT.parent.parent / "q1_visualization"
++
++RULE_COUNTS = [1, 3, 5, 7]
++TURN_COUNTS = [1, 5, 10, 15]
++Q2_AVAILABLE_TARGET_RULES = [
++    "R01",
++    "R02",
++    "R03",
++    "R04",
++    "R05",
++    "R06",
++    "R07",
++    "R09",
++    "R10",
++]
++ATTACK_TYPES = ["benign", "adversarial"]
++ATTACK_LABELS = {
++    "benign": "benign",
++    "adversarial": "adversarial / injection",
++}
++ORDER_VARIANTS = [
++    "single_adversarial",
++    "implicit_then_adversarial",
++    "adversarial_then_implicit",
++]
++ORDER_LABELS = {
++    "single_adversarial": "single adversarial (T=1)",
++    "implicit_then_adversarial": "implicit → adversarial",
++    "adversarial_then_implicit": "adversarial → implicit",
++}
++METRIC_LABELS = {
++    "per_rule_pass_rate": "old per-rule pass",
++    "perfect_success": "strict perfect_success",
++    "targeted_rule_success": "targeted rule success",
++    "non_target_failure": "non-target failure",
++}
++ATTACK_COLORS = {
++    "benign": "#2563eb",
++    "adversarial": "#dc2626",
++}
++ORDER_COLORS = {
++    "single_adversarial": "#7f1d1d",
++    "implicit_then_adversarial": "#f97316",
++    "adversarial_then_implicit": "#9333ea",
++}
++RULE_COLORS = {
++    1: "#1f77b4",
++    3: "#2ca02c",
++    5: "#ff7f0e",
++    7: "#d62728",
++}
++
++for font_name in ["AppleGothic", "NanumGothic", "Malgun Gothic"]:
++    if any(font_name in f.name for f in fm.fontManager.ttflist):
++        plt.rcParams["font.family"] = font_name
++        break
++plt.rcParams["axes.unicode_minus"] = False
++
++
++def pct(value: float | None) -> str:
++    """Format a ratio as a percentage."""
++    if value is None or (isinstance(value, float) and math.isnan(value)):
++        return "N/A"
++    return f"{value * 100:.1f}%"
++
++
++def _float(value: Any) -> float | None:
++    """Convert a metric value to float, preserving None/NaN as None."""
++    if value is None or value == "":
++        return None
++    number = float(value)
++    if math.isnan(number):
++        return None
++    return number
++
++
++def stat(values: list[float]) -> dict[str, float | int | None]:
++    """Return mean/std/n for a metric list."""
++    if not values:
++        return {"mean": None, "std": None, "n": 0}
++    return {
++        "mean": mean(values),
++        "std": pstdev(values) if len(values) > 1 else 0.0,
++        "n": len(values),
++    }
++
++
++def natural_rule_key(rule_id: str) -> tuple[int, str]:
++    """Sort rule IDs by numeric suffix."""
++    digits = "".join(ch for ch in rule_id if ch.isdigit())
++    return (int(digits) if digits else 999, rule_id)
++
++
++def describe_target_rule_scope(target_rule_counts: dict[str, int]) -> dict[str, Any]:
++    """Describe whether Q1 records are single-target or target-balanced.
++
++    The Q1 target-balanced rerun intentionally uses the Q2-available target
++    rules and excludes R08 because the final Q2 injection profile has no R08
++    prompt.  Keeping this as data-derived metadata prevents report wording from
++    accidentally carrying over the old R03-only label.
++    """
++    target_rule_ids = sorted(
++        (rid for rid in target_rule_counts if rid),
++        key=natural_rule_key,
++    )
++    counts = [int(target_rule_counts[rid]) for rid in target_rule_ids]
++    balanced = bool(counts) and len(set(counts)) == 1
++    q2_available_set = set(Q2_AVAILABLE_TARGET_RULES)
++    target_set = set(target_rule_ids)
++    missing_q2_available = [rid for rid in Q2_AVAILABLE_TARGET_RULES if rid not in target_set]
++    extra_target_rules = [rid for rid in target_rule_ids if rid not in q2_available_set]
++    is_q2_available_target_balanced = (
++        balanced
++        and target_rule_ids == Q2_AVAILABLE_TARGET_RULES
++        and "R08" not in target_set
++    )
++
++    if is_q2_available_target_balanced:
++        label = (
++            "Q2-available target-balanced "
++            "(R01,R02,R03,R04,R05,R06,R07,R09,R10; R08 absent)"
++        )
++    elif len(target_rule_ids) == 1:
++        label = f"{target_rule_ids[0]} only"
++    elif balanced:
++        label = f"{len(target_rule_ids)} target rules, balanced ({', '.join(target_rule_ids)})"
++    elif target_rule_ids:
++        label = f"{len(target_rule_ids)} target rules, unbalanced ({', '.join(target_rule_ids)})"
++    else:
++        label = "unknown target-rule scope"
++
++    return {
++        "label": label,
++        "target_rule_ids": target_rule_ids,
++        "target_rule_count": len(target_rule_ids),
++        "balanced": balanced,
++        "per_target_record_count": counts[0] if balanced and counts else None,
++        "is_q2_available_target_balanced": is_q2_available_target_balanced,
++        "q2_available_target_rules": Q2_AVAILABLE_TARGET_RULES,
++        "missing_q2_available_target_rules": missing_q2_available,
++        "extra_target_rules": extra_target_rules,
++        "r08_absent_from_target_rules": "R08" not in target_set,
++    }
++
++
++def load_jsonl(path: Path) -> list[dict[str, Any]]:
++    """Load JSONL records."""
++    records: list[dict[str, Any]] = []
++    with path.open("r", encoding="utf-8") as handle:
++        for line in handle:
++            if line.strip():
++                records.append(json.loads(line))
++    return records
++
++
++def load_trace_counts(path: Path) -> dict[str, Any]:
++    """Load trace CSV metadata counts without retaining the full wide table."""
++    counts: dict[str, Any] = {
++        "rows": 0,
++        "condition": Counter(),
++        "rule_count": Counter(),
++        "turn_count": Counter(),
++        "attack_order_variant": Counter(),
++        "sampled_variant_id": Counter(),
++        "possible_variant_id": Counter(),
++        "active_rule_ids": Counter(),
++    }
++    with path.open("r", encoding="utf-8-sig", newline="") as handle:
++        reader = csv.DictReader(handle)
++        for row in reader:
++            counts["rows"] += 1
++            for key in [
++                "condition",
++                "rule_count",
++                "turn_count",
++                "attack_order_variant",
++                "sampled_variant_id",
++                "possible_variant_id",
++                "active_rule_ids",
++            ]:
++                counts[key][row.get(key, "")] += 1
++    return counts
++
++
++def final_metrics(record: dict[str, Any]) -> dict[str, Any]:
++    """Return final-turn metrics for a record."""
++    final_turn = record.get("turn_results", [])[-1]
++    metrics = final_turn.get("metrics", {})
++    return {
++        "per_rule_pass_rate": _float(metrics.get("per_rule_pass_rate")),
++        "perfect_success": _float(metrics.get("perfect_success")),
++        "targeted_rule_success": _float(metrics.get("targeted_rule_success")),
++        "non_target_failure": _float(metrics.get("non_target_failure")),
++    }
++
++
++def build_condition_rows(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
++    """Aggregate final-turn metrics by rule_count, turn_count, attack."""
++    grouped: dict[tuple[int, int, str], dict[str, list[float]]] = defaultdict(
++        lambda: defaultdict(list)
++    )
++    for record in records:
++        key = (
++            int(record.get("rule_count", 0)),
++            int(record.get("turn_count", 0)),
++            str(record.get("attack_intensity", "")),
++        )
++        metrics = final_metrics(record)
++        for metric, value in metrics.items():
++            if value is not None:
++                grouped[key][metric].append(value)
++
++    rows: list[dict[str, Any]] = []
++    for rule_count in RULE_COUNTS:
++        for turn_count in TURN_COUNTS:
++            for attack in ATTACK_TYPES:
++                values = grouped.get((rule_count, turn_count, attack), {})
++                row: dict[str, Any] = {
++                    "rule_count": rule_count,
++                    "turn_count": turn_count,
++                    "attack_intensity": attack,
++                }
++                for metric in METRIC_LABELS:
++                    summary = stat(list(values.get(metric, [])))
++                    row[f"{metric}_mean"] = summary["mean"]
++                    row[f"{metric}_std"] = summary["std"]
++                    row[f"{metric}_n"] = summary["n"]
++                rows.append(row)
++    return rows
++
++
++def build_attack_order_rows(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
++    """Aggregate adversarial final-turn metrics by attack-order variant."""
++    grouped: dict[tuple[int, int, str], dict[str, list[float]]] = defaultdict(
++        lambda: defaultdict(list)
++    )
++    for record in records:
++        if str(record.get("attack_intensity")) != "adversarial":
++            continue
++        key = (
++            int(record.get("rule_count", 0)),
++            int(record.get("turn_count", 0)),
++            str(record.get("attack_order_variant", "")),
++        )
++        metrics = final_metrics(record)
++        for metric, value in metrics.items():
++            if value is not None:
++                grouped[key][metric].append(value)
++
++    rows: list[dict[str, Any]] = []
++    for rule_count in RULE_COUNTS:
++        for turn_count in TURN_COUNTS:
++            for order in ORDER_VARIANTS:
++                values = grouped.get((rule_count, turn_count, order), {})
++                if not values:
++                    continue
++                row: dict[str, Any] = {
++                    "rule_count": rule_count,
++                    "turn_count": turn_count,
++                    "attack_order_variant": order,
++                }
++                for metric in METRIC_LABELS:
++                    summary = stat(list(values.get(metric, [])))
++                    row[f"{metric}_mean"] = summary["mean"]
++                    row[f"{metric}_std"] = summary["std"]
++                    row[f"{metric}_n"] = summary["n"]
++                rows.append(row)
++    return rows
++
++
++def build_rule_failure_rows(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
++    """Aggregate final-turn per-rule failure rates."""
++    grouped: dict[tuple[str, int, int, str], dict[str, int]] = defaultdict(
++        lambda: {"failed": 0, "total": 0}
++    )
++    for record in records:
++        final_turn = record.get("turn_results", [])[-1]
++        for score in final_turn.get("scores", []):
++            rule_id = str(score.get("rule_id", ""))
++            passed = score.get("pass")
++            if not rule_id or passed is None:
++                continue
++            key = (
++                rule_id,
++                int(record.get("rule_count", 0)),
++                int(record.get("turn_count", 0)),
++                str(record.get("attack_intensity", "")),
++            )
++            grouped[key]["total"] += 1
++            if passed is False:
++                grouped[key]["failed"] += 1
++
++    rows: list[dict[str, Any]] = []
++    for (rule_id, rule_count, turn_count, attack), values in sorted(
++        grouped.items(),
++        key=lambda item: (
++            natural_rule_key(item[0][0]),
++            item[0][1],
++            item[0][2],
++            item[0][3],
++        ),
++    ):
++        total = values["total"]
++        rows.append(
++            {
++                "rule_id": rule_id,
++                "rule_count": rule_count,
++                "turn_count": turn_count,
++                "attack_intensity": attack,
++                "failed": values["failed"],
++                "total": total,
++                "failure_rate": values["failed"] / total if total else "",
++            }
++        )
++    return rows
++
++
++def write_csv(path: Path, rows: list[dict[str, Any]], fieldnames: list[str]) -> Path:
++    """Write rows as CSV."""
++    path.parent.mkdir(parents=True, exist_ok=True)
++    with path.open("w", encoding="utf-8-sig", newline="") as handle:
++        writer = csv.DictWriter(handle, fieldnames=fieldnames)
++        writer.writeheader()
++        writer.writerows(rows)
++    return path
++
++
++def _condition_lookup(rows: list[dict[str, Any]]) -> dict[tuple[int, int, str], dict[str, Any]]:
++    return {
++        (int(row["rule_count"]), int(row["turn_count"]), str(row["attack_intensity"])): row
++        for row in rows
++    }
++
++
++def plot_q1_strict_success(condition_rows: list[dict[str, Any]], output_dir: Path) -> Path:
++    """Plot final-turn strict perfect_success by rule count and turn."""
++    lookup = _condition_lookup(condition_rows)
++    fig, axes = plt.subplots(1, 2, figsize=(15.5, 6.2), sharey=True, constrained_layout=True)
++    for ax, attack in zip(axes, ATTACK_TYPES, strict=True):
++        for rule_count in RULE_COUNTS:
++            xs: list[int] = []
++            ys: list[float] = []
++            yerr: list[float] = []
++            labels: list[str] = []
++            for turn_count in TURN_COUNTS:
++                row = lookup.get((rule_count, turn_count, attack))
++                if not row or row["perfect_success_mean"] is None:
++                    continue
++                xs.append(turn_count)
++                ys.append(float(row["perfect_success_mean"]) * 100)
++                yerr.append(float(row["perfect_success_std"] or 0.0) * 100)
++                labels.append(f"n={row['perfect_success_n']}")
++            ax.errorbar(
++                xs,
++                ys,
++                yerr=yerr,
++                marker="o",
++                linewidth=2.2,
++                capsize=3,
++                color=RULE_COLORS[rule_count],
++                label=f"R={rule_count}",
++            )
++            for x, y, label in zip(xs, ys, labels, strict=True):
++                ax.text(x, y + 3.5, label, ha="center", va="bottom", fontsize=8)
++
++        ax.set_title(f"{ATTACK_LABELS[attack]} · strict perfect_success", fontsize=13)
++        ax.set_xlabel("Turn count")
++        ax.set_xticks(TURN_COUNTS)
++        ax.set_ylim(-7, 110)
++        ax.grid(True, alpha=0.3)
++        ax.legend(title="rule_count", fontsize=9)
++    axes[0].set_ylabel("Final-turn perfect_success (%)")
++    fig.suptitle("Q1: final-turn strict success by rule_count and turn_count", fontsize=16)
++    output = output_dir / "q1_strict_success_by_rule_count_turn.png"
++    fig.savefig(output, dpi=160, bbox_inches="tight")
++    plt.close(fig)
++    return output
++
++
++def plot_old_vs_strict(condition_rows: list[dict[str, Any]], output_dir: Path) -> Path:
++    """Plot old partial metric vs strict metric for each attack condition."""
++    lookup = _condition_lookup(condition_rows)
++    fig, axes = plt.subplots(1, 2, figsize=(16, 6.4), sharey=True, constrained_layout=True)
++    for ax, attack in zip(axes, ATTACK_TYPES, strict=True):
++        for rule_count in RULE_COUNTS:
++            xs: list[int] = []
++            old_values: list[float] = []
++            strict_values: list[float] = []
++            for turn_count in TURN_COUNTS:
++                row = lookup.get((rule_count, turn_count, attack))
++                if not row:
++                    continue
++                old = row.get("per_rule_pass_rate_mean")
++                strict = row.get("perfect_success_mean")
++                if old is None or strict is None:
++                    continue
++                xs.append(turn_count)
++                old_values.append(float(old) * 100)
++                strict_values.append(float(strict) * 100)
++            color = RULE_COLORS[rule_count]
++            ax.plot(
++                xs,
++                old_values,
++                marker="o",
++                linewidth=1.7,
++                alpha=0.55,
++                color=color,
++                label=f"R={rule_count} old",
++            )
++            ax.plot(
++                xs,
++                strict_values,
++                marker="s",
++                linestyle="--",
++                linewidth=2.3,
++                color=color,
++                label=f"R={rule_count} strict",
++            )
++        ax.set_title(f"{ATTACK_LABELS[attack]} · partial vs strict", fontsize=13)
++        ax.set_xlabel("Turn count")
++        ax.set_xticks(TURN_COUNTS)
++        ax.set_ylim(-7, 110)
++        ax.grid(True, alpha=0.3)
++        ax.legend(fontsize=8, ncol=2)
++    axes[0].set_ylabel("Final-turn metric (%)")
++    fig.suptitle("Q1: old per-rule pass rate vs strict perfect_success", fontsize=16)
++    output = output_dir / "q1_old_vs_strict_metric_by_condition.png"
++    fig.savefig(output, dpi=160, bbox_inches="tight")
++    plt.close(fig)
++    return output
++
++
++def plot_benign_adversarial_gap(condition_rows: list[dict[str, Any]], output_dir: Path) -> Path:
++    """Plot benign minus adversarial strict success gap as a heatmap."""
++    lookup = _condition_lookup(condition_rows)
++    matrix = np.full((len(RULE_COUNTS), len(TURN_COUNTS)), np.nan)
++    labels = [["" for _ in TURN_COUNTS] for _ in RULE_COUNTS]
++    for r_idx, rule_count in enumerate(RULE_COUNTS):
++        for t_idx, turn_count in enumerate(TURN_COUNTS):
++            benign = lookup.get((rule_count, turn_count, "benign"))
++            adversarial = lookup.get((rule_count, turn_count, "adversarial"))
++            if not benign or not adversarial:
++                continue
++            b = benign.get("perfect_success_mean")
++            a = adversarial.get("perfect_success_mean")
++            if b is None or a is None:
++                continue
++            gap = (float(b) - float(a)) * 100
++            matrix[r_idx, t_idx] = gap
++            labels[r_idx][t_idx] = f"{gap:.0f}pp\nn={benign['perfect_success_n']}/{adversarial['perfect_success_n']}"
++
++    fig, ax = plt.subplots(figsize=(9, 5.5), constrained_layout=True)
++    im = ax.imshow(matrix, aspect="auto", vmin=0, vmax=100, cmap="YlOrRd")
++    ax.set_xticks(range(len(TURN_COUNTS)))
++    ax.set_xticklabels(TURN_COUNTS)
++    ax.set_yticks(range(len(RULE_COUNTS)))
++    ax.set_yticklabels([f"R={rc}" for rc in RULE_COUNTS])
++    ax.set_xlabel("Turn count")
++    ax.set_ylabel("rule_count")
++    ax.set_title("Q1: benign − adversarial strict success gap")
++    for r_idx in range(len(RULE_COUNTS)):
++        for t_idx in range(len(TURN_COUNTS)):
++            if math.isnan(matrix[r_idx, t_idx]):
++                continue
++            color = "white" if matrix[r_idx, t_idx] >= 55 else "#111827"
++            ax.text(t_idx, r_idx, labels[r_idx][t_idx], ha="center", va="center", color=color, fontsize=9)
++    fig.colorbar(im, ax=ax, label="Gap in perfect_success (percentage points)")
++    output = output_dir / "q1_benign_adversarial_strict_gap_heatmap.png"
++    fig.savefig(output, dpi=160, bbox_inches="tight")
++    plt.close(fig)
++    return output
++
++
++def plot_attack_order(order_rows: list[dict[str, Any]], output_dir: Path) -> Path:
++    """Plot order-balanced adversarial final-turn metrics."""
++    grouped: dict[tuple[int, str], dict[int, float | None]] = defaultdict(dict)
++    for row in order_rows:
++        if row.get("perfect_success_mean") is None:
++            continue
++        key = (int(row["rule_count"]), str(row["attack_order_variant"]))
++        grouped[key][int(row["turn_count"])] = float(row["per_rule_pass_rate_mean"]) * 100
++
++    fig, axes = plt.subplots(2, 2, figsize=(14, 9), sharey=True, constrained_layout=True)
++    for ax, rule_count in zip(axes.ravel(), RULE_COUNTS, strict=True):
++        for order in ORDER_VARIANTS:
++            values_by_turn = grouped.get((rule_count, order), {})
++            xs = [turn for turn in TURN_COUNTS if turn in values_by_turn]
++            ys = [values_by_turn[turn] for turn in xs]
++            if not xs:
++                continue
++            ax.plot(
++                xs,
++                ys,
++                marker="o",
++                linewidth=2.1,
++                color=ORDER_COLORS[order],
++                label=ORDER_LABELS[order],
++            )
++        ax.set_title(f"R={rule_count}: adversarial order variants")
++        ax.set_xlabel("Turn count")
++        ax.set_xticks(TURN_COUNTS)
++        ax.set_ylim(-5, 105)
++        ax.grid(True, alpha=0.3)
++        ax.legend(fontsize=8)
++    axes[0][0].set_ylabel("Final-turn old per-rule pass (%)")
++    axes[1][0].set_ylabel("Final-turn old per-rule pass (%)")
++    fig.suptitle("Q1: final two-turn attack order diagnostic", fontsize=16)
++    output = output_dir / "q1_attack_order_variant_per_rule_pass.png"
++    fig.savefig(output, dpi=160, bbox_inches="tight")
++    plt.close(fig)
++    return output
++
++
++def plot_non_target_failure(condition_rows: list[dict[str, Any]], output_dir: Path) -> Path:
++    """Plot non-target failure among adversarial records."""
++    lookup = _condition_lookup(condition_rows)
++    matrix = np.full((len(RULE_COUNTS), len(TURN_COUNTS)), np.nan)
++    labels = [["" for _ in TURN_COUNTS] for _ in RULE_COUNTS]
++    for r_idx, rule_count in enumerate(RULE_COUNTS):
++        for t_idx, turn_count in enumerate(TURN_COUNTS):
++            row = lookup.get((rule_count, turn_count, "adversarial"))
++            if not row:
++                continue
++            value = row.get("non_target_failure_mean")
++            if value is None:
++                continue
++            rate = float(value) * 100
++            matrix[r_idx, t_idx] = rate
++            labels[r_idx][t_idx] = f"{rate:.0f}%\nn={row['non_target_failure_n']}"
++
++    fig, ax = plt.subplots(figsize=(9, 5.5), constrained_layout=True)
++    im = ax.imshow(matrix, aspect="auto", vmin=0, vmax=100, cmap="Reds")
++    ax.set_xticks(range(len(TURN_COUNTS)))
++    ax.set_xticklabels(TURN_COUNTS)
++    ax.set_yticks(range(len(RULE_COUNTS)))
++    ax.set_yticklabels([f"R={rc}" for rc in RULE_COUNTS])
++    ax.set_xlabel("Turn count")
++    ax.set_ylabel("rule_count")
++    ax.set_title("Q1: adversarial non-target rule failure rate")
++    for r_idx in range(len(RULE_COUNTS)):
++        for t_idx in range(len(TURN_COUNTS)):
++            if math.isnan(matrix[r_idx, t_idx]):
++                continue
++            color = "white" if matrix[r_idx, t_idx] >= 50 else "#111827"
++            ax.text(t_idx, r_idx, labels[r_idx][t_idx], ha="center", va="center", color=color, fontsize=9)
++    fig.colorbar(im, ax=ax, label="Records with ≥1 non-target failure (%)")
++    output = output_dir / "q1_adversarial_non_target_failure_heatmap.png"
++    fig.savefig(output, dpi=160, bbox_inches="tight")
++    plt.close(fig)
++    return output
++
++
++def plot_rule_failure(rule_rows: list[dict[str, Any]], output_dir: Path) -> Path:
++    """Plot final-turn rule failure rates by rule and attack condition."""
++    rule_ids = sorted({str(row["rule_id"]) for row in rule_rows}, key=natural_rule_key)
++    fig, axes = plt.subplots(1, 2, figsize=(15, max(5.5, len(rule_ids) * 0.55)), sharey=True, constrained_layout=True)
++    for ax, attack in zip(axes, ATTACK_TYPES, strict=True):
++        matrix = np.full((len(rule_ids), len(RULE_COUNTS)), np.nan)
++        labels = [["" for _ in RULE_COUNTS] for _ in rule_ids]
++        for row in rule_rows:
++            if row["attack_intensity"] != attack:
++                continue
++            if int(row["turn_count"]) != 15:
++                continue
++            r_idx = rule_ids.index(str(row["rule_id"]))
++            c_idx = RULE_COUNTS.index(int(row["rule_count"]))
++            value = _float(row["failure_rate"])
++            if value is None:
++                continue
++            matrix[r_idx, c_idx] = value * 100
++            labels[r_idx][c_idx] = f"{value * 100:.0f}%\n{row['failed']}/{row['total']}"
++        im = ax.imshow(matrix, aspect="auto", vmin=0, vmax=100, cmap="Reds")
++        ax.set_title(f"{ATTACK_LABELS[attack]} · T=15 final-turn failures")
++        ax.set_xlabel("rule_count")
++        ax.set_xticks(range(len(RULE_COUNTS)))
++        ax.set_xticklabels(RULE_COUNTS)
++        ax.set_yticks(range(len(rule_ids)))
++        ax.set_yticklabels(rule_ids)
++        for r_idx in range(len(rule_ids)):
++            for c_idx in range(len(RULE_COUNTS)):
++                if math.isnan(matrix[r_idx, c_idx]):
++                    continue
++                color = "white" if matrix[r_idx, c_idx] >= 50 else "#111827"
++                ax.text(c_idx, r_idx, labels[r_idx][c_idx], ha="center", va="center", color=color, fontsize=8)
++    fig.colorbar(im, ax=axes, shrink=0.82, label="Failure rate (%)")
++    fig.suptitle("Q1: final-turn rule-level failure profile at T=15", fontsize=16)
++    output = output_dir / "q1_rule_failure_profile_t15_heatmap.png"
++    fig.savefig(output, dpi=160, bbox_inches="tight")
++    plt.close(fig)
++    return output
++
++
++def build_summary(
++    *,
++    records: list[dict[str, Any]],
++    condition_rows: list[dict[str, Any]],
++    order_rows: list[dict[str, Any]],
++    trace_counts: dict[str, Any],
++    judge_audit: dict[str, Any],
++    outputs: dict[str, str],
++) -> dict[str, Any]:
++    """Build a compact machine-readable summary for reports."""
++    lookup = _condition_lookup(condition_rows)
++    adversarial_target_success = [
++        row["targeted_rule_success_mean"]
++        for row in condition_rows
++        if row["attack_intensity"] == "adversarial" and row["targeted_rule_success_mean"] is not None
++    ]
++    adversarial_perfect_success = [
++        row["perfect_success_mean"]
++        for row in condition_rows
++        if row["attack_intensity"] == "adversarial" and row["perfect_success_mean"] is not None
++    ]
++    benign_perfect = [
++        row["perfect_success_mean"]
++        for row in condition_rows
++        if row["attack_intensity"] == "benign" and row["perfect_success_mean"] is not None
++    ]
++    non_target = [
++        row["non_target_failure_mean"]
++        for row in condition_rows
++        if row["attack_intensity"] == "adversarial" and row["non_target_failure_mean"] is not None
++    ]
++    gaps: list[float] = []
++    for rule_count in RULE_COUNTS:
++        for turn_count in TURN_COUNTS:
++            benign = lookup.get((rule_count, turn_count, "benign"), {}).get("perfect_success_mean")
++            adversarial = lookup.get((rule_count, turn_count, "adversarial"), {}).get("perfect_success_mean")
++            if benign is not None and adversarial is not None:
++                gaps.append(float(benign) - float(adversarial))
++
++    order_pair_rows = [
++        row
++        for row in order_rows
++        if row["attack_order_variant"] in {"implicit_then_adversarial", "adversarial_then_implicit"}
++    ]
++    order_old_rates = {
++        row["attack_order_variant"]: []
++        for row in order_pair_rows
++    }
++    for row in order_pair_rows:
++        value = row.get("per_rule_pass_rate_mean")
++        if value is not None:
++            order_old_rates[row["attack_order_variant"]].append(float(value))
++
++    target_rule_counts = dict(Counter(str(r.get("target_rule_id", "")) for r in records))
++
++    return {
++        "records": len(records),
++        "jsonl_records_by_attack_intensity": dict(Counter(str(r.get("attack_intensity", "")) for r in records)),
++        "jsonl_records_by_attack_order_variant": dict(Counter(str(r.get("attack_order_variant", "")) for r in records)),
++        "trace_rows": trace_counts["rows"],
++        "trace_rows_by_condition": dict(trace_counts["condition"]),
++        "trace_sampled_variant_count": len(trace_counts["sampled_variant_id"]),
++        "target_rule_ids": target_rule_counts,
++        "target_rule_scope": describe_target_rule_scope(target_rule_counts),
++        "rule_counts": dict(Counter(str(r.get("rule_count", "")) for r in records)),
++        "turn_counts": dict(Counter(str(r.get("turn_count", "")) for r in records)),
++        "mean_benign_perfect_success": mean(benign_perfect) if benign_perfect else None,
++        "mean_adversarial_perfect_success": mean(adversarial_perfect_success) if adversarial_perfect_success else None,
++        "mean_adversarial_targeted_rule_success": mean(adversarial_target_success) if adversarial_target_success else None,
++        "mean_adversarial_non_target_failure": mean(non_target) if non_target else None,
++        "mean_benign_minus_adversarial_gap": mean(gaps) if gaps else None,
++        "attack_order_old_per_rule_pass_mean": {
++            order: mean(values) if values else None for order, values in order_old_rates.items()
++        },
++        "judge_audit": {
++            "candidate_rows": judge_audit.get("candidate_rows"),
++            "human_only_rows": judge_audit.get("human_only_rows"),
++            "changed_score_cells": judge_audit.get("changed_score_cells"),
++            "source_result_sha256": judge_audit.get("source_result_sha256"),
++            "ai_adjusted_jsonl_sha256": judge_audit.get("ai_adjusted_jsonl_sha256"),
++        },
++        "outputs": outputs,
++    }
++
++
++def write_markdown_summary(path: Path, summary: dict[str, Any]) -> Path:
++    """Write a concise human-readable summary for downstream reports."""
++    target_scope = summary.get("target_rule_scope", {})
++    title = (
++        "# Q1 target-balanced visualization summary"
++        if target_scope.get("is_q2_available_target_balanced")
++        else "# Q1 sampled-injection visualization summary"
++    )
++    lines = [
++        title,
++        "",
++        "## Data integrity",
++        f"- Enriched result records: {summary['records']}",
++        f"- Trace CSV rows: {summary['trace_rows']}",
++        f"- Target rule scope: {target_scope.get('label', 'unknown')}",
++        f"- Target rule distribution: `{summary['target_rule_ids']}`",
++        f"- Attack-order variants: `{summary['jsonl_records_by_attack_order_variant']}`",
++        "- Judge audit changed score cells: "
++        f"{summary['judge_audit']['changed_score_cells']}; "
++        f"human_only rows: {summary['judge_audit']['human_only_rows']}",
++        "",
++        "## Key descriptive results",
++        f"- Mean benign strict perfect_success across condition cells: {pct(summary['mean_benign_perfect_success'])}",
++        f"- Mean adversarial strict perfect_success across condition cells: {pct(summary['mean_adversarial_perfect_success'])}",
++        f"- Mean adversarial targeted rule success: {pct(summary['mean_adversarial_targeted_rule_success'])}",
++        f"- Mean adversarial non-target failure: {pct(summary['mean_adversarial_non_target_failure'])}",
++        f"- Mean benign−adversarial strict gap: {summary['mean_benign_minus_adversarial_gap'] * 100:.1f}pp"
++        if summary["mean_benign_minus_adversarial_gap"] is not None
++        else "- Mean benign−adversarial strict gap: N/A",
++        "",
++        "## Outputs",
++    ]
++    for label, output in summary["outputs"].items():
++        lines.append(f"- {label}: `{output}`")
++    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
++    return path
++
++
++def parse_args() -> argparse.Namespace:
++    """Parse CLI arguments."""
++    parser = argparse.ArgumentParser(description="Create Q1 sampled-injection visualizations.")
++    parser.add_argument("--input", type=Path, default=DEFAULT_INPUT)
++    parser.add_argument("--trace", type=Path, default=DEFAULT_TRACE)
++    parser.add_argument("--judge-audit", type=Path, default=DEFAULT_JUDGE_AUDIT)
++    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
++    return parser.parse_args()
++
++
++def main() -> None:
++    """Run visualization pipeline."""
++    args = parse_args()
++    output_dir = args.output_dir
++    figures_dir = output_dir / "figures"
++    tables_dir = output_dir / "tables"
++    output_dir.mkdir(parents=True, exist_ok=True)
++    figures_dir.mkdir(parents=True, exist_ok=True)
++    tables_dir.mkdir(parents=True, exist_ok=True)
++
++    records = load_jsonl(args.input)
++    trace_counts = load_trace_counts(args.trace)
++    judge_audit = json.loads(args.judge_audit.read_text(encoding="utf-8"))
++
++    condition_rows = build_condition_rows(records)
++    order_rows = build_attack_order_rows(records)
++    rule_rows = build_rule_failure_rows(records)
++
++    condition_csv = write_csv(
++        tables_dir / "q1_condition_final_turn_metrics.csv",
++        condition_rows,
++        [
++            "rule_count",
++            "turn_count",
++            "attack_intensity",
++            "per_rule_pass_rate_mean",
++            "per_rule_pass_rate_std",
++            "per_rule_pass_rate_n",
++            "perfect_success_mean",
++            "perfect_success_std",
++            "perfect_success_n",
++            "targeted_rule_success_mean",
++            "targeted_rule_success_std",
++            "targeted_rule_success_n",
++            "non_target_failure_mean",
++            "non_target_failure_std",
++            "non_target_failure_n",
++        ],
++    )
++    order_csv = write_csv(
++        tables_dir / "q1_attack_order_final_turn_metrics.csv",
++        order_rows,
++        [
++            "rule_count",
++            "turn_count",
++            "attack_order_variant",
++            "per_rule_pass_rate_mean",
++            "per_rule_pass_rate_std",
++            "per_rule_pass_rate_n",
++            "perfect_success_mean",
++            "perfect_success_std",
++            "perfect_success_n",
++            "targeted_rule_success_mean",
++            "targeted_rule_success_std",
++            "targeted_rule_success_n",
++            "non_target_failure_mean",
++            "non_target_failure_std",
++            "non_target_failure_n",
++        ],
++    )
++    rule_csv = write_csv(
++        tables_dir / "q1_rule_failure_final_turn_metrics.csv",
++        rule_rows,
++        [
++            "rule_id",
++            "rule_count",
++            "turn_count",
++            "attack_intensity",
++            "failed",
++            "total",
++            "failure_rate",
++        ],
++    )
++
++    outputs: dict[str, str] = {
++        "condition_csv": str(condition_csv),
++        "attack_order_csv": str(order_csv),
++        "rule_failure_csv": str(rule_csv),
++        "strict_success_figure": str(plot_q1_strict_success(condition_rows, figures_dir)),
++        "old_vs_strict_figure": str(plot_old_vs_strict(condition_rows, figures_dir)),
++        "strict_gap_heatmap": str(plot_benign_adversarial_gap(condition_rows, figures_dir)),
++        "attack_order_figure": str(plot_attack_order(order_rows, figures_dir)),
++        "non_target_failure_heatmap": str(plot_non_target_failure(condition_rows, figures_dir)),
++        "rule_failure_t15_heatmap": str(plot_rule_failure(rule_rows, figures_dir)),
++    }
++
++    summary = build_summary(
++        records=records,
++        condition_rows=condition_rows,
++        order_rows=order_rows,
++        trace_counts=trace_counts,
++        judge_audit=judge_audit,
++        outputs=outputs,
++    )
++    summary_json = output_dir / "q1_visualization_summary.json"
++    summary_json.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
++    outputs["summary_json"] = str(summary_json)
++    summary["outputs"] = outputs
++    summary_md = write_markdown_summary(output_dir / "q1_visualization_summary.md", summary)
++    outputs["summary_markdown"] = str(summary_md)
++    summary_json.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
++
++    print(f"Loaded records: {len(records)}")
++    print(f"Trace rows: {trace_counts['rows']}")
++    print(f"Wrote output dir: {output_dir}")
++    for key, value in outputs.items():
++        print(f"{key}: {value}")
++
++
++if __name__ == "__main__":
++    main()
