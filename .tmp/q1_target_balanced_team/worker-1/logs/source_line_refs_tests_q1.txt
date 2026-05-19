@@ -1,0 +1,62 @@
+    19	def test_q2_profile_loader_excludes_r08_and_preserves_changed_rules() -> None:
+    20	    """Q1 reuse of Q2 data must use the coherent Q2-only 9-rule profile."""
+    21	    profile = generate_q1_sampled_cases.load_q2_injection_profile()
+    22	
+    23	    assert profile["rule_ids"] == ["R01", "R02", "R03", "R04", "R05", "R06", "R07", "R09", "R10"]
+    24	    assert "R08" not in profile["rule_ids"]
+    25	    assert "R08" not in profile["system_preamble"]
+    26	    assert "전체 형태" in profile["rule_pool"]["R07"]["text"]
+    27	    assert "중립적인 AI 어시스턴트" in profile["rule_pool"]["R10"]["text"]
+    28	
+    29	    for rule_id in profile["rule_ids"]:
+    30	        assert sorted(profile["attack_prompts"][rule_id]) == [
+    31	            "adversarial_attack",
+    32	            "implicit_attack",
+    33	        ]
+    34	
+    35	
+    36	def test_sampled_variants_are_deterministic_and_capped() -> None:
+    37	    profile = generate_q1_sampled_cases.load_q2_injection_profile()
+    38	
+    39	    first = generate_q1_sampled_cases.sample_rule_set_variants(
+    40	        "R03",
+    41	        5,
+    42	        rule_ids=profile["rule_ids"],
+    43	        rule_pool=profile["rule_pool"],
+    44	        samples_per_rule_count=10,
+    45	        seed=22110157,
+    46	    )
+    47	    second = generate_q1_sampled_cases.sample_rule_set_variants(
+    48	        "R03",
+    49	        5,
+    50	        rule_ids=profile["rule_ids"],
+    51	        rule_pool=profile["rule_pool"],
+    52	        samples_per_rule_count=10,
+    53	        seed=22110157,
+    54	    )
+    55	
+    56	    assert first == second
+    57	    assert len(first) == 10
+    58	    assert first[0]["possible_combination_count"] == 70
+    59	    assert first[0]["sampled_combination_count"] == 10
+    60	    assert all("R03" in variant["active_rule_ids"] for variant in first)
+    61	    assert all("R03" not in variant["filler_rule_ids"] for variant in first)
+    62	
+    63	
+    64	def test_default_r03_case_count_and_attack_order_balance() -> None:
+    65	    cases = generate_q1_sampled_cases.generate_q1_cases(target_rules=["R03"])
+    66	    generate_q1_sampled_cases.validate_cases(
+    67	        cases,
+    68	        target_rule_count=1,
+    69	        single_turn_attack="adversarial",
+    70	    )
+    71	
+    72	    assert len(cases) == 341
+    73	    assert {case["system_prompt_profile"] for case in cases} == {"general_ai_q2_only"}
+    74	    assert all("R08" not in case["rule_set_variant"] for case in cases)
+    75	    assert all("R08" not in case["system_prompt"] for case in cases)
+    76	
+    77	    multi_turn_injection = [
+    78	        case
+    79	        for case in cases
+    80	        if case["condition"] == "injection_context" and case["turn_count"] == 5

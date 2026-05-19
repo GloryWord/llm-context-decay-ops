@@ -1,0 +1,8 @@
+2026-05-19 23:36:20,868 [INFO] Generated 3069 Q1 sampled cases
+2026-05-19 23:36:20,874 [INFO] by_rule_count: {'1': 99, '3': 990, '5': 990, '7': 990}
+2026-05-19 23:36:20,874 [INFO] by_turn_count: {'1': 558, '10': 837, '15': 837, '5': 837}
+2026-05-19 23:36:20,874 [INFO] by_condition: {'benign_context': 1116, 'injection_context': 1953}
+2026-05-19 23:36:20,874 [INFO] by_target_rule: {'R01': 341, 'R02': 341, 'R03': 341, 'R04': 341, 'R05': 341, 'R06': 341, 'R07': 341, 'R09': 341, 'R10': 341}
+2026-05-19 23:36:20,874 [INFO] by_attack_order_variant: {'adversarial_then_implicit': 837, 'implicit_then_adversarial': 837, 'none': 1116, 'single_adversarial': 279}
+2026-05-19 23:36:20,874 [INFO] Wrote to /Users/kawai_tofu/Desktop/01_SeoulTech/SeoulTech_Local/Capstone_Design/Capstone_Dev/Codex-Multi-Agent-Workflow/llm-context-decay-ops/.tmp/q1_target_balanced_team/worker-1/q1_target_balanced_cases.jsonl
+2026-05-19 23:36:20,875 [INFO] Wrote trace CSV to /Users/kawai_tofu/Desktop/01_SeoulTech/SeoulTech_Local/Capstone_Design/Capstone_Dev/Codex-Multi-Agent-Workflow/llm-context-decay-ops/.tmp/q1_target_balanced_team/worker-1/q1_target_balanced_cases_trace.csv

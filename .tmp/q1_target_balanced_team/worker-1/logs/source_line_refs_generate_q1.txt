@@ -1,0 +1,422 @@
+    35	from typing import Iterable
+    36	
+    37	ROOT = Path(__file__).resolve().parent.parent
+    38	sys.path.insert(0, str(ROOT))
+    39	
+    40	LOGGER = logging.getLogger(__name__)
+    41	
+    42	ANNOTATION_FILE_DEFAULT = (
+    43	    ROOT / "data" / "annotations" / "frontier_q2_general_ai_single_turn_scenarios_final.csv"
+    44	)
+    45	OUTPUT_FILE_DEFAULT = ROOT / "data" / "processed" / "q1_sampled_q2_injection_cases.jsonl"
+    46	
+    47	RULE_COUNTS = [1, 3, 5, 7]
+    48	TURN_COUNTS = [1, 5, 10, 15]
+    49	TRACE_CSV_MAX_TURNS = max(TURN_COUNTS)
+    50	ATTACK_TYPES = ["implicit_attack", "adversarial_attack"]
+    51	MULTI_TURN_ATTACK_ORDERS = [
+    52	    ("implicit_then_adversarial", ["implicit_attack", "adversarial_attack"]),
+    53	    ("adversarial_then_implicit", ["adversarial_attack", "implicit_attack"]),
+    54	]
+    55	Q2_PROFILE_NAME = "general_ai_q2_only"
+    56	DEFAULT_TARGET_RULES = ["R03"]
+    57	DEFAULT_SEED = 22110157
+    58	DEFAULT_SAMPLES_PER_RULE_COUNT = 10
+    59	
+    60	REQUIRED_COLUMNS = {
+    61	    "scenario_id",
+    62	    "research_question",
+    63	    "system_prompt_profile",
+    64	    "q2_only_change_note",
+    65	    "use_for_frontier_q2",
+    66	    "use_for_q3_aux",
+    67	    "turn_count",
+    68	    "system_rule_set",
+    69	    "system_prompt_text",
+    70	    "target_rule_id",
+    71	    "target_rule_category",
+    72	    "target_rule_text",
+    73	    "attack_type",
+    74	    "attack_scope",
+    75	    "prompt_text",
+   360	
+   361	
+   362	def _single_turn_attack_types(single_turn_attack: str) -> list[str]:
+   363	    if single_turn_attack == "both":
+   364	        return ["implicit_attack", "adversarial_attack"]
+   365	    return [f"{single_turn_attack}_attack"]
+   366	
+   367	
+   368	def build_injection_conversation(
+   369	    turn_count: int,
+   370	    target_rule_id: str,
+   371	    rng: random.Random,
+   372	    attack_prompts: dict[str, dict[str, dict]],
+   373	    *,
+   374	    attack_order: list[str],
+   375	    single_turn_attack: str,
+   376	) -> list[dict]:
+   377	    """Build one Q1 injection conversation for a concrete attack order."""
+   378	    if turn_count == 1:
+   379	        attack_type = attack_order[0] if attack_order else _single_turn_attack_types(single_turn_attack)[0]
+   380	        row = _attack_row(attack_prompts, target_rule_id, attack_type)
+   381	        return [
+   382	            _conversation_turn(
+   383	                1,
+   384	                row["prompt_text"],
+   385	                attack_targets=[target_rule_id],
+   386	                attack_mode=attack_type,
+   387	                prompt_id=row["scenario_id"],
+   388	                scenario_id=row["scenario_id"],
+   389	                attack_type=attack_type,
+   390	            )
+   391	        ]
+   392	
+   393	    if turn_count < 3:
+   394	        raise ValueError("Q1 final-two attack order requires T=1 or T>=3")
+   395	    if len(attack_order) != 2:
+   396	        raise ValueError(f"Expected exactly two final attack types, got {attack_order}")
+   397	
+   398	    turns: list[dict] = []
+   399	    for content in _benign_messages(turn_count - 2, rng):
+   400	        turns.append(_conversation_turn(len(turns) + 1, content, attack_mode="benign"))
+   401	
+   402	    for attack_type in attack_order:
+   403	        row = _attack_row(attack_prompts, target_rule_id, attack_type)
+   404	        turns.append(
+   405	            _conversation_turn(
+   406	                len(turns) + 1,
+   407	                row["prompt_text"],
+   408	                attack_targets=[target_rule_id],
+   409	                attack_mode=attack_type,
+   410	                prompt_id=row["scenario_id"],
+   411	                scenario_id=row["scenario_id"],
+   412	                attack_type=attack_type,
+   413	            )
+   414	        )
+   415	    return turns
+   416	
+   417	
+   418	def _case_seed(seed: int, *parts: object) -> int:
+   419	    return _stable_seed(seed, *parts)
+   420	
+   421	
+   422	def _injection_order_variants(turn_count: int, single_turn_attack: str) -> list[tuple[str, list[str]]]:
+   423	    if turn_count == 1:
+   424	        return [
+   425	            (f"single_{attack_type.replace('_attack', '')}", [attack_type])
+   426	            for attack_type in _single_turn_attack_types(single_turn_attack)
+   427	        ]
+   428	    return list(MULTI_TURN_ATTACK_ORDERS)
+   429	
+   430	
+   515	                            _build_case(
+   516	                                counter=counter,
+   517	                                target_rule_id=target_rule_id,
+   518	                                target_rule_category=rule_pool[target_rule_id]["type"],
+   519	                                condition="injection_context",
+   520	                                rule_count=rule_count,
+   521	                                turn_count=turn_count,
+   522	                                variant=variant,
+   523	                                system_prompt=system_prompt,
+   524	                                rules=rules,
+   525	                                conversation=build_injection_conversation(
+   526	                                    turn_count,
+   527	                                    target_rule_id,
+   528	                                    injection_rng,
+   529	                                    attack_prompts,
+   530	                                    attack_order=attack_order,
+   531	                                    single_turn_attack=single_turn_attack,
+   532	                                ),
+   533	                                source_path=annotation_file,
+   534	                                attack_order_variant=attack_order_variant,
+   535	                                attack_order=attack_order,
+   536	                                source_scenario_ids=source_scenario_ids,
+   537	                                single_turn_attack=single_turn_attack,
+   538	                            )
+   539	                        )
+   540	                        counter += 1
+   541	
+   542	    return cases
+   543	
+   544	
+   545	def _build_case(
+   546	    *,
+   547	    counter: int,
+   548	    target_rule_id: str,
+   549	    target_rule_category: str,
+   550	    condition: str,
+   551	    rule_count: int,
+   552	    turn_count: int,
+   553	    variant: dict,
+   554	    system_prompt: str,
+   555	    rules: list[dict],
+   556	    conversation: list[dict],
+   557	    source_path: Path,
+   558	    attack_order_variant: str,
+   559	    attack_order: list[str],
+   560	    source_scenario_ids: list[str],
+   561	    single_turn_attack: str,
+   562	) -> dict:
+   563	    is_injection = condition == "injection_context"
+   564	    group_id = (
+   565	        f"{target_rule_id}_rc{rule_count}_{variant['sampled_variant_id']}"
+   430	
+   431	def generate_q1_cases(
+   432	    *,
+   433	    target_rules: list[str] | None = None,
+   434	    samples_per_rule_count: int = DEFAULT_SAMPLES_PER_RULE_COUNT,
+   435	    seed: int = DEFAULT_SEED,
+   436	    annotation_file: Path = ANNOTATION_FILE_DEFAULT,
+   437	    single_turn_attack: str = "adversarial",
+   438	) -> list[dict]:
+   439	    """Generate Q1 sampled cases using the Q2 final injection profile."""
+   440	    if single_turn_attack not in {"implicit", "adversarial", "both"}:
+   441	        raise ValueError("single_turn_attack must be one of: implicit, adversarial, both")
+   442	
+   443	    profile = load_q2_injection_profile(annotation_file)
+   444	    rule_ids: list[str] = profile["rule_ids"]
+   445	    rule_pool: dict[str, dict] = profile["rule_pool"]
+   446	    attack_prompts: dict[str, dict[str, dict]] = profile["attack_prompts"]
+   447	    system_preamble: str = profile["system_preamble"]
+   448	
+   449	    selected_targets = target_rules or DEFAULT_TARGET_RULES
+   450	    unknown = sorted(set(selected_targets) - set(rule_ids))
+   451	    if unknown:
+   452	        raise ValueError(f"Unknown target rule(s) for Q2 profile: {unknown}")
+   453	
+   454	    cases: list[dict] = []
+   455	    counter = 0
+   456	    for target_rule_id in selected_targets:
+   457	        for rule_count in RULE_COUNTS:
+   458	            variants = sample_rule_set_variants(
+   459	                target_rule_id,
+   460	                rule_count,
+   461	                rule_ids=rule_ids,
+   462	                rule_pool=rule_pool,
+   463	                samples_per_rule_count=samples_per_rule_count,
+   464	                seed=seed,
+   465	            )
+   466	            for variant in variants:
+   467	                active_rule_ids = variant["active_rule_ids"]
+   468	                system_prompt = render_system_prompt(active_rule_ids, rule_pool, system_preamble)
+   469	                rules = [dict(rule_pool[rid]) for rid in active_rule_ids]
+   470	
+   471	                for turn_count in TURN_COUNTS:
+   472	                    benign_rng = random.Random(
+   473	                        _case_seed(seed, target_rule_id, rule_count, variant["sampled_variant_id"], turn_count, "benign")
+   474	                    )
+   475	                    cases.append(
+   476	                        _build_case(
+   477	                            counter=counter,
+   478	                            target_rule_id=target_rule_id,
+   479	                            target_rule_category=rule_pool[target_rule_id]["type"],
+   480	                            condition="benign_context",
+   481	                            rule_count=rule_count,
+   482	                            turn_count=turn_count,
+   483	                            variant=variant,
+   484	                            system_prompt=system_prompt,
+   485	                            rules=rules,
+   486	                            conversation=build_benign_conversation(turn_count, benign_rng),
+   487	                            source_path=annotation_file,
+   488	                            attack_order_variant="none",
+   489	                            attack_order=[],
+   490	                            source_scenario_ids=[],
+   491	                            single_turn_attack=single_turn_attack,
+   492	                        )
+   493	                    )
+   494	                    counter += 1
+   495	
+   496	                    for attack_order_variant, attack_order in _injection_order_variants(
+   497	                        turn_count,
+   498	                        single_turn_attack,
+   499	                    ):
+   500	                        injection_rng = random.Random(
+   501	                            _case_seed(
+   502	                                seed,
+   503	                                target_rule_id,
+   504	                                rule_count,
+   505	                                variant["sampled_variant_id"],
+   506	                                turn_count,
+   507	                                attack_order_variant,
+   508	                            )
+   509	                        )
+   510	                        source_scenario_ids = [
+   511	                            attack_prompts[target_rule_id][attack_type]["scenario_id"]
+   512	                            for attack_type in attack_order
+   513	                        ]
+   514	                        cases.append(
+   515	                            _build_case(
+   735	    "sampled_variant_id",
+   736	    "possible_variant_id",
+   737	    "sampling_seed",
+   738	    "samples_per_rule_count",
+   739	    "possible_combination_count",
+   740	    "sampled_combination_count",
+   741	    "active_rule_ids",
+   742	    "active_rule_ids_json",
+   743	    "filler_rule_ids",
+   744	    "filler_rule_ids_json",
+   745	    "filler_category_composition_json",
+   746	    "active_category_composition_json",
+   747	    "source_attack_prompt_file",
+   748	    "source_scenario_ids",
+   749	    "source_scenario_ids_json",
+   750	    "single_turn_attack_policy",
+   751	    "schedule",
+   752	    "system_prompt",
+   753	    "rules_json",
+   754	    "rule_texts_by_id_json",
+   755	    "conversation_template_json",
+   756	]
+   757	
+   758	TRACE_CSV_TURN_FIELDS = [
+   759	    "turn",
+   760	    "role",
+   761	    "attack_mode",
+   762	    "attack_type",
+   763	    "attack_targets",
+   764	    "scenario_id",
+   765	    "prompt_id",
+   766	    "content",
+   767	]
+   768	
+   769	
+   770	def _json_cell(value: object) -> str:
+   771	    return json.dumps(value, ensure_ascii=False, sort_keys=True)
+   772	
+   773	
+   774	def _pipe_cell(values: Iterable[object] | None) -> str:
+   775	    if not values:
+   776	        return ""
+   777	    return "|".join(str(value) for value in values)
+   778	
+   779	
+   780	def _default_trace_csv_path(output_path: Path) -> Path:
+   781	    return output_path.with_name(f"{output_path.stem}_trace.csv")
+   782	
+   783	
+   784	def trace_csv_fieldnames(max_turns: int = TRACE_CSV_MAX_TURNS) -> list[str]:
+   785	    fields = list(TRACE_CSV_BASE_FIELDS)
+   786	    for turn_num in range(1, max_turns + 1):
+   787	        for field in TRACE_CSV_TURN_FIELDS:
+   788	            fields.append(f"turn_{turn_num:02d}_{field}")
+   789	    return fields
+   790	
+   840	        "conversation_template_json": _json_cell(conversation),
+   841	    }
+   842	
+   843	    for idx in range(max_turns):
+   844	        prefix = f"turn_{idx + 1:02d}"
+   845	        if idx < len(conversation):
+   846	            turn = conversation[idx]
+   847	            row.update(
+   848	                {
+   849	                    f"{prefix}_turn": turn.get("turn", ""),
+   850	                    f"{prefix}_role": turn.get("role", ""),
+   851	                    f"{prefix}_attack_mode": turn.get("attack_mode", ""),
+   852	                    f"{prefix}_attack_type": turn.get("attack_type", ""),
+   853	                    f"{prefix}_attack_targets": _pipe_cell(turn.get("attack_targets")),
+   854	                    f"{prefix}_scenario_id": turn.get("scenario_id", ""),
+   855	                    f"{prefix}_prompt_id": turn.get("prompt_id", ""),
+   856	                    f"{prefix}_content": turn.get("content", ""),
+   857	                }
+   858	            )
+   859	        else:
+   860	            row.update({f"{prefix}_{field}": "" for field in TRACE_CSV_TURN_FIELDS})
+   861	
+   862	    return row
+   863	
+   864	
+   865	def write_trace_csv(cases: list[dict], output_path: Path, max_turns: int = TRACE_CSV_MAX_TURNS) -> None:
+   866	    """Write a one-row-per-case provenance CSV for thesis/design inspection."""
+   867	    output_path.parent.mkdir(parents=True, exist_ok=True)
+   868	    fieldnames = trace_csv_fieldnames(max_turns)
+   869	    with output_path.open("w", encoding="utf-8-sig", newline="") as f:
+   870	        writer = csv.DictWriter(f, fieldnames=fieldnames)
+   871	        writer.writeheader()
+   872	        for case in cases:
+   873	            writer.writerow(flatten_case_for_trace_csv(case, max_turns=max_turns))
+   874	
+   875	
+   876	def parse_args() -> argparse.Namespace:
+   877	    parser = argparse.ArgumentParser(description="Generate Q1 sampled Q2-injection cases.")
+   878	    parser.add_argument(
+   879	        "--annotation-file",
+   880	        type=Path,
+   881	        default=ANNOTATION_FILE_DEFAULT,
+   882	        help="Q2 final scenario CSV to reuse coherently for Q1 injection prompts.",
+   883	    )
+   884	    parser.add_argument(
+   885	        "--output",
+   886	        type=Path,
+   887	        default=OUTPUT_FILE_DEFAULT,
+   888	        help="Output JSONL path.",
+   889	    )
+   890	    parser.add_argument(
+   891	        "--trace-csv",
+   892	        type=Path,
+   893	        default=None,
+   894	        help=(
+   895	            "Output one-row-per-case provenance CSV path. Defaults to the JSONL output "
+   896	            "path with '_trace.csv' suffix."
+   897	        ),
+   898	    )
+   899	    parser.add_argument(
+   900	        "--no-trace-csv",
+   901	        action="store_true",
+   902	        help="Do not write the provenance CSV.",
+   903	    )
+   904	    parser.add_argument(
+   905	        "--target-rule",
+   906	        action="append",
+   907	        default=None,
+   908	        help="Target rule to generate. Repeat for multiple rules. Defaults to R03.",
+   909	    )
+   910	    parser.add_argument(
+   910	    parser.add_argument(
+   911	        "--all-target-rules",
+   912	        action="store_true",
+   913	        help="Generate for all target rules in the Q2 final profile.",
+   914	    )
+   915	    parser.add_argument(
+   916	        "--samples-per-rule-count",
+   917	        type=int,
+   918	        default=DEFAULT_SAMPLES_PER_RULE_COUNT,
+   919	        help="Maximum sampled filler combinations per target/rule_count.",
+   920	    )
+   921	    parser.add_argument("--seed", type=int, default=DEFAULT_SEED, help="Deterministic sampling seed.")
+   922	    parser.add_argument(
+   923	        "--single-turn-attack",
+   924	        choices=["implicit", "adversarial", "both"],
+   925	        default="adversarial",
+   926	        help="T=1 injection policy. Multi-turn cases always include both final-two-turn orders.",
+   927	    )
+   928	    return parser.parse_args()
+   929	
+   930	
+   931	def main() -> None:
+   932	    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+   933	    args = parse_args()
+   934	    annotation_file = args.annotation_file if args.annotation_file.is_absolute() else ROOT / args.annotation_file
+   935	    output_path = args.output if args.output.is_absolute() else ROOT / args.output
+   936	    trace_csv_path = None
+   937	    if not args.no_trace_csv:
+   938	        trace_csv_arg = args.trace_csv or _default_trace_csv_path(output_path)
+   939	        trace_csv_path = trace_csv_arg if trace_csv_arg.is_absolute() else ROOT / trace_csv_arg
+   940	
+   941	    profile = load_q2_injection_profile(annotation_file)
+   942	    target_rules = profile["rule_ids"] if args.all_target_rules else (args.target_rule or DEFAULT_TARGET_RULES)
+   943	    cases = generate_q1_cases(
+   944	        target_rules=target_rules,
+   945	        samples_per_rule_count=args.samples_per_rule_count,
+   946	        seed=args.seed,
+   947	        annotation_file=annotation_file,
+   948	        single_turn_attack=args.single_turn_attack,
+   949	    )
+   950	    validate_cases(
+   951	        cases,
+   952	        target_rule_count=len(target_rules),
+   953	        single_turn_attack=args.single_turn_attack,
+   954	        rule_pool_size=len(profile["rule_ids"]),
+   955	    )

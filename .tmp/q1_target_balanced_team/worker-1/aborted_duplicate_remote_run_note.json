@@ -1,0 +1,7 @@
+{
+  "not_validated_output": true,
+  "reason": "Leader update narrowed worker-1 scope to case/provenance validation only and prohibited duplicate full remote run.",
+  "partial_checkpoint_records_removed": 12,
+  "partial_output_path_removed": ".tmp/q1_target_balanced_team/worker-1/output/2026-05-19_q1_target_balanced_local_llama_gemma/fast_results_hugging-quants_Meta-Llama-3.1-8B-Instruct-AWQ-INT4.jsonl",
+  "recorded_at": "2026-05-19T14:49:42.955996+00:00"
+}

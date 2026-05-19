@@ -1,0 +1,84 @@
+### artifact validation summary
+{
+  "by_attack_order_variant": {
+    "adversarial_then_implicit": 837,
+    "implicit_then_adversarial": 837,
+    "none": 1116,
+    "single_adversarial": 279
+  },
+  "by_condition": {
+    "benign_context": 1116,
+    "injection_context": 1953
+  },
+  "by_rule_count": {
+    "1": 99,
+    "3": 990,
+    "5": 990,
+    "7": 990
+  },
+  "by_target_rule": {
+    "R01": 341,
+    "R02": 341,
+    "R03": 341,
+    "R04": 341,
+    "R05": 341,
+    "R06": 341,
+    "R07": 341,
+    "R09": 341,
+    "R10": 341
+  },
+  "by_turn_count": {
+    "1": 558,
+    "10": 837,
+    "15": 837,
+    "5": 837
+  },
+  "case_count": 3069,
+  "cases_path": ".tmp/q1_target_balanced_team/worker-1/q1_target_balanced_cases.jsonl",
+  "cases_sha256": "027800333d09e6024083a0f264fc809977d70ea4aa8ce3fcb18b0d16edc26b5a",
+  "contains_r08_in_rule_set": false,
+  "contains_r08_in_system_prompt": false,
+  "first_case": {
+    "case_id": "q1samp_00000",
+    "condition": "benign_context",
+    "rule_count": 1,
+    "rule_set_variant": [
+      "R01"
+    ],
+    "target_rule_id": "R01",
+    "turn_count": 1
+  },
+  "generated_at": "2026-05-19T14:36:22.143660+00:00",
+  "last_case": {
+    "case_id": "q1samp_03068",
+    "condition": "injection_context",
+    "rule_count": 7,
+    "rule_set_variant": [
+      "R01",
+      "R02",
+      "R05",
+      "R06",
+      "R07",
+      "R09",
+      "R10"
+    ],
+    "target_rule_id": "R10",
+    "turn_count": 15
+  },
+  "target_rules": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R09",
+    "R10"
+  ],
+  "total_target_turn_calls": 25668,
+  "trace_path": ".tmp/q1_target_balanced_team/worker-1/q1_target_balanced_cases_trace.csv",
+  "trace_row_count": 3069,
+  "trace_sha256": "dd98f70512e7187183eb212f75d89fe2d07724e2db72810f252179dd967b8071",
+  "validation_errors": []
+}

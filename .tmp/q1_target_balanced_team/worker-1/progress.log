@@ -1,0 +1,172 @@
+started_at=2026-05-19T14:36:16Z
+target_repo=/Users/kawai_tofu/Desktop/01_SeoulTech/SeoulTech_Local/Capstone_Design/Capstone_Dev/Codex-Multi-Agent-Workflow/llm-context-decay-ops
+git_head=4107e9a0bdd8b9978a74de940cb095fa60b48c6e
+git_status_before=
+ M .geminiignore
+ M .gitignore
+ M CLAUDE.md
+ M GEMINI.md
+ M data/annotations/controlled_attack_prompts_v1.csv
+ M data/annotations/controlled_attack_prompts_v1_guide.md
+ D data/outputs/2026-05-18_q1_sampled_local_llama_gemma/ai_adjusted/fast_results_hugging-quants_Meta-Llama-3.1-8B-Instruct-AWQ-INT4_ai_adjusted.jsonl
+ D data/outputs/2026-05-18_q1_sampled_local_llama_gemma/ai_adjusted/reaggregated/category_failure_by_turn.csv
+ D data/outputs/2026-05-18_q1_sampled_local_llama_gemma/ai_adjusted/reaggregated/category_failure_rates_final_turn.csv
+ D data/outputs/2026-05-18_q1_sampled_local_llama_gemma/ai_adjusted/reaggregated/category_first_failure_turn.csv
+ D data/outputs/2026-05-18_q1_sampled_local_llama_gemma/ai_adjusted/reaggregated/metrics_enriched_results.jsonl
+ D data/outputs/2026-05-18_q1_sampled_local_llama_gemma/ai_adjusted/reaggregated/offline_metric_summary.json
+ D data/outputs/2026-05-18_q1_sampled_local_llama_gemma/ai_adjusted/reaggregated/old_vs_perfect_success_by_condition.csv
+ D data/outputs/2026-05-18_q1_sampled_local_llama_gemma/ai_adjusted/reaggregated/old_vs_perfect_success_by_condition.md
+ D data/outputs/2026-05-18_q1_sampled_local_llama_gemma/ai_adjusted/reaggregated/old_vs_perfect_success_final_turn.png
+ D data/outputs/2026-05-18_q1_sampled_local_llama_gemma/ai_adjusted/reaggregated/perfect_failure_breakdown_final_turn.png
+ D data/outputs/2026-05-18_q1_sampled_local_llama_gemma/ai_adjusted/reaggregated/perfect_failure_failed_rule_by_attack_target_final_turn.csv
+ D data/outputs/2026-05-18_q1_sampled_local_llama_gemma/ai_adjusted/reaggregated/rule_failure_by_turn.csv
+ D data/outputs/2026-05-18_q1_sampled_local_llama_gemma/ai_adjusted/reaggregated/rule_first_failure_turn.csv
+ D data/outputs/2026-05-18_q1_sampled_local_llama_gemma/ai_adjusted/reaggregated/turnwise_collapse_by_category.png
+ D docs/hcom/2026-03-31_setup-troubleshooting.md
+ D docs/hcom/acpx-integration-analysis.md
+ D docs/hcom/acpx-reconnect-issue.md
+ M docs/outputs/experiment_report.md
+ M docs/outputs/experiment_summary.json
+ M docs/outputs/figures/q1_compliance_by_rule_count.png
+ M docs/outputs/figures/q2_per_rule_type.png
+ M docs/outputs/figures/q3_benign_vs_adversarial.png
+ M docs/outputs/final_report.md
+ M docs/outputs/final_report_case_gallery.html
+ M requirements.txt
+ M scripts/README.md
+ M scripts/generate_case_chat_html.py
+ M scripts/generate_full_cases.py
+ M scripts/generate_report.py
+ M scripts/lite_experiment.py
+ M scripts/run_experiment.py
+ M scripts/run_experiment_fast.py
+ M scripts/test_vllm_conn.py
+ M src/CLAUDE.md
+ M src/GEMINI.md
+ M src/compression/CLAUDE.md
+ M src/compression/GEMINI.md
+ M src/compression/summarize_turns.py
+ M src/data_pipeline/CLAUDE.md
+ M src/data_pipeline/GEMINI.md
+ M src/evaluation/CLAUDE.md
+ M src/evaluation/GEMINI.md
+ M src/evaluation/compliance_scorer.py
+ M src/evaluation/judge.py
+ M src/models/CLAUDE.md
+ M src/models/GEMINI.md
+ M src/models/open_router_request.py
+ M src/utils/CLAUDE.md
+ M src/utils/GEMINI.md
+ M tests/CLAUDE.md
+ M tests/GEMINI.md
+ M tests/test_compliance_scorer.py
+?? .gemini/plans/noonai_dis_mcp_agent_plan.md
+?? .tmp/full_rerun_korean_primary_pipeline.sh
+?? .tmp/full_rerun_resume_and_aggregate.sh
+?? .tmp/matplotlib/
+?? .tmp/q1_all_target_probe.jsonl
+?? .tmp/q1_all_target_probe_trace.csv
+?? .tmp/q1_finish_reason_rerun/DO_NOT_RUN_REPLAY_WORKERS.txt
+?? .tmp/q1_finish_reason_rerun/WORKER_REPLAY_STOPPED_READONLY_ONLY.txt
+?? .tmp/q1_finish_reason_rerun/aggregate_clean_extended_adaptive.py
+?? .tmp/q1_finish_reason_rerun/candidates_q1samp_00020_turn15.csv
+?? .tmp/q1_finish_reason_rerun/candidates_r07_false.csv
+?? .tmp/q1_finish_reason_rerun/candidates_r07_false_tail_mid_sentence.csv
+?? .tmp/q1_finish_reason_rerun/candidates_r07_false_truncation_detail.csv
+?? .tmp/q1_finish_reason_rerun/candidates_r07_false_truncation_suspect.csv
+?? .tmp/q1_finish_reason_rerun/clean_n83_20260518T191600+0900/
+?? .tmp/q1_finish_reason_rerun/current_clean_extended_adaptive_outdir.txt
+?? .tmp/q1_finish_reason_rerun/current_clean_n83_outdir.txt
+?? .tmp/q1_finish_reason_rerun/current_extended_team_worktree_path.txt
+?? .tmp/q1_finish_reason_rerun/current_team_worktree_path.txt
+?? .tmp/q1_finish_reason_rerun/extended_adaptive_clean_20260518T194134+0900/
+?? .tmp/q1_finish_reason_rerun/extended_policy_20260518T193500+0900/
+?? .tmp/q1_finish_reason_rerun/guard_checks/
+?? .tmp/q1_finish_reason_rerun/manifest_q1samp_00020_turn15.json
+?? .tmp/q1_finish_reason_rerun/manifest_r07_false.json
+?? .tmp/q1_finish_reason_rerun/manifest_r07_false_tail_mid_sentence.json
+?? .tmp/q1_finish_reason_rerun/manifest_r07_false_truncation_detail.json
+?? .tmp/q1_finish_reason_rerun/manifest_r07_false_truncation_suspect.json
+?? .tmp/q1_finish_reason_rerun/replay_metadata_q1samp_00020_turn15.jsonl
+?? .tmp/q1_finish_reason_rerun/replay_metadata_r07_false_truncation_suspect.jsonl
+?? .tmp/q1_finish_reason_rerun/replay_q1_length_rows_adaptive.py
+?? .tmp/q1_finish_reason_rerun/replay_q1_turns_with_metadata.py
+?? .tmp/q1_finish_reason_rerun/summary_q1samp_00020_turn15.json
+?? .tmp/q1_finish_reason_rerun/summary_r07_false_truncation_suspect.json
+?? .tmp/q1_finish_reason_rerun/worker-2_count_report.md
+?? .tmp/q1_finish_reason_rerun/worker-2_count_summary.json
+?? .tmp/q1_finish_reason_rerun/worker-2_r07_ai_adjusted_false_case_turns.csv
+?? .tmp/q1_finish_reason_rerun/worker-2_r07_truncation_suspect_case_turns.csv
+?? .tmp/q1_finish_reason_rerun/worker2_vllm_replay_guard.py
+?? .tmp/q1_gemma_judge_audit/ai_labeling/ai_labeling_manifest.json
+?? .tmp/q1_gemma_judge_audit/ai_labeling/ai_labeling_summary.json
+?? .tmp/q1_gemma_judge_audit/ai_labeling/ai_labeling_summary.md
+?? .tmp/q1_gemma_judge_audit/ai_labeling/label_schema_and_worker_instructions.md
+?? .tmp/q1_gemma_judge_audit/ai_labeling/labeled_shards/worker-1-shard1-labeled.csv
+?? .tmp/q1_gemma_judge_audit/ai_labeling/q1_gemma_judge_ai_score_changes.csv
+?? .tmp/q1_gemma_judge_audit/ai_labeling/q1_gemma_judge_candidates_ai_labeled.csv
+?? .tmp/q1_gemma_judge_audit/ai_labeling/q1_gemma_judge_human_only_review.csv
+?? .tmp/q1_gemma_judge_audit/ai_labeling/team_launch_prompt.txt
+?? .tmp/q1_gemma_judge_audit/audit_prep_summary.json
+?? .tmp/q1_gemma_judge_audit/integrated_gemma_judge_audit_summary.json
+?? .tmp/q1_gemma_judge_audit/integrated_gemma_judge_audit_summary.md
+?? .tmp/q1_gemma_judge_audit/known_human_labeling_issue_taxonomy.md
+?? .tmp/q1_gemma_judge_audit/q1_gemma_judge_audit_candidates.csv
+?? .tmp/q1_gemma_judge_audit/q1_gemma_judge_scores_flat.csv
+?? .tmp/q1_gemma_judge_audit/shards/
+?? .tmp/q1_gemma_judge_audit/worker_instructions.md
+?? .tmp/q1_target_balanced_archive/
+?? .tmp/q1_target_balanced_team/
+?? .tmp/q1_team_workspace/
+?? .tmp/q1_visualization_team/leader_worktree_path.txt
+?? .tmp/q1_visualization_team/team_launch_prompt.txt
+?? .tmp/q1_visualization_team/worker-3/
+?? .tmp/q1_visualization_team/worker-4/
+?? .tmp/run_q1_all_target_llama_then_gemma.sh
+?? .tmp/run_q1_sampled_llama_then_gemma.sh
+?? CODEX.md
+?? agents_work_history/gemini/2026_04_13/
+?? agents_work_history/gemini/2026_04_14/2026_04_14-17_53-compliance_rate_explanation.md
+?? agents_work_history/gemini/2026_04_14/2026_04_14-17_58-compliance_bar_behavior.md
+?? agents_work_history/gemini/2026_04_28/
+?? agents_work_history/gemini/2026_05_11/2026_05_11-11_18-attack_prompt_quality_analysis.md
+?? agents_work_history/gemini/2026_05_11/2026_05_11-11_21-attack_intensity_variable_redefinition.md
+?? agents_work_history/gemini/2026_05_11/2026_05_11-11_31-injection_level_reconfiguration.md
+?? codex_docs/
+?? docs/archive/
+?? docs/assets/
+?? docs/gemini_cli_temperature_0p7_runbook.md
+?? docs/multi-agent-working-history/2026-04-04/
+?? docs/personal_prompts/
+?? docs/semi_final_article.md
+?? pytest.ini
+?? scripts/analyze_frontier_q2_human_labels.py
+?? scripts/analyze_no_system_safety_baseline.py
+?? scripts/apply_human_audit.py
+?? scripts/compute_na_normalized_tables.py
+?? scripts/export_frontier_q2_human_csv.py
+?? scripts/generate_metric_reanalysis_html.py
+?? scripts/generate_openrouter_temperature_html.py
+?? scripts/generate_q1_sampled_cases.py
+?? scripts/judge_frontier_q2_gemma_human_columns.py
+?? scripts/judge_with_gemini_cli.py
+?? scripts/plot_attack_type_split.py
+?? scripts/plot_q1_sampled_visualizations.py
+?? scripts/plot_q2_missing_visualizations.py
+?? scripts/reaggregate_metrics.py
+?? scripts/run_frontier_q2_openrouter.py
+?? src/evaluation/judge_config.py
+?? src/utils/http_headers.py
+?? temp.py
+?? tests/test_final_report_case_gallery_matrix.py
+?? tests/test_final_report_case_gallery_point4.py
+?? tests/test_gemini_cli_judge.py
+?? tests/test_generate_case_chat_html.py
+?? tests/test_generate_full_cases.py
+?? tests/test_generate_q1_sampled_cases.py
+?? tests/test_generate_report.py
+?? tests/test_http_headers.py
+?? tests/test_judge_config.py
+?? tests/test_reaggregate_metrics.py
+?? tests/test_run_experiment_fast_config.py
+?? tests/test_vllm_readiness.py

@@ -1,0 +1,5 @@
+{
+  "acknowledged_at": "2026-05-19T14:48:43.228264+00:00",
+  "leader_update": "Do NOT start full remote Llama/Gemma run; worker-1 scope is case/provenance generation validation only.",
+  "action_taken": "Stopped duplicate worker-scoped remote run after detecting active shared run; retained checkpoint/log evidence under worker-1 output, but final worker-1 completion will report case/provenance validation only."
+}
