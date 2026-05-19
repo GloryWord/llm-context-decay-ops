@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-05-19T23:42:51+0900",
+  "input_jsonl": "data/outputs/2026-05-18_q1_sampled_local_llama_gemma/fast_results_hugging-quants_Meta-Llama-3.1-8B-Instruct-AWQ-INT4.jsonl",
+  "input_sha256": "1ff30e0584617664ebabe23bb9b1416233eaf601229cc1988982df5240081513",
+  "records": 70,
+  "turns": 526,
+  "llm_judge_score_rows": 1114,
+  "candidate_rows": 25,
+  "candidate_by_rule_pass": {
+    "R01:NA": 5,
+    "R04:NA": 5,
+    "R06:NA": 5,
+    "R09:NA": 5,
+    "R10:NA": 5
+  },
+  "flat_csv": ".tmp/q1_target_balanced_team/worker-3/partial_prepare/q1_all_target_judge_scores_flat.csv",
+  "candidate_csv": ".tmp/q1_target_balanced_team/worker-3/partial_prepare/q1_all_target_judge_audit_candidates.csv",
+  "shards": {
+    ".tmp/q1_target_balanced_team/worker-3/partial_prepare/shards/shard_1_R01_R04_R06_language_privacy_ethics.csv": 15,
+    ".tmp/q1_target_balanced_team/worker-3/partial_prepare/shards/shard_2_R07_completeness.csv": 0,
+    ".tmp/q1_target_balanced_team/worker-3/partial_prepare/shards/shard_3_R09_uncertainty.csv": 5,
+    ".tmp/q1_target_balanced_team/worker-3/partial_prepare/shards/shard_4_R10_persona.csv": 5
+  },
+  "label_instructions": ".tmp/q1_target_balanced_team/worker-3/partial_prepare/label_schema_and_worker_instructions.md",
+  "max_true_per_rule": 5,
+  "max_na_per_rule": 5,
+  "seed": 22110157
+}

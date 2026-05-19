@@ -82,6 +82,22 @@ python3 scripts/reaggregate_metrics.py \
 
 If AI adjustment is intentionally skipped, run the same command against the raw judged JSONL and write to a clearly named raw reaggregated directory.
 
+
+## Worker-3 helper script added after leader assignment
+
+I added an evidence-path helper at `.tmp/q1_target_balanced_team/worker-3/scripts/q1_ai_adjust_pipeline.py` plus a runbook at `.tmp/q1_target_balanced_team/worker-3/AI_ADJUST_REAGGREGATION_RUNBOOK.md`. These files do not modify main result files unless explicitly run with output paths.
+
+The helper provides:
+
+- `prepare`: flatten a judged JSONL into all LLM/Gemma judge score rows, select all false rows plus deterministic true/NA spot checks, split candidate shards, and write an audit-prep summary.
+- `apply`: apply a completed integrated label CSV to a copied adjusted JSONL, write `ai_adjusted_score_changes.csv`, write `ai_adjustment_summary.json`, attach `ai_review` metadata, mark excluded rows as `not applicable`, and recompute per-turn metrics.
+
+Additional validation:
+
+- Partial active-run `prepare` smoke wrote `.tmp/q1_target_balanced_team/worker-3/partial_prepare/` from the in-progress all-target JSONL.
+- Archived R03-only `apply` replay processed `1140` labels, changed `402` score cells, and produced `unresolved_judge_scores=0`; compact summaries/change CSV/stdout are retained under `.tmp/q1_target_balanced_team/worker-3/smoke/apply_old_repro/` (large replay JSONL/figures were not retained).
+- Reaggregation on the replay adjusted JSONL loaded `341` records and wrote all expected artifacts during smoke; compact CSV/summary/stdout artifacts are retained.
+
 ## Recommended next safe sequence
 
 1. Wait for target generation to finish: require `3069` result records and `25668` turns.

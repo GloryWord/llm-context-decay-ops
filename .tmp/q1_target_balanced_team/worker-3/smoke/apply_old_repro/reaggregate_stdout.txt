@@ -1,0 +1,8 @@
+Loaded 341 deduplicated records
+Wrote enriched results: .tmp/q1_target_balanced_team/worker-3/smoke/apply_old_repro/reaggregated/metrics_enriched_results.jsonl
+Wrote condition CSV: .tmp/q1_target_balanced_team/worker-3/smoke/apply_old_repro/reaggregated/old_vs_perfect_success_by_condition.csv
+Wrote condition markdown: .tmp/q1_target_balanced_team/worker-3/smoke/apply_old_repro/reaggregated/old_vs_perfect_success_by_condition.md
+Wrote comparison figure: .tmp/q1_target_balanced_team/worker-3/smoke/apply_old_repro/reaggregated/old_vs_perfect_success_final_turn.png
+Wrote failure breakdown figure: .tmp/q1_target_balanced_team/worker-3/smoke/apply_old_repro/reaggregated/perfect_failure_breakdown_final_turn.png
+Wrote turn-wise collapse figure: .tmp/q1_target_balanced_team/worker-3/smoke/apply_old_repro/reaggregated/turnwise_collapse_by_category.png
+Wrote summary JSON: .tmp/q1_target_balanced_team/worker-3/smoke/apply_old_repro/reaggregated/offline_metric_summary.json

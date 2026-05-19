@@ -1,0 +1,29 @@
+{
+  "created_at": "2026-05-19T23:43:12+0900",
+  "input_jsonl": ".tmp/q1_target_balanced_archive/q1_all_target_balanced_20260519T233449+0900/fast_results_hugging-quants_Meta-Llama-3.1-8B-Instruct-AWQ-INT4.jsonl",
+  "input_sha256": "21d4e19dcffe2e4addf4ea7e0d5a1bf28b9fe520fdf1710e1c9fa28654329cf6",
+  "label_csv": ".tmp/q1_gemma_judge_audit/ai_labeling/q1_gemma_judge_candidates_ai_labeled.csv",
+  "label_rows": 1140,
+  "reviewed_score_cells": 1140,
+  "changed_score_cells": 402,
+  "human_only_rows": 0,
+  "action_counts": {
+    "exclude": 355,
+    "keep": 738,
+    "override": 47
+  },
+  "issue_counts": {
+    "already_na": 276,
+    "applicability_true_should_na": 45,
+    "false_failure_applicability": 310,
+    "false_failure_overstrict": 47,
+    "true_failure": 323,
+    "true_pass": 139
+  },
+  "output_jsonl": ".tmp/q1_target_balanced_team/worker-3/smoke/apply_old_repro/fast_results_ai_adjusted_repro.jsonl",
+  "output_sha256": "b48f9d03616c6c7efee8502b79c7754845a9c31cfe68b607f10085ada3037b34",
+  "change_csv": ".tmp/q1_target_balanced_team/worker-3/smoke/apply_old_repro/ai_adjusted_score_changes_repro.csv",
+  "unresolved_judge_scores": 0,
+  "records": 341,
+  "turns": 2852
+}
