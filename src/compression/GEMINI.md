@@ -1,47 +1,27 @@
 # compression
 
-## Role
-Apply context compression methods to Phase 1 experiment cases as system prompt defense mechanisms. Each method transforms intermediate_turns while preserving system_prompt and probe_turn.
+## Status
+- This folder is **Phase 2 / experimental defense-method work**, not the default capstone execution path.
+- Only touch it when the task explicitly scopes compression, defense variants, or Phase 2 analysis.
+- Canonical orchestration still lives in `../../CODEX.md`.
 
-## Files
+## Key files
 | File | Role |
 |------|------|
-| `base.py` | BaseCompressor ABC — all compressors inherit from this |
-| `sliding_window.py` | Method A: keep last N turns |
-| `selective_context.py` | Method B: token-level pruning by self-information |
-| `summarize_turns.py` | Method C: LLM-based turn summarization |
-| `system_prompt_reinforce.py` | Method D: periodic rule reminder injection |
-| `apply_compression.py` | Orchestrator: reads cases, applies all methods, writes output |
+| `base.py` | `BaseCompressor` contract |
+| `sliding_window.py` | recent-turn retention compressor |
+| `selective_context.py` | selective pruning compressor |
+| `summarize_turns.py` | summarization-based compressor |
+| `system_prompt_reinforce.py` | reminder/reinforcement compressor |
+| `apply_compression.py` | registration + batch application entrypoint |
 
-## Interface
-```python
-# All compressors implement:
-class BaseCompressor(ABC):
-    def compress(
-        self,
-        system_prompt: str,
-        intermediate_turns: list[dict],
-        params: dict,
-    ) -> tuple[list[dict], dict]: ...
+## Working model
+- Input cases are loaded from caller-chosen processed artifacts.
+- Compression should preserve experiment traceability back to the original case.
+- Output paths/configs are caller-driven; verify local config/artifact paths before running.
 
-    @property
-    def method_name(self) -> str: ...
-
-# Orchestrator:
-def run_compression(config_path: str) -> dict[str, list[dict]]: ...
-```
-
-## I/O
-- Config: `configs/compression.yaml`
-- Input: `data/processed/experiment_cases.jsonl`
-- Output: `data/processed/compressed_cases/{variant_name}/experiment_cases.jsonl`
-
-## CLI
-```bash
-python -m src.compression.apply_compression --config configs/compression.yaml
-```
-
-## Invariants
-- system_prompt is NEVER modified
-- probe_turn is NEVER modified
-- Each compressed case links back via `original_case_id`
+## Local rules
+- Never silently change the meaning of `system_prompt` or the probe turn.
+- Preserve enough metadata to map compressed cases back to originals.
+- If compressor behavior changes, update `tests/test_compression.py` in the same task.
+- Mark outputs `UNVERIFIED` when the referenced config/input artifact is missing.

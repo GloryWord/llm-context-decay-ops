@@ -35,10 +35,17 @@ sys.path.insert(0, str(ROOT))
 load_dotenv(ROOT / ".env")
 
 from src.evaluation.compliance_scorer import (
-    compute_compliance_rate,
+    compute_turn_metrics,
     score_behavioral_async,
+    score_language_async,
     score_rules,
 )
+from src.evaluation.judge_config import (
+    build_judge_headers,
+    judge_metadata,
+    resolve_judge_config,
+)
+from src.utils.http_headers import build_json_headers
 
 logging.basicConfig(
     level=logging.INFO,
@@ -59,7 +66,7 @@ MODEL_CONFIGS: dict[str, dict] = {
             "EVAL_MODEL_NAME",
             "hugging-quants/Meta-Llama-3.1-8B-Instruct-AWQ-INT4",
         ),
-        "api_key": os.getenv("OPENROUTER_API_KEY", "dummy_token_for_local_vllm"),
+        "api_key": os.getenv("VLLM_API_KEY", ""),
         "extra_params": {},
     },
     "deepseek-r1": {
@@ -70,18 +77,32 @@ MODEL_CONFIGS: dict[str, dict] = {
     },
 }
 
-JUDGE_HEADERS: dict[str, str] = {
-    "Authorization": f"Bearer {os.getenv('OPENROUTER_API_KEY', '')}",
-    "HTTP-Referer": "http://localhost",
-    "Content-Type": "application/json",
-}
-
 # ============================================================
 # Paths
 # ============================================================
 
 CASES_FILE_DEFAULT = ROOT / "data" / "processed" / "experiment_cases_full.jsonl"
 OUTPUT_DIR = ROOT / "data" / "outputs" / "main_experiment"
+
+
+def has_unresolved_judge_score(score: dict) -> bool:
+    """Return True when a judge-based score still needs a valid judge result."""
+    if score.get("method") not in {"llm_judge", "llm_language_judge"}:
+        return False
+    if score.get("pass") is not None:
+        return False
+    detail = str(score.get("detail", "")).lower()
+    return not detail.startswith("not applicable")
+
+
+def count_unresolved_judge_scores(turn_results: list[dict]) -> int:
+    """Count unresolved judge-based scores in a run record."""
+    return sum(
+        1
+        for turn in turn_results
+        for score in turn.get("scores", [])
+        if has_unresolved_judge_score(score)
+    )
 
 
 # ============================================================
@@ -93,6 +114,7 @@ async def call_model(
     session: aiohttp.ClientSession,
     model_cfg: dict,
     messages: list[dict],
+    temperature: float = 0.0,
 ) -> str:
     """Call target model API with retry logic.
 
@@ -104,15 +126,11 @@ async def call_model(
     Returns:
         Model response content string.
     """
-    headers = {
-        "Authorization": f"Bearer {model_cfg['api_key']}",
-        "HTTP-Referer": "http://localhost",
-        "Content-Type": "application/json",
-    }
+    headers = build_json_headers(model_cfg["api_url"], model_cfg["api_key"])
     payload = {
         "model": model_cfg["model_name"],
         "messages": messages,
-        "temperature": 0.0,
+        "temperature": temperature,
         "max_tokens": 512,
         **model_cfg.get("extra_params", {}),
     }
@@ -154,6 +172,9 @@ async def run_single_case(
     model_cfg: dict,
     case: dict,
     rep: int,
+    temperature: float = 0.0,
+    judge_config: dict | None = None,
+    judge_headers: dict | None = None,
 ) -> dict:
     """Run multi-turn inference for a single case, scoring each turn.
 
@@ -172,6 +193,8 @@ async def run_single_case(
     rules = case["rules"]
     turns = case["conversation_template"]
     model_name = model_cfg["model_name"]
+    resolved_judge_config = judge_config or resolve_judge_config()
+    resolved_judge_headers = judge_headers or build_judge_headers(resolved_judge_config)
 
     messages: list[dict] = [{"role": "system", "content": system_prompt}]
     turn_results: list[dict] = []
@@ -179,36 +202,60 @@ async def run_single_case(
     for turn_info in turns:
         turn_num = turn_info["turn"]
         user_content = turn_info["content"]
+        attack_targets = turn_info.get("attack_targets", [])
+        attack_mode = turn_info.get("attack_mode", case.get("attack_mode", ""))
         messages.append({"role": "user", "content": user_content})
 
         # Get model response
-        response = await call_model(session, model_cfg, messages)
+        response = await call_model(session, model_cfg, messages, temperature)
+        if response.startswith("[ERROR]"):
+            raise RuntimeError(
+                f"model call failed for {case_id} turn {turn_num}"
+            )
         messages.append({"role": "assistant", "content": response})
 
-        # Phase 1: Sync auto-scoring (behavioral rules return pending)
+        # Phase 1: Sync auto-scoring (judge-based rules return pending)
         scores = score_rules(response, rules)
 
-        # Phase 2: Async LLM-judge for pending behavioral rules
+        # Phase 2: Async LLM-judge for pending judge-based rules
         for i, score_result in enumerate(scores):
-            if score_result["method"] == "llm_judge" and score_result["pass"] is None:
+            if (
+                score_result["method"] in {"llm_judge", "llm_language_judge"}
+                and score_result["pass"] is None
+            ):
                 if "pending" in score_result.get("detail", ""):
-                    judge_result = await score_behavioral_async(
-                        judge_session,
-                        JUDGE_HEADERS,
-                        response,
-                        rules[i],
-                        user_content,
-                    )
+                    if score_result["method"] == "llm_language_judge":
+                        judge_result = await score_language_async(
+                            judge_session,
+                            resolved_judge_headers,
+                            response,
+                            rules[i],
+                            user_content,
+                            resolved_judge_config,
+                        )
+                    else:
+                        judge_result = await score_behavioral_async(
+                            judge_session,
+                            resolved_judge_headers,
+                            response,
+                            rules[i],
+                            user_content,
+                            resolved_judge_config,
+                        )
                     scores[i] = judge_result
 
-        compliance = compute_compliance_rate(scores)
+        metrics = compute_turn_metrics(scores, attack_targets)
+        compliance = metrics["per_rule_pass_rate"]
 
         turn_results.append({
             "turn": turn_num,
             "user_message": user_content,
+            "attack_targets": attack_targets,
+            "attack_mode": attack_mode,
             "response": response,
             "scores": scores,
             "compliance_rate": compliance,
+            "metrics": metrics,
             "response_length": len(response),
         })
 
@@ -222,12 +269,18 @@ async def run_single_case(
         "case_id": case_id,
         "rep": rep,
         "model": model_name,
-        "research_question": case.get("research_question", ""),
-        "rule_count": case["rule_count"],
-        "turn_count": case["turn_count"],
-        "attack_intensity": case["attack_intensity"],
-        "rule_set_variant": case.get("rule_set_variant", []),
+        "temperature": temperature,
+        "generation_config": {
+            "temperature": temperature,
+            "max_tokens": 512,
+        },
+        **judge_metadata(resolved_judge_config),
+        **case_metadata(case),
+        "rules": rules,
         "turn_results": turn_results,
+        "judge_status": (
+            "complete" if count_unresolved_judge_scores(turn_results) == 0 else "incomplete"
+        ),
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
     }
 
@@ -235,6 +288,43 @@ async def run_single_case(
 # ============================================================
 # Main runner
 # ============================================================
+
+
+def case_metadata(case: dict) -> dict:
+    """Return experiment-design metadata that should survive result serialization."""
+    return {
+        "design_version": case.get("design_version", ""),
+        "research_question": case.get("research_question", ""),
+        "system_prompt_profile": case.get("system_prompt_profile", ""),
+        "q2_profile_caveat": case.get("q2_profile_caveat", ""),
+        "condition": case.get("condition"),
+        "rule_count": case["rule_count"],
+        "turn_count": case["turn_count"],
+        "target_rule_id": case.get("target_rule_id"),
+        "target_rule_category": case.get("target_rule_category"),
+        "attack_intensity": case.get("attack_intensity", ""),
+        "attack_scope": case.get("attack_scope"),
+        "attack_targets": case.get("attack_targets", []),
+        "attack_mode": case.get("attack_mode", ""),
+        "attack_order_variant": case.get("attack_order_variant", ""),
+        "attack_order": case.get("attack_order", []),
+        "order_average_group_id": case.get("order_average_group_id", ""),
+        "sampled_variant_id": case.get("sampled_variant_id", ""),
+        "possible_variant_id": case.get("possible_variant_id", ""),
+        "sampling_seed": case.get("sampling_seed"),
+        "samples_per_rule_count": case.get("samples_per_rule_count"),
+        "possible_combination_count": case.get("possible_combination_count"),
+        "sampled_combination_count": case.get("sampled_combination_count"),
+        "active_rule_ids": case.get("active_rule_ids", case.get("rule_set_variant", [])),
+        "filler_rule_ids": case.get("filler_rule_ids", []),
+        "filler_category_composition": case.get("filler_category_composition", {}),
+        "active_category_composition": case.get("active_category_composition", {}),
+        "rule_set_variant": case.get("rule_set_variant", []),
+        "single_turn_attack_policy": case.get("single_turn_attack_policy", ""),
+        "schedule": case.get("schedule", []),
+        "source_attack_prompt_file": case.get("source_attack_prompt_file", ""),
+        "source_scenario_ids": case.get("source_scenario_ids", []),
+    }
 
 
 def load_checkpoint(output_path: Path) -> set[str]:
@@ -246,7 +336,16 @@ def load_checkpoint(output_path: Path) -> set[str]:
                 line = line.strip()
                 if line:
                     rec = json.loads(line)
-                    run_id = f"{rec['case_id']}_{rec['rep']}_{rec['model']}"
+                    temperature = float(
+                        rec.get(
+                            "temperature",
+                            rec.get("generation_config", {}).get("temperature", 0.0),
+                        )
+                    )
+                    run_id = (
+                        f"{rec['case_id']}_{rec['rep']}_{rec['model']}_"
+                        f"temp{str(temperature).replace('.', 'p')}"
+                    )
                     completed.add(run_id)
     return completed
 
@@ -256,6 +355,7 @@ async def run_experiment(
     reps: int = 5,
     dry_run: bool = False,
     cases_file: str | None = None,
+    temperature: float = 0.0,
 ) -> None:
     """Run the full experiment.
 
@@ -264,6 +364,7 @@ async def run_experiment(
         reps: Number of repetitions per case.
         dry_run: If True, only run first 5 cases.
         cases_file: Path to cases JSONL (default: experiment_cases_full.jsonl).
+        temperature: Target model generation temperature. Judge stays at 0.0.
     """
     cases_path = Path(cases_file) if cases_file else CASES_FILE_DEFAULT
     if not cases_path.exists():
@@ -297,7 +398,9 @@ async def run_experiment(
 
         model_cfg = MODEL_CONFIGS[model_key]
         model_slug = model_cfg["model_name"].replace("/", "_")
-        output_path = OUTPUT_DIR / f"results_{model_slug}.jsonl"
+        temp_tag = f"temp{str(temperature).replace('.', 'p')}"
+        output_suffix = "" if temperature == 0.0 else f"_{temp_tag}"
+        output_path = OUTPUT_DIR / f"results_{model_slug}{output_suffix}.jsonl"
 
         # Load checkpoint
         completed = load_checkpoint(output_path)
@@ -308,6 +411,15 @@ async def run_experiment(
 
         timeout = aiohttp.ClientTimeout(total=180, connect=30)
         judge_timeout = aiohttp.ClientTimeout(total=120, connect=30)
+        judge_config = resolve_judge_config()
+        judge_headers = build_judge_headers(judge_config)
+        logger.info(
+            "Judge backend: provider=%s model=%s url=%s temp=%.1f",
+            judge_config["provider"],
+            judge_config["model_name"],
+            judge_config["api_url"],
+            judge_config["temperature"],
+        )
 
         async with (
             aiohttp.ClientSession(timeout=timeout) as session,
@@ -318,7 +430,9 @@ async def run_experiment(
 
             for rep in range(reps):
                 for case in cases:
-                    run_id = f"{case['case_id']}_{rep}_{model_cfg['model_name']}"
+                    run_id = (
+                        f"{case['case_id']}_{rep}_{model_cfg['model_name']}_{temp_tag}"
+                    )
                     if run_id in completed:
                         skip_count += 1
                         continue
@@ -338,7 +452,14 @@ async def run_experiment(
 
                     try:
                         result = await run_single_case(
-                            session, judge_session, model_cfg, case, rep
+                            session,
+                            judge_session,
+                            model_cfg,
+                            case,
+                            rep,
+                            temperature,
+                            judge_config,
+                            judge_headers,
                         )
 
                         # Append to output (streaming checkpoint)
@@ -394,9 +515,17 @@ def main() -> None:
         default=None,
         help="Path to experiment cases JSONL (default: experiment_cases_full.jsonl).",
     )
+    parser.add_argument(
+        "--temperature",
+        type=float,
+        default=0.0,
+        help="Target model generation temperature. Judge temperature remains fixed at 0.0.",
+    )
     args = parser.parse_args()
 
-    asyncio.run(run_experiment(args.models, args.reps, args.dry_run, args.cases_file))
+    asyncio.run(
+        run_experiment(args.models, args.reps, args.dry_run, args.cases_file, args.temperature)
+    )
 
 
 if __name__ == "__main__":

@@ -1,0 +1,1 @@
+Workers: do not run replay scripts. Leader owns the only clean adaptive rerun under the current_clean_extended_adaptive_outdir pointer. Validate read-only after completion.

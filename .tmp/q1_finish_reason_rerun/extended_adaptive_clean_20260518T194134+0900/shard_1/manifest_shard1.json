@@ -1,0 +1,21 @@
+{
+  "created_at": "2026-05-18T19:41:35+0900",
+  "purpose": "Q1 R07 max-token truncation disambiguation",
+  "source_metadata": ".tmp/q1_finish_reason_rerun/clean_n83_20260518T191600+0900/replay_metadata_r07_false_truncation_suspect.jsonl",
+  "source_target_count_length512": 79,
+  "shard_index": 1,
+  "shard_count": 4,
+  "target_count": 20,
+  "cases_file": "/private/tmp/llm-q1-extended-rerun-team-20260518T103247Z/data/processed/q1_sampled_q2_injection_cases.jsonl",
+  "results_file": "/private/tmp/llm-q1-extended-rerun-team-20260518T103247Z/data/outputs/2026-05-18_q1_sampled_local_llama_gemma/ai_adjusted/fast_results_hugging-quants_Meta-Llama-3.1-8B-Instruct-AWQ-INT4_ai_adjusted.jsonl",
+  "api_url": "http://210.179.28.26:18000/v1/chat/completions",
+  "model": "hugging-quants/Meta-Llama-3.1-8B-Instruct-AWQ-INT4",
+  "temperature": 0.0,
+  "caps": [
+    1024,
+    1536,
+    2048,
+    3072
+  ],
+  "dry_run": false
+}

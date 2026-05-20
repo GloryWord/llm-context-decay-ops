@@ -1,0 +1,13 @@
+{
+  "records": 341,
+  "expected_records": 341,
+  "total_turn_results": 2852,
+  "expected_turn_results": 2852,
+  "judge_status_counts": {
+    "pending": 341
+  },
+  "model_counts": {
+    "hugging-quants/Meta-Llama-3.1-8B-Instruct-AWQ-INT4": 341
+  },
+  "errors": []
+}

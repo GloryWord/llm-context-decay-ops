@@ -1,0 +1,121 @@
+{
+  "created_at": "2026-05-18T19:51:48+0900",
+  "command": "restore-gemma",
+  "cwd": "/private/tmp/llm-q1-extended-rerun-team-20260518T103247Z",
+  "pid": 97081,
+  "switch": {
+    "command": [
+      "ssh",
+      "Hanam_JW_PC",
+      "docker stop vllm-server >/dev/null 2>&1 || true; docker start vllm-gemma; docker ps -a --filter name=vllm --format '{{.Names}}\\t{{.Status}}\\t{{.Ports}}'"
+    ],
+    "returncode": 0,
+    "stdout": "vllm-gemma\nvllm-gemma\tUp Less than a second\t0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp\nvllm-server\tExited (0) Less than a second ago",
+    "stderr": "",
+    "elapsed_s": 2.353
+  },
+  "after": {
+    "ok": true,
+    "expected_model": "cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit",
+    "model_ids": [
+      "cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit"
+    ],
+    "attempt": 18,
+    "raw_body": "{\"object\":\"list\",\"data\":[{\"id\":\"cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit\",\"object\":\"model\",\"created\":1779101596,\"owned_by\":\"vllm\",\"root\":\"cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit\",\"parent\":null,\"max_model_len\":2048,\"permission\":[{\"id\":\"modelperm-ac371e3e73a79a5d\",\"object\":\"model_permission\",\"created\":1779101596,\"allow_create_engine\":false,\"allow_sampling\":true,\"allow_logprobs\":true,\"allow_search_indices\":false,\"allow_view\":true,\"allow_fine_tuning\":false,\"organization\":\"*\",\"group\":null,\"is_blocking\":false}]}]}",
+    "history": [
+      {
+        "attempt": 1,
+        "ok": false,
+        "error": "URLError(ConnectionRefusedError(61, 'Connection refused'))"
+      },
+      {
+        "attempt": 2,
+        "ok": false,
+        "error": "URLError(ConnectionRefusedError(61, 'Connection refused'))"
+      },
+      {
+        "attempt": 3,
+        "ok": false,
+        "error": "URLError(ConnectionRefusedError(61, 'Connection refused'))"
+      },
+      {
+        "attempt": 4,
+        "ok": false,
+        "error": "URLError(ConnectionRefusedError(61, 'Connection refused'))"
+      },
+      {
+        "attempt": 5,
+        "ok": false,
+        "error": "URLError(ConnectionRefusedError(61, 'Connection refused'))"
+      },
+      {
+        "attempt": 6,
+        "ok": false,
+        "error": "URLError(ConnectionRefusedError(61, 'Connection refused'))"
+      },
+      {
+        "attempt": 7,
+        "ok": false,
+        "error": "URLError(ConnectionRefusedError(61, 'Connection refused'))"
+      },
+      {
+        "attempt": 8,
+        "ok": false,
+        "error": "URLError(ConnectionRefusedError(61, 'Connection refused'))"
+      },
+      {
+        "attempt": 9,
+        "ok": false,
+        "error": "URLError(ConnectionRefusedError(61, 'Connection refused'))"
+      },
+      {
+        "attempt": 10,
+        "ok": false,
+        "error": "URLError(ConnectionRefusedError(61, 'Connection refused'))"
+      },
+      {
+        "attempt": 11,
+        "ok": false,
+        "error": "URLError(ConnectionRefusedError(61, 'Connection refused'))"
+      },
+      {
+        "attempt": 12,
+        "ok": false,
+        "error": "URLError(ConnectionRefusedError(61, 'Connection refused'))"
+      },
+      {
+        "attempt": 13,
+        "ok": false,
+        "error": "URLError(ConnectionRefusedError(61, 'Connection refused'))"
+      },
+      {
+        "attempt": 14,
+        "ok": false,
+        "error": "URLError(ConnectionRefusedError(61, 'Connection refused'))"
+      },
+      {
+        "attempt": 15,
+        "ok": false,
+        "error": "URLError(ConnectionRefusedError(61, 'Connection refused'))"
+      },
+      {
+        "attempt": 16,
+        "ok": false,
+        "error": "URLError(ConnectionRefusedError(61, 'Connection refused'))"
+      },
+      {
+        "attempt": 17,
+        "ok": false,
+        "error": "URLError(ConnectionRefusedError(61, 'Connection refused'))"
+      },
+      {
+        "attempt": 18,
+        "ok": true,
+        "model_ids": [
+          "cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit"
+        ]
+      }
+    ]
+  },
+  "ok": true
+}

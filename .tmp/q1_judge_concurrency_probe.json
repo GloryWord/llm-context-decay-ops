@@ -1,0 +1,138 @@
+{
+  "config": {
+    "provider": "vllm",
+    "api_url": "http://210.179.28.26:18000/v1/chat/completions",
+    "model_name": "cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit",
+    "api_key": "",
+    "temperature": 0.0,
+    "max_tokens": 256,
+    "extra_params": {}
+  },
+  "levels": [
+    1,
+    2,
+    4,
+    6,
+    8,
+    12
+  ],
+  "n_per_level": 24,
+  "records_seen_for_payload_collection": 17,
+  "result_path": "/Users/kawai_tofu/Desktop/01_SeoulTech/SeoulTech_Local/Capstone_Design/Capstone_Dev/Codex-Multi-Agent-Workflow/llm-context-decay-ops/data/outputs/2026-05-18_q1_sampled_local_llama_gemma/fast_results_hugging-quants_Meta-Llama-3.1-8B-Instruct-AWQ-INT4.jsonl",
+  "results": [
+    {
+      "concurrency": 1,
+      "requests": 24,
+      "ok": 24,
+      "errors": [],
+      "wall_seconds": 19.188773041998502,
+      "requests_per_second": 1.2507313493922283,
+      "latency_p50": 0.7723821875042631,
+      "latency_p95": 1.0339299794977705,
+      "latency_max": 1.0687037919997238,
+      "prompt_tokens": 20992,
+      "completion_tokens": 684,
+      "total_tokens": 21676,
+      "tokens_per_second": 1129.618863726081,
+      "sample_methods": {
+        "llm_judge": 4,
+        "llm_language_judge": 20
+      }
+    },
+    {
+      "concurrency": 2,
+      "requests": 24,
+      "ok": 24,
+      "errors": [],
+      "wall_seconds": 17.525192250002874,
+      "requests_per_second": 1.3694571595924183,
+      "latency_p50": 1.4312444795068586,
+      "latency_p95": 1.7641085420000309,
+      "latency_max": 1.7839205839991337,
+      "prompt_tokens": 17303,
+      "completion_tokens": 657,
+      "total_tokens": 17960,
+      "tokens_per_second": 1024.8104410949932,
+      "sample_methods": {
+        "llm_judge": 16,
+        "llm_language_judge": 8
+      }
+    },
+    {
+      "concurrency": 4,
+      "requests": 24,
+      "ok": 24,
+      "errors": [],
+      "wall_seconds": 17.74593154100876,
+      "requests_per_second": 1.3524226634447916,
+      "latency_p50": 2.9336690835043555,
+      "latency_p95": 3.2328732602436503,
+      "latency_max": 3.277151749993209,
+      "prompt_tokens": 19632,
+      "completion_tokens": 649,
+      "total_tokens": 20281,
+      "tokens_per_second": 1142.853501555159,
+      "sample_methods": {
+        "llm_judge": 14,
+        "llm_language_judge": 10
+      }
+    },
+    {
+      "concurrency": 6,
+      "requests": 24,
+      "ok": 24,
+      "errors": [],
+      "wall_seconds": 19.749331792001612,
+      "requests_per_second": 1.2152309887122301,
+      "latency_p50": 4.8022503335014335,
+      "latency_p95": 5.229633062746871,
+      "latency_max": 5.280732041996089,
+      "prompt_tokens": 21328,
+      "completion_tokens": 732,
+      "total_tokens": 22060,
+      "tokens_per_second": 1116.9998171246582,
+      "sample_methods": {
+        "llm_language_judge": 24
+      }
+    },
+    {
+      "concurrency": 8,
+      "requests": 24,
+      "ok": 24,
+      "errors": [],
+      "wall_seconds": 18.193074957991485,
+      "requests_per_second": 1.319183263709787,
+      "latency_p50": 5.724926353490446,
+      "latency_p95": 6.372646302497742,
+      "latency_max": 6.410185041997465,
+      "prompt_tokens": 17393,
+      "completion_tokens": 681,
+      "total_tokens": 18074,
+      "tokens_per_second": 993.454929512112,
+      "sample_methods": {
+        "llm_judge": 14,
+        "llm_language_judge": 10
+      }
+    },
+    {
+      "concurrency": 12,
+      "requests": 24,
+      "ok": 24,
+      "errors": [],
+      "wall_seconds": 18.53384137499961,
+      "requests_per_second": 1.294928531781529,
+      "latency_p50": 8.97149710400845,
+      "latency_p95": 9.413670281253872,
+      "latency_max": 9.422185000003083,
+      "prompt_tokens": 17777,
+      "completion_tokens": 688,
+      "total_tokens": 18465,
+      "tokens_per_second": 996.2856391394139,
+      "sample_methods": {
+        "llm_judge": 16,
+        "llm_language_judge": 8
+      }
+    }
+  ],
+  "created_at": "2026-05-20T09:06:00+0900"
+}

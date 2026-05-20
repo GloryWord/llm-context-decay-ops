@@ -1,0 +1,41 @@
+{
+  "validated_at": "2026-05-18T19:23:30+0900",
+  "outdir": ".tmp/q1_finish_reason_rerun/clean_n83_20260518T191600+0900",
+  "jsonl": ".tmp/q1_finish_reason_rerun/clean_n83_20260518T191600+0900/replay_metadata_r07_false_truncation_suspect.jsonl",
+  "summary": ".tmp/q1_finish_reason_rerun/clean_n83_20260518T191600+0900/summary_r07_false_truncation_suspect.json",
+  "line_count": 83,
+  "bad_json_lines": [],
+  "ok_count": 83,
+  "error_count": 0,
+  "finish_reason_counts": {
+    "length": 79,
+    "stop": 4
+  },
+  "completion_tokens_eq_512_count": 79,
+  "hit_max_tokens_count_rule": 79,
+  "missing_required_field_rows": [],
+  "model_returned_counts": {
+    "hugging-quants/Meta-Llama-3.1-8B-Instruct-AWQ-INT4": 83
+  },
+  "max_tokens_counts": {
+    "512": 83
+  },
+  "q1samp_00020_turn15": [
+    {
+      "case_id": "q1samp_00020",
+      "turn": 15,
+      "finish_reason": "length",
+      "usage": {
+        "prompt_tokens": 7572,
+        "total_tokens": 8084,
+        "completion_tokens": 512,
+        "prompt_tokens_details": null
+      },
+      "max_tokens": 512,
+      "model_returned": "hugging-quants/Meta-Llama-3.1-8B-Instruct-AWQ-INT4",
+      "response_length": 868,
+      "original_response_length": 868,
+      "response_equals_original": true
+    }
+  ]
+}

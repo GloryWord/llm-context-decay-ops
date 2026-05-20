@@ -1,0 +1,30 @@
+{
+  "policy_name": "bounded_adaptive_max_tokens",
+  "selector": "r07_false_truncation_suspect",
+  "source_cap": 512,
+  "ladder": [
+    1024,
+    1536,
+    2048,
+    3072
+  ],
+  "temperature": 0.0,
+  "per_row_start_cap": 1024,
+  "per_row_stop_condition": "stop as soon as finish_reason == 'stop'",
+  "per_row_escalation_condition": "if finish_reason == 'length' or usage.completion_tokens == attempted max_tokens, retry the same row at the next ladder cap",
+  "terminal_bound": 3072,
+  "terminal_length_rule": "if the row still hits length at 3072, record it as unresolved_by_bound; do not increase the cap in this run",
+  "attempt_metadata_required": [
+    "case_id",
+    "turn",
+    "cohort_index",
+    "attempt_index",
+    "max_tokens",
+    "finish_reason",
+    "usage.completion_tokens",
+    "model_requested",
+    "model_returned",
+    "messages_sha256"
+  ],
+  "rationale": "The goal is to determine whether the original R07 failure was caused by the 512-token cap, not to request unbounded full outputs. The ladder records the minimal sufficient cap for rows that self-stop and leaves higher-than-bound rows explicitly unresolved."
+}

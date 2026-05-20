@@ -1,0 +1,16 @@
+{
+  "validated_at": "2026-05-18T04:37:00.318935+00:00",
+  "records": 341,
+  "total_turn_results": 2852,
+  "judge_status_counts": {
+    "complete": 341
+  },
+  "judge_model_counts": {
+    "cyankiwi/gemma-4-26B-A4B-it-AWQ-4bit": 341
+  },
+  "judge_provider_counts": {
+    "vllm": 341
+  },
+  "judge_scores": 8372,
+  "unresolved_judge_scores": 0
+}

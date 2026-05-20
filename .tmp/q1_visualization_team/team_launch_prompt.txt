@@ -1,0 +1,41 @@
+Q1 visualization/report team task. You are not alone in the codebase; do not revert or overwrite edits by others. Follow AGENTS.md evidence-first rules. Work only in your assigned write path under `.tmp/q1_visualization_team/worker-N/` unless the leader explicitly widens scope. Do not modify final docs/scripts; the leader will integrate.
+
+Global target: finish Q1 visualizations, analysis report, and presentation script for the latest Q1 sampled-injection experiment.
+
+Primary data sources:
+- AI-adjusted Q1 result: `data/outputs/2026-05-18_q1_sampled_local_llama_gemma/ai_adjusted/fast_results_hugging-quants_Meta-Llama-3.1-8B-Instruct-AWQ-INT4_ai_adjusted.jsonl`
+- Reaggregated metrics: `data/outputs/2026-05-18_q1_sampled_local_llama_gemma/ai_adjusted/reaggregated/`
+- Case/provenance: `data/processed/Research_Question_1_Data/q1_sampled_q2_injection_cases.jsonl`, `data/processed/Research_Question_1_Data/q1_sampled_q2_injection_cases_trace.csv`
+- Judge-audit summary: `.tmp/q1_gemma_judge_audit/ai_labeling/ai_labeling_summary.json`
+
+Style references:
+- Older Q1/Q3 report and figure refs: `docs/outputs/final_report.md`, `docs/outputs/figures/q1_compliance_by_rule_count.png`, `docs/outputs/figures/q3_benign_vs_adversarial.png`
+- Q2 style and outputs: `scripts/plot_q2_missing_visualizations.py`, `scripts/plot_attack_type_split.py`, `data/outputs/2026-05-14_openrouter_frontier_q2_single_turn/analysis/`
+
+Parallel assignments:
+
+Worker 1 — style/reference audit
+- Read the style/reference files above.
+- Summarize visual conventions: figure dimensions, color palette, labels, chart types, metrics naming, report wording style.
+- Recommend a Q1 final figure set with filenames and purpose.
+- Write `.tmp/q1_visualization_team/worker-1/style_reference_brief.md`.
+
+Worker 2 — data/metric audit
+- Inspect AI-adjusted JSONL, reaggregated CSV/JSON, trace CSV, and judge audit summary.
+- Verify counts and key groupings: records, conditions, rule_count/turn_count cells, attack_order_variant, final-turn metrics.
+- Identify any denominator caveats or reliability limits for report.
+- Write `.tmp/q1_visualization_team/worker-2/metric_audit_brief.md` and any small supporting CSV under the same worker directory.
+
+Worker 3 — visualization prototype
+- Create a self-contained prototype plotting script under `.tmp/q1_visualization_team/worker-3/` that reads the reaggregated/enriched Q1 data and emits draft PNG/CSV artifacts under `.tmp/q1_visualization_team/worker-3/figures/`.
+- Prioritize charts useful for final report: rule_count x turn final metrics, benign vs adversarial gap, attack-order variant comparison, non-target failure diagnostics.
+- Keep dependencies to existing Python packages; do not add dependencies.
+- Write `.tmp/q1_visualization_team/worker-3/visualization_prototype_brief.md` with generated paths and validation.
+
+Worker 4 — report/script draft
+- Read current reaggregated outputs and older final report style.
+- Draft a concise Korean analysis report structure and Korean presentation script tailored to latest Q1 sampled experiment.
+- Include exact claims only when supported by data files; cite paths.
+- Write `.tmp/q1_visualization_team/worker-4/report_and_presentation_draft.md`.
+
+Stop condition for every worker: assigned file(s) exist, include evidence paths/commands, and task is marked complete in OMX team state.

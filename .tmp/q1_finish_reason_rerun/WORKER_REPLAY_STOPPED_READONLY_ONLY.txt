@@ -1,0 +1,1 @@
+Created 2026-05-18T19:39:50+0900. Leader forcibly interrupted worker panes and killed replay scripts because workers were still launching duplicate writers into contaminated extended_adaptive_20260518T193519+0900. Workers must not run replay scripts; read-only validation only after leader publishes current_clean_extended_adaptive_outdir.txt.

@@ -1,0 +1,14 @@
+{
+  "created_at": "2026-05-18T19:23:30+0900",
+  "selector": "r07_false_truncation_suspect",
+  "target_count": 83,
+  "ok_count": 83,
+  "error_count": 0,
+  "finish_reason_counts": {
+    "length": 79,
+    "stop": 4
+  },
+  "hit_max_tokens_count": 79,
+  "output_jsonl": ".tmp/q1_finish_reason_rerun/clean_n83_20260518T191600+0900/replay_metadata_r07_false_truncation_suspect.jsonl",
+  "candidate_csv": ".tmp/q1_finish_reason_rerun/clean_n83_20260518T191600+0900/candidates_r07_false_truncation_suspect.csv"
+}

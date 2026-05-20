@@ -1,0 +1,19 @@
+{
+  "enriched_at": "2026-05-18T04:38:36.453245+00:00",
+  "operation": "result-level metadata enrichment only; model responses, scores, and metrics unchanged",
+  "cases_file": "data/processed/q1_sampled_q2_injection_cases.jsonl",
+  "result_jsonl": "data/outputs/2026-05-18_q1_sampled_local_llama_gemma/fast_results_hugging-quants_Meta-Llama-3.1-8B-Instruct-AWQ-INT4.jsonl",
+  "records": 341,
+  "changed_records": 341,
+  "changed_fields": 6014,
+  "before_sha256": "6812deb1ff50c2c8f14e0b0f0d03805ac9661da9ad0d572fed9013a35b649111",
+  "after_sha256": "21d4e19dcffe2e4addf4ea7e0d5a1bf28b9fe520fdf1710e1c9fa28654329cf6",
+  "attack_order_variant_counts": {
+    "adversarial_then_implicit": 93,
+    "implicit_then_adversarial": 93,
+    "none": 124,
+    "single_adversarial": 31
+  },
+  "sampled_variant_count": 31,
+  "order_average_group_count": 125
+}

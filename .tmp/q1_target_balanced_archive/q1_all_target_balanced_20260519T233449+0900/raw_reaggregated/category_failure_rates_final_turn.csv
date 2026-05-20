@@ -1,0 +1,9 @@
+attack_intensity,rule_type,failed_scores,scorable_scores,failure_rate
+benign,language,0,60,0.0
+benign,format,113,193,0.5854922279792746
+benign,behavior,5,94,0.05319148936170213
+benign,persona,0,86,0.0
+adversarial,language,0,105,0.0
+adversarial,format,374,378,0.9894179894179894
+adversarial,behavior,86,166,0.5180722891566265
+adversarial,persona,3,191,0.015706806282722512

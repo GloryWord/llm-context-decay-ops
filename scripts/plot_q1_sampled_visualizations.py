@@ -297,6 +297,53 @@ def build_condition_rows(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return rows
 
 
+def build_target_rule_rows(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Aggregate final-turn metrics by target rule.
+
+    The all-target Q1 rerun is balanced by construction, so the condition-level
+    table is already an equal-weight target-rule average.  This table keeps the
+    per-target values visible for thesis audit and appendix checks.
+    """
+    grouped: dict[tuple[str, int, int, str], dict[str, list[float]]] = defaultdict(
+        lambda: defaultdict(list)
+    )
+    target_rule_ids = sorted(
+        {str(record.get("target_rule_id", "")) for record in records if record.get("target_rule_id")},
+        key=natural_rule_key,
+    )
+    for record in records:
+        key = (
+            str(record.get("target_rule_id", "")),
+            int(record.get("rule_count", 0)),
+            int(record.get("turn_count", 0)),
+            str(record.get("attack_intensity", "")),
+        )
+        metrics = final_metrics(record)
+        for metric, value in metrics.items():
+            if value is not None:
+                grouped[key][metric].append(value)
+
+    rows: list[dict[str, Any]] = []
+    for target_rule_id in target_rule_ids:
+        for rule_count in RULE_COUNTS:
+            for turn_count in TURN_COUNTS:
+                for attack in ATTACK_TYPES:
+                    values = grouped.get((target_rule_id, rule_count, turn_count, attack), {})
+                    row: dict[str, Any] = {
+                        "target_rule_id": target_rule_id,
+                        "rule_count": rule_count,
+                        "turn_count": turn_count,
+                        "attack_intensity": attack,
+                    }
+                    for metric in METRIC_LABELS:
+                        summary = stat(list(values.get(metric, [])))
+                        row[f"{metric}_mean"] = summary["mean"]
+                        row[f"{metric}_std"] = summary["std"]
+                        row[f"{metric}_n"] = summary["n"]
+                    rows.append(row)
+    return rows
+
+
 def build_attack_order_rows(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Aggregate adversarial final-turn metrics by attack-order variant."""
     grouped: dict[tuple[int, int, str], dict[str, list[float]]] = defaultdict(
@@ -806,6 +853,7 @@ def main() -> None:
     judge_audit = json.loads(args.judge_audit.read_text(encoding="utf-8"))
 
     condition_rows = build_condition_rows(records)
+    target_rule_rows = build_target_rule_rows(records)
     order_rows = build_attack_order_rows(records)
     rule_rows = build_rule_failure_rows(records)
 
@@ -851,6 +899,28 @@ def main() -> None:
             "non_target_failure_n",
         ],
     )
+    target_rule_csv = write_csv(
+        tables_dir / "q1_target_rule_final_turn_metrics.csv",
+        target_rule_rows,
+        [
+            "target_rule_id",
+            "rule_count",
+            "turn_count",
+            "attack_intensity",
+            "per_rule_pass_rate_mean",
+            "per_rule_pass_rate_std",
+            "per_rule_pass_rate_n",
+            "perfect_success_mean",
+            "perfect_success_std",
+            "perfect_success_n",
+            "targeted_rule_success_mean",
+            "targeted_rule_success_std",
+            "targeted_rule_success_n",
+            "non_target_failure_mean",
+            "non_target_failure_std",
+            "non_target_failure_n",
+        ],
+    )
     rule_csv = write_csv(
         tables_dir / "q1_rule_failure_final_turn_metrics.csv",
         rule_rows,
@@ -868,6 +938,7 @@ def main() -> None:
     outputs: dict[str, str] = {
         "condition_csv": str(condition_csv),
         "attack_order_csv": str(order_csv),
+        "target_rule_csv": str(target_rule_csv),
         "rule_failure_csv": str(rule_csv),
         "strict_success_figure": str(plot_q1_strict_success(condition_rows, figures_dir)),
         "old_vs_strict_figure": str(plot_old_vs_strict(condition_rows, figures_dir)),

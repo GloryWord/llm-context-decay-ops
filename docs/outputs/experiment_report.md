@@ -1,26 +1,36 @@
-# Compliance Decay Experiment — Interim Report
+# Compliance Decay Experiment — Presentation Report
 
-> **Generated**: 2026-04-01 00:57
-> **Runs analyzed**: 1540 / 1,540 (target)
+> **Generated**: 2026-04-14 18:09
+> **Runs analyzed**: 1540
 > **Models**: hugging-quants/Meta-Llama-3.1-8B-Instruct-AWQ-INT4
 
 ---
 
-## 1. Experiment Overview
+## 1. Figure Semantics
 
-| Variable | Levels |
-|----------|--------|
-| rule_count | 1, 3, 5, 7 |
-| turn_count | 1, 5, 10, 15 |
-| attack_intensity | benign, adversarial |
-| repetitions | 5 per cell |
-| models | Llama 3.1 8B (vLLM) |
+- **Q1**: each point is the exact-cell final-turn mean for one `(rule_count, turn_count, attack_intensity)` condition. Error bars are ±1 SD. Each point is annotated with `n`.
+- **Q2**: each heatmap cell is the all-turn pass rate for one `(attack_intensity, turn_count, rule_type)` condition, counting only applicable rule evaluations (`pass is not None`).
+- **Q3**: each point is the same exact-cell final-turn mean as Q1, regrouped to compare benign vs adversarial within each `rule_count`.
 
 ---
 
-## 2. Key Findings
+## 2. Visualizations
 
-### 2.1 Final Compliance by Condition
+### 2.1 Q1: Final-turn Compliance by Rule Count
+![Q1](figures/q1_compliance_by_rule_count.png)
+
+### 2.2 Q2: Rule-type Pass Rate by Attack and Turn Count
+![Q2](figures/q2_per_rule_type.png)
+
+### 2.3 Q3: Benign vs Adversarial (exact-cell final-turn mean)
+![Q3](figures/q3_benign_vs_adversarial.png)
+
+### 2.4 Representative Heatmap
+![Heatmap](figures/heatmap_representative.png)
+
+---
+
+## 3. Final-turn Compliance by Condition
 
 | Condition | Mean Compliance | Std | N |
 |-----------|----------------|-----|---|
@@ -57,52 +67,12 @@
 | R7_T5_adversarial | 68.0% | ±13.3% | 40 |
 | R7_T5_benign | 80.0% | ±0.0% | 40 |
 
-### 2.2 Degradation Onset (DO < 80%) & Collapse Threshold (CT < 50%)
-
-| Condition | DO (mean turn) | DO cases | CT (mean turn) | CT cases |
-|-----------|---------------|----------|---------------|----------|
-| R1_adversarial | T4.2 | 165 | T4.2 | 165 |
-| R1_benign | — | 0 | — | 0 |
-| R3_adversarial | T2.8 | 175 | T7.2 | 122 |
-| R3_benign | T1.1 | 95 | — | 0 |
-| R5_adversarial | T2.5 | 169 | T10.0 | 32 |
-| R5_benign | T1.1 | 146 | T3.0 | 20 |
-| R7_adversarial | T4.1 | 96 | T7.5 | 37 |
-| R7_benign | T3.0 | 33 | T13.0 | 3 |
-
 ---
 
-## 3. Visualizations
+## 4. Next Steps
 
-### 3.1 Q1: Compliance by Rule Count
-![Q1](figures/q1_compliance_by_rule_count.png)
+- [ ] Add a slide that explicitly defines one run, one cell, and one figure point.
+- [ ] Add a `rule_set_variant` appendix table for the curated combinations used at each `rule_count`.
+- [ ] Consider a deferred follow-up experiment with long-document/PDF input plus strict 200-char / 300-char output limits. This idea was noted but is out of scope for the current run.
 
-### 3.2 Q2: Per-Rule-Type Compliance
-![Q2](figures/q2_per_rule_type.png)
-
-### 3.3 Q3: Benign vs Adversarial
-![Q3](figures/q3_benign_vs_adversarial.png)
-
-### 3.4 Representative Heatmap
-![Heatmap](figures/heatmap_representative.png)
-
----
-
-## 4. Preliminary Observations
-
-- **Adversarial impact**: 28.1pp lower compliance vs benign (benign: 87.4%, adversarial: 59.3%)
-
-- **R=1**: mean final compliance 68.8%
-- **R=3**: mean final compliance 73.4%
-- **R=5**: mean final compliance 76.7%
-- **R=7**: mean final compliance 74.9%
-
----
-
-## 5. Status & Next Steps
-
-- Data collection: 1540/1,540 runs (100.0%)
-- [ ] Complete remaining repetitions
-- [ ] Add DeepSeek R1 model comparison
-- [ ] Statistical tests (ANOVA, dose-response fitting)
-- [ ] Final report generation
+- Current overall benign vs adversarial final-turn gap: 28.1pp

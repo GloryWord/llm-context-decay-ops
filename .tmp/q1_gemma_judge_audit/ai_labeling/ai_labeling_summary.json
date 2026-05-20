@@ -1,0 +1,125 @@
+{
+  "created_at": "2026-05-18T15:56:01.453781",
+  "source_candidate_csv": ".tmp/q1_gemma_judge_audit/q1_gemma_judge_audit_candidates.csv",
+  "source_result_jsonl": "data/outputs/2026-05-18_q1_sampled_local_llama_gemma/fast_results_hugging-quants_Meta-Llama-3.1-8B-Instruct-AWQ-INT4.jsonl",
+  "source_result_sha256": "21d4e19dcffe2e4addf4ea7e0d5a1bf28b9fe520fdf1710e1c9fa28654329cf6",
+  "integrated_label_csv": ".tmp/q1_gemma_judge_audit/ai_labeling/q1_gemma_judge_candidates_ai_labeled.csv",
+  "human_only_review_csv": ".tmp/q1_gemma_judge_audit/ai_labeling/q1_gemma_judge_human_only_review.csv",
+  "ai_score_changes_csv": ".tmp/q1_gemma_judge_audit/ai_labeling/q1_gemma_judge_ai_score_changes.csv",
+  "ai_adjusted_jsonl": "data/outputs/2026-05-18_q1_sampled_local_llama_gemma/ai_adjusted/fast_results_hugging-quants_Meta-Llama-3.1-8B-Instruct-AWQ-INT4_ai_adjusted.jsonl",
+  "ai_adjusted_jsonl_sha256": "a820322495aea9448a2dd15a7c0a91e139865b0abacbbf0fdda0b423a092aa08",
+  "ai_adjusted_score_changes_csv": "data/outputs/2026-05-18_q1_sampled_local_llama_gemma/ai_adjusted/ai_adjusted_score_changes.csv",
+  "candidate_rows": 1140,
+  "labeled_rows": 1140,
+  "merged_rows": 1140,
+  "human_only_rows": 0,
+  "label_action_counts": {
+    "exclude": 355,
+    "override": 47,
+    "keep": 738
+  },
+  "label_issue_counts": {
+    "false_failure_applicability": 310,
+    "false_failure_overstrict": 47,
+    "already_na": 276,
+    "true_pass": 139,
+    "true_failure": 323,
+    "applicability_true_should_na": 45
+  },
+  "label_by_rule_action": {
+    "R04|exclude": 6,
+    "R01|override": 7,
+    "R04|keep": 80,
+    "R06|keep": 100,
+    "R07|keep": 213,
+    "R07|exclude": 314,
+    "R09|keep": 280,
+    "R09|override": 40,
+    "R10|keep": 65,
+    "R10|exclude": 35
+  },
+  "jsonl_records": 341,
+  "jsonl_turns": 2852,
+  "jsonl_scores": 13892,
+  "reviewed_score_cells": 1140,
+  "changed_score_cells": 402,
+  "jsonl_human_only_score_cells": 0,
+  "validation": [
+    {
+      "input": ".tmp/q1_gemma_judge_audit/shards/shard_1_R01_R04_R06_language_privacy_ethics.csv",
+      "output": ".tmp/q1_gemma_judge_audit/ai_labeling/labeled_shards/worker-1-shard1-labeled.csv",
+      "input_rows": 193,
+      "output_rows": 193,
+      "actions": {
+        "exclude": 6,
+        "override": 7,
+        "keep": 180
+      },
+      "human_only": {
+        "FALSE": 193
+      },
+      "issues": {
+        "false_failure_applicability": 6,
+        "false_failure_overstrict": 7,
+        "already_na": 121,
+        "true_pass": 59
+      }
+    },
+    {
+      "input": ".tmp/q1_gemma_judge_audit/shards/shard_2_R07_completeness.csv",
+      "output": ".tmp/q1_gemma_judge_audit/ai_labeling/labeled_shards/worker-2-shard2-labeled.csv",
+      "input_rows": 527,
+      "output_rows": 527,
+      "actions": {
+        "keep": 213,
+        "exclude": 314
+      },
+      "human_only": {
+        "FALSE": 527
+      },
+      "issues": {
+        "true_failure": 143,
+        "false_failure_applicability": 304,
+        "already_na": 70,
+        "applicability_true_should_na": 10
+      }
+    },
+    {
+      "input": ".tmp/q1_gemma_judge_audit/shards/shard_3_R09_uncertainty.csv",
+      "output": ".tmp/q1_gemma_judge_audit/ai_labeling/labeled_shards/worker-3-shard3-labeled.csv",
+      "input_rows": 320,
+      "output_rows": 320,
+      "actions": {
+        "keep": 280,
+        "override": 40
+      },
+      "human_only": {
+        "FALSE": 320
+      },
+      "issues": {
+        "true_failure": 180,
+        "false_failure_overstrict": 40,
+        "true_pass": 80,
+        "already_na": 20
+      }
+    },
+    {
+      "input": ".tmp/q1_gemma_judge_audit/shards/shard_4_R10_persona.csv",
+      "output": ".tmp/q1_gemma_judge_audit/ai_labeling/labeled_shards/worker-4-shard4-labeled.csv",
+      "input_rows": 100,
+      "output_rows": 100,
+      "actions": {
+        "keep": 65,
+        "exclude": 35
+      },
+      "human_only": {
+        "FALSE": 100
+      },
+      "issues": {
+        "already_na": 65,
+        "applicability_true_should_na": 35
+      }
+    }
+  ],
+  "errors": []
+}

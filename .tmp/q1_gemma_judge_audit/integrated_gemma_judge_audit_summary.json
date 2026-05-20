@@ -1,0 +1,54 @@
+{
+  "created_at": "2026-05-18T15:22:32.578816",
+  "data_secured": true,
+  "result_sha256": "21d4e19dcffe2e4addf4ea7e0d5a1bf28b9fe520fdf1710e1c9fa28654329cf6",
+  "target_records": 341,
+  "target_turn_results": 2852,
+  "judge_scores": 8372,
+  "unresolved_judge_scores": 0,
+  "audit_candidate_rows": 1140,
+  "reports": {
+    "worker-1": {
+      "shard": "R01/R04/R06",
+      "status": "complete_artifact_exists_but_team_task_failed_state_acknowledged",
+      "key_findings": [
+        "R01 overstrict false failures reproduced",
+        "R04 applicability false failures reproduced",
+        "no R04/R06 semantic false pass found in reviewed sample"
+      ]
+    },
+    "worker-2": {
+      "shard": "R07",
+      "status": "complete",
+      "key_findings": [
+        "304 suspected R07 applicability false failures",
+        "143 likely valid explicit full-list failures"
+      ]
+    },
+    "worker-3": {
+      "shard": "R09",
+      "status": "complete",
+      "key_findings": [
+        "2 suspected semantic false passes row_id 4627 and 5662",
+        "possible false-failure overreach on generic advice quality issues"
+      ]
+    },
+    "worker-4": {
+      "shard": "R10",
+      "status": "complete",
+      "key_findings": [
+        "no semantic R10 persona-adoption false pass found",
+        "35 suspected R10 applicability True-vs-NA inconsistencies"
+      ]
+    }
+  },
+  "historical_issue_status": {
+    "R01_language_overstrict_false_failure": "reproduced",
+    "trigger_absent_or_applicability_false_failure": "reproduced_strongly",
+    "semantic_false_pass_under_detection": "partially_reproduced_current_R09",
+    "R10_persona_adoption_false_pass": "not_reproduced_in_reviewed_sample",
+    "data_rule_alignment_exclusion": "not_reproduced",
+    "R08_comparison_issue": "not_testable_R08_absent"
+  },
+  "team_lifecycle_note": "task 1 failed state is acknowledged as orchestration-state artifact; worker-1 report exists and was verified/merged."
+}

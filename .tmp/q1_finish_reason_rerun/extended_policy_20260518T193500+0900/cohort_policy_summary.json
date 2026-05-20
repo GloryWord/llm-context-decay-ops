@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-05-18T19:35:58+0900",
+  "source_jsonl": ".tmp/q1_finish_reason_rerun/clean_n83_20260518T191600+0900/replay_metadata_r07_false_truncation_suspect.jsonl",
+  "source_summary": ".tmp/q1_finish_reason_rerun/clean_n83_20260518T191600+0900/summary_r07_false_truncation_suspect.json",
+  "selector": "r07_false_truncation_suspect",
+  "source_row_count": 83,
+  "source_ok_count": 83,
+  "source_finish_reason_counts": {
+    "length": 79,
+    "stop": 4
+  },
+  "source_cap": 512,
+  "cohort_row_count": 79,
+  "selection_rule": "ok=true AND finish_reason='length' AND usage.completion_tokens=max_tokens=512",
+  "cohort_sha256": "8e25fb56e7348dd43f888e64c018f7f4a8fccb61984840f85e0d53dd3f9710b5",
+  "cohort_keys_sha256": "693c2d0ce681eb5d31c5a891153ee7cc4f5890bbfaa3d32c9a1581ba1a692b5c",
+  "cohort_jsonl": ".tmp/q1_finish_reason_rerun/extended_policy_20260518T193500+0900/extended_rerun_cohort_79.jsonl",
+  "policy_json": ".tmp/q1_finish_reason_rerun/extended_policy_20260518T193500+0900/bounded_adaptive_policy.json",
+  "note_md": ".tmp/q1_finish_reason_rerun/extended_policy_20260518T193500+0900/cohort_policy_note.md",
+  "policy_ladder": [
+    1024,
+    1536,
+    2048,
+    3072
+  ],
+  "policy_terminal_bound": 3072,
+  "validation_passed": true
+}

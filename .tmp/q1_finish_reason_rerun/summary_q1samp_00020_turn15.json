@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-05-18T19:06:49+0900",
+  "selector": "q1samp_00020_turn15",
+  "target_count": 1,
+  "ok_count": 1,
+  "error_count": 0,
+  "finish_reason_counts": {
+    "length": 1
+  },
+  "hit_max_tokens_count": 1,
+  "output_jsonl": "/Users/kawai_tofu/Desktop/01_SeoulTech/SeoulTech_Local/Capstone_Design/Capstone_Dev/Codex-Multi-Agent-Workflow/llm-context-decay-ops/.tmp/q1_finish_reason_rerun/replay_metadata_q1samp_00020_turn15.jsonl",
+  "candidate_csv": "/Users/kawai_tofu/Desktop/01_SeoulTech/SeoulTech_Local/Capstone_Design/Capstone_Dev/Codex-Multi-Agent-Workflow/llm-context-decay-ops/.tmp/q1_finish_reason_rerun/candidates_q1samp_00020_turn15.csv"
+}

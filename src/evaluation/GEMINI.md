@@ -1,40 +1,24 @@
-# evaluation module
+# evaluation
 
-## Role
-Score model outputs against experiment case constraints, compute compliance metrics, and generate structured evaluation reports.
+## Status
+- This folder owns **scoring truth**, not final report prose.
+- Canonical workflow/orchestration lives in `../../CODEX.md`.
+- Numeric/report claims should trace back to machine-readable outputs generated through this lane or adjacent scripts.
 
-## Files
+## Key files
 | File | Role |
 |------|------|
-| `evaluation.py` | Constraint scoring (18 IFEval types + multi-rule variants), aggregation by method/turn/rule/token_length |
+| `compliance_scorer.py` | rule-level scoring helpers + compliance-rate computation |
+| `evaluation.py` | response scoring + result aggregation |
+| `judge.py` | judge prompt building and judge-response parsing |
 
-## Scoring Approach
+## Working model
+- Raw model responses become scored records first.
+- Scored records become aggregates/summaries next.
+- Only after that should reports/figures claim conclusions.
 
-### v2: Project Aegis (primary)
-- Per-rule programmatic scoring via `src/data_pipeline/generate_multi_rule_probes.score_rule(rule_id, response)`
-- 10 auto-scoring functions (rules 1,2,3,4,5,8,11,14,16,20)
-- Regex/string matching — no LLM judge needed
-
-### Legacy: IFEval Constraint Scoring
-- 18 constraint types in `CONSTRAINT_SCORERS` registry
-- All-or-nothing: all constraints must pass for compliance=1
-
-## Interface
-```python
-# evaluation.py
-def score_response(response: str, scoring: dict) -> int: ...
-def evaluate_results(results_dir: str, output_dir: str) -> dict: ...
-```
-
-## Aggregation Groups
-- `compliance_by_method_and_turns` — compression method × turn_count
-- `compliance_by_rule_count_and_turns` — rule_count_level × turn_count
-- `compliance_by_rule_count_and_token_length` — rule_count_level × token_length
-- `phase2_metrics` — defense effectiveness vs baseline (none)
-
-## Report Paths
-| Format | Path |
-|--------|------|
-| Summary JSON | `reports/evaluation_summary.json` |
-| Scored records | `reports/scored_results.jsonl` |
-| Figures | `reports/figures/*.png` |
+## Local rules
+- If the machine-readable source artifact is missing, do not imply `PASS`; mark work `UNVERIFIED`.
+- Behavioral/judge-driven paths must fail loudly enough to preserve traceability.
+- If you change score schema or aggregation keys, update tests and any report script assumptions in the same task.
+- Prefer explicit artifact paths over narrative descriptions when handing results to reviewers.

@@ -1,63 +1,34 @@
 # data_pipeline
 
-## Role
-Download raw datasets, preprocess into experiment-ready format, generate ~408 experiment cases for Phase 1 v2.
+## Status
+- This folder mixes **legacy preprocessing routes** and **current case-generation helpers**.
+- Canonical workflow/orchestration lives in `../../CODEX.md`.
+- Before editing, verify whether the caller expects `experiment_cases_full.jsonl`, `experiment_cases.jsonl`, or another intermediate artifact.
 
-## Files
+## Key files
 | File | Role |
 |------|------|
-| `load_datasets.py` | Pipeline entry point — orchestrates download → preprocess → case generation |
-| `download_datasets.py` | Downloads RuLES, IFEval, ShareGPT, MultiChallenge to `data/raw/` |
-| `token_utils.py` | Shared token counting (Qwen/Qwen3.5-9B AutoTokenizer) |
-| `preprocess_rules.py` | RuLES probe extraction (legacy, retained for compatibility) |
-| `preprocess_ifeval.py` | IFEval format constraint separation (legacy) |
-| `preprocess_sharegpt.py` | ShareGPT user turn extraction with quality/token-length filtering |
-| `preprocess_multichallenge.py` | MultiChallenge conversation turn extraction |
-| `generate_multi_rule_probes.py` | **v2: Project Aegis 20-rule persona, probe generation, auto-scoring** |
-| `generate_experiment_cases.py` | **v2: single-message embedding, total_context_tokens, Alignment Tax** |
+| `download_datasets.py` | raw dataset acquisition helpers |
+| `load_datasets.py` | config-driven orchestration for download/preprocess/generation |
+| `token_utils.py` | tokenizer + token counting helpers |
+| `preprocess_rules.py` | RuLES preprocessing (legacy/compatibility lane) |
+| `preprocess_ifeval.py` | IFEval preprocessing |
+| `preprocess_sharegpt.py` | ShareGPT turn extraction/filtering |
+| `preprocess_multichallenge.py` | MultiChallenge turn extraction |
+| `generate_multi_rule_probes.py` | rule prompt/probe generation + scoring helpers |
+| `generate_experiment_cases.py` | embedded-message style case generation |
 
-## Interface
-```python
-# load_datasets.py — full pipeline
-def run_pipeline(config_path: str, skip_download: bool = False) -> None: ...
+## Important neighboring entrypoints
+- `scripts/generate_full_cases.py` currently matters for the main capstone full-factorial case set.
+- This means not every production case artifact is born directly from this folder alone.
 
-# v2 modules
-def generate_probes(config_path: str) -> list[dict]: ...      # generate_multi_rule_probes.py
-def generate_cases(config_path: str) -> list[dict]: ...        # generate_experiment_cases.py
-def score_rule(rule_id: int, response: str) -> bool: ...       # generate_multi_rule_probes.py
+## Typical artifacts
+- Raw inputs: `data/raw/*`
+- Intermediate processed outputs: `data/processed/aegis_probes.jsonl`, `data/processed/sharegpt_turns_*.jsonl`, `data/processed/multichallenge_conversations.jsonl`
+- Final case artifacts vary by route; verify the active script before changing schema or names.
 
-# Legacy modules
-def preprocess_rules(config_path: str) -> list[dict]: ...
-def preprocess_ifeval(config_path: str) -> list[dict]: ...
-def preprocess_sharegpt(config_path: str) -> dict[str, list[dict]]: ...
-def preprocess_multichallenge(config_path: str) -> list[dict]: ...
-```
-
-## I/O
-- Config: `configs/preprocess.yaml`
-- Input: `data/raw/{rules/, ifeval/, sharegpt/, multichallenge/}`
-- Output:
-  - `data/processed/aegis_probes.jsonl` (v2: Project Aegis probes)
-  - `data/processed/sharegpt_turns_{short,medium,long}.jsonl`
-  - `data/processed/multichallenge_conversations.jsonl`
-  - `data/processed/experiment_cases.jsonl` (v2: single-message embedded)
-
-## CLI
-```bash
-# Full pipeline
-python -m src.data_pipeline.load_datasets --config configs/preprocess.yaml
-
-# v2 modules
-python -m src.data_pipeline.generate_multi_rule_probes --config configs/preprocess.yaml
-python -m src.data_pipeline.generate_experiment_cases --config configs/preprocess.yaml
-
-# Individual preprocessing
-python -m src.data_pipeline.preprocess_sharegpt --config configs/preprocess.yaml
-python -m src.data_pipeline.preprocess_multichallenge --config configs/preprocess.yaml
-```
-
-## Constraints
-- Never modify `data/raw/`
-- All preprocessing params from `configs/preprocess.yaml`
-- No hardcoded file paths in source
-- Token counting: always tokenize final rendered string, never arithmetic sum
+## Local rules
+- Never mutate `data/raw/` in-place.
+- Token counts must be based on the final rendered content, not rough arithmetic sums.
+- Keep dataset download/preprocess concerns separate from experiment-runner concerns.
+- If you change a case schema, sync downstream evaluation/report/tests in the same task.

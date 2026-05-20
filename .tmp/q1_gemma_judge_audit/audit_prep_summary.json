@@ -1,0 +1,65 @@
+{
+  "created_at": "2026-05-18T15:12:01.042782",
+  "result_path": "data/outputs/2026-05-18_q1_sampled_local_llama_gemma/fast_results_hugging-quants_Meta-Llama-3.1-8B-Instruct-AWQ-INT4.jsonl",
+  "result_sha256": "21d4e19dcffe2e4addf4ea7e0d5a1bf28b9fe520fdf1710e1c9fa28654329cf6",
+  "case_count": 341,
+  "turn_count": 2852,
+  "llm_judge_score_rows": 8372,
+  "flat_csv": ".tmp/q1_gemma_judge_audit/q1_gemma_judge_scores_flat.csv",
+  "candidate_csv": ".tmp/q1_gemma_judge_audit/q1_gemma_judge_audit_candidates.csv",
+  "candidate_rows": 1140,
+  "by_pass": {
+    "None": 3806,
+    "False": 680,
+    "True": 3886
+  },
+  "by_rule_pass": {
+    "R07:None": 482,
+    "R07:False": 447,
+    "R06:None": 863,
+    "R06:True": 885,
+    "R07:True": 83,
+    "R09:True": 934,
+    "R10:None": 1115,
+    "R09:False": 220,
+    "R10:True": 449,
+    "R09:None": 134,
+    "R04:None": 1212,
+    "R04:True": 162,
+    "R01:True": 1373,
+    "R04:False": 6,
+    "R01:False": 7
+  },
+  "candidate_by_rule_pass": {
+    "R07:False": 447,
+    "R09:False": 220,
+    "R04:False": 6,
+    "R01:False": 7,
+    "R04:None": 73,
+    "R04:True": 7,
+    "R06:None": 48,
+    "R06:True": 52,
+    "R09:True": 80,
+    "R09:None": 20,
+    "R10:None": 65,
+    "R10:True": 35,
+    "R07:None": 70,
+    "R07:True": 10
+  },
+  "shards": {
+    ".tmp/q1_gemma_judge_audit/shards/shard_1_R01_R04_R06_language_privacy_ethics.csv": 193,
+    ".tmp/q1_gemma_judge_audit/shards/shard_2_R07_completeness.csv": 527,
+    ".tmp/q1_gemma_judge_audit/shards/shard_3_R09_uncertainty.csv": 320,
+    ".tmp/q1_gemma_judge_audit/shards/shard_4_R10_persona.csv": 100
+  },
+  "known_issue_taxonomy": ".tmp/q1_gemma_judge_audit/known_human_labeling_issue_taxonomy.md",
+  "worker_instructions": ".tmp/q1_gemma_judge_audit/worker_instructions.md",
+  "source_files": [
+    "data/outputs/2026-05-18_q1_sampled_local_llama_gemma/fast_results_hugging-quants_Meta-Llama-3.1-8B-Instruct-AWQ-INT4.jsonl",
+    "data/processed/q1_sampled_q2_injection_cases.jsonl",
+    "data/outputs/2026-05-11_local_llama_gemma_controlled_v1/human_review/human_audit_all_200_normalized.csv",
+    "data/outputs/2026-05-11_local_llama_gemma_controlled_v1/human_adjusted/human_score_changes.csv",
+    "data/outputs/2026-05-18_q1_sampled_local_llama_gemma/run_manifest.json",
+    "data/outputs/2026-05-18_q1_sampled_local_llama_gemma/judge_validation_summary.json"
+  ]
+}

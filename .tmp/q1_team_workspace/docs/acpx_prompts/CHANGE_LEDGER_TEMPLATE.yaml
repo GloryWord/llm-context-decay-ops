@@ -1,0 +1,27 @@
+document_path: "{{DOCUMENT_PATH}}"
+revision_goal: "Apply professor feedback to the existing document without expanding scope."
+route: "general"  # general | numeric
+max_loops: 2
+change_ledger:
+  - id: C1
+    section: "{{SECTION_NAME}}"
+    issue: "{{WHAT_IS_WRONG_OR_MISSING}}"
+    required_change: "{{WHAT_MUST_BE_CHANGED}}"
+    evidence: "{{PROFESSOR_FEEDBACK_OR_SOURCE_CONFLICT}}"
+    allowed_scope: "{{SECTIONS_ALLOWED_TO_CHANGE}}"
+    numeric_sensitive: false
+    status: pending
+  - id: C2
+    section: "{{SECTION_NAME}}"
+    issue: "{{WHAT_IS_WRONG_OR_MISSING}}"
+    required_change: "{{WHAT_MUST_BE_CHANGED}}"
+    evidence: "{{PROFESSOR_FEEDBACK_OR_SOURCE_CONFLICT}}"
+    allowed_scope: "{{SECTIONS_ALLOWED_TO_CHANGE}}"
+    numeric_sensitive: true
+    status: pending
+notes_for_reviser:
+  - "Synchronize every dependent claim if a number, threshold, or table entry changes."
+  - "Do not add new experiments unless the professor feedback explicitly requires them."
+notes_for_verifier:
+  - "Judge only whether the listed changes were correctly applied."
+  - "Return PASS or BLOCK, not general advice."

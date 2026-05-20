@@ -1,0 +1,97 @@
+{
+  "records": 341,
+  "jsonl_records_by_attack_intensity": {
+    "adversarial": 217,
+    "benign": 124
+  },
+  "jsonl_records_by_attack_order_variant": {
+    "single_adversarial": 31,
+    "none": 124,
+    "implicit_then_adversarial": 93,
+    "adversarial_then_implicit": 93
+  },
+  "trace_rows": 341,
+  "trace_rows_by_condition": {
+    "benign_context": 124,
+    "injection_context": 217
+  },
+  "trace_sampled_variant_count": 31,
+  "target_rule_ids": {
+    "R03": 341
+  },
+  "target_rule_scope": {
+    "label": "R03 only",
+    "target_rule_ids": [
+      "R03"
+    ],
+    "target_rule_count": 1,
+    "balanced": true,
+    "per_target_record_count": 341,
+    "is_q2_available_target_balanced": false,
+    "q2_available_target_rules": [
+      "R01",
+      "R02",
+      "R03",
+      "R04",
+      "R05",
+      "R06",
+      "R07",
+      "R09",
+      "R10"
+    ],
+    "missing_q2_available_target_rules": [
+      "R01",
+      "R02",
+      "R04",
+      "R05",
+      "R06",
+      "R07",
+      "R09",
+      "R10"
+    ],
+    "extra_target_rules": [],
+    "r08_absent_from_target_rules": true
+  },
+  "rule_counts": {
+    "1": 11,
+    "3": 110,
+    "5": 110,
+    "7": 110
+  },
+  "turn_counts": {
+    "1": 62,
+    "5": 93,
+    "10": 93,
+    "15": 93
+  },
+  "mean_benign_perfect_success": 0.4875,
+  "mean_adversarial_perfect_success": 0.0,
+  "mean_adversarial_targeted_rule_success": 0.0,
+  "mean_adversarial_non_target_failure": 0.7737745098039216,
+  "mean_benign_minus_adversarial_gap": 0.4875,
+  "attack_order_old_per_rule_pass_mean": {
+    "implicit_then_adversarial": 0.28583333333333333,
+    "adversarial_then_implicit": 0.28069444444444447
+  },
+  "judge_audit": {
+    "candidate_rows": 8372,
+    "human_only_rows": 0,
+    "changed_score_cells": 1007,
+    "source_result_sha256": "21d4e19dcffe2e4addf4ea7e0d5a1bf28b9fe520fdf1710e1c9fa28654329cf6",
+    "ai_adjusted_jsonl_sha256": "a8b87f5ace22e7a62dec2c74b1ed4958676e0f773a471f4d17dc1c816048d68d"
+  },
+  "outputs": {
+    "condition_csv": ".tmp/q1_target_balanced_team/apply_audit_smoke/q1_visualization/tables/q1_condition_final_turn_metrics.csv",
+    "attack_order_csv": ".tmp/q1_target_balanced_team/apply_audit_smoke/q1_visualization/tables/q1_attack_order_final_turn_metrics.csv",
+    "target_rule_csv": ".tmp/q1_target_balanced_team/apply_audit_smoke/q1_visualization/tables/q1_target_rule_final_turn_metrics.csv",
+    "rule_failure_csv": ".tmp/q1_target_balanced_team/apply_audit_smoke/q1_visualization/tables/q1_rule_failure_final_turn_metrics.csv",
+    "strict_success_figure": ".tmp/q1_target_balanced_team/apply_audit_smoke/q1_visualization/figures/q1_strict_success_by_rule_count_turn.png",
+    "old_vs_strict_figure": ".tmp/q1_target_balanced_team/apply_audit_smoke/q1_visualization/figures/q1_old_vs_strict_metric_by_condition.png",
+    "strict_gap_heatmap": ".tmp/q1_target_balanced_team/apply_audit_smoke/q1_visualization/figures/q1_benign_adversarial_strict_gap_heatmap.png",
+    "attack_order_figure": ".tmp/q1_target_balanced_team/apply_audit_smoke/q1_visualization/figures/q1_attack_order_variant_per_rule_pass.png",
+    "non_target_failure_heatmap": ".tmp/q1_target_balanced_team/apply_audit_smoke/q1_visualization/figures/q1_adversarial_non_target_failure_heatmap.png",
+    "rule_failure_t15_heatmap": ".tmp/q1_target_balanced_team/apply_audit_smoke/q1_visualization/figures/q1_rule_failure_profile_t15_heatmap.png",
+    "summary_json": ".tmp/q1_target_balanced_team/apply_audit_smoke/q1_visualization/q1_visualization_summary.json",
+    "summary_markdown": ".tmp/q1_target_balanced_team/apply_audit_smoke/q1_visualization/q1_visualization_summary.md"
+  }
+}

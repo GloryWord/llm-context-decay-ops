@@ -1,0 +1,19 @@
+Q1 Gemma judge candidate AI-labeling task. ORIGINAL_REPO=/Users/kawai_tofu/Desktop/01_SeoulTech/SeoulTech_Local/Capstone_Design/Capstone_Dev/Codex-Multi-Agent-Workflow/llm-context-decay-ops
+
+Goal: AI-label all 1,140 candidate rows so the user only has to review rows marked human_only=TRUE. Do NOT mutate original Q1 JSONL/results. Write compact label CSVs only.
+
+Read first:
+- $ORIGINAL_REPO/.tmp/q1_gemma_judge_audit/ai_labeling/label_schema_and_worker_instructions.md
+- $ORIGINAL_REPO/.tmp/q1_gemma_judge_audit/integrated_gemma_judge_audit_summary.md
+
+Assignments by worker id:
+- worker-1 owns shard 1: $ORIGINAL_REPO/.tmp/q1_gemma_judge_audit/shards/shard_1_R01_R04_R06_language_privacy_ethics.csv -> output $ORIGINAL_REPO/.tmp/q1_gemma_judge_audit/ai_labeling/labeled_shards/worker-1-shard1-labeled.csv
+- worker-2 owns shard 2: $ORIGINAL_REPO/.tmp/q1_gemma_judge_audit/shards/shard_2_R07_completeness.csv -> output $ORIGINAL_REPO/.tmp/q1_gemma_judge_audit/ai_labeling/labeled_shards/worker-2-shard2-labeled.csv
+- worker-3 owns shard 3: $ORIGINAL_REPO/.tmp/q1_gemma_judge_audit/shards/shard_3_R09_uncertainty.csv -> output $ORIGINAL_REPO/.tmp/q1_gemma_judge_audit/ai_labeling/labeled_shards/worker-3-shard3-labeled.csv
+- worker-4 owns shard 4: $ORIGINAL_REPO/.tmp/q1_gemma_judge_audit/shards/shard_4_R10_persona.csv -> output $ORIGINAL_REPO/.tmp/q1_gemma_judge_audit/ai_labeling/labeled_shards/worker-4-shard4-labeled.csv
+
+For every input row, output one row with exactly the required schema columns. Use csv module or a small script; do not hand-type hundreds of CSV rows if scripting is safer. Preserve row_id/case_id/turn/score_rule_id. Use conservative labels; only set human_only=TRUE for genuinely ambiguous rows.
+
+After writing your CSV, run a verification command that counts input vs output rows and action/human_only counts. Report: input path, output path, row count, action counts, human_only count, any uncertainty/blocker.
+
+You are not alone in the codebase: do not revert or edit files outside your assigned output CSV/logs.

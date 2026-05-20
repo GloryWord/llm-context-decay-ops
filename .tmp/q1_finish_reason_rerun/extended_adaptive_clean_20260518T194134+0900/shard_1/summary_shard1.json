@@ -1,0 +1,37 @@
+{
+  "created_at": "2026-05-18T19:48:36+0900",
+  "purpose": "Q1 R07 max-token truncation disambiguation",
+  "source_metadata": ".tmp/q1_finish_reason_rerun/clean_n83_20260518T191600+0900/replay_metadata_r07_false_truncation_suspect.jsonl",
+  "source_target_count_length512": 79,
+  "shard_index": 1,
+  "shard_count": 4,
+  "target_count": 20,
+  "ok_count": 20,
+  "error_count": 0,
+  "transport_error_count": 0,
+  "final_finish_reason_counts": {
+    "stop": 18,
+    "length": 2
+  },
+  "final_cap_counts": {
+    "1024": 17,
+    "3072": 2,
+    "2048": 1
+  },
+  "attempt_count_distribution": {
+    "1": 17,
+    "4": 2,
+    "3": 1
+  },
+  "resolved_non_length_count": 18,
+  "still_cap_limited_at_final_cap_count": 2,
+  "caps": [
+    1024,
+    1536,
+    2048,
+    3072
+  ],
+  "attempts_jsonl": ".tmp/q1_finish_reason_rerun/extended_adaptive_clean_20260518T194134+0900/shard_1/attempts_shard1.jsonl",
+  "final_jsonl": ".tmp/q1_finish_reason_rerun/extended_adaptive_clean_20260518T194134+0900/shard_1/final_shard1.jsonl",
+  "manifest": ".tmp/q1_finish_reason_rerun/extended_adaptive_clean_20260518T194134+0900/shard_1/manifest_shard1.json"
+}

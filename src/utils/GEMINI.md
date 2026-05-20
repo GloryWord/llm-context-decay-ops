@@ -1,34 +1,19 @@
-# utils module
+# utils
 
-## Purpose
-Shared file I/O, logging, and visualization utilities used across the project.
+## Status
+- This folder contains small shared helpers used across scripts/modules.
+- Canonical workflow/orchestration lives in `../../CODEX.md`.
+- Keep these docs factual: they should describe what exists now, not planned helpers.
 
-## Files
+## Key files
 | File | Role |
 |------|------|
-| `json_prettier.py` | JSON/JSONL read/write and formatting |
-| `visualize.py` | Evaluation result visualization (matplotlib/seaborn) |
-| `logger.py` | Project-wide logger config |
+| `http_headers.py` | API-header construction with OpenRouter/vLLM distinctions |
+| `json_pretter.py` | JSON formatting helper |
+| `visualize.py` | plot generation helpers |
 
-## Common Usage
-```python
-from src.utils.json_prettier import load_jsonl, save_jsonl
-from src.utils.logger import get_logger
-from src.utils.visualize import plot_evaluation
-
-logger = get_logger(__name__)
-records = load_jsonl("data/processed/dataset.jsonl")
-save_jsonl(results, "data/outputs/results.jsonl")
-plot_evaluation(eval_result, save_path="reports/figures/eval.png")
-```
-
-## Logger Config
-```python
-# Log levels
-DEBUG   → detailed info during development
-INFO    → pipeline progress
-WARNING → unexpected situations (missing data, etc.)
-ERROR   → exceptions and failures
-
-# Output: console + data/outputs/logs/<date>.log
-```
+## Local rules
+- Keep utilities small and reusable.
+- Prefer pure helpers over hidden side effects.
+- Visualization output paths are caller-driven; verify the active report/output directory before editing plot code.
+- If a helper becomes a cross-module dependency, add/update tests where practical.

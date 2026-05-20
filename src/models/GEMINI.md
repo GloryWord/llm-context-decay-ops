@@ -1,37 +1,25 @@
 # models
 
-## Purpose
-Request LLM inference via OpenRouter API; save responses to `data/outputs/`.
+## Status
+- This folder is the **model request boundary**.
+- Canonical workflow/orchestration lives in `../../CODEX.md`.
+- Top-level experiment scripts may also call model endpoints directly, so keep request/header assumptions aligned across the repo.
 
-## Files
+## Key files
 | File | Role |
 |------|------|
-| `open_router_request.py` | OpenRouter API client — async inference with retry/backoff |
+| `open_router_request.py` | request helper for model inference |
 
-## API Config
-```python
-# Required env var
-OPENROUTER_API_KEY=...
+## Environment expectations
+Common repo-level environment variables include:
+- `VLLM_API_URL`
+- `VLLM_API_KEY`
+- `EVAL_MODEL_NAME`
+- `OPENROUTER_API_KEY`
+- `JUDGE_MODEL_NAME`
 
-# Defaults in open_router_request.py
-DEFAULT_MODEL = "qwen/qwen3.5-9b"
-MAX_RETRIES = 3
-BACKOFF_BASE = 2
-```
-
-## Message Building (v2)
-- `user_only_embedded` cases: system_prompt + single rendered_user_message
-- `full` (Alignment Tax) cases: system_prompt + multi-turn intermediate_turns + probe
-- `none` (baseline) cases: system_prompt + probe only
-
-## Retry Policy
-- Max 3 retries
-- Exponential backoff: 2s -> 4s -> 8s
-- On 429 (rate limit): wait before retry
-
-## Output Path
-- `data/outputs/<model_slug>/<variant>/results.jsonl`
-
-## Constraints
-- Never hardcode API keys
-- Log all requests/responses (for debugging)
+## Local rules
+- Never hardcode secrets.
+- Keep OpenRouter vs local-vLLM header behavior aligned with `src/utils/http_headers.py`.
+- When debugging request issues, log the chosen endpoint/model path clearly but avoid leaking credentials.
+- If request/response schema changes, sync calling scripts and tests in the same task.
